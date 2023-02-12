@@ -15,9 +15,7 @@ const fetchBaseNews = async () => {
             throw new Error('Such a request has not been found');
         }
         const articles = await response.json();
-        console.log(response);
         const resArr = articles.results;
-        console.log(resArr);
         arrHandler(resArr);
     }
     catch (error) {
@@ -38,7 +36,6 @@ function onEnterPush(e) {
 
 function onDOMLoad(e) {
     e.preventDefault();
-    console.log(e);
     fetchBaseNews();
 }
 
@@ -49,7 +46,6 @@ const fetchNewsBySearch = async (request) => {
             throw new Error('Such a request has not been found');
         }
         const articles = await response.json();
-        console.log(response);
         const resArr = articles.response.docs;
         arrHandler(resArr);
     }
