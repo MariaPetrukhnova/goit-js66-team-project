@@ -1,0 +1,76 @@
+
+const API_KEY = 'api-key=9GYTd3hNgT1cJMME7q1HMJAu02NGsmfm';
+const API_HOST = 'https://api.nytimes.com';
+const WEB_HOST = 'https://www.nytimes.com';
+const BASE_ENDPOINT_URL = `${API_HOST}/svc/topstories/v2/arts.json?${API_KEY}`;
+const SEARCH_ENDPOINT_URL = `${API_HOST}/svc/search/v2/articlesearch.json?`;
+
+
+document.addEventListener('DOMContentLoaded', onDOMLoad);
+
+const fetchBaseNews = async () => {
+    try {
+        const response = await fetch(BASE_ENDPOINT_URL);
+        if (response.ok === false) {
+            throw new Error('Such a request has not been found');
+        }
+        const articles = await response.json();
+        console.log(response);
+        const resArr = articles.results;
+        console.log(resArr);
+        arrHandler(resArr);
+    }
+    catch (error) {
+    console.log(error.message);
+  }
+};
+
+
+
+const searchInput = document.querySelector('.search-input');
+searchInput.addEventListener('change', onEnterPush);
+
+function onEnterPush(e) {
+    const query = e.target.value;
+    console.log(query);
+    fetchNewsBySearch(query);
+}
+
+function onDOMLoad(e) {
+    e.preventDefault();
+    console.log(e);
+    fetchBaseNews();
+}
+
+const fetchNewsBySearch = async (request) => {
+    try {
+        const response = await fetch(`${SEARCH_ENDPOINT_URL}q=${request}&${API_KEY}`);
+        if (response.ok === false) {
+            throw new Error('Such a request has not been found');
+        }
+        const articles = await response.json();
+        console.log(response);
+        const resArr = articles.response.docs;
+        arrHandler(resArr);
+    }
+    catch (error) {
+    console.log(error.message);
+  }
+}
+
+function arrHandler(arr) {
+    const objArr = arr.map(el => {
+        return {
+            section: el.section_name || el.section,
+            title: el.title || el.headline.main,
+            description: el.abstract, 
+            url: el.web_url || el.url,
+            date: el.pub_date || el.created_date,
+            img: `${WEB_HOST}/${el.multimedia[1].url}`
+        }
+    });
+    console.log(objArr);
+}
+
+
+export * as apiTools from './api-handler.js';
