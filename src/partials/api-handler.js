@@ -1,4 +1,3 @@
-
 const API_KEY = 'api-key=9GYTd3hNgT1cJMME7q1HMJAu02NGsmfm';
 const API_HOST = 'https://api.nytimes.com';
 const WEB_HOST = 'https://www.nytimes.com';
@@ -25,7 +24,7 @@ const fetchBaseNews = async () => {
 
 
 
-const searchInput = document.querySelector('.search-input');
+const searchInput = document.querySelector('.page-header__search-input');
 searchInput.addEventListener('change', onEnterPush);
 
 function onEnterPush(e) {
