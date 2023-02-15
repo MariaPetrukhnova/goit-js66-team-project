@@ -1,6 +1,6 @@
 
 import CalendarDates from "calendar-dates";
-import { SplitVendorChunkCache } from "vite";
+// import { SplitVendorChunkCache } from "vite";
 const calendarDates = new CalendarDates();
 
 const calendarInput = document.querySelector('.calendar__input');
@@ -9,31 +9,7 @@ const calendarBody = document.querySelector('.calendar__body');
 const  nextMonthBtn = document.querySelector("#calend-btn");
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-nextMonthBtn.addEventListener("click", handleBtnClick);
-
-
-
-
-async function handleBtnClick() {
-  const monthText = document.querySelector(".calend-month").textContent;
-  const date = monthText.split(" ");
-  
-  let index = months.indexOf(date[0]);
-  console.log("date:", date);
-  if(index === 11) {
-    index = 0;
-    date[1] = +date[1] + 1;
-    console.log("date:", date);
-  } else {
-    index += 1;
-  }
-
-  const datesArr = await calendarDates.getMatrix(new Date(`${date[1]}, ${months[index]}`));
-  const croppedArr = changeFormatData(datesArr);
-  console.log("🚀 ~ file: calendar.js:28 ~ main ~ croppedArr", croppedArr)
-  renderCalendar(croppedArr);
-  renderMonth([months[index], date[1]]);
-}
+nextMonthBtn.addEventListener("click",  handleBtnClick);
 
 
 const main = async () => {
@@ -92,6 +68,30 @@ const main = async () => {
 };
 
 
+
+async function handleBtnClick() {
+  const monthText = document.querySelector(".calend-month").textContent;
+  const date = monthText.split(" ");
+  
+  let index = months.indexOf(date[0]);
+  console.log("date:", date);
+  if(index === 11) {
+    index = 0;
+    date[1] = +date[1] + 1;
+    console.log("date:", date);
+  } else {
+    index += 1;
+  }
+
+  const datesArr = await calendarDates.getMatrix(new Date(`${date[1]}, ${months[index]}`));
+  const croppedArr = changeFormatData(datesArr);
+  console.log("🚀 ~ file: calendar.js:28 ~ main ~ croppedArr", croppedArr)
+  renderCalendar(croppedArr);
+  renderMonth([months[index], date[1]]);
+}
+
+
+
 async function handleYearBtnClick() {
   const monthText = document.querySelector(".calend-month").textContent;
   const date = monthText.split(" ");
@@ -138,11 +138,29 @@ function changeFormatData(date) {
 
 }
 
-// function getDateForInput(data) {
-//   const dateForInput = changeFormatData(data);
-//   console.log(dateForInput);
-  
-// }
+
+
+
+function getDateForInput(data) {
+  const dateForInput = changeFormatData(data);
+  console.log(dateForInput);
+
+}
+
+calendarBody.addEventListener('click', onDateSelect);
+
+function onDateSelect(evt) {
+  console.log(evt.target.className);
+  if (evt.target.className !== 'calendar__date') {
+    return;
+
+  }
+  evt.target.classList.toggle("checked");
+  // calendarInput.value = evt.target.textContent;
+  // calendarBody.classlist.add(hidden);
+
+
+}
 
 
 
@@ -228,20 +246,7 @@ main();
 
 
 
-// calendarBody.addEventListener('click', onDateSelect);
 
-// function onDateSelect(evt) {
-//   console.log(evt.target.className);
-//   if (evt.target.className !== 'calendar__date') {
-//     return;
-
-//   }
-//   evt.target.classList.toggle("checked");
-//   calendarInput.value = evt.target.textContent;
-//   // calendarBody.classlist.add(hidden);
-
-
-// }
   
 
 
