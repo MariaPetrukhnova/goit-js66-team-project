@@ -1,4 +1,6 @@
 const API_KEY = 'api-key=9GYTd3hNgT1cJMME7q1HMJAu02NGsmfm';
+// const API_KEY = 'api-key=JmGuT2FnDagHatExdMuVy4QCYQRUlSyR';
+
 const API_HOST = 'https://api.nytimes.com';
 const WEB_HOST = 'https://www.nytimes.com';
 const BASE_ENDPOINT_URL = `${API_HOST}/svc/topstories/v2/arts.json?${API_KEY}`;
