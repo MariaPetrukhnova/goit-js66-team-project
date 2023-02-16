@@ -1,11 +1,9 @@
 
 import CalendarDates from "calendar-dates";
-// import { SplitVendorChunkCache } from "vite";
 const calendarDates = new CalendarDates();
 
 const calendarInput = document.querySelector('.calendar__input');
 const calendarBody = document.querySelector('.calendar__body');
-// const calendarDate = document.querySelector('.calendar__date');
 const  nextMonthBtn = document.querySelector("#calend-btn");
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -18,55 +16,14 @@ const main = async () => {
 
   const today = new Date();
   const todayArr = [months[today.getMonth()], today.getFullYear()];
-  // спитати
-  // console.log(months)
-  // console.log("todayArr:", todayArr);
-  // console.log(today.getFullYear();
   const croppedArr = changeFormatData(datesArr);
   getDateForInput(datesArr);
   
   console.log("🚀 ~ file: calendar.js:28 ~ main ~ croppedArr", croppedArr)
   renderCalendar(croppedArr);
   renderMonth(todayArr);
-
-  // calendarDatesContainer.insertAdjacentHTML("beforeend", `${croppedArr.map(date=> {
-  //   if(today === date.date) {
-  //     return `<li class="calendar__date active">${date.date}</li>`
-  //   } 
-  //   return `<li class="calendar__date">${date.date}</li>`;
-  // }).join("")}`)
-
-  // const croppedDates = await [...datesArr].splice(0, 5).flat();
-  // const arrayEnd = {...croppedDates[croppedDates.length-1]};
-  // const cropped = [...croppedDates].slice(1);
-  // const today = new Date().getDate();
-  // arrayEnd.date = arrayEnd.date + 1;
-  // const croppedDatesArr = [...cropped, arrayEnd];
-  // console.log(arrayEnd);
-  // console.log("🚀 ~ file: calendar.js:28 ~ main ~ croppedDatesArr", croppedDatesArr)
   
-  // calendarDatesContainer.insertAdjacentHTML("beforeend", `${croppedDatesArr.map(date=> {
-  //   if(today === date.date) {
-  //     return `<li class="calendar__date active">${date.date}</li>`
-  //   } 
-
-  //   return `<li class="calendar__date">${date.date}</li>`;
-  // }).join("")}`)
-
-  // по натиск кнопки на наст місяць:
-  // const nextMonthDate = new Date(`Jan 1, ${new Date().getMonth() + 1}`);
-
-  // for (const meta of await calendarDates.getDates(new Date())) {
-  //   console.log("meta", meta);
-  // console.log(meta.date);
-  // }
-
-  // for (const meta of await calendarDates.getMatrix(new Date())) {
-  // console.log("meta", meta);
-  // console.log("meta[0].date:", meta[0].date);
-  // }
 };
-
 
 
 async function handleBtnClick() {
@@ -127,9 +84,7 @@ function renderCalendar(croppedArr) {
   }).join("")}`
 }
 
- 
 
-// если месяц не помещается в 4 недели, выводить 5?
 
 function changeFormatData(date) {
   const cropped = date.flat();
@@ -156,114 +111,15 @@ function onDateSelect(evt) {
 
   }
   evt.target.classList.toggle("checked");
-  // calendarInput.value = evt.target.textContent;
   // calendarBody.classlist.add(hidden);
 
 
 }
 
 
-
 main();
 
 
-
-
-
-// async function getNextMonth() {
-//   const datesArr = await calendarDates.getMatrix(new Date(`${new Date().getMonth() + 1}`));
-//   const cropped = await datesArr.flat();
-//   const croppedArr = [...cropped].slice(1, 36);
-//   const today = new Date().getDate();
-//   console.log("🚀 ~ file: calendar.js:28 ~ main ~ croppedArr", croppedArr)
-//   calendarDatesContainer.insertAdjacentHTML("beforeend", `${croppedArr.map(date=> {
-//     if(today === date.date) {
-//       return `<li class="calendar__date active">${date.date}</li>`
-//     } 
-//     return `<li class="calendar__date">${date.date}</li>`;
-//   }).join("")}`)
-// }
-
-
-// const main = async () => {
-//   for (const meta of await calendarDates.getDates(new Date())) {
-//     console.log(meta);
-//      
-//   }
-
-//   console.log(calendarDates.getMatrix(new Date()));
-//   // масив масивів
-
-//   const dataArr = await calendarDates.getMatrix(new Date());
-  // const weekArr = dataArr[0];
-  // console.log("🚀 ~ file: calendar.js:18 ~ main ~ weekArr", weekArr)
-
-  // const weeksArr = dataArr.map((el) => {
-  //   console.log("Element in map:", typeof el);
-  //   // console.log(el.date);
-  //   // console.log(el.iso);
-  
-  // })
-
-
-  // const main = async () => {
-  //   for (const meta of await calendarDates.getDates(new Date())) {
-  //     // console.log(meta);
-  //     // console.log(meta.date); 
-  //     const liEl = renderCalendarMarkupLi(meta);
-  //     const joined = liEl.join("");
-  //     return calendarDatesContainer.innerHtml(joined);
- 
-      
-  //   }
-  // }
-
-//  async function main() {
-//   const dates = await calendarDates.getDates(new Date());
-//   const data = dates.map(meta => {
-//     // console.log(meta);
-//     // console.log(meta.date); 
-
-//   })
-//  }  
-  
-
-//   for (const meta of await calendarDates.getMatrix(new Date())) {
-//     // console.log(meta);
-//     // console.log("meta[0].date:", meta[0].date);
-// // мета в переборі - це тиждень
-
-//   }
-// };
-
-
-
-
-// main();
-
-
-
-
-
-
-
-  
-
-
-
-// зробити так, щоб завантажувалась розмітка і у текстконтент приходили дані з апі
-
-// function renderCalendarMarkupLi({date}) {
-//   return` <li class="calendar__date">${date}</li>`
-
-// }
-
-// function renderCalendarMarkup() {
-
-// }
-// function handleCalendarLib() {
-
-// }
 
 
 
