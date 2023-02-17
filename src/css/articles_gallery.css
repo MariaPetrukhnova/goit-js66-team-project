@@ -1,0 +1,165 @@
+.container {
+    max-width: 1280px;
+    padding: 0 16px 0 16px;
+    margin: 0 auto;
+  }
+
+
+.article {
+    display: flex;
+    position: relative;
+    min-height: 350px;
+    /* box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1); */
+    flex-direction: column;
+    border-radius: 4px;
+    transition: 0.2s;
+  }
+
+  .articles_container {
+    display: grid;
+    /* grid-template-columns: repeat(auto-fill, 394px); */
+    grid-template-columns:  1fr 1fr 1fr;
+    width: 100%;
+    max-width: 1248px;
+    justify-content: center;
+    justify-items: center;
+    column-gap: 32px; 
+    row-gap: 40px;
+    margin: 0 auto;
+  }
+
+.article_category {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 12px;
+    line-height: 16px;
+    background-color: rgba(68, 64, 246, 0.7);
+    border-radius: 4px;
+    color: #ffffff;
+}
+
+  .article_img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+
+    border-radius: 4px;
+    transition: 0.2s;
+  }
+
+  .article_img_wrapper {
+    position: relative;
+  }
+  
+  .article_info_wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .read-more {
+    margin-right: 20px;
+
+    color: var(--accent-violet-color);
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .article_text_wrapper {
+    flex-grow: 1;
+    margin-bottom: 20px;
+  }
+
+  .article_title {
+    margin: 20px 0 20px 0;
+
+    font-size: 32px;
+    line-height: 44px;
+    letter-spacing: -0.01em;
+
+    color: var(--light-theme-main-color);
+  }
+
+  .article_text {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .article_date {
+    font-size: 16px;
+    line-height: 22px;
+    color: #A8A8A8;
+  }
+
+
+
+
+  /* position */
+
+  .already-read {
+    position: absolute;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+    color: #00DD73;
+  }
+
+  .already-read::after {
+
+    margin-left: 4px;
+    content: '✓';
+  }
+
+  .article_category {
+    position: absolute;
+    top: 40px;
+  }
+
+  .article_flag {
+    display: block;
+    text-align: end;
+
+    font-size: 12px;
+    line-height: 16px;
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+
+  }
+
+   .article_flag--add {
+    display: flex;
+    padding: 6px 12px;
+
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    border: 0px;
+
+  }
+
+  .article_flag_text {
+    margin-right: 4px;
+  }
+
+  .article_flag--remove  {   
+    display: flex;
+    padding: 6px 12px;
+ 
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    border: 0px;
+  } 
+
+  .article_flag--add.is-hidden {
+    overflow: hidden;
+    opacity: 0;
+    display: none;
+    
+
+  }
+
+  .article_flag--remove.is-hidden {
+    overflow: hidden;
+    opacity: 0;
+    display: none;
+  }

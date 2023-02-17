@@ -1,10 +1,10 @@
 const header = document.querySelector('.page-header');
 
 function makeMarkup(arr) {
-    console.log(arr);
-    const newMarkup = arr.map(el => {
-        const { section, title, description, url, date, img, imgCaption } = el;
-        return `
+  //   console.log(arr);
+  const newMarkup = arr.map(el => {
+    const { section, title, description, url, date, img, imgCaption } = el;
+    return `
             <div class="news-card">
                 <img width="396" src="${img}" alt="${imgCaption}">
                 <span>${section}</span>
@@ -13,15 +13,15 @@ function makeMarkup(arr) {
                 <span>${date}</span>    
                 <a href="${url}">Read more</a>
             </div>
-        `
-    });
-    const finalMarkup = newMarkup.join('');
-    console.log(finalMarkup);
-    return finalMarkup;
+        `;
+  });
+  const finalMarkup = newMarkup.join('');
+  // console.log(finalMarkup);
+  return finalMarkup;
 }
 
 function addMarkup(tagString) {
-    header.insertAdjacentHTML('afterend', tagString);
+  header.insertAdjacentHTML('afterend', tagString);
 }
-  
-export { makeMarkup, addMarkup }
+
+export { makeMarkup, addMarkup };
