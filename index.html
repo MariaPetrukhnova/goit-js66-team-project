@@ -10,43 +10,32 @@
       rel="stylesheet">
     <title>Vanilla App Template</title>
     
-    <script type="module" crossorigin src="/goit-js66-team-project/assets/index-f717225f.js"></script>
-    <link rel="stylesheet" href="/goit-js66-team-project/assets/index-514c1cde.css">
+    <script type="module" crossorigin src="/goit-js66-team-project/assets/index-7421cf80.js"></script>
+    <link rel="stylesheet" href="/goit-js66-team-project/assets/index-2f89b974.css">
   </head>
   <body>
     <!-- Path to images as from index.html file -->
 <header class="page-header">
-<a href="#" class="logo">News</a>
-<nav class="page-header__nav">
-    <ul class="page-header__nav-list">
-        <li class="page-header__nav-item"><a class="page-header__nav-link" href="#">Home</a></li>
-        <li class="page-header__nav-item"><a class="page-header__nav-link" href="#">Favorite</a></li>
-        <li class="page-header__nav-item"><a class="page-header__nav-link" href="#">Read</a></li>
-    </ul>
-</nav>
-<input type="search" placeholder="Search" class="page-header__search-input">
-<label class="theme-toggle">
-    <span class="theme-name">Light</span>
-    <input type="checkbox" checked>
-    <span class="slider round"></span>
-    <span class="theme-name">Dark</span>
-</label>
+    <a href="#" class="logo">News</a>
+    <nav class="page-header__nav">
+        <ul class="page-header__nav-list">
+            <li class="page-header__nav-item"><a class="page-header__nav-link" href="#">Home</a></li>
+            <li class="page-header__nav-item"><a class="page-header__nav-link" href="#">Favorite</a></li>
+            <li class="page-header__nav-item"><a class="page-header__nav-link" href="#">Read</a></li>
+        </ul>
+    </nav>
+    <input type="search" placeholder="Search" class="page-header__search-input">
+    <label class="theme-toggle">
+        <span class="theme-name">Light</span>
+        <input type="checkbox" checked>
+        <span class="slider round"></span>
+        <span class="theme-name">Dark</span>
+    </label>
 </header>
-
-<section class="hero">
-    <ul class="hero__filter-list">
-        <li class="hero__filter-item"><button class="hero__filter-btn">btn</button></li>
-        <li class="hero__filter-item"><button class="hero__filter-btn">btn</button></li>
-        <li class="hero__filter-item"><button class="hero__filter-btn">btn</button></li>
-    </ul>
-    <ul class="hero__cards-list">
-        <li class="hero__card-item"><div>insert from api</div></li>
-    </ul>
-</section>
     <main>
   <section class="category">
     <ul class="category__list">
-      <li class="category__item">
+      <!-- <li class="category__item">
         <button class="category__btn">Admin</button>
       </li>
       <li class="category__item">
@@ -63,17 +52,17 @@
       </li>
       <li class="category__item">
         <button class="category__btn">Business</button>
-      </li>
+      </li> -->
+
       <li class="category__item">
-        <button
-          class="category__btn"
-          class="js-open-list list-toggle list-toggle--open"
-          aria-expanded="false"
-          aria-controls="list-menu"
-        >
+        <button class="category__btn btn" class="js-open-list list-toggle list-toggle--open" aria-expanded="false"
+          aria-controls="list-menu">
           Others
-          <svg class="" width="14" height="14">
-            <use href="../images/Frame-11.svg"></use>
+          <svg class="icon category__icon--up" width="14" height="14">
+            <use href="../images/icon-sprites.svg#Frame-11"></use>
+          </svg>
+          <svg class="icon category__icon--down" width="14" height="14">
+            <use href="../images/icon-sprites.svg#Frame-12"></use>
           </svg>
         </button>
       </li>
@@ -89,13 +78,7 @@
     <div class="calendar">
       <p>Search date news</p>
       <div class="input-wrapper">
-        <input
-          type="text"
-          class="calendar__input"
-          name="name"
-          id=""
-          placeholder="Виберіть дату..."
-        />
+        <input type="text" class="calendar__input" name="name" id="" placeholder="Виберіть дату..." />
         <svg class="input-icon" width="20" height="20">
           <use href="../images/Frame.svg"></use>
         </svg>
@@ -104,7 +87,7 @@
         </svg>
       </div>
       <div class="calendar__body">
-    
+
         <button type="button" id="calend-btn">Кнопка</button>
 
         <svg width="7px" height="12px">
@@ -135,7 +118,7 @@
     </div>
   </section>
 
- 
+
 
   <section class="news-gallery">
     <ul>
@@ -143,7 +126,6 @@
     </ul>
   </section>
 </main>
-
 
     
   </body>
