@@ -12,6 +12,9 @@
 @import url('./icon.css');
 /* main */
 
+/* header Sergiy Smilichenko */
+@import url('./header.css');
+
 :root {
   box-sizing: border-box;
   --main-font: 'Manrope', Arial, sans-serif;
@@ -23,74 +26,6 @@
   font-size: 16px;
   line-height: 22px;
   font-weight: 400;
-}
-
-
-.logo {
-  font-family: var(--main-font);
-  font-style: normal;
-  font-weight: 700;
-  font-size: 42px;
-  line-height: 57px;
-
-  color: var(--light-theme-main-color);
-}
-
-.page-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 28px 16px;
-
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.page-header__nav {
-  margin: 0 auto;
-}
-
-.page-header__nav-list {
-  display: flex;
-  align-items: center;
-  gap: 70px;
-}
-
-.page-header__nav-link {
-  font-family: var(--main-font);
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 25px;
-  color: var(--light-theme-main-color);
-}
-
-.page-header__search-input {
-  display: block;
-  width: 288px;
-  padding: 4px 12px 4px 48px;
-  border: 1px solid #000000;
-  border-radius: 20px;
-  font-family: var(--toggle-font);
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 171%;
-  letter-spacing: 0.02em;
-  color: var(--light-theme-main-color);
-  opacity: 0.4;
-}
-
-.theme-toggle {
-  margin-left: auto;
-}
-
-.theme-name {
-  font-family: var(--toggle-font);
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 133%;
-  color: var(--accent-violet-color);
 }
 
 .calendar__header,
