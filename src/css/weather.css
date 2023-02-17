@@ -53,6 +53,7 @@
 .weather__svg {
   width: 27px;
   height: 27px;
+  fill: #FFFFFF;
 }
 
 .weather__city {
@@ -87,15 +88,14 @@
   margin-bottom: 89px;
 }
 
-.weather__img {
+.weather__imgvalue {
   width: 165px;
   height: 156px;
-  background: linear-gradient(180deg, #FA6C21 0%, rgba(255, 211, 88, 0.2) 100%);
-  box-shadow: inset 0px 20px 65px #FA6C21;
   border-radius: 50%;
   margin-left: 115px;
   margin-right: 115px;
   margin-bottom: 90px;
+  mix-blend-mode: normal;
 }
 
 .weather__dayofweek,
