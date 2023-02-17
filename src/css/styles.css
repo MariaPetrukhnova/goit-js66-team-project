@@ -5,7 +5,11 @@
   |============================
 */
 @import url('./reset.css');
+// filter-buttons
+@import url('./btn.css');
+@import url('./icon.css');
 @import url('./normalize.css');
+// main
 
 :root {
   box-sizing: border-box;
@@ -45,18 +49,18 @@
 }
 
 .page-header__nav-list {
-    display: flex;
-    align-items: center;
-    gap: 70px;
+  display: flex;
+  align-items: center;
+  gap: 70px;
 }
 
 .page-header__nav-link {
-    font-family: var(--main-font);
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 25px;
-    color: var(--light-theme-main-color);
+  font-family: var(--main-font);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: var(--light-theme-main-color);
 }
 
 .page-header__search-input {
@@ -97,4 +101,3 @@
 .calendar__date.active {
   background-color: blue;
 }
-
