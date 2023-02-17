@@ -2,26 +2,32 @@ import NewsApi from './apiConstructor.js';
 
 const newsApi = new NewsApi();
 
-https: document.addEventListener('DOMContentLoaded', onDOMLoad);
+// const API_KEY = 'api-key=JmGuT2FnDagHatExdMuVy4QCYQRUlSyR';
 
-const fetchBaseNews = async () => {
+const searchInput = document.querySelector('.page-header__search-input');
+searchInput.addEventListener('change', onEnterPush);
+
+function onEnterPush(e) {
+  const query = e.target.value;
+  console.log(query);
+  fetchNewsBySearch(query);
+}
+const fetchNewsBySearch = async request => {
   try {
-    const response = await fetch(newsApi.BASE_ENDPOINT_URL);
+    const response = await fetch(
+      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&${newsApi.API_KEY}`
+    );
     if (response.ok === false) {
       throw new Error('Such a request has not been found');
     }
     const articles = await response.json();
-    const resArr = articles.results;
+    const resArr = articles.response.docs;
+    console.log(resArr);
     arrHandler(resArr);
   } catch (error) {
     console.log(error.message);
   }
 };
-
-function onDOMLoad(e) {
-  e.preventDefault();
-  fetchBaseNews();
-}
 
 function arrHandler(arr) {
   const objArr = arr.map(el => {
@@ -37,4 +43,4 @@ function arrHandler(arr) {
   console.log(objArr);
 }
 
-export * as apiTools from './api-handler.js';
+export * as apiFetchNewsByValue from './apiFetchNewsByValue.js';
