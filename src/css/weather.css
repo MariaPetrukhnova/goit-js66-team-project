@@ -87,11 +87,10 @@
 }
 
 
-@media screen and (min-width: 1280px) {
-  .weather__temperaturedate {
-    margin-right: -35px;
-  }
+.weather__temperaturedate {
+  margin-right: -35px;
 }
+
 
 .weather__type {
   font-family: 'Roboto';
