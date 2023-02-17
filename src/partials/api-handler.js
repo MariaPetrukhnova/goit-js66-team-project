@@ -1,3 +1,5 @@
+import { makeMarkup, addMarkup } from "./renderMarkup";
+
 const API_KEY = 'api-key=9GYTd3hNgT1cJMME7q1HMJAu02NGsmfm';
 // const API_KEY = 'api-key=JmGuT2FnDagHatExdMuVy4QCYQRUlSyR';
 
@@ -18,6 +20,7 @@ const fetchBaseNews = async () => {
         const articles = await response.json();
         const resArr = articles.results;
         arrHandler(resArr);
+
     }
     catch (error) {
     console.log(error.message);
@@ -56,6 +59,7 @@ const fetchNewsBySearch = async (request) => {
 }
 
 function arrHandler(arr) {
+    console.log(arr);
     const objArr = arr.map(el => {
         return {
             section: el.section_name || el.section,
@@ -63,11 +67,14 @@ function arrHandler(arr) {
             description: el.abstract, 
             url: el.web_url || el.url,
             date: el.pub_date || el.created_date,
-            img: `${WEB_HOST}/${el.multimedia[1].url}`
+            img: `${el.multimedia[0].url}`, 
+            imgCaption: `${el.multimedia[0].caption}`
         }
     });
     console.log(objArr);
+    const finalMarkup = makeMarkup(objArr);
+    addMarkup(finalMarkup);
 }
 
 
-export * as apiTools from './api-handler.js';
+export { fetchNewsBySearch, fetchBaseNews };
