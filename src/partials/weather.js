@@ -20,7 +20,6 @@ function loadWeatherDate() {
 function onSucces(position) {
   const { latitude, longitude } = position.coords;
   API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=419bd34d8daba21c0a4890e35d027d3f`;
-  console.log(API_URL);
   const dateWeather = getDateOfWeather();
   dateWeather.then(date => {
     processingDate(date);
