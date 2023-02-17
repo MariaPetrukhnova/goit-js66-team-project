@@ -1,4 +1,5 @@
 import NewsApi from './apiConstructor.js';
+import { makeMarkup, addMarkup } from './renderMarkup';
 
 const newsApi = new NewsApi();
 
@@ -41,6 +42,8 @@ function arrHandler(arr) {
     };
   });
   console.log(objArr);
+  const finalMarkup = makeMarkup(objArr);
+  addMarkup(finalMarkup);
 }
 
 export * as apiFetchNewsByValue from './apiFetchNewsByValue.js';
