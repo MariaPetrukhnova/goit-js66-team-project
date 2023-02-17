@@ -5,8 +5,11 @@
   |============================
 */
 @import url('./reset.css');
+// filter-buttons
 @import url('./btn.css');
 @import url('./icon.css');
+@import url('./normalize.css');
+// main
 
 :root {
   box-sizing: border-box;
