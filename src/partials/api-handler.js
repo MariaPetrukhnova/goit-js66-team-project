@@ -77,4 +77,4 @@ function arrHandler(arr) {
 }
 
 
-export * as apiTools from './api-handler.js';
+export { fetchNewsBySearch, fetchBaseNews };
