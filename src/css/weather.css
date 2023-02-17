@@ -1,0 +1,143 @@
+.weather {
+
+  padding-left: 53px;
+  padding-right: 53px;
+  padding-top: 40px;
+  padding-bottom: 60px;
+
+
+  max-width: 395px;
+  min-height: 675px;
+
+  background: #4440F7;
+  mix-blend-mode: normal;
+  border-radius: 4px;
+}
+
+.weather__temperature,
+.weather__symbol {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 75px;
+  color: #FFFFFF;
+}
+
+.weather__splitter {
+  border: 1px solid #FFFFFF;
+  width: 81px;
+  height: 0px;
+  transform: rotate(90deg);
+}
+
+.weather__group {
+  display: flex;
+  align-items: center;
+}
+
+.weather__temperaturedate {
+  margin-right: -25px;
+}
+
+.weather__type {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 42px;
+
+  color: #FFFFFF;
+}
+
+.weather__svg {
+  width: 27px;
+  height: 27px;
+}
+
+.weather__city {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+
+  color: #FFFFFF;
+}
+
+.weather__typegroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather__citygroup {
+  display: flex;
+  align-items: center;
+  padding-left: 7px;
+  padding-right: 17px;
+  padding-top: 10px;
+  padding-bottom: 9px;
+
+  background: rgba(254, 254, 255, 0.3);
+  border-radius: 10px;
+}
+
+.weather__group {
+  margin-bottom: 89px;
+}
+
+.weather__img {
+  width: 165px;
+  height: 156px;
+  background: linear-gradient(180deg, #FA6C21 0%, rgba(255, 211, 88, 0.2) 100%);
+  box-shadow: inset 0px 20px 65px #FA6C21;
+  border-radius: 50%;
+  margin-left: 115px;
+  margin-right: 115px;
+  margin-bottom: 90px;
+}
+
+.weather__dayofweek,
+.weather__dateofweek {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+.weather__date {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 28px;
+}
+
+.weather__ref {
+  display: inline-block;
+  background: rgba(254, 254, 255, 0.3);
+  border-radius: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 9px;
+  padding-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+
+  color: #FFFFFF;
+}
+
+.weather__refgroup {
+  display: flex;
+  justify-content: center;
+}
