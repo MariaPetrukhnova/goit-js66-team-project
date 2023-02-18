@@ -1,7 +1,6 @@
 const header = document.querySelector('.page-header');
 
 function makeMarkup(arr) {
-  //   console.log(arr);
   const newMarkup = arr.map(el => {
     const { section, title, description, url, date, img, imgCaption } = el;
     return `
@@ -16,7 +15,6 @@ function makeMarkup(arr) {
         `;
   });
   const finalMarkup = newMarkup.join('');
-  // console.log(finalMarkup);
   return finalMarkup;
 }
 
