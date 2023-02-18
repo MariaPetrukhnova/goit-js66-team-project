@@ -1,5 +1,5 @@
 import NewsApi from './apiConstructor.js';
-import { makeMarkup, addMarkup } from './renderMarkup';
+// import { makeMarkup, addMarkup } from './renderMarkup';
 
 const newsApi = new NewsApi();
 
