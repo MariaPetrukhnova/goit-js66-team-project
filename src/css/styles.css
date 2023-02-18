@@ -6,13 +6,10 @@
 */
 @import url('./reset.css');
 @import url('./normalize.css');
-
-/* filter-buttons */
 @import url('./btn.css');
 @import url('./icon.css');
-/*list-container*/
 @import url('./listContainer.css');
-/* main */
+@import url('./articles_gallery.css');
 @import url('./paginations.css');
 
 :root {
