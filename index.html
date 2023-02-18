@@ -12,8 +12,8 @@
     rel="stylesheet">
   <title>Vanilla App Template</title>
   
-  <script type="module" crossorigin src="/goit-js66-team-project/assets/index-ed0cb235.js"></script>
-  <link rel="stylesheet" href="/goit-js66-team-project/assets/index-bad0a561.css">
+  <script type="module" crossorigin src="/goit-js66-team-project/assets/index-afca8a76.js"></script>
+  <link rel="stylesheet" href="/goit-js66-team-project/assets/index-a1e30cda.css">
 </head>
 
 <body>
@@ -68,8 +68,12 @@
 
       
       <li class="category__item">
-        <button class="category__btn btn" class="js-open-list list-toggle list-toggle--open" aria-expanded="false"
-          aria-controls="list-menu">
+        <button
+          class="category__btn btn"
+          class="js-open-list list-toggle list-toggle--open"
+          aria-expanded="false"
+          aria-controls="list-menu"
+        >
           Others
           <svg class="icon category__icon--up" width="14" height="14">
             <use href="../images/icon-sprites.svg#Frame-11"></use>
@@ -124,7 +128,13 @@
     <div class="calendar">
       <p>Search date news</p>
       <div class="input-wrapper">
-        <input type="text" class="calendar__input" name="name" id="" placeholder="Виберіть дату..." />
+        <input
+          type="text"
+          class="calendar__input"
+          name="name"
+          id=""
+          placeholder="Виберіть дату..."
+        />
         <svg class="input-icon" width="20" height="20">
           <use href="../images/Frame.svg"></use>
         </svg>
@@ -133,7 +143,6 @@
         </svg>
       </div>
       <div class="calendar__body">
-
         <button type="button" id="calend-btn">Кнопка</button>
 
         <svg width="7px" height="12px">
@@ -157,21 +166,42 @@
             <li><span>Sa</span></li>
             <li><span>Su</span></li>
           </ul>
-          <ul class="calendar__list">
-          </ul>
+          <ul class="calendar__list"></ul>
         </div>
       </div>
     </div>
   </section>
-
-
 
   <section class="news-gallery">
     <ul>
       <li></li>
     </ul>
   </section>
+
+  <div class="page-container pagination-hidden pagination">
+  <div class="pagin">
+    <!-- <button class="first-page" disabled>
+		  <i class="fas fa-angle-double-left"></i>
+		</button> -->
+    <button class="prev-page" disabled>
+      <a class="fas fa-angle-left"> <p class="s_prew">&#8249; Prew</p> </a>
+    </button>
+    <div id="pagination"></div>
+    <button class="next-page">
+      <a class="fas fa-angle-right">
+        Next
+        <p class="s_next">&#8250;</p>
+        <p></p
+      ></a>
+    </button>
+    <!-- <button class="last-page">
+		  <i class="fas fa-angle-double-right"></i>
+		</button> -->
+  </div>
+</div>
+
 </main>
+
 
   
 </body>
