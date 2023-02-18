@@ -13,6 +13,7 @@
 /*list-container*/
 @import url('./listContainer.css');
 /* main */
+@import url('./paginations.css');
 
 :root {
   box-sizing: border-box;
@@ -20,13 +21,12 @@
   --weather-font: 'Roboto', Arial, sans-serif;
   --toggle-font: 'Poppins', Arial, sans-serif;
   --light-theme-main-color: #111321;
-  --dark-theme-main-color: #F4F4F4;
-  --accent-violet-color: #4B48DB;
+  --dark-theme-main-color: #f4f4f4;
+  --accent-violet-color: #4b48db;
   font-size: 16px;
   line-height: 22px;
   font-weight: 400;
 }
-
 
 .logo {
   font-family: var(--main-font);
