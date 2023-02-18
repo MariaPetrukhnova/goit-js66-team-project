@@ -22,4 +22,4 @@ function addMarkup(tagString) {
   header.insertAdjacentHTML('afterend', tagString);
 }
 
-// export { makeMarkup, addMarkup };
+export { makeMarkup, addMarkup };
