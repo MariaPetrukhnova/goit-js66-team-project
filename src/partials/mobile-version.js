@@ -2,7 +2,7 @@ const refs = {
   search: document.querySelector('.js-search'),
   burgerMenu: document.querySelector('.js-menu-open'),
   searchInput: document.querySelector('.js-search-input'),
-  body: document.querySelector('.body'),
+  body: document.querySelector('body'),
 };
 
 refs.search.addEventListener('click', onOpenSearchInput);
@@ -18,11 +18,8 @@ function onOpenSearchInput(e) {
 function onOpenMenu(e) {
   e.preventDefault();
 
-  refs.body.innerHTML = `<ul>
-        < li >
-        <a>fgggf</a>
-    </>
-    </ul > `;
+  refs.body.innerHTML =
+    '<input type="search" placeholder="Search" class="page-header__search-input">';
 }
 
 export { refs, onOpenSearchInput, onOpenMenu };

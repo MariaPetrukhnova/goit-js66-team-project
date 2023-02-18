@@ -12,8 +12,9 @@
 @import url('./icon.css');
 /* main */
 
-/* header Sergiy Smilichenko */
+/* header&footer Sergiy Smilichenko */
 @import url('./header.css');
+@import url('./footer.css');
 
 :root {
   box-sizing: border-box;
@@ -23,6 +24,7 @@
   --light-theme-main-color: #111321;
   --dark-theme-main-color: #F4F4F4;
   --accent-violet-color: #4B48DB;
+  --background-footer: #7A7A7A;
   font-size: 16px;
   line-height: 22px;
   font-weight: 400;
