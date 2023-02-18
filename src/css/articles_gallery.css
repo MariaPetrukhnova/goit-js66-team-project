@@ -98,8 +98,6 @@
   .already-read {
     position: absolute;
 
-    top: 20px;
-    right: 20px;
     font-weight: 700;
     font-size: 14px;
     line-height: 19px;
@@ -131,7 +129,6 @@
 
    .article_flag--add {
     display: flex;
-    align-items: end;
     padding: 6px 12px;
 
     background-color: #FFFFFF;
@@ -146,7 +143,6 @@
 
   .article_flag--remove  {   
     display: flex;
-    align-items: end;
     padding: 6px 12px;
  
     background-color: #FFFFFF;

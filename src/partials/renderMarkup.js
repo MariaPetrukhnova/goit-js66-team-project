@@ -9,7 +9,7 @@ function makeMarkup(arr) {
                 <span>${section}</span>
                 <h2>${title}</h2>
                 <p>${description}</p>
-                <span>${date}</span>
+                <span>${date}</span>    
                 <a href="${url}">Read more</a>
             </div>
         `;
@@ -22,4 +22,4 @@ function addMarkup(tagString) {
   header.insertAdjacentHTML('afterend', tagString);
 }
 
-// export { makeMarkup, addMarkup };
+export { makeMarkup, addMarkup };
