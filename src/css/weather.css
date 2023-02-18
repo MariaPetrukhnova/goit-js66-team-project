@@ -44,7 +44,7 @@
   .weather__temperature,
   .weather__symbol {
     font-size: 64px;
-    line-height: 75px;
+    line-height: 1.171875;
   }
 }
 
@@ -53,7 +53,7 @@
   .weather__temperature,
   .weather__symbol {
     font-size: 55px;
-    line-height: 64px;
+    line-height: 1.16363;
   }
 }
 
@@ -67,6 +67,7 @@
   .weather__splitter {
 
     width: 63px;
+    margin-left: 10px;
 
   }
 }
@@ -105,7 +106,7 @@
 
     margin-bottom: 5px;
     font-size: 24px;
-    line-height: 28px;
+    line-height: 1.166667;
 
   }
 }
@@ -115,7 +116,7 @@
 
     margin-bottom: 10px;
     font-size: 36px;
-    line-height: 42px;
+    line-height: 1.1666667;
 
   }
 }
@@ -150,14 +151,14 @@
 @media screen and (min-width: 0px) and (max-width: 735px) {
   .weather__city {
     font-size: 14px;
-    line-height: 16px;
+    line-height: 1.142857;
   }
 }
 
 @media screen and (min-width: 736px) {
   .weather__city {
     font-size: 20px;
-    line-height: 23px;
+    line-height: 1.15;
   }
 }
 
@@ -252,7 +253,7 @@
   .weather__dateofweek {
 
     font-size: 28px;
-    line-height: 33px;
+    line-height: 1.17857;
 
   }
 
@@ -264,7 +265,7 @@
   .weather__dateofweek {
 
     font-size: 36px;
-    line-height: 42px;
+    line-height: 1.166667;
 
   }
 }
@@ -301,7 +302,19 @@
   color: #FFFFFF;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 0px) and (max-width: 735px) {
+  .weather__ref {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 16px;
+    line-height: 1.1875;
+  }
+
+}
+
+@media screen and (min-width: 736px) {
   .weather__ref {
 
 
@@ -309,11 +322,8 @@
     padding-right: 12px;
     padding-top: 9px;
     padding-bottom: 10px;
-
-
-
     font-size: 20px;
-    line-height: 23px;
+    line-height: 1.15;
 
 
   }
