@@ -1,26 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/goit-js66-team-project/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Poppins&family=Roboto&display=swap"
-    rel="stylesheet">
-
-  <title>Vanilla App Template</title>
-  
-  <script type="module" crossorigin src="/goit-js66-team-project/assets/index-a7d3a14c.js"></script>
-  <link rel="stylesheet" href="/goit-js66-team-project/assets/index-4a491370.css">
-</head>
-
-<body>
-
-  <!-- Path to images as from index.html file -->
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/goit-js66-team-project/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Poppins&family=Roboto&display=swap"
+      rel="stylesheet">
+    <title>Vanilla App Template</title>
+    
+    <script type="module" crossorigin src="/goit-js66-team-project/assets/index-4cdf1452.js"></script>
+    <link rel="stylesheet" href="/goit-js66-team-project/assets/index-a2644bba.css">
+  </head>
+  <body>
+    <!-- Path to images as from index.html file -->
 <header class="page-header">
   <a href="#" class="logo">News</a>
   <nav class="page-header__nav">
@@ -45,7 +39,7 @@
   </label>
 </header>
 
-  <main>
+    <main>
   <section class="category">
     <ul class="category__list">
       <!-- <li class="category__item">
@@ -206,6 +200,27 @@
 
 </main>
 
+    <section class="section not__found is-hidden">
+    <div class="container">
+        <h2 class="not__found__title">We haven’t found news from this category</h2>
+        <picture>
+            <source
+            srcset="/goit-js66-team-project/assets/not-found-desktop-1x-30b65603.png 1x, /goit-js66-team-project/assets/not-found-desktop-2x-72abe3d8.png 2x"
+            media="(min-width: 1280px)"
+            />
+            <source
+            srcset="/goit-js66-team-project/assets/not-found-tablet-1x-30705916.png 1x, /goit-js66-team-project/assets/not-found-tablet-2x-8fe3b3a0.png 2x"
+            media="(min-width: 768px)"
+            />
+            <source
+            srcset="/goit-js66-team-project/assets/not-found-mobile-1x-72925fef.png 1x, /goit-js66-team-project/assets/not-found-mobile-2x-e9807bd3.png 2x"
+            media="(max-width: 767px)"
+            />
+            <img class="not__found__image" src="/goit-js66-team-project/assets/not-found-desktop-1x-30b65603.png" alt="not found image">
+        </picture>
+    </div>
+
+</section>
 
   
 </body>
