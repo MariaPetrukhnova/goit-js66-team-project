@@ -28,10 +28,6 @@
   font-weight: 400;
 }
 
-/* grid-template-rows: repeat(5, 1fr);
-    height: 180px; */
-
-
 .logo {
   font-family: var(--main-font);
   font-style: normal;
