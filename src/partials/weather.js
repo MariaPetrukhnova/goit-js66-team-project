@@ -91,26 +91,40 @@ function OnError() {
   });
 }
 
-function createMarkupWeather() {
+function createMarkupWeather(dateOfMarkup) {
+  const { temp, typeWeather, city, srcIcon, dayOfWeak, dateOfWeak } =
+    dateOfMarkup;
+
   const textMarkup =
     '<section class="weather">' +
     '<div class="weather__group">' +
     '<div class="weather__temperaturedate">' +
     '<span class="weather__temperature">' +
+    String(temp) +
     '</span>' +
     '<span class="weather__symbol" >&#176;</span>' +
     '</div ><div class="weather__splitter">' +
     '</div > <div class="weather__typegroup">' +
-    '<span class="weather__type"></span>' +
+    '<span class="weather__type">' +
+    String(typeWeather) +
+    '</span > ' +
     '<div class="weather__citygroup">' +
     '<svg class="weather__svg">' +
     '<use href="../img/icon-sprites.svg#location"></use>' +
-    '</svg > <p class="weather__city"></p>' +
+    '</svg > <p class="weather__city">' +
+    String(city) +
+    '</p > ' +
     '</div ></div ></div ><div class="weather__img">' +
-    '<img class="weather__imgvalue" src="" alt="">' +
+    '<img class="weather__imgvalue" src="' +
+    String(srcIcon) +
+    '" alt="">' +
     '</div ><div class="weather__date">' +
-    '<span class="weather__dayofweek"></span>' +
-    '<span class="weather__dateofweek"></span></div>' +
+    '<span class="weather__dayofweek">' +
+    String(dayOfWeak) +
+    '</span > ' +
+    '<span class="weather__dateofweek">' +
+    String(dateOfWeak) +
+    '</span></div>' +
     '<div class="weather__refgroup"><a class="weather__ref" href="https://sinoptik.ua/" rel="noopener noreferrer" target="_blank">' +
     'weather for week</a ></div ></section > ';
 
