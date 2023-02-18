@@ -8,6 +8,9 @@
 @import url('./paginations.css');
 
 
+/* not-found */
+@import url('./not-found.css');
+
 :root {
   box-sizing: border-box;
   --main-font: 'Manrope', Arial, sans-serif;
