@@ -2,7 +2,6 @@ function createBaseMarcup(arr) {
   const marcup = arrHandler(arr)
     .map(article => {
       if (!article) {
-        console.log(article);
         return;
       }
       const { section, title, description, url, date, img, imgCaption } =
@@ -47,7 +46,6 @@ function arrHandler(arr) {
   try {
     const objArr = arr.map(el => {
       if (el.media.length === 0) {
-        console.log(el);
         return;
       }
       return {
