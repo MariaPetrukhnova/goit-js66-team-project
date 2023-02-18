@@ -1,17 +1,16 @@
-const weather__temperature = document.querySelector('.weather__temperature');
-const weather__city = document.querySelector('.weather__city');
-const weather__type = document.querySelector('.weather__type');
-const weather__imgvalue = document.querySelector('.weather__imgvalue');
-const weather__dayofweek = document.querySelector('.weather__dayofweek');
-const weather__dateofweek = document.querySelector('.weather__dateofweek');
-const weather__group = document.querySelector('.weather__group');
-const weather__img = document.querySelector('.weather__img');
-const weather__symbol = document.querySelector('.weather__symbol');
-const weather__splitter = document.querySelector('.weather__splitter');
-const weather__typegroup = document.querySelector('.weather__typegroup');
-const weather__date = document.querySelector('.weather__date');
+const mainSection = document.querySelector('main');
+const API_KEY = '419bd34d8daba21c0a4890e35d027d3f';
 
 document.addEventListener('DOMContentLoaded', loadWeatherDate);
+
+function getMainDate(apiURL) {
+  const dateWeather = getDateOfWeather(apiURL);
+  dateWeather.then(date => {
+    if (date !== undefined) {
+      processingDate(date);
+    }
+  });
+}
 
 function loadWeatherDate() {
   if (navigator.geolocation) {
@@ -23,33 +22,43 @@ function loadWeatherDate() {
 
 function onSucces(position) {
   const { latitude, longitude } = position.coords;
-  const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=419bd34d8daba21c0a4890e35d027d3f`;
-  const dateWeather = getDateOfWeather(API_URL);
-  dateWeather.then(date => {
-    if (date !== undefined) {
-      processingDate(date);
-    }
-  });
+  const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`;
+  getMainDate(API_URL);
 }
 
 function processingDate(date) {
-  const { name, dt } = date;
+  const { name } = date;
   const { temp } = date.main;
   const { main, icon } = date.weather[0];
-
-  weather__temperature.textContent = Math.floor(temp);
-  weather__city.textContent = name;
-  weather__type.textContent = main;
-
-  weather__imgvalue.src = `https://openweathermap.org/img/wn/${icon}.png`;
-
-  const newDate = new Date();
+  const currentDate = new Date();
   const { dayOfWeek, dateOfWeek, monthOfWeek } = partsOfDate(
-    newDate.toUTCString()
+    currentDate.toUTCString()
   );
-  weather__dayofweek.textContent = dayOfWeek;
-  weather__dateofweek.textContent =
-    dateOfWeek + ' ' + monthOfWeek + ' ' + newDate.getFullYear();
+  const dateOfWeak = getStrDateOfWeak(dateOfWeek, monthOfWeek, currentDate);
+
+  const dateOfWeather = {
+    temp: Math.floor(temp),
+    typeWeather: main,
+    city: name,
+    srcIcon: getSrcIcon(icon),
+    dayOfWeak: dayOfWeek,
+    dateOfWeak: dateOfWeak,
+    imgOpacity: '',
+    dateOpacity: '',
+    splitterOpacity: '',
+    typegroupOpacity: '',
+    textSymbol: '&#176;',
+  };
+
+  renderMarkup(dateOfWeather);
+}
+
+function getStrDateOfWeak(dayOfWeek, monthOfWeek, currentDate) {
+  return dayOfWeek + ' ' + monthOfWeek + ' ' + currentDate.getFullYear();
+}
+
+function getSrcIcon(icon) {
+  return `https://openweathermap.org/img/wn/${icon}.png`;
 }
 
 function getDateOfWeather(API_URL) {
@@ -58,14 +67,28 @@ function getDateOfWeather(API_URL) {
     if (response.ok) {
       return response.json();
     } else {
-      weather__img.style.opacity = '0';
-      weather__date.style.opacity = '0';
-      weather__splitter.style.opacity = '0';
-      weather__temperature.textContent = 'no-';
-      weather__symbol.textContent = 'data';
-      weather__typegroup.style.opacity = '0';
+      const dateOfWeather = {
+        temp: 'no-',
+        typeWeather: '',
+        city: '',
+        srcIcon: '',
+        dayOfWeak: '',
+        dateOfWeak: '',
+        imgOpacity: ' opacityElement',
+        dateOpacity: ' opacityElement',
+        splitterOpacity: ' opacityElement',
+        typegroupOpacity: ' opacityElement',
+        textSymbol: 'data',
+      };
+
+      renderMarkup(dateOfWeather);
     }
   });
+}
+
+function renderMarkup(dateOfWeather) {
+  const markup = createMarkupWeather(dateOfWeather);
+  mainSection.insertAdjacentHTML('afterend', markup);
 }
 
 function partsOfDate(strDate) {
@@ -81,19 +104,24 @@ function partsOfDate(strDate) {
 }
 
 function OnError() {
-  const API_URL =
-    'https://api.openweathermap.org/data/2.5/weather?q=lONDON&lang=en&units=metric&appid=419bd34d8daba21c0a4890e35d027d3f';
-  const dateWeather = getDateOfWeather(API_URL);
-  dateWeather.then(date => {
-    if (date !== undefined) {
-      processingDate(date);
-    }
-  });
+  const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=lONDON&lang=en&units=metric&appid=${API_KEY}`;
+  getMainDate(API_URL);
 }
 
 function createMarkupWeather(dateOfMarkup) {
-  const { temp, typeWeather, city, srcIcon, dayOfWeak, dateOfWeak } =
-    dateOfMarkup;
+  const {
+    temp,
+    typeWeather,
+    city,
+    srcIcon,
+    dayOfWeak,
+    dateOfWeak,
+    imgOpacity,
+    dateOpacity,
+    splitterOpacity,
+    typegroupOpacity,
+    textSymbol,
+  } = dateOfMarkup;
 
   const textMarkup =
     '<section class="weather">' +
@@ -102,9 +130,15 @@ function createMarkupWeather(dateOfMarkup) {
     '<span class="weather__temperature">' +
     String(temp) +
     '</span>' +
-    '<span class="weather__symbol" >&#176;</span>' +
-    '</div ><div class="weather__splitter">' +
-    '</div > <div class="weather__typegroup">' +
+    '<span class="weather__symbol" >' +
+    textSymbol +
+    '</span>' +
+    '</div ><div class="weather__splitter' +
+    splitterOpacity +
+    '">' +
+    '</div > <div class="weather__typegroup' +
+    typegroupOpacity +
+    '">' +
     '<span class="weather__type">' +
     String(typeWeather) +
     '</span > ' +
@@ -114,11 +148,15 @@ function createMarkupWeather(dateOfMarkup) {
     '</svg > <p class="weather__city">' +
     String(city) +
     '</p > ' +
-    '</div ></div ></div ><div class="weather__img">' +
+    '</div ></div ></div ><div class="weather__img' +
+    imgOpacity +
+    '">' +
     '<img class="weather__imgvalue" src="' +
     String(srcIcon) +
     '" alt="">' +
-    '</div ><div class="weather__date">' +
+    '</div ><div class="weather__date' +
+    dateOpacity +
+    '">' +
     '<span class="weather__dayofweek">' +
     String(dayOfWeak) +
     '</span > ' +
