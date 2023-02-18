@@ -1,0 +1,48 @@
+.list-container {
+    width: 148px;
+    height: 380px;
+    background-color: white;
+    color: #4440F7;
+    filter: drop-shadow(0px 10px 60px rgba(0, 0, 0, 0.1));
+    padding: 14px;
+    border-radius: 20px;
+    border: 0.604701px solid #4B48DB;
+    scroll-behavior: auto;
+    overflow-y: scroll;
+    font-size: 12px;
+    z-index: 1;
+
+    pointer-events: none;
+
+    transition: opacity 250ms ease-in-out;
+    position: absolute;
+    top: -410px;
+
+}
+
+.category {
+    position: relative;
+}
+
+.rest__item:hover,
+.rest__item:focus {
+    text-decoration-line: underline;
+
+}
+
+.is-open {
+    pointer-events: auto;
+    cursor: pointer;
+    animation: moveYDown 1s .5s linear forwards;
+}
+
+@keyframes moveYDown {
+    from {
+
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(440px);
+    }
+}

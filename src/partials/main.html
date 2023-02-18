@@ -17,12 +17,19 @@
         <button class="category__btn">Briefing</button>
       </li>
       <li class="category__item">
+        <button class="category__btn">Multimedia/Photos</button>
+      </li>
         <button class="category__btn">Business</button>
       </li> -->
 
+      
       <li class="category__item">
-        <button class="category__btn btn" class="js-open-list list-toggle list-toggle--open" aria-expanded="false"
-          aria-controls="list-menu">
+        <button
+          class="category__btn btn"
+          class="js-open-list list-toggle list-toggle--open"
+          aria-expanded="false"
+          aria-controls="list-menu"
+        >
           Others
           <svg class="icon category__icon--up" width="14" height="14">
             <use href="../images/icon-sprites.svg#Frame-11"></use>
@@ -32,11 +39,44 @@
           </svg>
         </button>
       </li>
+
     </ul>
+    <div class="category__wrapper">
+      <button class="category__btn btn" class="js-open-list list-toggle list-toggle--open" aria-expanded="false"
+        aria-controls="list-menu">
+        Categories
+        <svg class="icon category__icon--up" width="14" height="14">
+          <use href="../images/icon-sprites.svg#Frame-11"></use>
+        </svg>
+        <svg class="icon category__icon--down" width="14" height="14">
+          <use href="../images/icon-sprites.svg#Frame-12"></use>
+        </svg>
+      </button>
+    </div>
     <div class="list-container js-list-container" id="category-rest">
       <div class="rest__wrapper">
         <ul class="rest__list list">
-          <li></li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+          <li class="rest__item item">Admin</li>
+
         </ul>
       </div>
     </div>
@@ -44,7 +84,13 @@
     <div class="calendar">
       <p>Search date news</p>
       <div class="input-wrapper">
-        <input type="text" class="calendar__input" name="name" id="" placeholder="Виберіть дату..." />
+        <input
+          type="text"
+          class="calendar__input"
+          name="name"
+          id=""
+          placeholder="Виберіть дату..."
+        />
         <svg class="input-icon" width="20" height="20">
           <use href="../images/Frame.svg"></use>
         </svg>
@@ -53,7 +99,6 @@
         </svg>
       </div>
       <div class="calendar__body">
-
         <button type="button" id="calend-btn">Кнопка</button>
 
         <svg width="7px" height="12px">
@@ -77,14 +122,11 @@
             <li><span>Sa</span></li>
             <li><span>Su</span></li>
           </ul>
-          <ul class="calendar__list">
-          </ul>
+          <ul class="calendar__list"></ul>
         </div>
       </div>
     </div>
   </section>
-
-
 
   <section class="news-gallery">
     <div class="container">
@@ -92,4 +134,6 @@
       </ul>  
     </div>
   </section>
+
+  <load ="partials/paginations.html" />
 </main>
