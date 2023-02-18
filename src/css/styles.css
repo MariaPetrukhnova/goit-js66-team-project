@@ -7,9 +7,10 @@
 @import url('./reset.css');
 @import url('./normalize.css');
 
-/* filter-buttons */
+/* filter-buttons and calendar */
 @import url('./btn.css');
 @import url('./icon.css');
+@import url('./calendar.css');
 /* main */
 
 :root {
@@ -20,10 +21,15 @@
   --light-theme-main-color: #111321;
   --dark-theme-main-color: #F4F4F4;
   --accent-violet-color: #4B48DB;
+  --input-active-bg-color: #4440F6;
+  --input-active-color: #FFFFFF;
   font-size: 16px;
-  line-height: 22px;
+  line-height: 1.4;
   font-weight: 400;
 }
+
+/* grid-template-rows: repeat(5, 1fr);
+    height: 180px; */
 
 
 .logo {
@@ -31,7 +37,7 @@
   font-style: normal;
   font-weight: 700;
   font-size: 42px;
-  line-height: 57px;
+  line-height: 1.4;
 
   color: var(--light-theme-main-color);
 }
@@ -60,7 +66,7 @@
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
-  line-height: 25px;
+  line-height: 1.4;
   color: var(--light-theme-main-color);
 }
 
@@ -74,7 +80,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 171%;
+  line-height: 1.7;
   letter-spacing: 0.02em;
   color: var(--light-theme-main-color);
   opacity: 0.4;
@@ -89,16 +95,6 @@
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  line-height: 133%;
+  line-height: 1.3;
   color: var(--accent-violet-color);
-}
-
-.calendar__header,
-.calendar__list {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-}
-
-.calendar__date.active {
-  background-color: blue;
 }
