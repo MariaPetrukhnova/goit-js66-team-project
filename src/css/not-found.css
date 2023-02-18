@@ -1,11 +1,13 @@
-&is-hidden {
+/* &is-hidden {
     display: none;
-}
+} */
 
 .not__found {
     padding-top: 40px;
     padding-bottom: 59px;
+    
     background-color: blueviolet;
+    display: none;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
