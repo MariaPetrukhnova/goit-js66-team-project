@@ -35,7 +35,7 @@
 
 }
 
-.is-open {
+.list-container.is-open {
     pointer-events: auto;
     cursor: pointer;
     transition: height 1s ease-in-out;
