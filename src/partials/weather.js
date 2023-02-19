@@ -144,7 +144,7 @@ function createMarkupWeather(dateOfMarkup) {
     '</span > ' +
     '<div class="weather__citygroup">' +
     '<svg class="weather__svg">' +
-    '<use href="../img/icon-sprites.svg#location"></use>' +
+    '<use href="./img/icon-sprites.svg#location"></use>' +
     '</svg > <p class="weather__city">' +
     String(city) +
     '</p > ' +
