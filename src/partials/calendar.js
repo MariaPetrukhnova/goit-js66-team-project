@@ -1,11 +1,7 @@
-// import NewsApi from './apiConstructor.js';
-// import { fetchPopularNews } from './try_api';
-// import {articlesGallery, sliceArticlesDescription} from './articles.js'
-import { createBaseMarcup } from './marcup';
+
 import CalendarDates from "calendar-dates";
 const calendarDates = new CalendarDates();
 
-// const newsApi = new NewsApi();
 
 
 
@@ -44,22 +40,6 @@ const main = async () => {
   renderMonth(todayArr);
   
 };
-
-function onDOMLoad() {
-  fetchPopularNews()
-    .then(articles => createBaseMarcup(articles))
-    .then(marcup => {
-      articlesGallery.insertAdjacentHTML('beforeend', marcup);
-    })
-    .then(() => {
-      const articleDescription = [
-        ...articlesGallery.querySelectorAll('.article_text'),
-      ];
-      sliceArticlesDescription(articleDescription);
-    });
-}
-
-
 
 async function handleBtnClick() {
   const monthText = document.querySelector(".calendar__month").textContent;
@@ -214,7 +194,6 @@ function onDateSelect(evt) {
   console.log("selectedDate", selectedDate)
   console.log("todayDate", new Date()) 
     
-  onDOMLoad();
 
   if (currentDate === dateEl){
     calendarInput.value = "";
@@ -262,7 +241,7 @@ function addActiveDateClass(elem) {
 
 
 main();
-onDOMLoad();
+
 
 
 export * as calendarTools from './calendar.js';
