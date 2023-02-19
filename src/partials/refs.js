@@ -4,7 +4,8 @@ const refsEl = {
     btnOpenModal: document.querySelectorAll(".js-open-list"),
     viewportWidth: window.innerWidth,
     sectionRestList: document.querySelector(".rest__list"),
-    categoryWrap: document.querySelector(".js-category__wrap")
+    categoryWrap: document.querySelector(".js-category__wrap"),
+    categoryBtns: document.querySelectorAll(".js-category__btn")
 }
 function viewportWidthChecjer() {
     window.addEventListener("resize", reportWindowSize);
