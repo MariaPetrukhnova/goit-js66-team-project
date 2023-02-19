@@ -1,45 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/goit-js66-team-project/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Poppins&family=Roboto&display=swap"
-      rel="stylesheet">
-    <title>Vanilla App Template</title>
-    
-    <script type="module" crossorigin src="/goit-js66-team-project/assets/index-f923501f.js"></script>
-    <link rel="stylesheet" href="/goit-js66-team-project/assets/index-95e026b3.css">
-  </head>
-  <body>
-    <!-- Path to images as from index.html file -->
-<header class="page-header">
-  <a href="#" class="logo">News</a>
-  <nav class="page-header__nav">
-    <ul class="page-header__nav-list">
-      <li class="page-header__nav-item">
-        <a class="page-header__nav-link" href="#">Home</a>
-      </li>
-      <li class="page-header__nav-item">
-        <a class="page-header__nav-link" href="#">Favorite</a>
-      </li>
-      <li class="page-header__nav-item">
-        <a class="page-header__nav-link" href="#">Read</a>
-      </li>
-    </ul>
-  </nav>
-  <input type="search" placeholder="Search" class="page-header__search-input" />
-  <label class="theme-toggle">
-    <span class="theme-name">Light</span>
-    <input type="checkbox" checked />
-    <span class="slider round"></span>
-    <span class="theme-name">Dark</span>
-  </label>
-</header>
 
-    <main>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/goit-js66-team-project/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Poppins&family=Roboto&display=swap"
+    rel="stylesheet">
+  <title>Vanilla App Template</title>
+  
+  <script type="module" crossorigin src="/goit-js66-team-project/assets/index-d6d4fc34.js"></script>
+  <link rel="stylesheet" href="/goit-js66-team-project/assets/index-460d7b1c.css">
+</head>
+
+<body>
+  <!-- Path to images as from index.html file -->
+<header class="page-header">
+    <div class="container header__wrap">
+        <a href="#" class="logo">News</a>
+        <nav class="page-header__nav">
+            <ul class="nav__list--mobile">
+                <li class="nav__item js-search-input"><a class="nav__link js-search" href="">
+                        <svg class="header__icon" width="20px" height="20px">
+                            <use xlink:href="../images/icon-sprites.svg#bx_search"></use>
+                        </svg>
+                    </a></li>
+
+                <li class="nav__item"><a class="nav__link js-menu-open" href="">
+                        <svg class="header__icon" width="24px" height="24px">
+                            <use xlink:href="../images/icon-sprites.svg#menu"></use>
+                        </svg>
+                    </a></li>
+            </ul>
+
+            <ul class="page-header__nav-list--tablet-desk">
+                <li class="page-header__nav-item"><a class="page-header__nav-link" href="#">Home</a></li>
+                <li class="page-header__nav-item"><a class="page-header__nav-link" href="#">Favorite</a></li>
+                <li class="page-header__nav-item"><a class="page-header__nav-link" href="#">Read</a></li>
+            </ul>
+        </nav>
+
+        <input type="search" placeholder="Search" class="page-header__search-input">
+
+        <label class="theme-toggle">
+            <span>
+                <svg class="theme__icon" width="21px" height="21px">
+                    <use xlink:href="../images/icon-sprites.svg#sun"></use>
+                </svg>
+            </span>
+            <input type="checkbox" checked>
+            <span class="slider round"></span>
+            <span>
+                <svg class="theme__icon" width="21px" height="21px">
+                    <use xlink:href="../images/icon-sprites.svg#moon"></use>
+                </svg>
+            </span>
+        </label>
+    </div>
+</header>
+  <main>
     <section class="category">
         <div class="container category__container">
             <ul class="category__list">
@@ -205,7 +227,7 @@
 </div>
 
 </main>
-    <section class="section not__found is-hidden">
+  <section class="section not__found is-hidden">
     <div class="container">
         <h2 class="not__found__title">We haven’t found news from this category</h2>
         <picture>
