@@ -1,3 +1,5 @@
+import spriteUrl from '/images/icon-sprites.svg';
+
 const mainSection = document.querySelector('main');
 const API_KEY = '419bd34d8daba21c0a4890e35d027d3f';
 
@@ -144,7 +146,7 @@ function createMarkupWeather(dateOfMarkup) {
     '</span > ' +
     '<div class="weather__citygroup">' +
     '<svg class="weather__svg">' +
-    '<use href="../img/icon-sprites.svg#location"></use>' +
+    `<use href="${spriteUrl}#location"></use>` +
     '</svg > <p class="weather__city">' +
     String(city) +
     '</p > ' +
