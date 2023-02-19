@@ -1,14 +1,14 @@
-import NewsApi from './apiConstructor'
-// const API_KEY = 'api-key=Mw0nOoO0CyWfJRrshsqkL1haZT52Fizf';
+import NewsApi from './apiConstructor.js';
+import { makeMarkup, addMarkup } from './renderMarkup';
+const API_KEY = 'api-key=Mw0nOoO0CyWfJRrshsqkL1haZT52Fizf';
 // const API_KEY = "api-key=9GYTd3hNgT1cJMME7q1HMJAu02NGsmfm";
 // const API_KEY = 'api-key=JmGuT2FnDagHatExdMuVy4QCYQRUlSyR';
 
-// const API_HOST = 'https://api.nytimes.com';
-// const WEB_HOST = 'https://www.nytimes.com';
-// const CATEGOTY_END_POINT = `${API_HOST}/svc/news/v3/content/all/`
 
 
-const categoryList = document.querySelector('.category');
+const newsApi = new NewsApi()
+const categoryList = document.querySelector('.category__list');
+
 
 categoryList.addEventListener('click', categorySelect)
 
@@ -20,35 +20,51 @@ function categorySelect (event) {
     const handledCategory = event.target.textContent;
     const categoryKey = encodeURIComponent(handledCategory.toLowerCase());
     searchByCategory(categoryKey)
-}
+};
 
 async function searchByCategory (handledCategory) {
    try {
-    const response = await fetch(`${NewsApi.ACATEGOTY_END_POINT}${handledCategory}.json?${NewsApi.API_KEY}`);
-    // console.log(response)
+    const response = await fetch(`${newsApi.CATEGOTY_END_POINT}${handledCategory}.json?${API_KEY}`);
     const articles = await response.json();
-    // console.log(articles)
     const resArr = articles.results;
-    console.log(resArr);
+    // const answer = arrHandler(resArr);
+    console.log(resArr)
    }
    catch (error) {
-    console.log(error.message);
+    console.log(error);
   }   
 };
-// function arrHandler(arr) {
-//     const objArr = arr.map(el => {
-//         return {
-//             section: el.section_name || el.section,
-//             title: el.title || el.headline.main,
-//             description: el.abstract, 
-//             url: el.web_url || el.url,
-//             date: el.pub_date || el.created_date,
-//             img: `${WEB_HOST}/${el.multimedia[1].url}`
-//         }
-//     });
-//     console.log(objArr);
+
+function arrHandler (arr){
+  const respObj = arr.map(item => {
+    return {
+      title: item.title || item.abstract,
+      description: item.abstract,
+      url: item.url,
+      date: item.published_date || item.created_date,
+      img: `${item.multimedia[0].url}`,
+      imgCaption: `${item.multimedia[0].caption}`
+    };
+
+  });
+  return respObj
+//  const markup = createCards(respObj);
+//  console.log(markup);
+}
+
+
+// function createCards (respObj) {
+//   const markup = respObj.reduce((string, item) => createCard(item)+string,"")
+//   return markup
 // }
 
-
-
+// function createCard({title, description, url, date, img}) {
+//   return `
+//   <div class="card">
+//         <img src=${img} alt="${imgCaption}">
+//         <h3>${title}</h3>
+//         <p>${description}</p>
+//         <a href="${url}"></a>
+//     </div>`
+// }
 export * as apiCategoties from './api-categories.js';
