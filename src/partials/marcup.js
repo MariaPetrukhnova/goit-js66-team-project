@@ -17,12 +17,12 @@ function createBaseMarcup(arr) {
        <div class="article_flag">
        <button class="article_flag--add"><span class="article_flag_text">Add to favorite</span>
          <svg width="16" height="16">
-         <use href="../images/icon-sprites.svg#heart_contur" width="16" height="16"></use>
+         <use href="./images/icon-sprites.svg#heart_contur" width="16" height="16"></use>
         </svg>
          </button>
          <button class="article_flag--remove is-hidden"><span class="article_flag_text">Remove from favorite</span>
          <svg width="16" height="16">
-         <use href="../images/icon-sprites.svg#heart_fill" width="16" height="16"></use>
+         <use href="./images/icon-sprites.svg#heart_fill" width="16" height="16"></use>
        </svg>
           </button>
          </div>
