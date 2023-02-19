@@ -1,4 +1,4 @@
-// import { fetchBaseNews } from './partials/api-handler';
+import * as myModule from './partials/mobile-version';
 import { calendarTools } from './partials/calendar';
 import { fetchPopularNews } from './partials/try_api';
 import { apiFetchNewsByValue } from './partials/apiFetchNewsByValue';

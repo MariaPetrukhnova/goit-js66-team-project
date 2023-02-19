@@ -15,6 +15,10 @@
 @import url('./not-found.css');
 
 
+/* header&footer Sergiy Smilichenko */
+@import url('./header.css');
+@import url('./footer.css');
+
 :root {
   box-sizing: border-box;
   --main-font: 'Manrope', Arial, sans-serif;
@@ -23,9 +27,9 @@
   --light-theme-main-color: #111321;
   --dark-theme-main-color: #F4F4F4;
   --accent-violet-color: #4B48DB;
+  --background-footer: #7A7A7A;
   --input-active-bg-color: #4440F6;
   --input-active-color: #FFFFFF;
-
   font-size: 16px;
   line-height: 1.4;
   font-weight: 400;

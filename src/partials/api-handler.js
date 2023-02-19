@@ -1,4 +1,4 @@
-// import { makeMarkup, addMarkup } from './renderMarkup';
+//import { makeMarkup, addMarkup } from './renderMarkup';
 
 // const API_KEY = 'api-key=9GYTd3hNgT1cJMME7q1HMJAu02NGsmfm';
 
@@ -7,7 +7,7 @@
 // const BASE_ENDPOINT_URL = `${API_HOST}/svc/topstories/v2/arts.json?${API_KEY}`;
 // const SEARCH_ENDPOINT_URL = `${API_HOST}/svc/search/v2/articlesearch.json?`;
 
-// document.addEventListener('DOMContentLoaded', onDOMLoad);
+//document.addEventListener('DOMContentLoaded', onDOMLoad);
 
 // const fetchBaseNews = async () => {
 //   try {
@@ -23,18 +23,18 @@
 //   }
 // };
 
-// function onDOMLoad(e) {
-//   e.preventDefault();
-//   fetchBaseNews();
-// }
-
 // const searchInput = document.querySelector('.page-header__search-input');
-// searchInput.addEventListener('change', onEnterPush);
+// // searchInput.addEventListener('change', onEnterPush);
 
 // function onEnterPush(e) {
 //   const query = e.target.value;
 //   console.log(query);
 //   fetchNewsBySearch(query);
+// }
+
+// function onDOMLoad(e) {
+//   e.preventDefault();
+//   fetchBaseNews();
 // }
 
 // const fetchNewsBySearch = async request => {
