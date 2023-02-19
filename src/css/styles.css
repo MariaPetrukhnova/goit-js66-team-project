@@ -35,6 +35,10 @@
   font-weight: 400;
 }
 
+.body {
+  background-color: #F4F4F4;
+}
+
 .logo {
   font-family: var(--main-font);
   font-style: normal;
