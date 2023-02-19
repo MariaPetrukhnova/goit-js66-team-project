@@ -30,7 +30,7 @@
 
 }
 
-.is-open {
+.list-container.is-open {
     pointer-events: auto;
     cursor: pointer;
     animation: moveYDown 1s .5s linear forwards;
