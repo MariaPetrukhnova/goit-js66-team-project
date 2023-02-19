@@ -1,7 +1,9 @@
 .category__container {
     display: flex;
     justify-content: space-between;
+
 }
+
 .calendar {
     position: relative;
     display: flex;
@@ -19,7 +21,7 @@
 
 @media screen and (min-width: 768px) {
     .calendar__input-wrapper {
-    width: 168px;
+        width: 168px;
     }
 }
 
@@ -43,7 +45,7 @@
     letter-spacing: 0.02em;
     color: rgba(17, 19, 33, 0.4);
 
-    
+
 
     transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -78,15 +80,15 @@
     color: #FFFFFF;
     position: absolute;
     right: 12px;
- } 
+}
 
- .calendar__input.reversed{
+.calendar__input.reversed {
     color: #FFFFFF;
     background-color: #4440F6;
 
 }
 
-.calendar__input.reversed ~ .calendar__input-icon--up {
+.calendar__input.reversed~.calendar__input-icon--up {
     display: block;
 }
 
@@ -96,23 +98,23 @@
     right: 12px;
     color: #A2A2A2;
 
-    
+
 }
 
-.calendar__input.reversed ~ .calendar__input-icon--down {
+.calendar__input.reversed~.calendar__input-icon--down {
     display: none;
 }
 
-.calendar__input.reversed +.calendar__input-icon--up {
+.calendar__input.reversed+.calendar__input-icon--up {
     color: #FFFFFF;
 }
 
 .calendar__label {
-    
-font-family: var(--main-font);
-font-weight: 700;
-font-size: 18px;
-line-height: 1.4;
+
+    font-family: var(--main-font);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.4;
 
 
 }
@@ -133,7 +135,7 @@ line-height: 1.4;
     right: 0;
     overflow: hidden;
     top: 32px;
-    }
+}
 
 .calendar__body.is-open {
     /* display: block; */
@@ -171,7 +173,7 @@ line-height: 1.4;
     /* margin-left: 8px; */
     padding: 8px;
     color: #4440F6;
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); 
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 
@@ -181,7 +183,7 @@ line-height: 1.4;
     justify-content: center;
     align-items: center;
     color: #4440F6;
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); 
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .calendar__month-btn--next:hover,
@@ -226,13 +228,14 @@ line-height: 1.4;
     display: flex;
 }
 
-.calendar__header{
+.calendar__header {
     margin-bottom: 14px;
 }
+
 .calendar__header,
 .calendar__list {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
 
 }
 
@@ -242,8 +245,8 @@ line-height: 1.4;
 }
 
 .calendar__date--active {
-  background-color: #4440F6;
-  border-radius: 50%;
+    background-color: #4440F6;
+    border-radius: 50%;
 
 }
 
