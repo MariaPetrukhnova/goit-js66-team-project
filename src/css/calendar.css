@@ -263,6 +263,14 @@ line-height: 1.4;
 
 }
 
+.calendar__date--inactive {
+    color: #5f677551;
+}
+
+.calendar__date--weekend {
+    color: #5F6775;
+
+}
 
 /* .calendar__dates-wrapper {
     display: flex;
