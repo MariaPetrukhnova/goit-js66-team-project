@@ -1,28 +1,30 @@
 <main>
     <section class="category">
-        <div class="container category__container">
-            <ul class="category__list">
-                <li class="category__item">
-                    <button class="category__btn">Admin</button>
-                </li>
-                <li class="category__item">
-                    <button class="category__btn">Arts</button>
-                </li>
-                <li class="category__item">
-                    <button class="category__btn">Automobiles</button>
-                </li>
-                <li class="category__item">
-                    <button class="category__btn">Books</button>
-                </li>
-                <li class="category__item">
-                    <button class="category__btn">Briefing</button>
-                </li>
-                <li class="category__item">
-                    <button class="category__btn">Multimedia/Photos</button>
-                </li>
-                <button class="category__btn">Business</button>
-                <li class="category__item">
-                    <button class="category__btn btn" class="js-open-list list-toggle list-toggle--open"
+        <div class="container category__container" id="category__container">
+            <div class="category__wrap js-category__wrap">
+                <ul class="category__list">
+                    <li class="category__item">
+                        <button class="category__btn btn">Admin</button>
+                    </li>
+                    <li class="category__item">
+                        <button class="category__btn btn">Arts</button>
+                    </li>
+                    <li class="category__item">
+                        <button class="category__btn btn">Automobiles</button>
+                    </li>
+                    <li class="category__item">
+                        <button class="category__btn btn">Books</button>
+                    </li>
+                    <li class="category__item">
+                        <button class="category__btn btn">Briefing</button>
+                    </li>
+                    <li class="category__item">
+                        <button class="category__btn btn">Multimedia/Photos</button>
+                    </li>
+
+                </ul>
+                <div class="category__wrapper--mob">
+                    <button class="category__btn category__btn--others btn js-open-list list-toggle--open"
                         aria-expanded="false" aria-controls="list-menu">
                         Others
                         <svg class="icon category__icon--up" width="14" height="14">
@@ -32,45 +34,34 @@
                             <use href="../images/icon-sprites.svg#Frame-12"></use>
                         </svg>
                     </button>
-                </li>
+                    <button class="category__btn category__btn--all btn js-open-list list-toggle list-toggle--open"
+                        aria-expanded="false" aria-controls="list-menu">
+                        Categories
+                        <svg class="icon category__icon--up" width="14" height="14">
+                            <use href="../images/icon-sprites.svg#Frame-11"></use>
+                        </svg>
+                        <svg class="icon category__icon--down" width="14" height="14">
+                            <use href="../images/icon-sprites.svg#Frame-12"></use>
+                        </svg>
+                    </button>
+                    <div class="list-container js-list-container" id="category-rest">
+                        <div class="rest__wrapper">
+                            <ul class="rest__list list">
+                                <li class="rest__item item">Admin</li>
+                                <li class="rest__item item">Admin</li>
+                                <li class="rest__item item">Admin</li>
+                                <li class="rest__item item">Admin</li>
+                                <li class="rest__item item">Admin</li>
+                                <li class="rest__item item">Admin</li>
+                                <li class="rest__item item">Admin</li>
+                                <li class="rest__item item">Admin</li>
+                                <li class="rest__item item">Admin</li>
+                                <li class="rest__item item">Admin</li>
+                                <li class="rest__item item">Admin</li>
 
-            </ul>
-            <div class="category__wrapper">
-                <button class="category__btn btn" class="js-open-list list-toggle list-toggle--open" aria-expanded="false"
-                    aria-controls="list-menu">
-                    Categories
-                    <svg class="icon category__icon--up" width="14" height="14">
-                        <use href="../images/icon-sprites.svg#Frame-11"></use>
-                    </svg>
-                    <svg class="icon category__icon--down" width="14" height="14">
-                        <use href="../images/icon-sprites.svg#Frame-12"></use>
-                    </svg>
-                </button>
-            </div>
-            <div class="list-container js-list-container" id="category-rest">
-                <div class="rest__wrapper">
-                    <ul class="rest__list list">
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                        <li class="rest__item item">Admin</li>
-                    </ul>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="calendar">
@@ -90,14 +81,15 @@
                     </svg>
                 </div>
                 <div class="calendar__body calendar-container js-calendar-container" id="calendar-body">
-            
-            
+
+
                     <!-- <button type="button" id="calend-btn">Кнопка</button> -->
-            
+
                     <div class="calendar__body-wrapper">
                         <div class="calendar__body-caption">
                             <span class="calendar__year-btn" id="">
-                                <svg class="calendar__arrow--next-year" width="12px" height="12px" transform="rotate(90)">
+                                <svg class="calendar__arrow--next-year" width="12px" height="12px"
+                                    transform="rotate(90)">
                                     <use href="../images/icon-sprites.svg#Frame-12"></use>
                                 </svg>
                             </span>
@@ -130,17 +122,18 @@
                     </div>
                 </div>
             </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="news-gallery">
-            <div class="container">
-                <ul class="articles_container">
-                </ul>
-            </div>
+    <section class="news-gallery">
+        <div class="container">
+            <ul class="articles_container">
+            </ul>
+        </div>
         </div>
     </section>
 
     <load="partials/paginations.html" />
     <load="partials/not-found.html" />
+
 </main>

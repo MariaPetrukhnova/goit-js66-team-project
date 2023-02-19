@@ -1,27 +1,32 @@
 .list-container {
     width: 148px;
-    height: 380px;
+
     background-color: white;
     color: #4440F7;
     filter: drop-shadow(0px 10px 60px rgba(0, 0, 0, 0.1));
-    padding: 14px;
     border-radius: 20px;
-    border: 0.604701px solid #4B48DB;
     scroll-behavior: auto;
-    overflow-y: scroll;
+    transition: height 0.5s ease-in-out;
     font-size: 12px;
-    z-index: 1;
-
+    height: 0;
     pointer-events: none;
-
-    transition: opacity 250ms ease-in-out;
     position: absolute;
-    top: -410px;
+    overflow: hidden;
 
+}
+
+#category__container {
+
+    margin: 24px 0 40px 0;
 }
 
 .category {
     position: relative;
+    z-index: 2;
+}
+
+.category__item {
+    display: none;
 }
 
 .rest__item:hover,
@@ -33,16 +38,72 @@
 .list-container.is-open {
     pointer-events: auto;
     cursor: pointer;
-    animation: moveYDown 1s .5s linear forwards;
+    transition: height 1s ease-in-out;
+    height: 380px;
+
 }
 
-@keyframes moveYDown {
-    from {
+.category__list,
+.category__btn--others {
+    display: none;
+}
 
-        transform: translateY(0);
+.category__wrap {
+    display: flex;
+}
+
+.rest__wrapper {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+}
+
+@media screen and (min-width: 1280px) {
+    .category__item:nth-child(-n+6) {
+        display: block;
     }
 
-    to {
-        transform: translateY(440px);
+    .category__list {
+        gap: 16px;
+    }
+
+    .category__wrap {
+        gap: 16px;
+    }
+
+    #category__container {
+
+        margin: 28px 0 60px 0;
     }
 }
+
+@media screen and (min-width: 768px) {
+    .category__list {
+        display: flex;
+        gap: 14px;
+    }
+
+    .category__btn--others,
+    .category__btn--all {
+        display: flex;
+    }
+
+    .category__item:nth-child(-n+4) {
+        display: block;
+    }
+
+    .category__btn--all {
+        display: none;
+    }
+
+    .category__wrap {
+        gap: 14px;
+    }
+
+    #category__container {
+
+        margin: 28px 0 48px 0;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {}
