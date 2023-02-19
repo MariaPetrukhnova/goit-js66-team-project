@@ -2,8 +2,8 @@
 import CalendarDates from "calendar-dates";
 const calendarDates = new CalendarDates();
 
-const calendarInput = document.querySelector('.js-open-calendar');
-
+const calendarWrapper = document.querySelector('.js-open-calendar');
+const calendarInput = document.querySelector('.calendar__input');
 const calendarBody = document.querySelector('.js-calendar-container');
 const nextMonthBtn = document.querySelector(".calendar__month-btn--next");
 const prevMonthBtn = document.querySelector(".calendar__month-btn--prev");
@@ -13,16 +13,15 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 nextYearBtn.addEventListener("click",  handleYearBtnClick);
 nextMonthBtn.addEventListener("click",  handleBtnClick);
 prevMonthBtn.addEventListener("click",  handlePrevBtnClick);
-calendarInput.addEventListener("click", toggleCalendar);
+calendarWrapper.addEventListener("click", toggleCalendar);
 
 
 
 function toggleCalendar() {
   const isMenuOpen = calendarInput.getAttribute('aria-expanded') === 'true' || false;
-  calendarInput.setAttribute('aria-expanded', !isMenuOpen);
-  calendarInput.classList.toggle('reversed');
+  calendarWrapper.setAttribute('aria-expanded', !isMenuOpen);
+  calendarWrapper.classList.toggle('reversed');
   calendarBody.classList.toggle('is-open');
-
 
 }
 
@@ -188,6 +187,7 @@ function getDateForInput (elem) {
 function addActiveDateClass(elem) {
   elem.classList.add('calendar__date--active');
   getDateForInput (elem);
+  toggleCalendar();
 }
 
 
