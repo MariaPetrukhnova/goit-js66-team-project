@@ -173,4 +173,4 @@ function createMarkupWeather(dateOfMarkup) {
   return textMarkup;
 }
 
-export { loadWeatherDate } from './weather.js';
+export { loadWeatherDate };
