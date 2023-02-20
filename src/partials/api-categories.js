@@ -55,7 +55,6 @@ function arrHandler(arr) {
         img: el.multimedia[2].url,
       };
     });
-    console.log(objArr)
     createBaseMarcup(objArr);
   } catch (error) {
     console.error(error);
