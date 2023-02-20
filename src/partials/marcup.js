@@ -13,9 +13,7 @@ function createBaseMarcup(arr) {
      <div class="article_img_wrapper">
        <p class="already-read">Already read</p>
        <p class="article_category">${section}</p>
-       <img class="article_img" src="${
-         img[img.length - 1].url
-       }" alt="${imgCaption}" width="395" height="395">
+       <img class="article_img" src="${img}" alt="${imgCaption}" width="395" height="395">
        <div class="article_flag">
        <button class="article_flag--add"><span class="article_flag_text">Add to favorite</span>
          <svg width="16" height="16">
@@ -55,7 +53,7 @@ function arrHandler(arr) {
           url: el.web_url || el.url,
           date: el.pub_date || el.created_date || el.published_date,
           img: `https://cdn.pixabay.com/photo/2013/03/30/00/10/news-97862_960_720.png`,
-          imgCaption: el.media[0].caption,
+          imgCaption: 'image',
         };
       }
       return {
@@ -64,10 +62,11 @@ function arrHandler(arr) {
         description: el.abstract,
         url: el.web_url || el.url,
         date: el.pub_date || el.created_date || el.published_date,
-        img: el.media[0]['media-metadata'],
+        img: el.media[0]['media-metadata'][2].url,
         imgCaption: el.media[0].caption,
       };
     });
+    console.log(objArr);
     return objArr;
   } catch (error) {
     console.error(error);
