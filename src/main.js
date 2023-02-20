@@ -1,8 +1,8 @@
-//<<<<<<< HEAD
-//import { apiTools } from './partials/api-handler';
+import { refsEl } from '../src/partials/refs.js'
+import * as myModule from './partials/mobile-version';
 import { calendarTools } from './partials/calendar';
 import { loadWeatherDate } from './partials/weather';
-//=======
-import { fetchNewsBySearch, fetchBaseNews } from './partials/api-handler';
-
-//>>>>>>> origin/mainт
+import { fetchPopularNews } from './partials/try_api';
+import { apiFetchNewsByValue } from './partials/apiFetchNewsByValue';
+import { } from './partials/categories.js';
+import * as articles from './partials/articles';
