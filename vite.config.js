@@ -6,6 +6,13 @@ export default defineConfig({
   root: 'src',
   build: {
     outDir: '../dist',
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, "./src/index.html"),
+        favorites: resolve(__dirname, "./src/favorites.html"),
+        read: resolve(__dirname, "./src/read.html")
+      }
+    }
   },
   plugins: [
     basicSsl(),
