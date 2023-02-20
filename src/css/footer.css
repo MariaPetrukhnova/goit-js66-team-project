@@ -1,4 +1,12 @@
+/* Footer @media 320px */
 .footer {
-    height: 145px;
+    height: 120px;
     background-color: var(--background-footer);
+}
+
+/* Footer @media 768px ... */
+@media screen and (min-width: 768px) {
+    .footer {
+        height: 145px;
+    }
 }
