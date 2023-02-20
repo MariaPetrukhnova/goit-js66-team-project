@@ -2,6 +2,8 @@
 import CalendarDates from "calendar-dates";
 const calendarDates = new CalendarDates();
 
+
+
 const calendarWrapper = document.querySelector('.js-open-calendar');
 const calendarInput = document.querySelector('.calendar__input');
 const calendarBody = document.querySelector('.js-calendar-container');
@@ -37,7 +39,6 @@ const main = async () => {
   renderMonth(todayArr);
   
 };
-
 
 async function handleBtnClick() {
   const monthText = document.querySelector(".calendar__month").textContent;
@@ -151,6 +152,12 @@ function onDateSelect(evt) {
 
   const dateEl = evt.target;
   const currentDate = document.querySelector('.calendar__date--active');
+
+  const selectedDate = new Date(evt.target.id);
+  console.log("selectedDate", selectedDate)
+  console.log("todayDate", new Date()) 
+    
+
   if (currentDate === dateEl){
     calendarInput.value = "";
     currentDate.classList.remove('calendar__date--active');
@@ -189,9 +196,6 @@ function addActiveDateClass(elem) {
   getDateForInput (elem);
   toggleCalendar();
 }
-
-
-main();
 
 
 export * as calendarTools from './calendar.js';
