@@ -48,7 +48,15 @@ function arrHandler(arr) {
   try {
     const objArr = arr.map(el => {
       if (el.media.length === 0) {
-        return;
+        return {
+          section: el.section_name || el.section,
+          title: el.title || el.headline.main,
+          description: el.abstract,
+          url: el.web_url || el.url,
+          date: el.pub_date || el.created_date || el.published_date,
+          img: `https://cdn.pixabay.com/photo/2013/03/30/00/10/news-97862_960_720.png`,
+          imgCaption: el.media[0].caption,
+        };
       }
       return {
         section: el.section_name || el.section,
