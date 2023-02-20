@@ -3,6 +3,14 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+/* Icon-base */
+.icon {
+    display: inline-block;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
 @media screen and (min-width: 768px) {
     .page-header {
         padding: 32px 0 28px;
@@ -89,7 +97,6 @@
 }
 
 .page-header__search-input {
-    /* visibility: hidden; */
     width: 173px;
     height: 31px;
     padding: 5px 1px 5px 48px;
@@ -163,6 +170,7 @@
     }
 }
 
+/* Theme css */
 .theme-toggle {
     display: none;
 }
@@ -173,11 +181,25 @@
     }
 }
 
-.icon {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    stroke-width: 0;
-    stroke: currentColor;
-    fill: currentColor;
+/* theme-icon */
+.theme__icon--moon {
+    fill: blue;
+    stroke: blue;
+}
+
+/* .checkbox:checked .theme__icon--moon {
+    fill: blue;
+    stroke: blue;
+} */
+
+/* Visuallyhidden */
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
