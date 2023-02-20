@@ -90,7 +90,25 @@ function getDateOfWeather(API_URL) {
 
 function renderMarkup(dateOfWeather) {
   const markup = createMarkupWeather(dateOfWeather);
-  mainSection.insertAdjacentHTML('afterend', markup);
+  const observer = new MutationObserver((mutationsList, observer) => {
+    let domEl = [];
+    mutationsList.forEach(mutation => {
+      if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+        const nodes = document.querySelectorAll('.article');
+        if (nodes) {
+          nodes.forEach((el, index) => {
+            if (index === 1) {
+              domEl = el;
+              observer.disconnect();
+            }
+          });
+        }
+      }
+    });
+    domEl.insertAdjacentHTML('afterend', markup);
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
 }
 
 function partsOfDate(strDate) {
@@ -126,7 +144,7 @@ function createMarkupWeather(dateOfMarkup) {
   } = dateOfMarkup;
 
   const textMarkup =
-    '<section class="weather">' +
+    '<li class="weather">' +
     '<div class="weather__group">' +
     '<div class="weather__temperaturedate">' +
     '<span class="weather__temperature">' +
@@ -146,9 +164,7 @@ function createMarkupWeather(dateOfMarkup) {
     '</span > ' +
     '<div class="weather__citygroup">' +
     '<svg class="weather__svg">' +
-
     `<use href="${spriteUrl}#location"></use>` +
-
     '</svg > <p class="weather__city">' +
     String(city) +
     '</p > ' +
@@ -168,7 +184,7 @@ function createMarkupWeather(dateOfMarkup) {
     String(dateOfWeak) +
     '</span></div>' +
     '<div class="weather__refgroup"><a class="weather__ref" href="https://sinoptik.ua/" rel="noopener noreferrer" target="_blank">' +
-    'weather for week</a ></div ></section > ';
+    'weather for week</a ></div ></li > ';
 
   return textMarkup;
 }

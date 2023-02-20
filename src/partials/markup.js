@@ -1,7 +1,7 @@
 import spriteUrl from '/images/icon-sprites.svg';
 
-function createBaseMarcup(arr) {
-  const marcup = arrHandler(arr)
+function createBaseMarkup(arr) {
+  const markup = arrHandler(arr)
     .map(article => {
       if (!article) {
         return;
@@ -33,13 +33,13 @@ function createBaseMarcup(arr) {
      </div>
      <div class="article_info_wrapper">
        <p class="article_date">${date}</p>
-       <a href="${url}" class="read-more">Read more</a>
+       <a href="${url}" class="read-more" target="_blank">Read more</a>
      </div>
      </li>`;
     })
     .join('');
 
-  return marcup;
+  return markup;
 }
 
 function arrHandler(arr) {
@@ -73,4 +73,4 @@ function arrHandler(arr) {
   }
 }
 
-export { arrHandler, createBaseMarcup };
+export { arrHandler, createBaseMarkup };
