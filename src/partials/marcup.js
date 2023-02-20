@@ -35,7 +35,7 @@ function createBaseMarcup(arr) {
      </div>
      <div class="article_info_wrapper">
        <p class="article_date">${date}</p>
-       <a href="${url}" class="read-more">Read more</a>
+       <a href="${url}" class="read-more" target="blank">Read more</a>
      </div>
      </li>`;
     })
