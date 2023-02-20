@@ -4,7 +4,6 @@ const calendarDates = new CalendarDates();
 
 
 
-
 const calendarWrapper = document.querySelector('.js-open-calendar');
 const calendarInput = document.querySelector('.calendar__input');
 const calendarBody = document.querySelector('.js-calendar-container');
@@ -123,47 +122,12 @@ function renderMonth([month, year]) {
 function renderCalendar(croppedArr) {
   const calendarDatesContainer = document.querySelector('.calendar__list');
   const today = new Date().getDate();
-  const todayFullDate = new Date();
-  
-  
   calendarDatesContainer.innerHTML = `${croppedArr.map(date=> {
-    const todayDay = new Date(date.iso).getDay();
     if(today === date.date) {
       return `<li id="${date.iso}" class="calendar__date calendar__date--active">${date.date}</li>`
     } 
-    if(+todayFullDate < new Date(date.iso)) {
-      return `<li id="${date.iso}" class="calendar__date calendar__date--inactive">${date.date}</li>`
-    }
-    if(todayDay === 6 || todayDay === 0) {
-      return `<li id="${date.iso}" class="calendar__date calendar__date--weekend">${date.date}</li>`
-    }
-   
     return `<li id="${date.iso}" class="calendar__date">${date.date}</li>`;
   }).join("")}`
-}
-
-function renderNotFound() {
-  const newsContainer = document.querySelector('.news-gallery');
-
-  return newsContainer.innerHTML = `<div class="container">
-  <h2 class="not__found__title">We couldn't find news from this date</h2>
-  <picture>
-      <source
-      srcset="./images/not-found-desktop-1x.png 1x, ./images/not-found-desktop-2x.png 2x"
-      media="(min-width: 1280px)"
-      />
-      <source
-      srcset="./images/not-found-tablet-1x.png 1x, ./images/not-found-tablet-2x.png 2x"
-      media="(min-width: 768px)"
-      />
-      <source
-      srcset="./images/not-found-mobile-1x.png 1x, ./images/not-found-mobile-2x.png 2x"
-      media="(max-width: 767px)"
-      />
-      <img class="not__found__image" src="./images/not-found-desktop-1x.png" alt="not found image">
-  </picture>
-</div>`
-  
 }
 
 
@@ -179,8 +143,6 @@ function changeFormatData(date) {
 
 calendarBody.addEventListener('click', onDateSelect);
 // Коли користувач натиснув на дату,функція робить дату активною. Якщо на ту саму дату, то знімає активний клас (додати до кожн фкції комент)
-
-
 function onDateSelect(evt) {
   const isDateEl = evt.target.classList.contains('calendar__date');
 
@@ -190,6 +152,7 @@ function onDateSelect(evt) {
 
   const dateEl = evt.target;
   const currentDate = document.querySelector('.calendar__date--active');
+
   const selectedDate = new Date(evt.target.id);
   console.log("selectedDate", selectedDate)
   console.log("todayDate", new Date()) 
@@ -198,25 +161,20 @@ function onDateSelect(evt) {
   if (currentDate === dateEl){
     calendarInput.value = "";
     currentDate.classList.remove('calendar__date--active');
-  
-  } else if (currentDate !== dateEl && selectedDate > new Date()) {
-    console.log("selectedDate > new Date()", selectedDate > new Date());
-    renderNotFound();
-    removeActiveDateClass();
-    addActiveDateClass(dateEl);
   } else {
     removeActiveDateClass();
     addActiveDateClass(dateEl);
 
   }
+  
 
-
-
+  // calendarBody.classlist.add(hidden);
 
 }
 
 function removeActiveDateClass() {
   const currentActiveDate = document.querySelector('.calendar__date.calendar__date--active');
+  console.log("🚀 ~ file: calendar.js:181 ~ removeActiveDateClass ~ currentActiveDate", currentActiveDate)
 
   if (currentActiveDate) {
     currentActiveDate.classList.remove('calendar__date--active');
@@ -238,10 +196,6 @@ function addActiveDateClass(elem) {
   getDateForInput (elem);
   toggleCalendar();
 }
-
-
-main();
-
 
 
 export * as calendarTools from './calendar.js';
