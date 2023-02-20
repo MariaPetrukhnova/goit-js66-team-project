@@ -1,14 +1,8 @@
-import NewsApi from './apiConstructor'
-// const API_KEY = 'api-key=Mw0nOoO0CyWfJRrshsqkL1haZT52Fizf';
-// const API_KEY = "api-key=9GYTd3hNgT1cJMME7q1HMJAu02NGsmfm";
-// const API_KEY = 'api-key=JmGuT2FnDagHatExdMuVy4QCYQRUlSyR';
+import NewsApi from './apiConstructor.js'
+import { makeMarkup, addMarkup } from './renderMarkup';
+const newsApi = new NewsApi();
 
-// const API_HOST = 'https://api.nytimes.com';
-// const WEB_HOST = 'https://www.nytimes.com';
-// const CATEGOTY_END_POINT = `${API_HOST}/svc/news/v3/content/all/`
-
-
-const categoryList = document.querySelector('.category');
+const categoryList = document.querySelector('.category__list');
 
 categoryList.addEventListener('click', categorySelect)
 
@@ -20,35 +14,45 @@ function categorySelect (event) {
     const handledCategory = event.target.textContent;
     const categoryKey = encodeURIComponent(handledCategory.toLowerCase());
     searchByCategory(categoryKey)
-}
+};
 
 async function searchByCategory (handledCategory) {
    try {
-    const response = await fetch(`${NewsApi.ACATEGOTY_END_POINT}${handledCategory}.json?${NewsApi.API_KEY}`);
-    // console.log(response)
-    const articles = await response.json();
-    // console.log(articles)
+    const response = await fetch(`${newsApi.CATEGOTY_END_POINT}${handledCategory}.json?${newsApi.API_KEY}`);
+    const articles = await response.json()
     const resArr = articles.results;
-    console.log(resArr);
+    arrHandler(resArr);
+    
    }
    catch (error) {
-    console.log(error.message);
+    console.log(error);
   }   
 };
-// function arrHandler(arr) {
-//     const objArr = arr.map(el => {
-//         return {
-//             section: el.section_name || el.section,
-//             title: el.title || el.headline.main,
-//             description: el.abstract, 
-//             url: el.web_url || el.url,
-//             date: el.pub_date || el.created_date,
-//             img: `${WEB_HOST}/${el.multimedia[1].url}`
-//         }
-//     });
-//     console.log(objArr);
-// }
 
-
-
+function arrHandler(arr) {
+  const objArr = arr.map(el => {
+    if (el.multimedia === null) {
+      return {
+        section: el.section_name || el.section,
+        title: el.title || el.headline.main,
+        description: el.abstract,
+        url: el.web_url || el.url,
+        date: el.pub_date || el.created_date,
+        imgCaption: el.title,
+        img: `https://cdn.pixabay.com/photo/2013/03/30/00/10/news-97862_960_720.png`,
+      };
+    }
+    return {
+      section: el.section_name || el.section,
+      title: el.title || el.headline.main,
+      description: el.abstract,
+      url: el.web_url || el.url,
+      date: el.pub_date || el.created_date,
+      imgCaption: el.multimedia[2].caption,
+      img: el.multimedia[2].url,
+    };
+  });
+  const finalMarkup = makeMarkup(objArr);
+  addMarkup(finalMarkup);
+}
 export * as apiCategoties from './api-categories.js';

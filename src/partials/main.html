@@ -54,13 +54,13 @@
             </div>
             <div class="calendar">
                 <p class="calendar__label">Search date news</p>
-                <div class="calendar__input-wrapper">
+                <div class="calendar__input-wrapper js-open-calendar calendar-toggle calendar-toggle--open menu-toggle js-close-menu menu-toggle--close" aria-expanded="false" aria-controls="calendar-menu" >
                     <svg class="calendar__input-icon--calendar" width="20" height="20">
                         <use href="./images/icon-sprites.svg#Frame"></use>
                     </svg>
                     <input readonly type="text" name="name"
-                        class="calendar__input js-open-calendar calendar-toggle calendar-toggle--open menu-toggle js-close-menu menu-toggle--close"
-                        aria-expanded="false" aria-controls="calendar-menu" id="" placeholder="Виберіть дату..." />
+                        class="calendar__input"
+                        id="" placeholder="Виберіть дату..." />
                     <svg class="calendar__input-icon--down" width="15" height="15">
                         <use href="./images/icon-sprites.svg#Frame-11"></use>
                     </svg>
@@ -121,5 +121,7 @@
         </div>
     </section>
 
-    <load="partials /paginations.html" />
+    <load="partials/paginations.html" />
+    <load="partials/not-found.html" />
+
 </main>

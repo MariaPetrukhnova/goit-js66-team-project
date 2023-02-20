@@ -5,7 +5,8 @@ export default class NewsApi {
     this.WEB_HOST = 'https://www.nytimes.com';
     this.BASE_ENDPOINT_URL = `${this.API_HOST}/svc/topstories/v2/arts.json?${this.API_KEY}`;
     this.SEARCH_ENDPOINT_URL = `${this.API_HOST}/svc/search/v2/articlesearch.json?`;
-    this.ATEGOTY_END_POINT = `${this.API_HOST}/svc/news/v3/content/all/`;
     this.SEARCH_CATEGORI = `${this.API_HOST}/svc/news/v3/content/section-list.json?${this.API_KEY}`;
+    this.CATEGOTY_END_POINT = `${this.API_HOST}/svc/news/v3/content/all/`;
+
   }
 }
