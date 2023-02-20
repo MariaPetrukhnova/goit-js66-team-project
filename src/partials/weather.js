@@ -105,7 +105,8 @@ function renderMarkup(dateOfWeather) {
         }
       }
     });
-    domEl.insertAdjacentHTML('afterend', markup);
+    /* Костыль */
+    setTimeout(domEl.insertAdjacentHTML('afterend', markup), 10);
   });
 
   observer.observe(document.body, { childList: true, subtree: true });
