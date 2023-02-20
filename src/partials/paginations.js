@@ -102,12 +102,12 @@ function handleButton(element) {
     valuePage.curPage--;
     handleButtonLeft();
     btnNextPg.disabled = false;
-    btnLastPg.disabled = false;
+    // btnLastPg.disabled = false;
   } else if (element.classList.contains('next-page')) {
     valuePage.curPage++;
     handleButtonRight();
     btnPrevPg.disabled = false;
-    btnFirstPg.disabled = false;
+    // btnFirstPg.disabled = false;
   }
   pagination();
 }
