@@ -1,135 +1,127 @@
 <main>
-  <section class="category">
-    <ul class="category__list">
-      <li class="category__item">
-        <button class="category__btn">Admin</button>
-      </li>
-      <li class="category__item">
-        <button class="category__btn">Arts</button>
-      </li>
-      <li class="category__item">
-        <button class="category__btn">Automobiles</button>
-      </li>
-      <li class="category__item">
-        <button class="category__btn">Books</button>
-      </li>
-      <li class="category__item">
-        <button class="category__btn">Briefing</button>
-      </li>
-      <li class="category__item">
-        <button class="category__btn">Multimedia/Photos</button>
-      </li>
-        <button class="category__btn">Business</button>
-      <li class="category__item">
-        <button
-          class="category__btn btn"
-          class="js-open-list list-toggle list-toggle--open"
-          aria-expanded="false"
-          aria-controls="list-menu">
-          Others
-          <svg class="icon category__icon--up" width="14" height="14">
-            <use href="../images/icon-sprites.svg#Frame-11"></use>
-          </svg>
-          <svg class="icon category__icon--down" width="14" height="14">
-            <use href="../images/icon-sprites.svg#Frame-12"></use>
-          </svg>
-        </button>
-      </li>
+    <section class="category">
+        <div class="container category__container" id="category__container">
+            <div class="category__wrap js-category__wrap">
+                <ul class="category__list">
+                    <li class="category__item">
+                        <button class="category__btn btn js-category__btn">Admin</button>
+                    </li>
+                    <li class="category__item">
+                        <button class="category__btn btn js-category__btn">Arts</button>
+                    </li>
+                    <li class="category__item">
+                        <button class="category__btn btn js-category__btn">Automobiles</button>
+                    </li>
+                    <li class="category__item">
+                        <button class="category__btn btn js-category__btn">Books</button>
+                    </li>
+                    <li class="category__item">
+                        <button class="category__btn btn js-category__btn">Briefing</button>
+                    </li>
+                    <li class="category__item">
+                        <button class="category__btn btn js-category__btn">Multimedia/Photos</button>
+                    </li>
 
-    </ul>
-    <div class="category__wrapper">
-      <button class="category__btn btn" class="js-open-list list-toggle list-toggle--open" aria-expanded="false"
-        aria-controls="list-menu">
-        Categories
-        <svg class="icon category__icon--up" width="14" height="14">
-          <use href="../images/icon-sprites.svg#Frame-11"></use>
-        </svg>
-        <svg class="icon category__icon--down" width="14" height="14">
-          <use href="../images/icon-sprites.svg#Frame-12"></use>
-        </svg>
-      </button>
-    </div>
-    <div class="list-container js-list-container" id="category-rest">
-      <div class="rest__wrapper">
-        <ul class="rest__list list">
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
-          <li class="rest__item item">Admin</li>
+                </ul>
+                <div class="category__wrapper--mob">
+                    <button class="category__btn category__btn--others btn js-open-list list-toggle--open"
+                        aria-expanded="false" aria-controls="list-menu">
+                        Others
+                        <svg class="icon category__icon--up" width="14" height="14">
+                            <use href="./images/icon-sprites.svg#Frame-11"></use>
+                        </svg>
+                        <svg class="icon category__icon--down" width="14" height="14">
+                            <use href="./images/icon-sprites.svg#Frame-12"></use>
+                        </svg>
+                    </button>
+                    <button class="category__btn category__btn--all btn js-open-list list-toggle list-toggle--open"
+                        aria-expanded="false" aria-controls="list-menu">
+                        Categories
+                        <svg class="icon category__icon--up" width="14" height="14">
+                            <use href="./images/icon-sprites.svg#Frame-11"></use>
+                        </svg>
+                        <svg class="icon category__icon--down" width="14" height="14">
+                            <use href="./images/icon-sprites.svg#Frame-12"></use>
+                        </svg>
+                    </button>
+                    <div class="list-container js-list-container" id="category-rest">
+                        <div class="rest__wrapper">
+                            <ul class="rest__list list">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="calendar">
+                <p class="calendar__label">Search date news</p>
+                <div class="calendar__input-wrapper js-open-calendar calendar-toggle calendar-toggle--open menu-toggle js-close-menu menu-toggle--close" aria-expanded="false" aria-controls="calendar-menu" >
+                    <svg class="calendar__input-icon--calendar" width="20" height="20">
+                        <use href="./images/icon-sprites.svg#Frame"></use>
+                    </svg>
+                    <input readonly type="text" name="name"
+                        class="calendar__input"
+                        id="" placeholder="Виберіть дату..." />
+                    <svg class="calendar__input-icon--down" width="15" height="15">
+                        <use href="./images/icon-sprites.svg#Frame-11"></use>
+                    </svg>
+                    <svg class="calendar__input-icon--up" width="15" height="15">
+                        <use href="./images/icon-sprites.svg#Frame-12"></use>
+                    </svg>
+                </div>
+                <div class="calendar__body calendar-container js-calendar-container" id="calendar-body">
 
-        </ul>
-      </div>
-    </div>
 
-    <div class="calendar">
-      <p>Search date news</p>
-      <div class="input-wrapper">
-        <input
-          type="text"
-          class="calendar__input"
-          name="name"
-          id=""
-          placeholder="Виберіть дату..."
-        />
-        <svg class="input-icon" width="20" height="20">
-          <use href="../images/Frame.svg"></use>
-        </svg>
-        <svg class="" width="20" height="20">
-          <use href="../images/Frame-11.svg"></use>
-        </svg>
-      </div>
-      <div class="calendar__body">
-        <button type="button" id="calend-btn">Кнопка</button>
+                    <!-- <button type="button" id="calend-btn">Кнопка</button> -->
 
-        <svg width="7px" height="12px">
-          <use href="../images/chevron.forward.small.svg"></use>
-        </svg>
-        <div class="calendar-arrows">
-          <svg width="9" height="18">
-            <use href="../images/chevron.backward.svg"></use>
-          </svg>
-          <svg width="9" height="18">
-            <use href="../images/chevron.forward.svg"></use>
-          </svg>
+                    <div class="calendar__body-wrapper">
+                        <div class="calendar__body-caption">
+                            <span class="calendar__year-btn" id="">
+                                <svg class="calendar__arrow--next-year" width="12px" height="12px"
+                                    transform="rotate(90)">
+                                    <use href="./images/icon-sprites.svg#Frame-12"></use>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="calendar__month-arrows">
+                            <span class="calendar__month-btn--prev">
+                                <svg class="calendar__arrow--prev-month" width="17" height="17" transform="rotate(270)">
+                                    <use href="./images/icon-sprites.svg#Frame-12"></use>
+                                </svg>
+                            </span>
+                            <span class="calendar__month-btn--next">
+                                <svg class="calendar__arrow--next-month" width="17" height="17" transform="rotate(90)">
+                                    <use href="./images/icon-sprites.svg#Frame-12"></use>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="calendar__dates-wrapper">
+                        <ul class="calendar__header">
+                            <li class="calendar__header-item">Mo</li>
+                            <li class="calendar__header-item">Tu</li>
+                            <li class="calendar__header-item">We</li>
+                            <li class="calendar__header-item">Th</li>
+                            <li class="calendar__header-item">Fr</li>
+                            <li class="calendar__header-item">Sa</li>
+                            <li class="calendar__header-item">Su</li>
+                        </ul>
+                        <ul class="calendar__list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="calendar__dates-wrapper">
-          <ul class="calendar__header">
-            <li><span>Mo</span></li>
-            <li><span>Tu</span></li>
-            <li><span>We</span></li>
-            <li><span>Th</span></li>
-            <li><span>Fr</span></li>
-            <li><span>Sa</span></li>
-            <li><span>Su</span></li>
-          </ul>
-          <ul class="calendar__list"></ul>
+    </section>
+
+    <section class="news-gallery">
+        <div class="container">
+            <ul class="articles_container">
+            </ul>
         </div>
-      </div>
-    </div>
-  </section>
+        </div>
+    </section>
 
-  <section class="news-gallery">
-    <div class="container">
-      <ul class="articles_container">
-      </ul>  
-    </div>
-  </section>
+    <load="partials/paginations.html" />
+    <load="partials/not-found.html" />
 
-  <load ="partials/paginations.html" />
 </main>
