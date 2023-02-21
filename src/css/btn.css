@@ -8,7 +8,8 @@
 
 }
 
-.category__btn {
+.category__btn,
+.list-toggle--open {
     background-color: white;
     border: 1px solid #4440F7;
     color: #4440F7;

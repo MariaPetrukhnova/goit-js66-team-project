@@ -35,6 +35,10 @@
 
 }
 
+.rest__item {
+    padding-bottom: 12px;
+}
+
 .list-container.is-open {
     pointer-events: auto;
     cursor: pointer;
