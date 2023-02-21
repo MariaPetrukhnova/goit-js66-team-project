@@ -1,4 +1,4 @@
-import{s as r}from"./localeStoreageHandler-97c14c4f.js";const s="read-articles";document.addEventListener("DOMContentLoaded",e=>{e.preventDefault();const t=u();console.log(t),_(t)});const g=localStorage.getItem(s);console.log(g);function u(){const e=JSON.parse(localStorage.getItem(s));return console.log(e),e.map(a=>{if(!a)return;const{section:i,title:l,description:c,date:o,img:n,readDate:m,url:d,imgCaption:p}=a;return`<li class="article">
+import{s as r}from"./localeStoreageHandler-fc00aae1.js";const s="read-articles";document.addEventListener("DOMContentLoaded",e=>{e.preventDefault();const t=g();h(t)});localStorage.getItem(s);function g(){const e=JSON.parse(localStorage.getItem(s));return console.log(e),e.map(a=>{if(!a)return;const{section:i,title:l,description:c,date:o,img:n,readDate:_,url:d,imgCaption:p}=a;return`<li class="article">
      <div class="article_img_wrapper">
        <p class="already-read">Already read</p>
        <p class="article_category">${i}</p>
@@ -24,4 +24,4 @@ import{s as r}from"./localeStoreageHandler-97c14c4f.js";const s="read-articles";
        <p class="article_date">${o}</p>
        <a href="${d}" class="read-more" target="blank">Read more</a>
      </div>
-     </li>`}).join("")}const h=document.querySelector(".articles_container");function _(e){h.insertAdjacentHTML("beforeend",e)}
+     </li>`}).join("")}const u=document.querySelector(".articles_container");function h(e){u.insertAdjacentHTML("beforeend",e)}
