@@ -4,12 +4,12 @@ import{s as a}from"./icon-sprites-07d39546.js";const p="favorite-articles";docum
        <p class="article_category">${r}</p>
        <img class="article_img" src="${d}" alt="${n}" width="395" height="395">
        <div class="article_flag">
-       <button class="article_flag--add"><span class="article_flag_text">Add to favorite</span>
+       <button class="article_flag--add  is-hidden"><span class="article_flag_text">Add to favorite</span>
          <svg width="16" height="16">
          <use href="${a}#heart_contur" width="16" height="16"></use>
         </svg>
          </button>
-         <button class="article_flag--remove is-hidden"><span class="article_flag_text">Remove from favorite</span>
+         <button class="article_flag--remove"><span class="article_flag_text">Remove from favorite</span>
          <svg width="16" height="16">
          <use href="${a}#heart_fill" width="16" height="16"></use>
        </svg>
