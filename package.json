@@ -9,6 +9,7 @@
         "host": "vite --host"
     },
     "devDependencies": {
+        "@vitejs/plugin-basic-ssl": "^1.0.1",
         "vite": "^4.0.0"
     },
     "author": "Alexander Repeta <alexander.repeta@gmail.com>",

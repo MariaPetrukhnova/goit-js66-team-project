@@ -1,0 +1,80 @@
+.page-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 60px;
+  margin-bottom: 150px;
+}
+.page-container i {
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--color-dark);
+  pointer-events: none;
+}
+.page-container button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  width: 82px;
+  height: 31px;
+
+  background: #f4f4f4;
+  border: 1px solid #4440f6;
+  border-radius: 2px;
+
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: #111321;
+}
+.page-container button:disabled i {
+  color: #aaadc7;
+}
+
+#pagination {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#pagination li {
+  list-style: none;
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0 4px;
+}
+#pagination li.active {
+  background-color: #4440f6;
+}
+#pagination li.active a {
+  color: #fff;
+}
+#pagination li a {
+  text-decoration: none;
+  padding: 4px 12px 5px 12px;
+  display: inline-block;
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: #111321;
+  pointer-events: none;
+}
+#pagination li:hover {
+  background-color: #4440f6;
+}
+#pagination li:hover a {
+  color: #fff;
+}
+
+.pg-item {
+  background: #f4f4f4;
+  border: 1px solid #4440f6;
+  border-radius: 2px;
+}
