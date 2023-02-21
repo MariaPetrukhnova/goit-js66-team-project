@@ -1,4 +1,4 @@
-import{s as r}from"./localeStoreageHandler-5cac7262.js";const s="read-articles";document.addEventListener("DOMContentLoaded",e=>{e.preventDefault();const t=u();console.log(t),_(t)});const g=localStorage.getItem(s);console.log(g);function u(){const e=JSON.parse(localStorage.getItem(s));return console.log(e),e.map(a=>{if(!a)return;const{section:i,title:l,description:c,date:o,img:n,readDate:m,url:d,imgCaption:p}=a;return`<li class="article">
+import{s as r}from"./localeStoreageHandler-2b33120b.js";const s="read-articles";document.addEventListener("DOMContentLoaded",e=>{e.preventDefault();const t=u();console.log(t),_(t)});const g=localStorage.getItem(s);console.log(g);function u(){const e=JSON.parse(localStorage.getItem(s));return console.log(e),e.map(a=>{if(!a)return;const{section:i,title:l,description:c,date:o,img:n,readDate:m,url:d,imgCaption:p}=a;return`<li class="article">
      <div class="article_img_wrapper">
        <p class="already-read">Already read</p>
        <p class="article_category">${i}</p>
