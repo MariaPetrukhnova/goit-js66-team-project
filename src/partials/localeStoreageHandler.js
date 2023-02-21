@@ -4,23 +4,21 @@ const LOCALSTORAGE_KEY = "read-articles";
 const body = document.querySelector('body');
 
 body.addEventListener('click', onArticleLink);
+const alreadyRead = document.querySelector('.already-read');
 
-const articlesArr = localStorage.getItem(LOCALSTORAGE_KEY) || [];
+const articlesArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || [];
 
 function onArticleLink(e) {
     if (!e.target.classList.contains("read-more")) return;
 
-    // перевірка через obj value
-    // const currentArr = createCardObj(e);
-    // const valArr = Object.values(currentArr);
-    // articlesArr.forEach(el => {
-    //     console.log(Object.values(el).includes(valArr[2]));
-    //     if (Object.values(el).includes(valArr[2])) return
+    const articleEl = e.target.closest('.article');
+    const articleId = articleEl.dataset.id;
+    articleEl.querySelector('.already-read').classList.remove('is-hidden');
+
+    if (!articlesArr.find((item) => item.id === articleId)) {
         articlesArr.push(createCardObj(e));
         addArticlesToLocaleStorage(LOCALSTORAGE_KEY, JSON.stringify(articlesArr));
-// });
-    
-    return articlesArr;
+    }
 }
 
 
@@ -29,6 +27,7 @@ function createCardObj(e) {
     const savedCard = new Object;
     const dateOfRead = new Date;
     savedCard.readDate = dateOfRead.toDateString();
+    console.log(savedCard.readDate);
 
     savedCard.date = e.target.previousElementSibling.textContent;
     savedCard.img = e.target.parentNode.parentNode.firstElementChild.children[2].getAttribute('src');
@@ -36,8 +35,8 @@ function createCardObj(e) {
     savedCard.section = e.target.parentNode.parentNode.firstElementChild.children[1].textContent;
     savedCard.title = e.target.parentNode.parentNode.firstElementChild.nextElementSibling.firstElementChild.textContent;
     savedCard.description = e.target.parentNode.parentNode.firstElementChild.nextElementSibling.lastElementChild.textContent;
+    savedCard.id = e.target.closest('.article').dataset.id;
     savedCard.url = e.target.getAttribute('href');
-
  
     return savedCard;
 }
@@ -92,18 +91,4 @@ function makeMarkup() {
 
     console.log(markup);
   return markup;
-}
-
-const readParagraf = document.querySelector('.read-output');
-const readLink = document.querySelector('#read-link');
-
-readLink.addEventListener('click', onReadLink);
-
-function onReadLink(e) {
-    console.log(e);
-    renderMarkup(makeMarkup());
-}
-
-function renderMarkup(markup) {
-    readParagraf.insertAdjacentHTML('afterend', markup);
 }

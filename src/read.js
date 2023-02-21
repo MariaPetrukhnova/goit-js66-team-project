@@ -7,13 +7,10 @@ const LOCALSTORAGE_KEY = "read-articles";
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
     const markup = makeMarkup();
-    console.log(markup);
     renderMarkup(markup);
 });
 
 const articles = localStorage.getItem(LOCALSTORAGE_KEY);
-
-console.log(articles);
 
 function makeMarkup() {
     const objArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
