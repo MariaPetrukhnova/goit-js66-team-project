@@ -151,6 +151,11 @@
     font-size: 14px;
     line-height: 19px;
     color: #00DD73;
+    display: none;
+  }
+
+  .already-read.is-visible {
+    display: block;
   }
 
   .already-read::after {

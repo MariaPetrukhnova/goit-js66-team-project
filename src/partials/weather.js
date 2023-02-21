@@ -90,26 +90,19 @@ function getDateOfWeather(API_URL) {
 
 function renderMarkup(dateOfWeather) {
   const markup = createMarkupWeather(dateOfWeather);
-  const observer = new MutationObserver((mutationsList, observer) => {
-    let domEl = [];
-    mutationsList.forEach(mutation => {
-      if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-        const nodes = document.querySelectorAll('.article');
-        if (nodes) {
-          nodes.forEach((el, index) => {
-            if (index === 1) {
-              domEl = el;
-              observer.disconnect();
-            }
-          });
-        }
-      }
-    });
-    /* Костыль */
-    setTimeout(domEl.insertAdjacentHTML('afterend', markup), 10);
+  const promise = new Promise((resolve, rejected) => {
+    const newEL = document.querySelectorAll('.article');
+    resolve(newEL);
   });
-
-  observer.observe(document.body, { childList: true, subtree: true });
+  promise
+    .then(response => {
+      response.forEach((el, index) => {
+        if (index === 1) {
+          el.insertAdjacentHTML('afterend', markup);
+        }
+      });
+    })
+    .catch(error => console.error(error));
 }
 
 function partsOfDate(strDate) {

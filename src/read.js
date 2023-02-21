@@ -7,17 +7,16 @@ const LOCALSTORAGE_KEY = "read-articles";
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
     const markup = makeMarkup();
-    console.log(markup);
     renderMarkup(markup);
 });
 
 const articles = localStorage.getItem(LOCALSTORAGE_KEY);
 
-console.log(articles);
 
 function makeMarkup() {
     const objArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
     console.log(objArr);
+
     const markup = objArr.map(article => {
       if (!article) {
         return;
@@ -27,7 +26,7 @@ function makeMarkup() {
 
       return `<li class="article">
      <div class="article_img_wrapper">
-       <p class="already-read">Already read</p>
+       <p class="already-read is-visible">Already read</p>
        <p class="article_category">${section}</p>
        <img class="article_img" src="${img}" alt="${imgCaption}" width="395" height="395">
        <div class="article_flag">
@@ -63,3 +62,4 @@ const articlesOutput= document.querySelector('.articles_container');
 function renderMarkup(markup) {
     articlesOutput.insertAdjacentHTML('beforeend', markup);
 }
+

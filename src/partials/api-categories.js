@@ -19,9 +19,10 @@ function categorySelect (event) {
 
 async function searchByCategory (handledCategory) {
    try {
-    const response = await fetch(`${newsApi.CATEGORY_END_POINT}${handledCategory}.json?${newsApi.API_KEY}`);
+    const response = await fetch(`${newsApi.CATEGORY_END_POINT}${handledCategory}.json?api-key=Mw0nOoO0CyWfJRrshsqkL1haZT52Fizf`);
     const articles = await response.json()
     const resArr = articles.results;
+    console.log(resArr)
     arrHandler(resArr);
     
    }
@@ -30,31 +31,36 @@ async function searchByCategory (handledCategory) {
   }   
 };
 
-
 function arrHandler(arr) {
   try{
     const objArr = arr.map(el => {
+      
+      if (!el.title || !el.abstract) {
+        return;
+      }
       if (el.multimedia === null) {
         return {
           section: el.section_name || el.section,
-          title: el.title || el.headline.main,
-          description: el.abstract,
+          title: el.title || el.headline.main || "No titel",
+          description: el.abstract || "No description",
           url: el.web_url || el.url,
-          date: el.pub_date || el.created_date,
+          date: el.pub_date || el.created_date.slice(0, 10),
           imgCaption: el.title,
           img: `https://cdn.pixabay.com/photo/2013/03/30/00/10/news-97862_960_720.png`,
         };
       }
+      
       return {
         section: el.section_name || el.section,
-        title: el.title || el.headline.main,
-        description: el.abstract,
+        title: el.title || el.headline.main || "No Titel",
+        description: el.abstract || "No description",
         url: el.web_url || el.url,
-        date: el.pub_date || el.created_date,
+        date: el.pub_date || el.created_date.slice(0, 10),
         imgCaption: el.multimedia[2].caption,
         img: el.multimedia[2].url,
       };
     });
+    console.log(objArr)
     createBaseMarcup(objArr);
   } catch (error) {
     console.error(error);

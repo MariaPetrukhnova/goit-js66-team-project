@@ -75,6 +75,7 @@ const refs = {
                     refs.modal.remove();
                 }})
                       
+
             createUserWithEmailAndPassword(auth, email, password)
               .then((userCredential) => {
                console.log(userCredential);
@@ -104,8 +105,9 @@ const refs = {
                     .then(response => response.json())
                     .catch();
               };
-    // Вхід існуючого користувача!!!\\\\\
 
+    // Вхід існуючого користувача!!!\\\\\
+    
     function onModalLogin(e) {
     e.preventDefault();
     refs.modalLogin.classList.toggle("is-hidden");
@@ -125,6 +127,7 @@ const refs = {
             Notiflix.Notify.warning('For signing up you need to enter both E-mail and Password');
             return;
            }
+           
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
 
