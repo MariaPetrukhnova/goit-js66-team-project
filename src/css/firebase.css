@@ -1,0 +1,160 @@
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: auto;
+  background-color: white;
+  display: flex;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4,0,0.2,1);
+  flex-direction: column;
+  padding: 40px;
+  width: calc(100% - 2 * 15px);
+}
+
+  @media screen and (min-width: 480px) {
+      .modal {
+      width: 450px;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) {
+      .modal {
+       width: 528px;
+       }
+       }
+
+    
+       @media screen and (min-width: 480px) {
+          .btn-close{
+              left: 412px;
+          }
+           }
+       @media screen and (min-width: 1200px) {
+          .btn-close{
+              left: 490px;
+          }
+           }
+          
+     
+          .backdrop {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.5);
+              opacity: 1;
+              transition: opacity 250ms cubic-bezier(0.4,0,0.2,1);
+              
+          }
+           .backdrop.is-hidden.modal {
+              transform: translate(-50%, -50%) scale(0,9);
+              
+           }
+          
+          .backdrop.is-hidden {
+              opacity: 0;
+              pointer-events: none;
+          }
+
+          .form {
+            display: flex;
+            }
+        .modal-form {
+        margin-left: auto;
+        margin-right: auto;
+            }
+            
+        .modal-form__title {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 1.15;
+        color: #212121;
+        margin-bottom: 12px;
+        text-align: center;
+        
+        }
+        
+        @media screen and (min-width: 1200px) {
+            .modal-form__title{
+                width: 448px;
+                }
+                }
+            
+        
+                  
+            
+        .modal-form__field {
+        position: relative;  
+            padding-bottom: 10px;
+        
+            
+        }
+        .modal-form__input:focus-within {
+            outline: none;
+            border: 1px solid #2196F3;
+            transition: 250ms cubic-bezier(0.4,0,0.2,1);
+            } 
+        
+       
+            
+        .modal-form__label {
+            font-size: 25px;
+            line-height: 1.16;
+            letter-spacing: 0.01em;
+            color: #757575;
+            margin-bottom: 4px;
+            }
+        
+        .modal-form__input {
+            
+        border: 1px solid rgba(33, 33, 33, 0.2);
+        border-radius: 4px;
+        height: 40px; 
+        margin-top: 0;
+        padding-left: 42px;
+        transition: 250ms cubic-bezier(0.4,0,0.2,1);
+        }
+        
+        @media screen and (min-width: 320px) {
+            .modal-form__input {
+                width: 100%;
+        }
+        }
+        
+        @media screen and (min-width: 480px) {
+            .modal-form__input{
+                width: 370px;
+                }
+                }
+                
+        @media screen and (min-width: 1200px) {
+            .modal-form__input{
+                width: 448px;
+                }
+                }
+
+                .button-form {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 30px;
+                    width: 200px;
+                    height: 50px;
+                    background:  #2196F3;
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+                    border-radius: 4px;
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 1.88;
+                    font-family: Roboto, sans-serif;
+                    align-items: center;
+                    letter-spacing: 0.06em;
+                    color: #FFFFFF;
+                    border: none;
+                    cursor: pointer;
+                    padding: 10px 52px;
+                   
+                    }
+

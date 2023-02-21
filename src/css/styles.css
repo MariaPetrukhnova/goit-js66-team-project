@@ -1,6 +1,7 @@
 @import url('./reset.css');
 @import url('./weather.css');
 @import url('./normalize.css');
+@import url('./firebase.css');
 
 /* filter-buttons and calendar */
 @import url('./btn.css');

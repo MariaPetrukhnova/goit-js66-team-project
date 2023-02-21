@@ -1,3 +1,4 @@
+import {firebase}  from "./partials/firebase"
 import { refsEl } from '../src/partials/refs.js';
 import * as myModule from './partials/mobile-version';
 import { calendarTools } from './partials/calendar';
