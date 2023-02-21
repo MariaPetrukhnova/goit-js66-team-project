@@ -19,7 +19,7 @@ function categorySelect (event) {
 
 async function searchByCategory (handledCategory) {
    try {
-    const response = await fetch(`${newsApi.CATEGORY_END_POINT}${handledCategory}.json?${newsApi.API_KEY}`);
+    const response = await fetch(`${newsApi.CATEGORY_END_POINT}${handledCategory}.json?api-key=Mw0nOoO0CyWfJRrshsqkL1haZT52Fizf`);
     const articles = await response.json()
     const resArr = articles.results;
     console.log(resArr)
