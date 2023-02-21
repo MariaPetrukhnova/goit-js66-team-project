@@ -16,7 +16,7 @@ function onArticleLink(e) {
     if (e.target.classList.contains("read-more")) {
         const articleEl = e.target.closest('.article');
         const articleId = articleEl.dataset.id;
-        articleEl.querySelector('.already-read').classList.add('is-visible');
+        articleEl.querySelector('.already-read').classList.remove('is-hidden');
 
         if (!articlesArr.find((item) => item.id === articleId)) {
             articlesArr.push(createCardObj(e));
@@ -66,5 +66,4 @@ function createCardObj(e) {
 function addArticlesToLocaleStorage(key, arr) {
     localStorage.setItem(key, `${arr}`);
 }
-
 
