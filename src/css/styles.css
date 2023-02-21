@@ -6,6 +6,7 @@
 */
 @import url('./reset.css');
 @import url('./normalize.css');
+@import url('./firebase.css');
 
 /* filter-buttons */
 @import url('./btn.css');
