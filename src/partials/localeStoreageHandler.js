@@ -8,8 +8,7 @@ body.addEventListener('click', onArticleLink);
 const articlesArr = [];
 
 function onArticleLink(e) {
-    const dateOfRead = new Date;
-    console.log(dateOfRead.toDateString());
+    if (!e.target.classList.contains("read-more")) return;
 
     articlesArr.push(createCardObj(e));
     addArticlesToLocaleStorage(LOCALSTORAGE_KEY, JSON.stringify(articlesArr));
@@ -18,7 +17,8 @@ function onArticleLink(e) {
 
 
 function createCardObj(e) {
-    if (!e.target.classList.contains("read-more")) return;
+    console.log(e.target);
+    
 
     const savedCard = new Object;
     const dateOfRead = new Date;
@@ -33,7 +33,7 @@ function createCardObj(e) {
     savedCard.description = e.target.parentNode.parentNode.firstElementChild.nextElementSibling.lastElementChild.textContent;
     savedCard.url = e.target.getAttribute('href');
 
-    console.log(savedCard);
+ 
     return savedCard;
 }
 

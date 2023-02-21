@@ -6,13 +6,12 @@ const LOCALSTORAGE_KEY = "read-articles";
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
-    console.log(`DOM is loaded ${e}`);
     const markup = makeMarkup();
     console.log(markup);
     renderMarkup(markup);
 });
 
-const articles = localStorage.getItem(LOCALSTORAGE_KEY)
+const articles = localStorage.getItem(LOCALSTORAGE_KEY);
 
 console.log(articles);
 
