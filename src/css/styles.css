@@ -34,15 +34,7 @@
   line-height: 1.4;
   font-weight: 400;
 
-  /* Dark-mode from Smilichenko S.*/
-  /* body.darkMode {
-    --bg-color: #2e2e2e;
-    --text-color: #f4f4f4;
 
-    --switcher-accent-day: #f4f4f4;
-
-    --switcher-gray-moon: #4440f7;
-  } */
 }
 
 html,
@@ -52,11 +44,16 @@ body {
 }
 
 body {
-  background-color: #F4F4F4;
+  background-color: var(--dark-theme-main-color);
   color: var(--light-theme-main-color);
 
   font-weight: 400;
   font-style: normal;
+}
+
+body.darkMode {
+  background-color: #2E2E2E;
+  color: var(--dark-theme-main-color);
 }
 
 .calendar__header,
