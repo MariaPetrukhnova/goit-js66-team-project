@@ -12,161 +12,105 @@
     rel="stylesheet">
   <title>GOIT News Portal</title>
   
-  <script type="module" crossorigin src="/goit-js66-team-project/assets/main-dff9fdae.js"></script>
-  <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/markup-b8b36f81.js">
-  <link rel="stylesheet" href="/goit-js66-team-project/assets/markup-ae184097.css">
+  <script type="module" crossorigin src="/goit-js66-team-project/assets/main-9bef52b7.js"></script>
+  <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/markup-00b49e70.js">
+  <link rel="stylesheet" href="/goit-js66-team-project/assets/markup-9d1ea8c2.css">
 </head>
 
 <body>
-  
-
-<button type="submit" class="registerbtn sing" data-modal-open>Sing Up</button>
-<button type="submit" class="registerbtn login" data-modal-open>Login</button>
-<button type="button" class="user" > USER </button>
-<div class="backdrop is-hidden" data-modal id="bcd">
-  <div class="modal modal-reg">
-    <button class="btn-close" data-modal-close-reg>
-      <svg fill="#212121" class="btn-close__icon" width="11" height="11">
-        <use href="./src/images/icon-sprites.svg#icon-close">
-        </use>
-      </svg>
-    </button>
-    <div class="form">
-      <form class="modal-form" id="auth-form">
-        <p class="modal-form__title">Registration
-        </p>
-
-                    
-      <div class="modal-form__field">
-        
-        <label for="email"><span class="modal-form__label">Email</span></label>
-       <input type="text" name="email" class="modal-form__input ml page-header__search-input" id="email">
-          </div>
-
-         <div class="modal-form__field">
-        
-          <label for="psw"><span class="modal-form__label">Password</span></label>
-          <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="psw">
-          </div>
-                               
-        <button type="submit" class="button-form" id="sing-up" >Sing Up</button>
-      </form>
-    </div>
-
-    
-
-  </div>
-</div>
-<div class="backdrop is-hidden" data-modal-login id="bcd">
-<div class="modal modal-reg ">
-  <button class="btn-close" data-modal-close-log>
-    <svg fill="#212121" class="btn-close__icon" width="11" height="11">
-      <use href="./src/images/icon-sprites.svg#icon-close">
-      </use>
-    </svg>
-  </button>
-  <div class="form ">
-     <form class="modal-form"  id="log-form">
-       <p class="modal-form__title">Login</p>
-                 
-      <div class="modal-form__field">
-       
-        <label for="mail"><span class="modal-form__label">Email</span></label>
-        <input type="text" name="mail" class="modal-form__input ml page-header__search-input" id="mail">
-        </div>
-
-        <div class="modal-form__field">
-       
-         <label for="psw"><span class="modal-form__label">Password</span></label>
-         <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="password">
-         </div>
-                             
-       <button type="submit" class="button-form" >Login</button>
-     </form>
-   </div>
-
- </div>
-
-</div>
-
-<div class="backdrop is-hidden" data-modal-user >
-  <div class="modal modal-reg ">
-   
-    <button class="btn-close" data-modal-close>
-      <svg fill="#212121" class="btn-close__icon" width="11" height="11">
-        <use href="./src/images/icon-sprites.svg#icon-close">
-        </use>
-      </svg>
-    </button>
-    <div class="form ">
-       <form class="modal-form"  id="log-form">
-         <p class="modal-form__title">User </p>
-         <button type="submit" class="button-form" >Favorit</button>  
-        
-                               
-         <button type="submit" class="button-form" id="login-btn">Log out</button>
-       </form>
-     </div>
-  
-   </div>
-  
-  </div>
-
   <!-- Path to images as from index.html file -->
-<header class="page-header">
-
-    <div class="container header__wrap">
-    
-        <a href="./index.html" class="logo">News</a>
-
-        <nav class="page-header__nav">
-            <ul class="nav__list--mobile">
-                <li class="nav__item js-search-input"><a class="nav__link js-search" href="">
-                        <svg class="header__icon" width="20px" height="20px">
-                            <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#bx_search"></use>
-                        </svg>
-                    </a></li>
-
-                <li class="nav__item"><a class="nav__link js-menu-open" href="">
-                        <svg class="header__icon icon" width="24px" height="24px">
-                            <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#menu"></use>
-                        </svg>
-                    </a></li>
-            </ul>
-
-            <ul class="page-header__nav-list--tablet-desk">
-                <li class="page-header__nav-item"><a class="page-header__nav-link" href="./index.html">Home</a></li>
-                <li class="page-header__nav-item"><a class="page-header__nav-link" href="./favorites.html">Favorite</a></li>
-                <li class="page-header__nav-item"><a class="page-header__nav-link" id="read-link" href="./read.html">Read</a></li>
+<header class="header">
+    <div class="container header-container">
+        <a href="#" class="logo">News</a>
+        <nav>
+            <ul class="navbar">
+                <li class="navbar__item">
+                    <a href="#" class="navbar__link navbar__link--current">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="../favorites.html" class="navbar__link">Favorite</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="../read.html" class="navbar__link">Read</a>
+                </li>
             </ul>
         </nav>
-        <!-- Input-search -->
-        <div class="">
-            <input type="search" placeholder="Search" class="page-header__search-input">
-            <svg class="header__icon" width="20px" height="20px">
-                <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#bx_search"></use>
+        <form class="search-field" id="form-field">
+            <button class="search-field__btn" id="form-btn">
+                <svg class="search__icon" width="16" height="15">
+                    <use href="../images/icon-sprites.svg#bx_search"></use>
+                </svg>
+            </button>
+            <input class="page-header__search-input" type="text" id="search-field__input" placeholder="Search" />
+        </form>
+        <div class="theme" id="theme">
+            <svg class="theme__svg sun" width="21" height="21">
+                <use href="../images/icon-sprites.svg#sun"></use>
+            </svg>
+            <p class="theme__light" id="theme__light">Light</p>
+            <label class="switch">
+                <input type="checkbox" class="switch-checkbox" id="switch-checkbox" />
+                <span class="slider round"></span>
+            </label>
+            <p class="theme__dark opacity" id="theme__dark">Dark</p>
+            <svg class="theme__svg moon" width="21" height="21">
+                <use href="../images/icon-sprites.svg#moon"></use>
             </svg>
         </div>
-
-        <!-- Theme -->
-        <div class="theme-toggle">
-            <span>
-                <svg class="theme__icon--sun icon" width="21px" height="21px">
-                    <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#sun"></use>
-                </svg>
-            </span>
-            <span class="theme__text">Light</span>
-            <input type="checkbox" class="checkbox" checked>
-            <span class="slider round"></span>
-            <span class="theme__text">Dark</span>
-            <span>
-                <svg class="theme__icon--moon icon" width="21px" height="21px">
-                    <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#moon"></use>
-                </svg>
-            </span>
-        </div>
+        <button type="button" class="mobile-button" id="js-open-menu" aria-expanded="false">
+            <svg class="icon" width="24" height="24">
+                <use href="../images/icon-sprites.svg#menu"></use>
+            </svg>
+        </button>
     </div>
 </header>
+<div class="mobile-menu" id="js-menu-container">
+    <div class="mobile-menu__container">
+        <div class="mobile-menu__wrapper">
+            <a href="#" class="logo">News</a>
+            <button type="button" class="close-btn" id="js-close-menu">
+                <svg width="24" height="24">
+                    <use href="../images/icon-sprites.svg#close"></use>
+                </svg>
+            </button>
+        </div>
+        <ul class="navbar-mobile">
+            <li class="navbar-mobile__item">
+                <a href="#" class="navbar-mobile__link navbar-mobile__link--current">
+                    <div class="navbar-mobile__icon-wrapper navbar-mobile__icon-wrapper--current">
+                        <svg width="18" height="18" class="navbar-mobile__icon">
+                            <use href="../images/icon-sprites.svg#home"></use>
+                        </svg>
+                    </div>
+                    Home
+                    <svg width="24" height="12" class="current-page__icon">
+                        <use href="../images/icon-sprites.svg#Frame-11"></use>
+                    </svg>
+                </a>
+            </li>
+            <li class="navbar-mobile__item">
+                <a href="#" class="navbar-mobile__link">
+                    <div class="navbar-mobile__icon-wrapper">
+                        <svg width="18" height="18" class="navbar-mobile__icon">
+                            <use href="../images/icon-sprites.svg#heart_contur"></use>
+                        </svg>
+                    </div>
+                    Favorite
+                </a>
+            </li>
+            <li class="navbar-mobile__item">
+                <a href="../read.html" class="navbar-mobile__link">
+                    <div class="navbar-mobile__icon-wrapper">
+                        <svg width="18" height="18" class="navbar-mobile__icon">
+                            <use href="../images/icon-sprites.svg#book-open"></use>
+                        </svg>
+                    </div>
+                    Read
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
   <main>
     <section class="category">
         <div class="container category__container" id="category__container">
@@ -322,6 +266,115 @@
 </section>
 
 </main>
+  <section class="not-found is-hidden">
+    <div class="container">
+        <h2 class="not-found__title">We haven’t found news from this category</h2>
+        <picture>
+            <source srcset="/goit-js66-team-project/assets/not-found-desktop-1x-30b65603.png 1x, /goit-js66-team-project/assets/not-found-desktop-2x-72abe3d8.png 2x"
+                media="(min-width: 1280px)" />
+            <source srcset="/goit-js66-team-project/assets/not-found-tablet-1x-30705916.png 1x, /goit-js66-team-project/assets/not-found-tablet-2x-8fe3b3a0.png 2x"
+                media="(min-width: 768px)" />
+            <source srcset="/goit-js66-team-project/assets/not-found-mobile-1x-72925fef.png 1x, /goit-js66-team-project/assets/not-found-mobile-2x-e9807bd3.png 2x"
+                media="(max-width: 767px)" />
+            <img class="not-found__image" src="/goit-js66-team-project/assets/not-found-desktop-1x-30b65603.png" alt="not found image">
+        </picture>
+    </div>
+</section>
+  <footer class="footer"></footer>
+  
+
+<button type="submit" class="registerbtn sing" data-modal-open>Sing Up</button>
+<button type="submit" class="registerbtn login" data-modal-open>Login</button>
+<button type="button" class="user" > USER </button>
+<div class="backdrop is-hidden" data-modal id="bcd">
+  <div class="modal modal-reg">
+    <button class="btn-close" data-modal-close-reg>
+      <svg fill="#212121" class="btn-close__icon" width="11" height="11">
+        <use href="./src/images/icon-sprites.svg#icon-close">
+        </use>
+      </svg>
+    </button>
+    <div class="form">
+      <form class="modal-form" id="auth-form">
+        <p class="modal-form__title">Registration
+        </p>
+
+                    
+      <div class="modal-form__field">
+        
+        <label for="email"><span class="modal-form__label">Email</span></label>
+       <input type="text" name="email" class="modal-form__input ml page-header__search-input" id="email">
+          </div>
+
+         <div class="modal-form__field">
+        
+          <label for="psw"><span class="modal-form__label">Password</span></label>
+          <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="psw">
+          </div>
+                               
+        <button type="submit" class="button-form" id="sing-up" >Sing Up</button>
+      </form>
+    </div>
+
+    
+
+  </div>
+</div>
+<div class="backdrop is-hidden" data-modal-login id="bcd">
+<div class="modal modal-reg ">
+  <button class="btn-close" data-modal-close-log>
+    <svg fill="#212121" class="btn-close__icon" width="11" height="11">
+      <use href="./src/images/icon-sprites.svg#icon-close">
+      </use>
+    </svg>
+  </button>
+  <div class="form ">
+     <form class="modal-form"  id="log-form">
+       <p class="modal-form__title">Login</p>
+                 
+      <div class="modal-form__field">
+       
+        <label for="mail"><span class="modal-form__label">Email</span></label>
+        <input type="text" name="mail" class="modal-form__input ml page-header__search-input" id="mail">
+        </div>
+
+        <div class="modal-form__field">
+       
+         <label for="psw"><span class="modal-form__label">Password</span></label>
+         <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="password">
+         </div>
+                             
+       <button type="submit" class="button-form" >Login</button>
+     </form>
+   </div>
+
+ </div>
+
+</div>
+
+<div class="backdrop is-hidden" data-modal-user >
+  <div class="modal modal-reg ">
+   
+    <button class="btn-close" data-modal-close>
+      <svg fill="#212121" class="btn-close__icon" width="11" height="11">
+        <use href="./src/images/icon-sprites.svg#icon-close">
+        </use>
+      </svg>
+    </button>
+    <div class="form ">
+       <form class="modal-form"  id="log-form">
+         <p class="modal-form__title">User </p>
+         <button type="submit" class="button-form" >Favorit</button>  
+        
+                               
+         <button type="submit" class="button-form" id="login-btn">Log out</button>
+       </form>
+     </div>
+  
+   </div>
+  
+  </div>
+
 
 
   
