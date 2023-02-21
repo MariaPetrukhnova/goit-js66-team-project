@@ -9,24 +9,39 @@
     display: flex;
     position: relative;
     min-height: 350px;
-    /* box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1); */
     flex-direction: column;
     border-radius: 4px;
-    transition: 0.2s;
   }
 
   .articles_container {
     display: grid;
-    /* grid-template-columns: repeat(auto-fill, 394px); */
-    grid-template-columns:  1fr 1fr 1fr;
     width: 100%;
     max-width: 1248px;
+    margin: 0 auto;
+    row-gap: 28px;
+
     justify-content: center;
     justify-items: center;
-    column-gap: 32px; 
-    row-gap: 40px;
-    margin: 0 auto;
   }
+
+  @media screen and (min-width: 768px) {
+    .articles_container {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 30px; 
+      row-gap: 30px;
+
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .articles_container {
+      grid-template-columns:  1fr 1fr 1fr;
+      column-gap: 32px; 
+      row-gap: 40px;
+  
+    }
+}
+
 
 .article_category {
     display: inline-block;
@@ -60,8 +75,15 @@
     margin-right: 20px;
 
     color: var(--accent-violet-color);
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 14px;
+    line-height: 19px;
+  }
+
+  @media screen and (min-width:768px) {
+    .read-more {
+      font-size: 16px;
+      line-height: 22px;
+    }
   }
 
   .article_text_wrapper {
@@ -70,24 +92,49 @@
   }
 
   .article_title {
-    margin: 20px 0 20px 0;
+    margin: 20px 0px;
 
-    font-size: 32px;
-    line-height: 44px;
     letter-spacing: -0.01em;
+    font-size: 24px;
+    line-height: 33px;
 
     color: var(--light-theme-main-color);
   }
 
+  @media screen and (min-width: 768px) {
+    .article_title {
+      font-size: 32px;
+      line-height: 44px;
+  
+    }
+  }
+
+
   .article_text {
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 14px;
+  line-height: 19px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .article_text {
+      font-size: 16px;
+      line-height: 22px;
+  
+    }
+
   }
 
   .article_date {
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 14px;
+    line-height: 19px;
     color: #A8A8A8;
+  }
+
+  @media screen and (min-width:768px) {
+    .article_date {
+      font-size: 16px;
+      line-height: 22px;  
+    }
   }
 
 

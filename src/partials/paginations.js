@@ -1,8 +1,8 @@
 const pg = document.getElementById('pagination');
 const btnNextPg = document.querySelector('button.next-page');
 const btnPrevPg = document.querySelector('button.prev-page');
-const btnFirstPg = document.querySelector('button.first-page');
-const btnLastPg = document.querySelector('button.last-page');
+// const btnFirstPg = document.querySelector('button.first-page');
+// const btnLastPg = document.querySelector('button.last-page');
 
 const valuePage = {
   curPage: 1,
@@ -102,31 +102,31 @@ function handleButton(element) {
     valuePage.curPage--;
     handleButtonLeft();
     btnNextPg.disabled = false;
-    btnLastPg.disabled = false;
+    // btnLastPg.disabled = false;
   } else if (element.classList.contains('next-page')) {
     valuePage.curPage++;
     handleButtonRight();
     btnPrevPg.disabled = false;
-    btnFirstPg.disabled = false;
+    // btnFirstPg.disabled = false;
   }
   pagination();
 }
 function handleButtonLeft() {
   if (valuePage.curPage === 1) {
     btnPrevPg.disabled = true;
-    btnFirstPg.disabled = true;
+    // btnFirstPg.disabled = true;
   } else {
     btnPrevPg.disabled = false;
-    btnFirstPg.disabled = false;
+    // btnFirstPg.disabled = false;
   }
 }
 function handleButtonRight() {
   if (valuePage.curPage === valuePage.totalPages) {
     console.log(valuePage.curPage);
     btnNextPg.disabled = true;
-    btnLastPg.disabled = true;
+    // btnLastPg.disabled = true;
   } else {
     btnNextPg.disabled = false;
-    btnLastPg.disabled = false;
+    // btnLastPg.disabled = false;
   }
 }

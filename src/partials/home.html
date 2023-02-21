@@ -1,23 +1,21 @@
 <!-- Path to images as from index.html file -->
 <header class="page-header">
+
     <div class="container header__wrap">
+    
         <a href="./index.html" class="logo">News</a>
+
         <nav class="page-header__nav">
             <ul class="nav__list--mobile">
                 <li class="nav__item js-search-input"><a class="nav__link js-search" href="">
                         <svg class="header__icon" width="20px" height="20px">
-
-
                             <use href="./images/icon-sprites.svg#bx_search"></use>
-
                         </svg>
                     </a></li>
 
                 <li class="nav__item"><a class="nav__link js-menu-open" href="">
-                        <svg class="header__icon" width="24px" height="24px">
-
+                        <svg class="header__icon icon" width="24px" height="24px">
                             <use href="./images/icon-sprites.svg#menu"></use>
-
                         </svg>
                     </a></li>
             </ul>
@@ -28,26 +26,30 @@
                 <li class="page-header__nav-item"><a class="page-header__nav-link" id="read-link" href="./read.html">Read</a></li>
             </ul>
         </nav>
+        <!-- Input-search -->
+        <div class="">
+            <input type="search" placeholder="Search" class="page-header__search-input">
+            <svg class="header__icon" width="20px" height="20px">
+                <use href="./images/icon-sprites.svg#bx_search"></use>
+            </svg>
+        </div>
 
-        <input type="search" placeholder="Search" class="page-header__search-input">
-
-        <label class="theme-toggle">
+        <!-- Theme -->
+        <div class="theme-toggle">
             <span>
-                <svg class="theme__icon" width="21px" height="21px">
-
+                <svg class="theme__icon--sun icon" width="21px" height="21px">
                     <use href="./images/icon-sprites.svg#sun"></use>
-
                 </svg>
             </span>
-            <input type="checkbox" checked>
+            <span class="theme__text">Light</span>
+            <input type="checkbox" class="checkbox" checked>
             <span class="slider round"></span>
+            <span class="theme__text">Dark</span>
             <span>
-                <svg class="theme__icon" width="21px" height="21px">
-
+                <svg class="theme__icon--moon icon" width="21px" height="21px">
                     <use href="./images/icon-sprites.svg#moon"></use>
-
                 </svg>
             </span>
-        </label>
+        </div>
     </div>
 </header>

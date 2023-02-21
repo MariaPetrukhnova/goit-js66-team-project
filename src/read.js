@@ -1,21 +1,36 @@
+import * as localeStorage from './partials/localeStoreageHandler';
+import articleHTML from './partials/article.html?raw';
 import spriteUrl from '/images/icon-sprites.svg';
 
-function createBaseMarcup(arr) {
-  const marcup = arrHandler(arr)
-    .map(article => {
+const LOCALSTORAGE_KEY = "read-articles";
+
+document.addEventListener('DOMContentLoaded', (e) => {
+    e.preventDefault();
+    console.log(`DOM is loaded ${e}`);
+    const markup = makeMarkup();
+    console.log(markup);
+    renderMarkup(markup);
+});
+
+const articles = localStorage.getItem(LOCALSTORAGE_KEY)
+
+console.log(articles);
+
+function makeMarkup() {
+    const objArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+    console.log(objArr);
+    const markup = objArr.map(article => {
       if (!article) {
         return;
       }
-      const { section, title, description, url, date, img, imgCaption } =
+      const { section, title, description, date, img, readDate, url, imgCaption } =
         article;
 
       return `<li class="article">
      <div class="article_img_wrapper">
        <p class="already-read">Already read</p>
        <p class="article_category">${section}</p>
-       <img class="article_img" src="${
-         img[img.length - 1].url
-       }" alt="${imgCaption}" width="395" height="395">
+       <img class="article_img" src="${img}" alt="${imgCaption}" width="395" height="395">
        <div class="article_flag">
        <button class="article_flag--add"><span class="article_flag_text">Add to favorite</span>
          <svg width="16" height="16">
@@ -41,29 +56,11 @@ function createBaseMarcup(arr) {
     })
     .join('');
 
-  return marcup;
+  return markup;
 }
 
-function arrHandler(arr) {
-  try {
-    const objArr = arr.map(el => {
-      if (el.media.length === 0) {
-        return;
-      }
-      return {
-        section: el.section_name || el.section,
-        title: el.title || el.headline.main,
-        description: el.abstract,
-        url: el.web_url || el.url,
-        date: el.pub_date || el.created_date || el.published_date,
-        img: el.media[0]['media-metadata'],
-        imgCaption: el.media[0].caption,
-      };
-    });
-    return objArr;
-  } catch (error) {
-    console.error(error);
-  }
-}
+const articlesOutput= document.querySelector('.articles_container');
 
-export { arrHandler, createBaseMarcup };
+function renderMarkup(markup) {
+    articlesOutput.insertAdjacentHTML('beforeend', markup);
+}

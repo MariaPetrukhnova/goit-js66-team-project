@@ -2,13 +2,13 @@
   background: #4440F7;
   mix-blend-mode: normal;
   border-radius: 4px;
+  width: 100%;
 }
 
 @media screen and (min-width: 1280px) {
   .weather {
     padding-top: 40px;
     padding-bottom: 60px;
-    max-width: 395px;
   }
 }
 
@@ -17,7 +17,6 @@
 
     padding-top: 40px;
     padding-bottom: 60px;
-    max-width: 353px;
 
   }
 }
@@ -27,7 +26,6 @@
 
     padding-top: 32px;
     padding-bottom: 32px;
-    max-width: 288px;
   }
 }
 
