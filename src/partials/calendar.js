@@ -1,159 +1,171 @@
-
-import CalendarDates from "calendar-dates";
+import CalendarDates from 'calendar-dates';
 const calendarDates = new CalendarDates();
-import { fetchPopularNews } from './try_api';
+import { arrHandler, notFoundHandler } from './apiFetchNewsByValue.js';
+import NewsApi from './apiConstructor.js';
 
 // import {fetchNewsByDate} from "./api-archive-by-month.js";
-import { createBaseMarkup } from "./markup.js";
-import {sliceArticlesDescription} from "./articles.js"
 
+const newsApi = new NewsApi();
+const pageNotFound = document.querySelector(`.not-found`);
+const searchInput = document.querySelector('.page-header__search-input');
+let queryValue = searchInput.value || '';
+console.log(queryValue);
 
 const articlesGallery = document.querySelector('.articles_container');
-
-
-
 
 const calendarWrapper = document.querySelector('.js-open-calendar');
 const calendarInput = document.querySelector('.calendar__input');
 const calendarBody = document.querySelector('.js-calendar-container');
-const nextMonthBtn = document.querySelector(".calendar__month-btn--next");
-const prevMonthBtn = document.querySelector(".calendar__month-btn--prev");
-const nextYearBtn = document.querySelector(".calendar__year-btn");
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const nextMonthBtn = document.querySelector('.calendar__month-btn--next');
+const prevMonthBtn = document.querySelector('.calendar__month-btn--prev');
+const nextYearBtn = document.querySelector('.calendar__year-btn');
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
-nextYearBtn.addEventListener("click",  handleYearBtnClick);
-nextMonthBtn.addEventListener("click",  handleBtnClick);
-prevMonthBtn.addEventListener("click",  handlePrevBtnClick);
-calendarWrapper.addEventListener("click", toggleCalendar);
-
-
+nextYearBtn.addEventListener('click', handleYearBtnClick);
+nextMonthBtn.addEventListener('click', handleBtnClick);
+prevMonthBtn.addEventListener('click', handlePrevBtnClick);
+calendarWrapper.addEventListener('click', toggleCalendar);
 
 function toggleCalendar() {
-  const isMenuOpen = calendarInput.getAttribute('aria-expanded') === 'true' || false;
+  const isMenuOpen =
+    calendarInput.getAttribute('aria-expanded') === 'true' || false;
   calendarWrapper.setAttribute('aria-expanded', !isMenuOpen);
   calendarWrapper.classList.toggle('reversed');
   calendarBody.classList.toggle('is-open');
-
 }
-
 
 const main = async () => {
   const datesArr = await calendarDates.getMatrix(new Date());
-  console.log("🚀 ~ file: calendar.js:17 ~ main ~ datesArr", datesArr)
+  console.log('🚀 ~ file: calendar.js:17 ~ main ~ datesArr', datesArr);
 
   const today = new Date();
   const todayArr = [months[today.getMonth()], today.getFullYear()];
   const croppedArr = changeFormatData(datesArr);
   renderCalendar(croppedArr);
   renderMonth(todayArr);
-  
 };
 
 async function handleBtnClick() {
-  const monthText = document.querySelector(".calendar__month").textContent;
-  const date = monthText.split(" ");
-  
+  const monthText = document.querySelector('.calendar__month').textContent;
+  const date = monthText.split(' ');
+
   let index = findIndexNextMonth(date);
-  const datesArr = await calendarDates.getMatrix(new Date(`${date[1]}, ${months[index]}`));
+  const datesArr = await calendarDates.getMatrix(
+    new Date(`${date[1]}, ${months[index]}`)
+  );
   const croppedArr = changeFormatData(datesArr);
-  console.log("🚀 ~ file: calendar.js:28 ~ main ~ croppedArr", croppedArr)
+  console.log('🚀 ~ file: calendar.js:28 ~ main ~ croppedArr', croppedArr);
   renderCalendar(croppedArr);
   renderMonth([months[index], date[1]]);
 }
 
 async function handlePrevBtnClick() {
-  const monthText = document.querySelector(".calendar__month").textContent;
-  const date = monthText.split(" ");
-  let index =  findIndexPrevMonth(date);
-  const datesArr = await calendarDates.getMatrix(new Date(`${date[1]}, ${months[index]}`));
+  const monthText = document.querySelector('.calendar__month').textContent;
+  const date = monthText.split(' ');
+  let index = findIndexPrevMonth(date);
+  const datesArr = await calendarDates.getMatrix(
+    new Date(`${date[1]}, ${months[index]}`)
+  );
   const croppedArr = changeFormatData(datesArr);
-  console.log("🚀 ~ file: calendar.js:28 ~ main ~ croppedArr", croppedArr)
+  console.log('🚀 ~ file: calendar.js:28 ~ main ~ croppedArr', croppedArr);
   renderCalendar(croppedArr);
   renderMonth([months[index], date[1]]);
 }
 
 function findIndexPrevMonth(date) {
   let index = months.indexOf(date[0]);
-  console.log("date:", date);
-  console.log("index:", index);
+  console.log('date:', date);
+  console.log('index:', index);
 
-  if(index === 0) {
+  if (index === 0) {
     index = 11;
     date[1] = +date[1] - 1;
-    console.log("date:", date);
+    console.log('date:', date);
   } else {
     index -= 1;
   }
   return index;
-
 }
 
 function findIndexNextMonth(date) {
   let index = months.indexOf(date[0]);
-  console.log("date:", date);
-  if(index === 11) {
+  console.log('date:', date);
+  if (index === 11) {
     index = 0;
     date[1] = +date[1] + 1;
-    console.log("date:", date);
+    console.log('date:', date);
   } else {
     index += 1;
   }
   return index;
-
 }
 
-
-
 async function handleYearBtnClick() {
-  const monthText = document.querySelector(".calendar__month").textContent;
-  const date = monthText.split(" ");
+  const monthText = document.querySelector('.calendar__month').textContent;
+  const date = monthText.split(' ');
   date[1] = +date[1] + 1;
   let index = months.indexOf(date[0]);
-  const datesArr = await calendarDates.getMatrix(new Date(`${date[1]}, ${months[index]}`));
+  const datesArr = await calendarDates.getMatrix(
+    new Date(`${date[1]}, ${months[index]}`)
+  );
   const croppedArr = changeFormatData(datesArr);
-  console.log("🚀 ~ file: calendar.js:28 ~ main ~ croppedArr", croppedArr)
+  console.log('🚀 ~ file: calendar.js:28 ~ main ~ croppedArr', croppedArr);
   renderCalendar(croppedArr);
   renderMonth([months[index], date[1]]);
 }
 
-
 function renderMonth([month, year]) {
   const calendTextDiv = document.querySelector('.calendar__body-caption');
-  const p = calendTextDiv.querySelector("p");
+  const p = calendTextDiv.querySelector('p');
   if (p) {
     p.remove();
   }
-  calendTextDiv.insertAdjacentHTML("afterbegin", `<p class="calendar__month">${month} ${year}</p>`);
- 
-
+  calendTextDiv.insertAdjacentHTML(
+    'afterbegin',
+    `<p class="calendar__month">${month} ${year}</p>`
+  );
 }
 
 function renderCalendar(croppedArr) {
   const calendarDatesContainer = document.querySelector('.calendar__list');
   const todayFullDate = new Date();
   const today = todayFullDate.getDate();
-  
-  
-  calendarDatesContainer.innerHTML = `${croppedArr.map(date=> {
-    const dayOfWeek = new Date(date.iso).getDay();
-    if(today === date.date) {
-      return `<li id="${date.iso}" class="calendar__date calendar__date--active">${date.date}</li>`
-    } 
-    if(+todayFullDate < new Date(date.iso)) {
-      return `<li id="${date.iso}" class="calendar__date calendar__date--inactive">${date.date}</li>`
-    }
-    if(dayOfWeek === 6 || dayOfWeek === 0) {
-      return `<li id="${date.iso}" class="calendar__date calendar__date--weekend">${date.date}</li>`
-    }
-   
-    return `<li id="${date.iso}" class="calendar__date">${date.date}</li>`;
-  }).join("")}`
+
+  calendarDatesContainer.innerHTML = `${croppedArr
+    .map(date => {
+      const dayOfWeek = new Date(date.iso).getDay();
+      if (today === date.date) {
+        return `<li id="${date.iso}" class="calendar__date calendar__date--active">${date.date}</li>`;
+      }
+      if (+todayFullDate < new Date(date.iso)) {
+        return `<li id="${date.iso}" class="calendar__date calendar__date--inactive">${date.date}</li>`;
+      }
+      if (dayOfWeek === 6 || dayOfWeek === 0) {
+        return `<li id="${date.iso}" class="calendar__date calendar__date--weekend">${date.date}</li>`;
+      }
+
+      return `<li id="${date.iso}" class="calendar__date">${date.date}</li>`;
+    })
+    .join('')}`;
 }
 
 function renderNotFound() {
   const newsContainer = document.querySelector('.news-gallery');
 
-  return articlesGallery.innerHTML = `<div class="container">
+  return (articlesGallery.innerHTML = `<div class="container">
   <h2 class="not__found__title">We couldn't find news from the future ;) Please, pick another date! </h2>
   <picture>
       <source
@@ -170,26 +182,18 @@ function renderNotFound() {
       />
       <img class="not__found__image" src="./images/not-found-desktop-1x.png" alt="not found image">
   </picture>
-</div>`
-  
+</div>`);
 }
-
-
 
 function changeFormatData(date) {
   const cropped = date.flat();
-  console.log("cropped", cropped);
+  console.log('cropped', cropped);
   // отримали масив днів і його обрізаємо
   return [...cropped].slice(1, 36);
-
 }
-
-
-
 
 calendarBody.addEventListener('click', onDateSelect);
 // Коли користувач натиснув на дату,функція робить дату активною. Якщо на ту саму дату, то знімає активний клас (додати до кожн фкції комент)
-
 
 function onDateSelect(evt) {
   const isDateEl = evt.target.classList.contains('calendar__date');
@@ -201,76 +205,92 @@ function onDateSelect(evt) {
   const dateEl = evt.target;
   const currentDate = document.querySelector('.calendar__date--active');
   const selectedDate = new Date(evt.target.id);
-  console.log("selectedDate", selectedDate)
-  console.log("todayDate", new Date()) 
-    
+  console.log('selectedDate', selectedDate);
+  console.log('todayDate', new Date());
 
-  if (currentDate === dateEl){
-    calendarInput.value = "";
+  if (currentDate === dateEl) {
+    calendarInput.value = '';
     currentDate.classList.remove('calendar__date--active');
-  
   } else if (currentDate !== dateEl && selectedDate > new Date()) {
-    console.log("selectedDate > new Date()", selectedDate > new Date());
+    console.log('selectedDate > new Date()', selectedDate > new Date());
     renderNotFound();
     removeActiveDateClass();
     addActiveDateClass(dateEl);
   } else {
     removeActiveDateClass();
     addActiveDateClass(dateEl);
-    render();
 
+    if (queryValue === '') {
+      console.log(queryValue);
+      return fetchNewsBySearchAndData(queryValue);
+    } else {
+      const inputValue = searchInput.target.value;
+      console.log(inputValue);
+      return fetchNewsBySearchAndData(inputValue);
+    }
   }
-
-
-
-
 }
 
 function removeActiveDateClass() {
-  const currentActiveDate = document.querySelector('.calendar__date.calendar__date--active');
+  const currentActiveDate = document.querySelector(
+    '.calendar__date.calendar__date--active'
+  );
 
   if (currentActiveDate) {
     currentActiveDate.classList.remove('calendar__date--active');
   }
 }
-
-
-
-function getDateForInput (elem) {
-  const inputValue = elem.id.split("-").reverse().join("/");
+let realDate = 0;
+function getDateForInput(elem) {
+  const inputValue = elem.id.split('-').reverse().join('/');
   calendarInput.value = inputValue;
   // Виклик тут фкції для пошуку новин за датою
   // Або кнопка, де знайдуть інпут на тот момент, коли на спан з датою натиснули і інпут заповнений
-  return inputValue;
+  realDate = elem.id.split('-').join('');
+  return inputValue, realDate;
 }
 
-function render() {
-  console.log(23);
-  fetchPopularNews()
-    .then(articles => createBaseMarkup(articles))
-    .then(marcup => {
-      console.log(marcup);
-      articlesGallery.innerHTML = marcup;
-      // articlesGallery.insertAdjacentHTML('beforeend', marcup);
-    })
-    .then(() => {
-      const articleDescription = [
-        ...articlesGallery.querySelectorAll('.article_text'),
-      ];
-      sliceArticlesDescription(articleDescription);
-    });
-}
+const fetchNewsBySearchAndData = async request => {
+  try {
+    const response = await fetch(
+      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&begin_date=${realDate}&end_date=${realDate}&${newsApi.API_KEY}`
+    );
+    // // -->
+    // console.log(`response`, response.ok);
+    // // -->
+    if (response.ok === false) {
+      throw new Error('Such a request has not been found');
+    }
+    const articles = await response.json();
+    const resArr = articles.response.docs;
 
+    // // -->
+    // console.log(`resArr`, resArr);
+    // // -->
+
+    // --> render section not-found
+
+    if (resArr.length) {
+      pageNotFound.classList.add(`is-hidden`);
+      arrHandler(resArr);
+    } else if (resArr.length === 0) {
+      notFoundHandler();
+    }
+    // --> render section not-found
+
+    console.log(resArr);
+    // arrHandler(resArr);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 function addActiveDateClass(elem) {
   elem.classList.add('calendar__date--active');
-  getDateForInput (elem);
+  getDateForInput(elem);
   toggleCalendar();
 }
 
-
 main();
-
-
 
 export * as calendarTools from './calendar.js';
