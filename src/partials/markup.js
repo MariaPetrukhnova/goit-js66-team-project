@@ -1,17 +1,19 @@
 import spriteUrl from '/images/icon-sprites.svg';
 
-function createBaseMarkup(arr) {
-  const markup = arrHandler(arr)
+function createBaseMarkup(arr, normalize = true) {
+  let normalizedArr = normalize ? arrHandler(arr) : arr
+  const markup = normalizedArr
     .map(article => {
       if (!article) {
         return;
       }
-      const { section, title, description, url, date, img, imgCaption } =
+
+      const { section, title, description, url, date, img, imgCaption, id } =
         article;
 
-      return `<li class="article">
+      return `<li class="article" data-id="${id}">
      <div class="article_img_wrapper">
-       <p class="already-read">Already read</p>
+       <p class="already-read is-hidden">Already read</p>
        <p class="article_category">${section}</p>
        <img class="article_img" src="${img}" alt="${imgCaption}" width="395" height="395">
        <div class="article_flag">
@@ -54,6 +56,7 @@ function arrHandler(arr) {
           date: el.pub_date || el.created_date || el.published_date,
           img: `https://cdn.pixabay.com/photo/2013/03/30/00/10/news-97862_960_720.png`,
           imgCaption: 'image',
+          id: el.id
         };
       }
       return {
@@ -64,6 +67,7 @@ function arrHandler(arr) {
         date: el.pub_date || el.created_date || el.published_date,
         img: el.media[0]['media-metadata'][2].url,
         imgCaption: el.media[0].caption,
+        id: el.id
       };
     });
     console.log(objArr);

@@ -146,7 +146,22 @@
   color: #00DD73;
 }
 
+
 .already-read::after {
+
+    top: 20px;
+    right: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+    color: #00DD73;
+    display: none;
+  }
+
+  .already-read.is-visible {
+    display: block;
+  }
+
 
   margin-left: 4px;
   content: '✓';
