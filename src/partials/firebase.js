@@ -59,7 +59,14 @@ const refs = {
                 Notiflix.Notify.warning('For signing up you need to enter both E-mail and Password');
                 return;
                }
-                      
+               checkUserRegistration(email, password).then(data => {
+                if(data.registered === true){
+                    Notiflix.Notify.warning('This user already exists! Please enter your personal account!');
+                    refs.modal.classList.toggle("is-hidden");
+                    return;
+                }})
+
+                                   
             createUserWithEmailAndPassword(auth, email, password)
               .then((userCredential) => {
                console.log(userCredential);
@@ -75,8 +82,21 @@ const refs = {
               });
 
             }
-    // Вхід існуючого користувача!!!\\\\\
+            function checkUserRegistration(email, password) {
+                const apiKey = 'AIzaSyARa5Hh8nGBMHOsxW-0GD7_PQkq_qzHkeQ';
+                return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                      email, password,
+                      returnSecureToken: true,
+                    })
+                  })
+                    .then(response => response.json())
+                    .catch();
+              };
 
+    // Вхід існуючого користувача!!!\\\\\
+    
     function onModalLogin(e) {
     e.preventDefault();
     refs.modalLogin.classList.toggle("is-hidden");
@@ -96,10 +116,12 @@ const refs = {
             Notiflix.Notify.warning('For signing up you need to enter both E-mail and Password');
             return;
            }
+           
         signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
   
     const user = userCredential.user;
+    console.log(user);
     Notiflix.Report.success( 'Successful Login')
     refs.modalLogin.classList.toggle("is-hidden");
     refs.modalUser.classList.toggle("is-hidden");
