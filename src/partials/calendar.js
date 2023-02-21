@@ -1,11 +1,7 @@
 
 import CalendarDates from "calendar-dates";
 const calendarDates = new CalendarDates();
-import { fetchPopularNews } from './try_api';
 
-// import {fetchNewsByDate} from "./api-archive-by-month.js";
-import { createBaseMarcup } from "./marcup.js";
-import {sliceArticlesDescription} from "./articles.js"
 
 
 
@@ -16,7 +12,6 @@ const nextMonthBtn = document.querySelector(".calendar__month-btn--next");
 const prevMonthBtn = document.querySelector(".calendar__month-btn--prev");
 const nextYearBtn = document.querySelector(".calendar__year-btn");
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const articlesGallery = document.querySelector('.articles_container');
 
 nextYearBtn.addEventListener("click",  handleYearBtnClick);
 nextMonthBtn.addEventListener("click",  handleBtnClick);
@@ -127,19 +122,19 @@ function renderMonth([month, year]) {
 
 function renderCalendar(croppedArr) {
   const calendarDatesContainer = document.querySelector('.calendar__list');
+  const today = new Date().getDate();
   const todayFullDate = new Date();
-  const today = todayFullDate.getDate();
   
   
   calendarDatesContainer.innerHTML = `${croppedArr.map(date=> {
-    const dayOfWeek = new Date(date.iso).getDay();
+    const todayDay = new Date(date.iso).getDay();
     if(today === date.date) {
       return `<li id="${date.iso}" class="calendar__date calendar__date--active">${date.date}</li>`
     } 
     if(+todayFullDate < new Date(date.iso)) {
       return `<li id="${date.iso}" class="calendar__date calendar__date--inactive">${date.date}</li>`
     }
-    if(dayOfWeek === 6 || dayOfWeek === 0) {
+    if(todayDay === 6 || todayDay === 0) {
       return `<li id="${date.iso}" class="calendar__date calendar__date--weekend">${date.date}</li>`
     }
    
@@ -148,10 +143,10 @@ function renderCalendar(croppedArr) {
 }
 
 function renderNotFound() {
-  
+  const newsContainer = document.querySelector('.news-gallery');
 
-  return articlesGallery.innerHTML = `<div class="container">
-  <h2 class="not__found__title">We couldn't find news from the future ;) Please, pick another date! </h2>
+  return newsContainer.innerHTML = `<div class="container">
+  <h2 class="not__found__title">We couldn't find news from this date</h2>
   <picture>
       <source
       srcset="./images/not-found-desktop-1x.png 1x, ./images/not-found-desktop-2x.png 2x"
@@ -212,9 +207,10 @@ function onDateSelect(evt) {
   } else {
     removeActiveDateClass();
     addActiveDateClass(dateEl);
-    render();
 
   }
+
+
 
 
 }
@@ -236,21 +232,6 @@ function getDateForInput (elem) {
   return inputValue;
 }
 
-function render() {
-  console.log(23);
-  fetchPopularNews()
-    .then(articles => createBaseMarcup(articles))
-    .then(marcup => {
-      articlesGallery.innerHTML = marcup;
-      // articlesGallery.insertAdjacentHTML('beforeend', marcup);
-    })
-    .then(() => {
-      const articleDescription = [
-        ...articlesGallery.querySelectorAll('.article_text'),
-      ];
-      sliceArticlesDescription(articleDescription);
-    });
-}
 
 function addActiveDateClass(elem) {
   elem.classList.add('calendar__date--active');
