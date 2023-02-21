@@ -34,6 +34,7 @@ async function searchByCategory (handledCategory) {
 function arrHandler(arr) {
   try{
     const objArr = arr.map(el => {
+      
       if (!el.title || !el.abstract) {
         return;
       }
@@ -43,7 +44,7 @@ function arrHandler(arr) {
           title: el.title || el.headline.main || "No titel",
           description: el.abstract || "No description",
           url: el.web_url || el.url,
-          date: el.pub_date || el.created_date,
+          date: el.pub_date || el.created_date.slice(0, 10),
           imgCaption: el.title,
           img: `https://cdn.pixabay.com/photo/2013/03/30/00/10/news-97862_960_720.png`,
         };
@@ -54,7 +55,7 @@ function arrHandler(arr) {
         title: el.title || el.headline.main || "No Titel",
         description: el.abstract || "No description",
         url: el.web_url || el.url,
-        date: el.pub_date || el.created_date,
+        date: el.pub_date || el.created_date.slice(0, 10),
         imgCaption: el.multimedia[2].caption,
         img: el.multimedia[2].url,
       };
