@@ -28,6 +28,3 @@ function sliceArticlesDescription(textNodes) {
     }
   });
 }
-
-
-export {sliceArticlesDescription};
