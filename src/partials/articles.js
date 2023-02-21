@@ -11,6 +11,8 @@ function onDOMLoad(e) {
     .then(articles => createBaseMarkup(articles))
     .then(markup => {
       articlesGallery.insertAdjacentHTML('beforeend', markup);
+      const event = new Event('rendered')
+      articlesGallery.dispatchEvent(event)
     })
     .then(() => {
       const articleDescription = [
