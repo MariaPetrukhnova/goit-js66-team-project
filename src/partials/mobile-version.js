@@ -1,25 +1,35 @@
 const refs = {
-  search: document.querySelector('.js-search'),
-  burgerMenu: document.querySelector('.js-menu-open'),
-  searchInput: document.querySelector('.js-search-input'),
-  body: document.querySelector('body'),
+  openMenuBtn: document.getElementById('js-open-menu'),
+  closeMenuBtn: document.getElementById('js-close-menu'),
+  themeContainer: document.getElementById('theme'),
+  mobileMenu: document.getElementById('js-menu-container'),
+  searchBtn: document.getElementById('form-btn'),
 };
 
-refs.search.addEventListener('click', onOpenSearchInput);
-// refs.burgerMenu.addEventListener('click', onOpenMenu);
+refs.openMenuBtn.addEventListener('click', toggleMenu);
+refs.closeMenuBtn.addEventListener('click', toggleMenu);
 
-function onOpenSearchInput(e) {
-  e.preventDefault();
+function toggleMenu(e) {
+  const isMenuStatus =
+    refs.openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
+  refs.openMenuBtn.setAttribute('aria-expanded', !isMenuStatus);
+  refs.mobileMenu.classList.toggle('open-menu');
 
-  refs.searchInput.innerHTML =
-    '<input type="search" placeholder="Search" class="page-header__search-input">';
+  if (refs.themeContainer.classList.contains('mobile')) {
+    refs.themeContainer.classList.remove('mobile');
+  } else if (!refs.themeContainer.classList.contains('mobile')) {
+    refs.themeContainer.classList.add('mobile');
+  }
 }
 
-function onOpenMenu(e) {
-  e.preventDefault();
+window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
+  if (!e.matches) return;
+  refs.mobileMenu.classList.remove('open-menu');
+  refs.openMenuBtn.setAttribute('aria-expanded', false);
+});
 
-  refs.body.innerHTML =
-    '<input type="search" placeholder="Search" class="page-header__search-input">';
+if (window.innerWidth < 768) {
+  refs.searchBtn.setAttribute('type', 'button');
 }
 
-export { refs, onOpenSearchInput, onOpenMenu };
+export { toggleMenu };
