@@ -1,6 +1,8 @@
 import NewsApi from './apiConstructor.js';
 import spriteUrl from '/images/icon-sprites.svg';
+import { fetchNewsBySearchAndData } from './calendar.js';
 
+const calendarBody = document.querySelector('.js-calendar-container');
 const articlesGallery = document.querySelector('.articles_container');
 
 const newsApi = new NewsApi();
@@ -15,9 +17,17 @@ searchInput.addEventListener('change', onEnterPush);
 
 function onEnterPush(e) {
   const query = e.target.value;
-
-  console.log(query);
-  fetchNewsBySearch(query);
+  const dateInput = document.querySelector(".calendar__input");
+  dateInput.value = "";
+  
+  if (!dateInput.value) {
+    fetchNewsBySearch(query);
+    console.log("Виклик fetchNewsBySearch(query) без даних по даті");
+  }
+  if (dateInput.value) {
+    fetchNewsBySearchAndData(query);
+    console.log("Виклик fetchNewsBySearch(query) з даними по даті");
+  }
 }
 
 const fetchNewsBySearch = async request => {
@@ -140,4 +150,4 @@ function notFoundHandler() {
 // --> render section not-found
 
 export * as apiFetchNewsByValue from './apiFetchNewsByValue.js';
-export { arrHandler, notFoundHandler };
+export { arrHandler, notFoundHandler, fetchNewsBySearch };
