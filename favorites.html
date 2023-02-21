@@ -7,6 +7,61 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- Path to images as from index.html file -->
+<header class="page-header">
+
+    <div class="container header__wrap">
+    
+        <a href="./index.html" class="logo">News</a>
+
+        <nav class="page-header__nav">
+            <ul class="nav__list--mobile">
+                <li class="nav__item js-search-input"><a class="nav__link js-search" href="">
+                        <svg class="header__icon" width="20px" height="20px">
+                            <use href="/goit-js66-team-project/assets/icon-sprites-da59ca18.svg#bx_search"></use>
+                        </svg>
+                    </a></li>
+
+                <li class="nav__item"><a class="nav__link js-menu-open" href="">
+                        <svg class="header__icon icon" width="24px" height="24px">
+                            <use href="/goit-js66-team-project/assets/icon-sprites-da59ca18.svg#menu"></use>
+                        </svg>
+                    </a></li>
+            </ul>
+
+            <ul class="page-header__nav-list--tablet-desk">
+                <li class="page-header__nav-item"><a class="page-header__nav-link" href="./index.html">Home</a></li>
+                <li class="page-header__nav-item"><a class="page-header__nav-link" href="./favorites.html">Favorite</a></li>
+                <li class="page-header__nav-item"><a class="page-header__nav-link" id="read-link" href="./read.html">Read</a></li>
+            </ul>
+        </nav>
+        <!-- Input-search -->
+        <div class="">
+            <input type="search" placeholder="Search" class="page-header__search-input">
+            <svg class="header__icon" width="20px" height="20px">
+                <use href="/goit-js66-team-project/assets/icon-sprites-da59ca18.svg#bx_search"></use>
+            </svg>
+        </div>
+
+        <!-- Theme -->
+        <div class="theme-toggle">
+            <span>
+                <svg class="theme__icon--sun icon" width="21px" height="21px">
+                    <use href="/goit-js66-team-project/assets/icon-sprites-da59ca18.svg#sun"></use>
+                </svg>
+            </span>
+            <span class="theme__text">Light</span>
+            <input type="checkbox" class="checkbox" checked>
+            <span class="slider round"></span>
+            <span class="theme__text">Dark</span>
+            <span>
+                <svg class="theme__icon--moon icon" width="21px" height="21px">
+                    <use href="/goit-js66-team-project/assets/icon-sprites-da59ca18.svg#moon"></use>
+                </svg>
+            </span>
+        </div>
+    </div>
+</header>
     <p>That's favorites page</p>
 </body>
 </html>
