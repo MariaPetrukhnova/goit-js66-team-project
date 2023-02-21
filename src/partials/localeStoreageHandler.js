@@ -5,25 +5,30 @@ const body = document.querySelector('body');
 
 body.addEventListener('click', onArticleLink);
 
-const articlesArr = [];
+const articlesArr = localStorage.getItem(LOCALSTORAGE_KEY) || [];
 
 function onArticleLink(e) {
     if (!e.target.classList.contains("read-more")) return;
 
-    articlesArr.push(createCardObj(e));
-    addArticlesToLocaleStorage(LOCALSTORAGE_KEY, JSON.stringify(articlesArr));
+    // перевірка через obj value
+    // const currentArr = createCardObj(e);
+    // const valArr = Object.values(currentArr);
+    // articlesArr.forEach(el => {
+    //     console.log(Object.values(el).includes(valArr[2]));
+    //     if (Object.values(el).includes(valArr[2])) return
+        articlesArr.push(createCardObj(e));
+        addArticlesToLocaleStorage(LOCALSTORAGE_KEY, JSON.stringify(articlesArr));
+// });
+    
     return articlesArr;
 }
 
 
-function createCardObj(e) {
-    console.log(e.target);
-    
+function createCardObj(e) {    
 
     const savedCard = new Object;
     const dateOfRead = new Date;
     savedCard.readDate = dateOfRead.toDateString();
-    console.log(savedCard.readDate);
 
     savedCard.date = e.target.previousElementSibling.textContent;
     savedCard.img = e.target.parentNode.parentNode.firstElementChild.children[2].getAttribute('src');
