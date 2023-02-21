@@ -1,10 +1,4 @@
 /* Reset styles */
-
-body {
-  font-weight: 400;
-  font-style: normal;
-}
-
 h1,
 h2,
 h3,
@@ -33,10 +27,23 @@ a {
 
 button {
   cursor: pointer;
+  /* From Smilichenko S. */
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
 }
 
 img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+/* Icon-svg-base from Smilichenko S. */
+svg {
+  display: inline-block;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
 }

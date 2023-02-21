@@ -8,3 +8,4 @@ import {} from './partials/categories.js';
 import { apiCategoties } from './partials/api-categories';
 import * as articles from './partials/articles';
 import {} from './partials/paginations';
+import { refs } from './partials/theme-toggle.js';
