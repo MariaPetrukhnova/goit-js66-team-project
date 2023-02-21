@@ -2,37 +2,31 @@
 
 <button type="submit" class="registerbtn sing" data-modal-open>Sing Up</button>
 <button type="submit" class="registerbtn login" data-modal-open>Login</button>
+<button type="button" class="user" > USER </button>
 <div class="backdrop is-hidden" data-modal id="bcd">
   <div class="modal modal-reg">
+    <button class="btn-close" data-modal-close-reg>
+      <svg fill="#212121" class="btn-close__icon" width="11" height="11">
+        <use href="./src/images/icon-sprites.svg#icon-close">
+        </use>
+      </svg>
+    </button>
     <div class="form">
       <form class="modal-form" id="auth-form">
-        <p class="modal-form__title">Register
+        <p class="modal-form__title">Registration
         </p>
 
-        <div class="modal-form__field">
-         <label for="name"><span class="modal-form__label">First Name</span>
-          </label>
-           <input type="text" name="name" class="modal-form__input" id="name">
-        </div>
-      
-        <div class="modal-form__field">
-          
-            <label for="last"><span class="modal-form__label">Last Name</span>
-            </label>
-          <input type="text" name="last" class="modal-form__input" id="last">
-                        
-        </div>
-             
+                    
       <div class="modal-form__field">
         
         <label for="email"><span class="modal-form__label">Email</span></label>
-       <input type="text" name="email" class="modal-form__input ml" id="email">
+       <input type="text" name="email" class="modal-form__input ml page-header__search-input" id="email">
           </div>
 
          <div class="modal-form__field">
         
           <label for="psw"><span class="modal-form__label">Password</span></label>
-          <input type="text" name="psw" class="modal-form__input ps" id="psw">
+          <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="psw">
           </div>
                                
         <button type="submit" class="button-form" id="sing-up" >Sing Up</button>
@@ -45,6 +39,12 @@
 </div>
 <div class="backdrop is-hidden" data-modal-login id="bcd">
 <div class="modal modal-reg ">
+  <button class="btn-close" data-modal-close-log>
+    <svg fill="#212121" class="btn-close__icon" width="11" height="11">
+      <use href="./src/images/icon-sprites.svg#icon-close">
+      </use>
+    </svg>
+  </button>
   <div class="form ">
      <form class="modal-form"  id="log-form">
        <p class="modal-form__title">Login</p>
@@ -52,16 +52,16 @@
       <div class="modal-form__field">
        
         <label for="mail"><span class="modal-form__label">Email</span></label>
-        <input type="text" name="mail" class="modal-form__input ml" id="mail">
+        <input type="text" name="mail" class="modal-form__input ml page-header__search-input" id="mail">
         </div>
 
         <div class="modal-form__field">
        
          <label for="psw"><span class="modal-form__label">Password</span></label>
-         <input type="text" name="psw" class="modal-form__input ps" id="password">
+         <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="password">
          </div>
                              
-       <button type="submit" class="button-form" id="login-btn">Login</button>
+       <button type="submit" class="button-form" >Login</button>
      </form>
    </div>
 
@@ -69,19 +69,25 @@
 
 </div>
 
-<div class="backdrop is-hidden" data-modal-user>
+<div class="backdrop is-hidden" data-modal-user >
   <div class="modal modal-reg ">
+   
+    <button class="btn-close" data-modal-close>
+      <svg fill="#212121" class="btn-close__icon" width="11" height="11">
+        <use href="./src/images/icon-sprites.svg#icon-close">
+        </use>
+      </svg>
+    </button>
     <div class="form ">
        <form class="modal-form"  id="log-form">
          <p class="modal-form__title">User </p>
          <button type="submit" class="button-form" >Favorit</button>  
         
                                
-         <button type="submit" class="button-form" id="login-btn">Go out</button>
+         <button type="submit" class="button-form" id="login-btn">Log out</button>
        </form>
      </div>
   
    </div>
   
   </div>
-<!-- <script  src="./firebase.js" type="module"></script> -->
