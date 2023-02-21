@@ -28,4 +28,4 @@ function sliceArticlesDescription(textNodes) {
     }
   });
 }
-export {sliceArticlesDescription};
+export { sliceArticlesDescription };
