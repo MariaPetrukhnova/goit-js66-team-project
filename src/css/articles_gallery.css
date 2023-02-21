@@ -156,6 +156,9 @@
     line-height: 19px;
     color: #00DD73;
     display: none;
+    margin-left: 4px;
+    content: '✓';
+  
   }
 
   .already-read.is-visible {
@@ -163,9 +166,7 @@
   }
 
 
-  margin-left: 4px;
-  content: '✓';
-}
+
 
 .article_category {
   position: absolute;
