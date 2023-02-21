@@ -1,5 +1,6 @@
 import spriteUrl from '/images/icon-sprites.svg';
 const LOCALSTORAGE_KEY = "read-articles";
+const LOCALSTORAGE_FAV_KEY = "favorite-articles";
 
 const body = document.querySelector('body');
 
@@ -7,20 +8,31 @@ body.addEventListener('click', onArticleLink);
 const alreadyRead = document.querySelector('.already-read');
 
 const articlesArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || [];
+const favArticlesArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_FAV_KEY)) || [];
 
 console.log('START', articlesArr);
 
 function onArticleLink(e) {
-    if (!e.target.classList.contains("read-more")) return;
+    if (e.target.classList.contains("read-more")) {
+        const articleEl = e.target.closest('.article');
+        const articleId = articleEl.dataset.id;
+        articleEl.querySelector('.already-read').classList.add('is-visible');
 
-    const articleEl = e.target.closest('.article');
-    const articleId = articleEl.dataset.id;
-    articleEl.querySelector('.already-read').classList.add('is-visible');
+        if (!articlesArr.find((item) => item.id === articleId)) {
+            articlesArr.push(createCardObj(e));
+            addArticlesToLocaleStorage(LOCALSTORAGE_KEY, JSON.stringify(articlesArr));
+        }
+    } else if (e.target.classList.contains("article_flag_text")) {
+        const articleEl = e.target.closest('.article');
+        const articleId = articleEl.dataset.id;
+        articleEl.querySelector('.article_flag--add').classList.toggle('is-hidden');
+        articleEl.querySelector('.article_flag--remove').classList.toggle('is-hidden');
 
-    if (!articlesArr.find((item) => item.id === articleId)) {
-        articlesArr.push(createCardObj(e));
-        addArticlesToLocaleStorage(LOCALSTORAGE_KEY, JSON.stringify(articlesArr));
-    }
+        if (!favArticlesArr.find((item) => item.id === articleId)) {
+            favArticlesArr.push(createCardObj(e));
+            addArticlesToLocaleStorage(LOCALSTORAGE_FAV_KEY, JSON.stringify(favArticlesArr));
+        }
+    } else return;
 }
 
 document.querySelector('.articles_container')?.addEventListener('rendered', (e) => {
@@ -54,3 +66,5 @@ function createCardObj(e) {
 function addArticlesToLocaleStorage(key, arr) {
     localStorage.setItem(key, `${arr}`);
 }
+
+
