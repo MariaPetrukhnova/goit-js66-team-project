@@ -1,65 +1,48 @@
-import * as localeStorage from './partials/localeStoreageHandler';
-import articleHTML from './partials/article.html?raw';
-import spriteUrl from '/images/icon-sprites.svg';
-
+import { createBaseMarkup  } from './partials/markup';
 const LOCALSTORAGE_KEY = "read-articles";
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
-    const markup = makeMarkup();
-    renderMarkup(markup);
+    document.querySelector('#read-articles').innerHTML = makeMarkup();
+
+    document.querySelector('[data-toggle]').classList.add('is-active')
+
+    document.querySelectorAll('[data-toggle]')?.forEach((el) => {
+        el.addEventListener('click', () => {
+            el.classList.toggle('is-active')
+        })
+    })
 });
-
-const articles = localStorage.getItem(LOCALSTORAGE_KEY);
-
 
 function makeMarkup() {
     const objArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
-    console.log(objArr);
 
-    const markup = objArr.map(article => {
-      if (!article) {
-        return;
-      }
-      const { section, title, description, date, img, readDate, url, imgCaption } =
-        article;
+    const articles = objArr.sort((a, b) => new Date(b.readDate) - new Date(a.readDate))
+    const articlesByDate = {}
+    let prevDate = ''
 
-      return `<li class="article">
-     <div class="article_img_wrapper">
-       <p class="already-read is-visible">Already read</p>
-       <p class="article_category">${section}</p>
-       <img class="article_img" src="${img}" alt="${imgCaption}" width="395" height="395">
-       <div class="article_flag">
-       <button class="article_flag--add"><span class="article_flag_text">Add to favorite</span>
-         <svg width="16" height="16">
-         <use href="${spriteUrl}#heart_contur" width="16" height="16"></use>
-        </svg>
-         </button>
-         <button class="article_flag--remove is-hidden"><span class="article_flag_text">Remove from favorite</span>
-         <svg width="16" height="16">
-         <use href="${spriteUrl}#heart_fill" width="16" height="16"></use>
-       </svg>
-          </button>
-         </div>
-     </div>
-     <div class="article_text_wrapper">
-       <h2 class="article_title">${title}</h2>
-       <p class="article_text">${description}</p>
-     </div>
-     <div class="article_info_wrapper">
-       <p class="article_date">${date}</p>
-       <a href="${url}" class="read-more" target="blank">Read more</a>
-     </div>
-     </li>`;
-    })
-    .join('');
+    articles.forEach((article) => {
+        const articleDate = new Date(article.readDate)
+        const formatDate = `${String(articleDate.getDate()).padStart(2, '0')}/${String(articleDate.getMonth() + 1).padStart(2, '0')}/${articleDate.getFullYear()}`
+        if (prevDate !== formatDate) {
+            articlesByDate[formatDate] = [];
+            prevDate = formatDate;
+        }
 
-  return markup;
+        articlesByDate[formatDate].push(article)
+    });
+
+    let result = '';
+
+    for (const articleDate in articlesByDate) {
+        result += '<section class="articles-group">'
+        result += `<header class="articles-group__header" data-toggle="${articleDate}"><h3>${articleDate}</h3></header>`
+        result += `<div class="articles-group__pane" data-pane="${articleDate}"><ul class="articles_container">`
+
+        result += createBaseMarkup(articlesByDate[articleDate], false)
+
+        result += '</ul></div></section>'
+    }
+
+    return result
 }
-
-const articlesOutput= document.querySelector('.articles_container');
-
-function renderMarkup(markup) {
-    articlesOutput.insertAdjacentHTML('beforeend', markup);
-}
-

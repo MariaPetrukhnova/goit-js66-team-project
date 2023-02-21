@@ -1,7 +1,8 @@
 import spriteUrl from '/images/icon-sprites.svg';
 
-function createBaseMarkup(arr) {
-  const markup = arrHandler(arr)
+function createBaseMarkup(arr, normalize = true) {
+  let normalizedArr = normalize ? arrHandler(arr) : arr
+  const markup = normalizedArr
     .map(article => {
       if (!article) {
         return;

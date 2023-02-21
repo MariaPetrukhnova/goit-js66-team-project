@@ -6,5 +6,7 @@ import { loadWeatherDate } from './partials/weather';
 import {} from './partials/categories.js';
 import { apiCategoties } from './partials/api-categories';
 import * as articles from './partials/articles';
+import { fetchPopularNews } from "./partials/try_api";
+import { apiFetchNewsByValue } from "./partials/apiFetchNewsByValue";
 import {} from './partials/paginations';
 import * as localeStorage from './partials/localeStoreageHandler';
