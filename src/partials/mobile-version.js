@@ -1,53 +1,35 @@
-// import { debounce } from 'lodash.debounce';
-// import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-// import bodyScrollLock from 'body-scroll-lock';
-// const bodyScrollLock = require('body-scroll-lock');
-// const bodyScrollLock = require('body-scroll-lock');
-// const bodyScrollLock = require('body-scroll-lock');
-// const disableBodyScroll = bodyScrollLock.disableBodyScroll;
-// const enableBodyScroll = bodyScrollLock.enableBodyScroll;
-
-const mobileMenu = document.querySelector('.js-menu-container');
-const openMenuBtn = document.querySelector('.js-open-menu');
-const closeMenuBtn = document.querySelector('.js-close-menu');
-const themeContainer = document.querySelector('.theme');
-const seachBtn = document.querySelector('.search-field__btn');
-
-const toggleMenu = () => {
-  const isMenuOpen =
-    openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
-  openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
-  mobileMenu.classList.toggle('open-menu');
-  if (themeContainer.classList.contains('mobile')) {
-    themeContainer.classList.remove('mobile');
-  } else if (!themeContainer.classList.contains('mobile')) {
-    themeContainer.classList.add('mobile');
-    // const debouncedThemeContainer = debounce(() => {
-    //   themeContainer.classList.add('mobile');
-    // }, 250);
-
-    // debouncedThemeContainer();
-  }
-
-  // const scrollLockMethod = !isMenuOpen
-  //   ? 'disableBodyScroll'
-  //   : 'enableBodyScroll';
-
-  // bodyScrollLock[scrollLockMethod](document.body);
+const refs = {
+  openMenuBtn: document.getElementById('js-open-menu'),
+  closeMenuBtn: document.getElementById('js-close-menu'),
+  themeContainer: document.getElementById('theme'),
+  mobileMenu: document.getElementById('js-menu-container'),
+  searchBtn: document.getElementById('form-btn'),
 };
 
-openMenuBtn.addEventListener('click', toggleMenu);
-closeMenuBtn.addEventListener('click', toggleMenu);
+refs.openMenuBtn.addEventListener('click', toggleMenu);
+refs.closeMenuBtn.addEventListener('click', toggleMenu);
+
+function toggleMenu(e) {
+  const isMenuStatus =
+    refs.openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
+  refs.openMenuBtn.setAttribute('aria-expanded', !isMenuStatus);
+  refs.mobileMenu.classList.toggle('open-menu');
+
+  if (refs.themeContainer.classList.contains('mobile')) {
+    refs.themeContainer.classList.remove('mobile');
+  } else if (!refs.themeContainer.classList.contains('mobile')) {
+    refs.themeContainer.classList.add('mobile');
+  }
+}
 
 window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
   if (!e.matches) return;
-  mobileMenu.classList.remove('open-menu');
-  openMenuBtn.setAttribute('aria-expanded', false);
-  bodyScrollLock.enableBodyScroll(document.body);
+  refs.mobileMenu.classList.remove('open-menu');
+  refs.openMenuBtn.setAttribute('aria-expanded', false);
 });
 
 if (window.innerWidth < 768) {
-  seachBtn.setAttribute('type', 'button');
+  refs.searchBtn.setAttribute('type', 'button');
 }
 
 export { toggleMenu };

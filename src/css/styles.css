@@ -32,26 +32,19 @@
   --input-active-color: #FFFFFF;
   font-size: 16px;
   line-height: 1.4;
-  font-weight: 400;
-
-
-}
-
-html,
-body {
-  height: 100%;
-  scroll-behavior: smooth;
 }
 
 body {
+  height: 100vh;
   background-color: var(--dark-theme-main-color);
   color: var(--light-theme-main-color);
 
   font-weight: 400;
   font-style: normal;
+  font-family: Manrope;
 }
 
-body.darkMode {
+body.dark-mode {
   background-color: #2E2E2E;
   color: var(--dark-theme-main-color);
 }

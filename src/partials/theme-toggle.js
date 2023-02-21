@@ -1,35 +1,31 @@
-const changeThemeBtn = document.querySelector('.switch-checkbox');
-const bodyTheme = document.querySelector('body');
-const themeDarkEl = document.querySelector('.theme__dark');
-const themeLightEl = document.querySelector('.theme__light');
+const refs = {
+  bodyEl: document.querySelector('body'),
+  changeBtnEl: document.getElementById('switch-checkbox'),
+  themeElDark: document.getElementById('theme__dark'),
+  themeElLigth: document.getElementById('theme__light'),
+};
 
-changeThemeBtn.addEventListener('click', changeTheme);
+addDarkClassToHTML();
+
+refs.changeBtnEl.addEventListener('click', changeTheme);
 
 function changeTheme() {
-  bodyTheme.classList.toggle('darkMode');
-  themeDarkEl.classList.toggle('opacityForDark');
-  themeLightEl.classList.toggle('opacityForDark');
-  // localStorage.setItem('theme', 'dark');
+  refs.bodyEl.classList.toggle('dark-mode');
+  refs.themeElDark.classList.toggle('opacityForDark');
+  refs.themeElLigth.classList.toggle('opacityForDark');
+
   if (localStorage.getItem('theme') !== 'dark') {
     localStorage.setItem('theme', 'dark');
   } else {
     localStorage.removeItem('theme');
   }
-  // addDarkClassToHTML();
 }
 
 function addDarkClassToHTML() {
-  try {
-    if (localStorage.getItem('theme') === 'dark') {
-      bodyTheme.classList.add('darkMode');
-      changeThemeBtn.checked = true;
-    }
-    // else {
-    //   bodyTheme.classList.remove('theme-dark');
-    // }
-  } catch (err) {}
+  if (localStorage.getItem('theme') === 'dark') {
+    refs.bodyEl.classList.add('dark-mode');
+    refs.changeBtnEl.checked = true;
+  }
 }
-
-addDarkClassToHTML();
 
 export { changeTheme, addDarkClassToHTML };
