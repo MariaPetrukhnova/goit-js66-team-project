@@ -12,12 +12,106 @@
     rel="stylesheet">
   <title>GOIT News Portal</title>
   
-  <script type="module" crossorigin src="/goit-js66-team-project/assets/main-838250af.js"></script>
-  <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/localeStoreageHandler-61b667d0.js">
-  <link rel="stylesheet" href="/goit-js66-team-project/assets/localeStoreageHandler-416153b5.css">
+  <script type="module" crossorigin src="/goit-js66-team-project/assets/main-62cd007e.js"></script>
+  <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/localeStoreageHandler-123601b1.js">
+  <link rel="stylesheet" href="/goit-js66-team-project/assets/localeStoreageHandler-5397e1f3.css">
 </head>
 
 <body>
+  
+
+<button type="submit" class="registerbtn sing" data-modal-open>Sing Up</button>
+<button type="submit" class="registerbtn login" data-modal-open>Login</button>
+<button type="button" class="user" > USER </button>
+<div class="backdrop is-hidden" data-modal id="bcd">
+  <div class="modal modal-reg">
+    <button class="btn-close" data-modal-close-reg>
+      <svg fill="#212121" class="btn-close__icon" width="11" height="11">
+        <use href="./src/images/icon-sprites.svg#icon-close">
+        </use>
+      </svg>
+    </button>
+    <div class="form">
+      <form class="modal-form" id="auth-form">
+        <p class="modal-form__title">Registration
+        </p>
+
+                    
+      <div class="modal-form__field">
+        
+        <label for="email"><span class="modal-form__label">Email</span></label>
+       <input type="text" name="email" class="modal-form__input ml page-header__search-input" id="email">
+          </div>
+
+         <div class="modal-form__field">
+        
+          <label for="psw"><span class="modal-form__label">Password</span></label>
+          <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="psw">
+          </div>
+                               
+        <button type="submit" class="button-form" id="sing-up" >Sing Up</button>
+      </form>
+    </div>
+
+    
+
+  </div>
+</div>
+<div class="backdrop is-hidden" data-modal-login id="bcd">
+<div class="modal modal-reg ">
+  <button class="btn-close" data-modal-close-log>
+    <svg fill="#212121" class="btn-close__icon" width="11" height="11">
+      <use href="./src/images/icon-sprites.svg#icon-close">
+      </use>
+    </svg>
+  </button>
+  <div class="form ">
+     <form class="modal-form"  id="log-form">
+       <p class="modal-form__title">Login</p>
+                 
+      <div class="modal-form__field">
+       
+        <label for="mail"><span class="modal-form__label">Email</span></label>
+        <input type="text" name="mail" class="modal-form__input ml page-header__search-input" id="mail">
+        </div>
+
+        <div class="modal-form__field">
+       
+         <label for="psw"><span class="modal-form__label">Password</span></label>
+         <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="password">
+         </div>
+                             
+       <button type="submit" class="button-form" >Login</button>
+     </form>
+   </div>
+
+ </div>
+
+</div>
+
+<div class="backdrop is-hidden" data-modal-user >
+  <div class="modal modal-reg ">
+   
+    <button class="btn-close" data-modal-close>
+      <svg fill="#212121" class="btn-close__icon" width="11" height="11">
+        <use href="./src/images/icon-sprites.svg#icon-close">
+        </use>
+      </svg>
+    </button>
+    <div class="form ">
+       <form class="modal-form"  id="log-form">
+         <p class="modal-form__title">User </p>
+         <button type="submit" class="button-form" >Favorit</button>  
+        
+                               
+         <button type="submit" class="button-form" id="login-btn">Log out</button>
+       </form>
+     </div>
+  
+   </div>
+  
+  </div>
+
   <!-- Path to images as from index.html file -->
 <header class="page-header">
 
@@ -29,13 +123,13 @@
             <ul class="nav__list--mobile">
                 <li class="nav__item js-search-input"><a class="nav__link js-search" href="">
                         <svg class="header__icon" width="20px" height="20px">
-                            <use href="/goit-js66-team-project/assets/icon-sprites-bba1b627.svg#bx_search"></use>
+                            <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#bx_search"></use>
                         </svg>
                     </a></li>
 
                 <li class="nav__item"><a class="nav__link js-menu-open" href="">
                         <svg class="header__icon icon" width="24px" height="24px">
-                            <use href="/goit-js66-team-project/assets/icon-sprites-bba1b627.svg#menu"></use>
+                            <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#menu"></use>
                         </svg>
                     </a></li>
             </ul>
@@ -50,7 +144,7 @@
         <div class="">
             <input type="search" placeholder="Search" class="page-header__search-input">
             <svg class="header__icon" width="20px" height="20px">
-                <use href="/goit-js66-team-project/assets/icon-sprites-bba1b627.svg#bx_search"></use>
+                <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#bx_search"></use>
             </svg>
         </div>
 
@@ -58,7 +152,7 @@
         <div class="theme-toggle">
             <span>
                 <svg class="theme__icon--sun icon" width="21px" height="21px">
-                    <use href="/goit-js66-team-project/assets/icon-sprites-bba1b627.svg#sun"></use>
+                    <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#sun"></use>
                 </svg>
             </span>
             <span class="theme__text">Light</span>
@@ -67,7 +161,7 @@
             <span class="theme__text">Dark</span>
             <span>
                 <svg class="theme__icon--moon icon" width="21px" height="21px">
-                    <use href="/goit-js66-team-project/assets/icon-sprites-bba1b627.svg#moon"></use>
+                    <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#moon"></use>
                 </svg>
             </span>
         </div>
@@ -103,20 +197,20 @@
                         aria-expanded="false" aria-controls="list-menu">
                         Others
                         <svg class="category__icon--up" width="14" height="14">
-                            <use href="/goit-js66-team-project/assets/icon-sprites-bba1b627.svg#Frame-11"></use>
+                            <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#Frame-11"></use>
                         </svg>
                         <svg class="category__icon--down" width="14" height="14">
-                            <use href="/goit-js66-team-project/assets/icon-sprites-bba1b627.svg#Frame-12"></use>
+                            <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#Frame-12"></use>
                         </svg>
                     </button>
                     <button class="category__btn category__btn--all btn js-open-list list-toggle list-toggle--open"
                         aria-expanded="false" aria-controls="list-menu">
                         Categories
                         <svg class="category__icon--up" width="14" height="14">
-                            <use href="/goit-js66-team-project/assets/icon-sprites-bba1b627.svg#Frame-11"></use>
+                            <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#Frame-11"></use>
                         </svg>
                         <svg class="category__icon--down" width="14" height="14">
-                            <use href="/goit-js66-team-project/assets/icon-sprites-bba1b627.svg#Frame-12"></use>
+                            <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#Frame-12"></use>
                         </svg>
                     </button>
                     <div class="list-container js-list-container" id="category-rest">
@@ -131,16 +225,16 @@
                 <p class="calendar__label">Search date news</p>
                 <div class="calendar__input-wrapper js-open-calendar calendar-toggle calendar-toggle--open menu-toggle js-close-menu menu-toggle--close" aria-expanded="false" aria-controls="calendar-menu" >
                     <svg class="calendar__input-icon--calendar" width="20" height="20">
-                        <use href="/goit-js66-team-project/assets/icon-sprites-bba1b627.svg#Frame"></use>
+                        <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#Frame"></use>
                     </svg>
                     <input readonly type="text" name="name"
                         class="calendar__input"
                         id="" placeholder="Виберіть дату..." />
                     <svg class="calendar__input-icon--down" width="15" height="15">
-                        <use href="/goit-js66-team-project/assets/icon-sprites-bba1b627.svg#Frame-11"></use>
+                        <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#Frame-11"></use>
                     </svg>
                     <svg class="calendar__input-icon--up" width="15" height="15">
-                        <use href="/goit-js66-team-project/assets/icon-sprites-bba1b627.svg#Frame-12"></use>
+                        <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#Frame-12"></use>
                     </svg>
                 </div>
                 <div class="calendar__body calendar-container js-calendar-container" id="calendar-body">
@@ -153,19 +247,19 @@
                             <span class="calendar__year-btn" id="">
                                 <svg class="calendar__arrow--next-year" width="12px" height="12px"
                                     transform="rotate(90)">
-                                    <use href="/goit-js66-team-project/assets/icon-sprites-bba1b627.svg#Frame-12"></use>
+                                    <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#Frame-12"></use>
                                 </svg>
                             </span>
                         </div>
                         <div class="calendar__month-arrows">
                             <span class="calendar__month-btn--prev">
                                 <svg class="calendar__arrow--prev-month" width="17" height="17" transform="rotate(270)">
-                                    <use href="/goit-js66-team-project/assets/icon-sprites-bba1b627.svg#Frame-12"></use>
+                                    <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#Frame-12"></use>
                                 </svg>
                             </span>
                             <span class="calendar__month-btn--next">
                                 <svg class="calendar__arrow--next-month" width="17" height="17" transform="rotate(90)">
-                                    <use href="/goit-js66-team-project/assets/icon-sprites-bba1b627.svg#Frame-12"></use>
+                                    <use href="/goit-js66-team-project/assets/icon-sprites-8f904247.svg#Frame-12"></use>
                                 </svg>
                             </span>
                         </div>
@@ -243,92 +337,6 @@
     </div>
 </section>
   
-
-<button type="submit" class="registerbtn sing" data-modal-open>Sing Up</button>
-<button type="submit" class="registerbtn login" data-modal-open>Login</button>
-<div class="backdrop is-hidden" data-modal id="bcd">
-  <div class="modal modal-reg">
-    <div class="form">
-      <form class="modal-form" id="auth-form">
-        <p class="modal-form__title">Register
-        </p>
-
-        <div class="modal-form__field">
-         <label for="name"><span class="modal-form__label">First Name</span>
-          </label>
-           <input type="text" name="name" class="modal-form__input" id="name">
-        </div>
-      
-        <div class="modal-form__field">
-          
-            <label for="last"><span class="modal-form__label">Last Name</span>
-            </label>
-          <input type="text" name="last" class="modal-form__input" id="last">
-                        
-        </div>
-             
-      <div class="modal-form__field">
-        
-        <label for="email"><span class="modal-form__label">Email</span></label>
-       <input type="text" name="email" class="modal-form__input ml" id="email">
-          </div>
-
-         <div class="modal-form__field">
-        
-          <label for="psw"><span class="modal-form__label">Password</span></label>
-          <input type="text" name="psw" class="modal-form__input ps" id="psw">
-          </div>
-                               
-        <button type="submit" class="button-form" id="sing-up" >Sing Up</button>
-      </form>
-    </div>
-
-    
-
-  </div>
-</div>
-<div class="backdrop is-hidden" data-modal-login id="bcd">
-<div class="modal modal-reg ">
-  <div class="form ">
-     <form class="modal-form"  id="log-form">
-       <p class="modal-form__title">Login</p>
-                 
-      <div class="modal-form__field">
-       
-        <label for="mail"><span class="modal-form__label">Email</span></label>
-        <input type="text" name="mail" class="modal-form__input ml" id="mail">
-        </div>
-
-        <div class="modal-form__field">
-       
-         <label for="psw"><span class="modal-form__label">Password</span></label>
-         <input type="text" name="psw" class="modal-form__input ps" id="password">
-         </div>
-                             
-       <button type="submit" class="button-form" id="login-btn">Login</button>
-     </form>
-   </div>
-
- </div>
-
-</div>
-
-<div class="backdrop is-hidden" data-modal-user>
-  <div class="modal modal-reg ">
-    <div class="form ">
-       <form class="modal-form"  id="log-form">
-         <p class="modal-form__title">User </p>
-         <button type="submit" class="button-form" >Favorit</button>  
-        
-                               
-         <button type="submit" class="button-form" id="login-btn">Go out</button>
-       </form>
-     </div>
-  
-   </div>
-  
-  </div>
-<!-- <script  src="./firebase.js" type="module"></script> -->
 
   
 </body>
