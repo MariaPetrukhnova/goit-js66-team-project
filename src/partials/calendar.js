@@ -1,15 +1,13 @@
 import CalendarDates from 'calendar-dates';
 const calendarDates = new CalendarDates();
-import { arrHandler, notFoundHandler } from './apiFetchNewsByValue.js';
+import { arrHandler, notFoundHandler, fetchNewsBySearch } from './apiFetchNewsByValue.js';
 import NewsApi from './apiConstructor.js';
 
 // import {fetchNewsByDate} from "./api-archive-by-month.js";
 
 const newsApi = new NewsApi();
 const pageNotFound = document.querySelector(`.not-found`);
-const searchInput = document.querySelector('.page-header__search-input');
-let queryValue = searchInput.value || '';
-console.log(queryValue);
+let queryValue = '';
 
 const articlesGallery = document.querySelector('.articles_container');
 
@@ -165,7 +163,7 @@ function renderCalendar(croppedArr) {
 function renderNotFound() {
   const newsContainer = document.querySelector('.news-gallery');
 
-  return (articlesGallery.innerHTML = `<div class="container">
+  return (newsContainer.innerHTML = `<div class="container ">
   <h2 class="not__found__title">We couldn't find news from the future ;) Please, pick another date! </h2>
   <picture>
       <source
@@ -208,26 +206,37 @@ function onDateSelect(evt) {
   console.log('selectedDate', selectedDate);
   console.log('todayDate', new Date());
 
+  const inputValue = dateEl.id.split('-').reverse().join('/');
+  const realDate = dateEl.id.split('-').join('');
+  console.log(realDate);
+  const searchInput = document.querySelector(".page-header__search-input").value;
+  
+
   if (currentDate === dateEl) {
     calendarInput.value = '';
     currentDate.classList.remove('calendar__date--active');
+    
   } else if (currentDate !== dateEl && selectedDate > new Date()) {
     console.log('selectedDate > new Date()', selectedDate > new Date());
-    renderNotFound();
-    removeActiveDateClass();
-    addActiveDateClass(dateEl);
+    // renderNotFound();
+    // removeActiveDateClass();
+    // addActiveDateClass(dateEl);
+    return;
   } else {
+    // const searchInput = document.querySelector(".page-header__search-input");
+    // if (!searchInput.value) {
+    
+    //   console.log("Виклик fetchNewsBySearch(query) без даних по search input тільки з датою");
+    // }
+    // if (searchInput.value) {
+    //   fetchNewsBySearchAndData(queryValue);
+    //   console.log("Виклик fetchNewsBySearch(query) з даними з search input і по даті");
+    // }
+    
     removeActiveDateClass();
     addActiveDateClass(dateEl);
-
-    if (queryValue === '') {
-      console.log(queryValue);
-      return fetchNewsBySearchAndData(queryValue);
-    } else {
-      const inputValue = searchInput.target.value;
-      console.log(inputValue);
-      return fetchNewsBySearchAndData(inputValue);
-    }
+    fetchNewsBySearchAndData(searchInput, realDate);
+    // получить запрос со строки и с инпута при каждом выpове
   }
 }
 
@@ -240,35 +249,29 @@ function removeActiveDateClass() {
     currentActiveDate.classList.remove('calendar__date--active');
   }
 }
+
+
 let realDate = 0;
 function getDateForInput(elem) {
   const inputValue = elem.id.split('-').reverse().join('/');
   calendarInput.value = inputValue;
-  // Виклик тут фкції для пошуку новин за датою
-  // Або кнопка, де знайдуть інпут на тот момент, коли на спан з датою натиснули і інпут заповнений
   realDate = elem.id.split('-').join('');
   return inputValue, realDate;
+  // повторити це в функції де виклик
 }
 
-const fetchNewsBySearchAndData = async request => {
+
+
+const fetchNewsBySearchAndData = async (request, realDate) => {
   try {
     const response = await fetch(
       `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&begin_date=${realDate}&end_date=${realDate}&${newsApi.API_KEY}`
     );
-    // // -->
-    // console.log(`response`, response.ok);
-    // // -->
     if (response.ok === false) {
       throw new Error('Such a request has not been found');
     }
     const articles = await response.json();
     const resArr = articles.response.docs;
-
-    // // -->
-    // console.log(`resArr`, resArr);
-    // // -->
-
-    // --> render section not-found
 
     if (resArr.length) {
       pageNotFound.classList.add(`is-hidden`);
@@ -276,9 +279,7 @@ const fetchNewsBySearchAndData = async request => {
     } else if (resArr.length === 0) {
       notFoundHandler();
     }
-    // --> render section not-found
 
-    console.log(resArr);
     // arrHandler(resArr);
   } catch (error) {
     console.log(error);
@@ -292,5 +293,5 @@ function addActiveDateClass(elem) {
 }
 
 main();
-
+export { fetchNewsBySearchAndData };
 export * as calendarTools from './calendar.js';
