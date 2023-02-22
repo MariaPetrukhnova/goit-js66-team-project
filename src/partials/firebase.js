@@ -5,9 +5,8 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
-// import { signOut } from "firebase/auth";
-// import { onAuthStateChanged } from "firebase/auth";
 import Notiflix from 'notiflix';
+
 const firebaseConfig = {
   apiKey: "AIzaSyARa5Hh8nGBMHOsxW-0GD7_PQkq_qzHkeQ",
   authDomain: "team-14-baf33.firebaseapp.com",
@@ -91,13 +90,13 @@ const refs = {
     const email = refs.modalEmail.value;
     const password = refs.modalPassword.value;
     if(email === "" || password === "") {
-        Notiflix.Notify.warning('For signing up you need to enter both E-mail and Password');
+        Notiflix.Report.warning('For signing up you need to enter both E-mail and Password');
         return;
         }
 
         checkUserRegistration(email, password).then(data => {
         if(data.registered === true){
-            Notiflix.Notify.warning('This user already exists! Please enter your personal account!');
+            Notiflix.Report.warning('This user already exists! Please enter your personal account!');
             refs.modal.classList.toggle("is-hidden");
             refs.modalLogin.classList.toggle("is-hidden");
             refs.modal.remove();
@@ -115,7 +114,7 @@ const refs = {
           showOneBtn();
         })
         .catch((error) => {
-          Notiflix.Notify.warning('Email and password entered incorrectly!')
+          Notiflix.Report.warning('Email and password entered incorrectly!')
           refs.singBtn.reset();
                    
         });
@@ -153,7 +152,7 @@ const refs = {
         const email = refs.loginEmail.value;
         const password = refs.loginPassword.value;
         if(email === "" || password === "") {
-            Notiflix.Notify.warning('For signing up you need to enter both E-mail and Password');
+            Notiflix.Report.warning('For signing up you need to enter both E-mail and Password');
             
            }
          
@@ -169,7 +168,7 @@ const refs = {
            
      })
      .catch((error) => {
-      Notiflix.Notify.warning('Email and password entered incorrectly!')
+      Notiflix.Report.warning('Email and password entered incorrectly!')
       refs.loginBtn.reset();
      
      });
