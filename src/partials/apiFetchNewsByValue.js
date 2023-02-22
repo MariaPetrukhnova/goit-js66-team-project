@@ -2,6 +2,7 @@ import NewsApi from './apiConstructor.js';
 import spriteUrl from '/images/icon-sprites.svg';
 import { fetchNewsBySearchAndData } from './calendar.js';
 
+const pg = document.getElementById('pagination');
 const articlesGallery = document.querySelector('.articles_container');
 const deletePagination = document.querySelector('.page-container');
 
@@ -12,46 +13,49 @@ const newsApi = new NewsApi();
 const pageNotFound = document.querySelector(`.not-found`);
 // const newsGallery = document.querySelector(`.news-gallery`);
 // -->
-
-const searchInput = document.querySelector('.page-header__search-input');
-searchInput.addEventListener('change', onEnterPush);
-// * Тут замість submit подія change
+const searchInput = document.querySelector('.search-field');
+searchInput.addEventListener('submit', onEnterPush);
 
 function onEnterPush(e) {
   e.preventDefault();
-  const query = e.target.value;
+
+  const form = e.currentTarget;
+
+  const query = form.elements.searchQuery.value.trim();
+
   const dateInput = document.querySelector('.calendar__input');
   dateInput.value = '';
-  console.log(query);
+  let pageNum = newsApi.pageNumber;
 
   if (!dateInput.value) {
-    fetchNewsBySearch(query);
-    console.log('Виклик fetchNewsBySearch(query) без даних по даті');
-  }
-  if (dateInput.value) {
+    fetchNewsBySearch(query, pageNum);
+    pg.addEventListener('click', e => {
+      const ele = e.target;
 
-    fetchNewsBySearchAndData(query);
-    console.log('Виклик fetchNewsBySearch(query) з даними по даті');
+      if (ele.dataset.page) {
+        const pageNumber = parseInt(e.target.dataset.page, 10);
+
+        fetchNewsBySearch(query, pageNumber - 1);
+      }
+    });
+  } else if (dateInput.value) {
+    fetchNewsBySearchAndData(query, dateInput, pageNum);
+
   }
 }
 
-const fetchNewsBySearch = async request => {
+const fetchNewsBySearch = async (request, pageNumber) => {
   try {
     const response = await fetch(
-      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&${newsApi.API_KEY}`
+      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&page=${pageNumber}&${newsApi.API_KEY}`
     );
     // // -->
-    // console.log(`response`, response.ok);
     // // -->
     if (response.ok === false) {
       throw new Error('Such a request has not been found');
     }
     const articles = await response.json();
     const resArr = articles.response.docs;
-    console.log(resArr.length, 'roketa');
-    // // -->
-    // console.log(`resArr`, resArr);
-    // // -->
 
     // --> render section not-found
 
@@ -68,7 +72,6 @@ const fetchNewsBySearch = async request => {
     }
     // --> render section not-found
 
-    console.log(resArr);
     // arrHandler(resArr);
   } catch (error) {
     console.log(error);
@@ -99,7 +102,6 @@ function arrHandler(arr) {
     };
   });
 
-  console.log(objArr);
   createBaseMarcup(objArr);
 }
 
@@ -114,7 +116,7 @@ function createBaseMarcup(arr) {
 
       return `<li class="article">
      <div class="article_img_wrapper">
-       <p class="already-read is-hidden">Already read</p>
+       <p class="already-read">Already read</p>
        <p class="article_category">${section}</p>
        <img class="article_img" src="${img}" alt="${imgCaption}" width="395" height="395">
        <div class="article_flag">
