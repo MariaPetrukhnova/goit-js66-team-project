@@ -159,4 +159,4 @@ function notFoundHandler() {
 // --> render section not-found
 
 export * as apiFetchNewsByValue from './apiFetchNewsByValue.js';
-export { arrHandler, notFoundHandler, fetchNewsBySearch };
+export { arrHandler, notFoundHandler, fetchNewsBySearch, searchInput };
