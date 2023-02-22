@@ -72,7 +72,7 @@ fetchCategories().then(result => {
 })
 function mobMarkup(arr) {
     const arrSections = arr.map(section =>
-        `<li class="rest__item item">${section.display_name}</li>`
+        `<li class="rest__item item js-search">${section.display_name}</li>`
     ).join("");
     return `<div class="rest__wrapper"><ul class="rest__list list">${arrSections}</ul></div >`
 }
