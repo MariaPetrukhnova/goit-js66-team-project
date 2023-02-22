@@ -1,6 +1,10 @@
 import CalendarDates from 'calendar-dates';
 const calendarDates = new CalendarDates();
-import { arrHandler, notFoundHandler, fetchNewsBySearch } from './apiFetchNewsByValue.js';
+import {
+  arrHandler,
+  notFoundHandler,
+  fetchNewsBySearch,
+} from './apiFetchNewsByValue.js';
 import NewsApi from './apiConstructor.js';
 
 // import {fetchNewsByDate} from "./api-archive-by-month.js";
@@ -209,13 +213,13 @@ function onDateSelect(evt) {
   const inputValue = dateEl.id.split('-').reverse().join('/');
   const realDate = dateEl.id.split('-').join('');
   console.log(realDate);
-  const searchInput = document.querySelector(".page-header__search-input").value;
-  
+  const searchInput = document.querySelector(
+    '.page-header__search-input'
+  ).value;
 
   if (currentDate === dateEl) {
     calendarInput.value = '';
     currentDate.classList.remove('calendar__date--active');
-    
   } else if (currentDate !== dateEl && selectedDate > new Date()) {
     console.log('selectedDate > new Date()', selectedDate > new Date());
     // renderNotFound();
@@ -225,14 +229,14 @@ function onDateSelect(evt) {
   } else {
     // const searchInput = document.querySelector(".page-header__search-input");
     // if (!searchInput.value) {
-    
+
     //   console.log("Виклик fetchNewsBySearch(query) без даних по search input тільки з датою");
     // }
     // if (searchInput.value) {
     //   fetchNewsBySearchAndData(queryValue);
     //   console.log("Виклик fetchNewsBySearch(query) з даними з search input і по даті");
     // }
-    
+
     removeActiveDateClass();
     addActiveDateClass(dateEl);
     fetchNewsBySearchAndData(searchInput, realDate);
@@ -250,7 +254,6 @@ function removeActiveDateClass() {
   }
 }
 
-
 let realDate = 0;
 function getDateForInput(elem) {
   const inputValue = elem.id.split('-').reverse().join('/');
@@ -259,8 +262,6 @@ function getDateForInput(elem) {
   return inputValue, realDate;
   // повторити це в функції де виклик
 }
-
-
 
 const fetchNewsBySearchAndData = async (request, realDate) => {
   try {
