@@ -1,14 +1,15 @@
 import { createBaseMarkup } from './partials/markup';
-import { onArticleLink } from './partials/localeStoreageHandler';
+import { onArticleLink, setFavorites, setRead } from './partials/localeStoreageHandler';
 const LOCALSTORAGE_KEY = "read-articles";
-
-
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
     document.querySelector('#read-articles').innerHTML = makeMarkup();
 
+    setFavorites()
+    setRead()
 });
+
 
 function makeMarkup() {
     const objArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
