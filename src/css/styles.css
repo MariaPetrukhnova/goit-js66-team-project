@@ -31,8 +31,16 @@
   --background-footer: #7A7A7A;
   --input-active-bg-color: #4440F6;
   --input-active-color: #FFFFFF;
+  --switcher-moon: #5f6775;
   font-size: 16px;
   line-height: 1.4;
+}
+
+:root body.dark-mode {
+  --dark-theme-main-color: #2e2e2e;
+  --light-theme-main-color: #f4f4f4;
+  --accent-violet-color: #f4f4f4;
+  --switcher-moon: #4440f7;
 }
 
 body {
@@ -43,11 +51,6 @@ body {
   font-weight: 400;
   font-style: normal;
   font-family: Manrope;
-}
-
-body.dark-mode {
-  background-color: #2E2E2E;
-  color: var(--dark-theme-main-color);
 }
 
 .calendar__header,

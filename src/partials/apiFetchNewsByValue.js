@@ -12,24 +12,25 @@ const newsApi = new NewsApi();
 const pageNotFound = document.querySelector(`.not-found`);
 // const newsGallery = document.querySelector(`.news-gallery`);
 // -->
-const searchInput = document.querySelector('.search-field');
-searchInput.addEventListener('submit', onEnterPush);
+
+const searchInput = document.querySelector('.page-header__search-input');
+searchInput.addEventListener('change', onEnterPush);
+// * Тут замість submit подія change
 
 function onEnterPush(e) {
   e.preventDefault();
-  const form = e.currentTarget;
-
-  const query = form.elements.searchQuery.value.trim();
-
+  const query = e.target.value;
   const dateInput = document.querySelector('.calendar__input');
   dateInput.value = '';
+  console.log(query);
 
   if (!dateInput.value) {
     fetchNewsBySearch(query);
     console.log('Виклик fetchNewsBySearch(query) без даних по даті');
   }
   if (dateInput.value) {
-    fetchNewsBySearchAndData(query, dateInput);
+
+    fetchNewsBySearchAndData(query);
     console.log('Виклик fetchNewsBySearch(query) з даними по даті');
   }
 }
