@@ -22,12 +22,12 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
 const refs = {
-    openModalBtn: document.getElementById("sing-up"),
+    openModalBtn: document.querySelector("[data-modal-open-sing]"),
     closeUserModalBtn: document.querySelector("[data-modal-close]"),
     closeRegBtn: document.querySelector("[data-modal-close-reg]"),
     closeLogin: document.querySelector("[data-modal-close-log]"),
     openLoginBtn: document.querySelector(".login"),
-    modal: document.querySelector(".modal-reg"),
+    modal: document.querySelector("[data-modal]"),
     modalLogin: document.querySelector("[data-modal-login]"),
     modalUser: document.querySelector("[data-modal-user]"),
     modalEmail: document.getElementById('email'),
@@ -77,6 +77,7 @@ const refs = {
 //   ДОДАВАННЯ КОРИСТУВАЧА   //
 
   function onModal(e) {
+
     e.preventDefault();
     refs.modal.classList.toggle("is-hidden");
   }
@@ -179,6 +180,7 @@ function onUser(e){
     e.preventDefault();
     if (localStorage.auth=== "yes") {
         refs.modalUser.classList.toggle("is-hidden");
+       
         return;
     }
     }
