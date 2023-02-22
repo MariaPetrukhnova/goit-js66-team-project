@@ -241,7 +241,19 @@ function onDateSelect(evt) {
 
     removeActiveDateClass();
     addActiveDateClass(dateEl);
-    fetchNewsBySearchAndData(searchInput, realDate);
+
+    fetchNewsBySearchAndData(searchInput, realDate, pageNum);
+    pg.addEventListener('click', e => {
+      const ele = e.target;
+
+      if (ele.dataset.page) {
+        const pageNumber = parseInt(e.target.dataset.page, 10);
+
+        fetchNewsBySearchAndData(searchInput, realDate, pageNumber - 1);
+        console.log('Виклик fetchNewsBySearch(query) з даними по даті ');
+      }
+    });
+
     // получить запрос со строки и с инпута при каждом выpове
   }
 }
