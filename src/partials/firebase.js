@@ -24,6 +24,8 @@ const auth = getAuth(app);
 const refs = {
     openModalBtn: document.querySelector("[data-modal-open]"),
     closeUserModalBtn: document.querySelector("[data-modal-close]"),
+    closeRegBtn: document.querySelector("[data-modal-close-reg]"),
+    closeLogin: document.querySelector("[data-modal-close-log]"),
     openLoginBtn: document.querySelector(".login"),
     modal: document.querySelector("[data-modal]"),
     modalLogin: document.querySelector("[data-modal-login]"),
@@ -37,8 +39,8 @@ const refs = {
     logOut: document.getElementById('login-btn'),
     userBtn: document.querySelector(".user"),
   };
-  console.log(refs.closeUserModalBtn);
-
+ 
+  refs.userBtn.style.display = "none"
   refs.openModalBtn.addEventListener("click", onModal);
   refs.openLoginBtn.addEventListener("click", onModalLogin);
   refs.singBtn.addEventListener("submit", authFormHandlerModal,{once:true});
@@ -46,7 +48,8 @@ const refs = {
   refs.closeUserModalBtn.addEventListener("click", closeUserModal);
   refs.logOut.addEventListener("click",logOut)
   refs.userBtn.addEventListener("click", onUser);
- 
+  refs.closeRegBtn.addEventListener("click", closeRegistration);
+  refs.closeLogin.addEventListener("click", closeLogin);
 //   ДОДАВАННЯ КОРИСТУВАЧА   //
 
   function onModal(e) {
@@ -84,6 +87,9 @@ const refs = {
                 Notiflix.Report.success('Registration completed successfully! Welcome');
                 refs.modal.classList.toggle("is-hidden");
                 localStorage.auth = "yes"
+                refs.openModalBtn.style.display = 'none';
+                refs.openLoginBtn.style.display = 'none';
+                refs.userBtn.style.display = ""
               })
               .catch((error) => {
                 const errorCode = error.code;
@@ -136,7 +142,10 @@ const refs = {
         Notiflix.Report.success( 'Successful Login');
         refs.modalLogin.classList.toggle("is-hidden");
         refs.modalUser.classList.toggle("is-hidden");
-    
+        refs.openModalBtn.style.display = 'none';
+        refs.openLoginBtn.style.display = 'none';
+        refs.userBtn.style.display = ""
+        
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -159,8 +168,8 @@ function onUser(e){
         refs.modalUser.classList.toggle("is-hidden");
         return;
     }
-    Notiflix.Notify.warning('You need to login!')
-    refs.modalLogin.classList.toggle("is-hidden");
+    // Notiflix.Notify.warning('You need to login!')
+    // refs.modalLogin.classList.toggle("is-hidden");
 
 }
 
@@ -170,7 +179,22 @@ function logOut(e){
     e.preventDefault();
     localStorage.auth = "no"
     refs.modalUser.classList.toggle("is-hidden");
+    refs.openModalBtn.style.display = '';
+    refs.openLoginBtn.style.display = '';
+    refs.userBtn.style.display = "none"
    
 }
+
+
+    // Закриття Регистрации\\\
+function closeRegistration(e) {
+  e.preventDefault()
+   refs.modal.classList.toggle("is-hidden");
+ }
+ // Закриття Login\\\
+function closeLogin(e) {
+  e.preventDefault()
+  refs.modalLogin.classList.toggle("is-hidden");
+ }
         
 export * as firebase from './firebase.js';
