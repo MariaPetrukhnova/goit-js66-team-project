@@ -116,7 +116,7 @@ function createBaseMarcup(arr) {
 
       return `<li class="article">
      <div class="article_img_wrapper">
-       <p class="already-read">Already read</p>
+       <p class="already-read is-hidden">Already read</p>
        <p class="article_category">${section}</p>
        <img class="article_img" src="${img}" alt="${imgCaption}" width="395" height="395">
        <div class="article_flag">
