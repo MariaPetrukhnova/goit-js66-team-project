@@ -9,8 +9,13 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 function makeMarkup() {
     const objArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_FAV_KEY));
+
+    if (!objArr || objArr.length === 0) {
+        return "<h2 class='articles-not-found'>You don't have favorite articles yet</h2><img class='not-found-img' src='./images/not-found-desktop-1x.png' alt='no articles there'>";
+        //return сбивает добавление єлемента - почему?
+    }
     const markup = objArr.map(article => {
-      if (!article) {
+        if (!article) {
         return;
       }
 
@@ -49,3 +54,5 @@ function makeMarkup() {
 
   return markup;
 }
+
+document.querySelector(`.navbar__link[href="${window.location.pathname}"]`)?.classList?.add('navbar__link--current')

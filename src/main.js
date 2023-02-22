@@ -12,3 +12,4 @@ import { apiFetchNewsByValue } from "./partials/apiFetchNewsByValue";
 import {} from './partials/paginations';
 import * as localeStorage from './partials/localeStoreageHandler';
 
+document.querySelector(`.navbar__link[href="${window.location.pathname}"]`)?.classList?.add('navbar__link--current')

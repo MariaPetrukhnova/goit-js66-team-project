@@ -1,21 +1,27 @@
-import { createBaseMarkup  } from './partials/markup';
+import { createBaseMarkup } from './partials/markup';
+import { onArticleLink } from './partials/localeStoreageHandler';
 const LOCALSTORAGE_KEY = "read-articles";
+
+
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
     document.querySelector('#read-articles').innerHTML = makeMarkup();
 
-    document.querySelector('[data-toggle]').classList.add('is-active')
+    // document.querySelector('[data-toggle]').classList.add('is-active')
 
-    document.querySelectorAll('[data-toggle]')?.forEach((el) => {
-        el.addEventListener('click', () => {
-            el.classList.toggle('is-active')
-        })
-    })
+    // document.querySelectorAll('[data-toggle]')?.forEach((el) => {
+    //     el.addEventListener('click', () => {
+    //         el.classList.toggle('is-active')
+    //     })
+    // })
 });
 
 function makeMarkup() {
     const objArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+    if (!objArr || objArr.length === 0) {
+        return "<h2 class='articles-not-found'>You haven't read any article yet</h2><img class='not-found-img' src='./images/not-found-desktop-1x.png' alt='no articles there'>";
+    }
 
     const articles = objArr.sort((a, b) => new Date(b.readDate) - new Date(a.readDate))
     const articlesByDate = {}
@@ -36,7 +42,7 @@ function makeMarkup() {
 
     for (const articleDate in articlesByDate) {
         result += '<section class="articles-group">'
-        result += `<header class="articles-group__header" data-toggle="${articleDate}"><h3>${articleDate}</h3></header>`
+        result += `<header class="articles-group__header" data-toggle="${articleDate}"><h3 class="data-group__header">${articleDate}</h3></header>`
         result += `<div class="articles-group__pane" data-pane="${articleDate}"><ul class="articles_container">`
 
         result += createBaseMarkup(articlesByDate[articleDate], false)
@@ -46,3 +52,17 @@ function makeMarkup() {
 
     return result
 }
+
+const body = document.querySelector('body');
+body.addEventListener('click', onDateHeaderClick);
+
+function onDateHeaderClick(e) {
+    if (e.target.classList.contains("data-group__header")) {
+        e.target.parentNode.nextElementSibling.classList.toggle('is-hidden');
+        e.target.classList.toggle('is-closed');
+    }
+}
+
+body.addEventListener('click', onArticleLink);
+
+document.querySelector(`.navbar__link[href="${window.location.pathname}"]`)?.classList?.add('navbar__link--current')
