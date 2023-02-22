@@ -1,6 +1,7 @@
 @import url('./reset.css');
 @import url('./weather.css');
 @import url('./normalize.css');
+@import url('./firebase.css');
 
 /* filter-buttons and calendar */
 @import url('./btn.css');
@@ -32,78 +33,21 @@
   --input-active-color: #FFFFFF;
   font-size: 16px;
   line-height: 1.4;
-  font-weight: 400;
 }
 
-.body {
-  background-color: #F4F4F4;
-}
-
-.logo {
-  font-family: var(--main-font);
-  font-style: normal;
-  font-weight: 700;
-  font-size: 42px;
-  line-height: 1.4;
-
+body {
+  height: 100vh;
+  background-color: var(--dark-theme-main-color);
   color: var(--light-theme-main-color);
-}
 
-.page-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 28px 16px;
-
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.page-header__nav {
-  margin: 0 auto;
-}
-
-.page-header__nav-list {
-  display: flex;
-  align-items: center;
-  gap: 70px;
-}
-
-.page-header__nav-link {
-  font-family: var(--main-font);
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 1.4;
-  color: var(--light-theme-main-color);
-}
-
-.page-header__search-input {
-  display: block;
-  width: 288px;
-  padding: 4px 12px 4px 48px;
-  border: 1px solid #000000;
-  border-radius: 20px;
-  font-family: var(--toggle-font);
-  font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 1.7;
-  letter-spacing: 0.02em;
-  color: var(--light-theme-main-color);
-  opacity: 0.4;
-}
-
-.theme-toggle {
-  margin-left: auto;
-}
-
-.theme-name {
-  font-family: var(--toggle-font);
   font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.3;
-  color: var(--accent-violet-color);
+  font-family: Manrope;
+}
+
+body.dark-mode {
+  background-color: #2E2E2E;
+  color: var(--dark-theme-main-color);
 }
 
 .calendar__header,

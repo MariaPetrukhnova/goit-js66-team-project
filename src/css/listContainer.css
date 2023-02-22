@@ -17,7 +17,7 @@
 
 #category__container {
 
-    margin: 24px 0 40px 0;
+    margin: 24px auto 40px auto;
 }
 
 .category {
@@ -33,6 +33,10 @@
 .rest__item:focus {
     text-decoration-line: underline;
 
+}
+
+.rest__item {
+    padding-bottom: 12px;
 }
 
 .list-container.is-open {
@@ -73,7 +77,7 @@
 
     #category__container {
 
-        margin: 28px 0 60px 0;
+        margin: 28px auto 60px auto;
     }
 }
 
@@ -102,7 +106,7 @@
 
     #category__container {
 
-        margin: 28px 0 48px 0;
+        margin: 28px auto 48px auto;
     }
 }
 

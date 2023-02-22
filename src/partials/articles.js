@@ -1,5 +1,5 @@
 import { fetchPopularNews } from './try_api';
-import { createBaseMarcup } from './marcup';
+import { createBaseMarkup } from './markup';
 
 const articlesGallery = document.querySelector('.articles_container');
 
@@ -8,9 +8,11 @@ document.addEventListener('DOMContentLoaded', onDOMLoad);
 function onDOMLoad(e) {
   e.preventDefault();
   fetchPopularNews()
-    .then(articles => createBaseMarcup(articles))
-    .then(marcup => {
-      articlesGallery.insertAdjacentHTML('beforeend', marcup);
+    .then(articles => createBaseMarkup(articles))
+    .then(markup => {
+      articlesGallery.insertAdjacentHTML('beforeend', markup);
+      const event = new Event('rendered');
+      articlesGallery.dispatchEvent(event);
     })
     .then(() => {
       const articleDescription = [
@@ -22,9 +24,10 @@ function onDOMLoad(e) {
 
 function sliceArticlesDescription(textNodes) {
   textNodes.forEach(textEl => {
-    if (textEl.textContent.length > 150) {
-      const newTextNode = textEl.textContent.slice(0, 150);
+    if (textEl.textContent.length > 70) {
+      const newTextNode = textEl.textContent.slice(0, 70);
       textEl.textContent = `${newTextNode}...`;
     }
   });
 }
+export { sliceArticlesDescription };

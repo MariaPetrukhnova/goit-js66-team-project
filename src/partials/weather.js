@@ -1,4 +1,5 @@
 import spriteUrl from '/images/icon-sprites.svg';
+import { refsEl } from './refs';
 
 const mainSection = document.querySelector('main');
 const API_KEY = '419bd34d8daba21c0a4890e35d027d3f';
@@ -90,7 +91,32 @@ function getDateOfWeather(API_URL) {
 
 function renderMarkup(dateOfWeather) {
   const markup = createMarkupWeather(dateOfWeather);
-  mainSection.insertAdjacentHTML('afterend', markup);
+  creatMarkupPromise()
+    .then(response => {
+      const nodeArr = [...response];
+      return nodeArr;
+    })
+    .then(arr => {
+      const vwWidth = refsEl.viewportWidth;
+      arr.forEach((el, index) => {
+        if (vwWidth <= 767) {
+          if (index === 0) {
+            el.insertAdjacentHTML('beforebegin', markup);
+            return;
+          }
+        } else if (vwWidth <= 1279) {
+          if (index === 0) {
+            el.insertAdjacentHTML('afterend', markup);
+            return;
+          }
+        } else if (vwWidth >= 1280) {
+          if (index === 1) {
+            el.insertAdjacentHTML('afterend', markup);
+          }
+        }
+      });
+    })
+    .catch(error => console.error(error));
 }
 
 function partsOfDate(strDate) {
@@ -126,7 +152,7 @@ function createMarkupWeather(dateOfMarkup) {
   } = dateOfMarkup;
 
   const textMarkup =
-    '<section class="weather">' +
+    '<li class="weather">' +
     '<div class="weather__group">' +
     '<div class="weather__temperaturedate">' +
     '<span class="weather__temperature">' +
@@ -146,9 +172,7 @@ function createMarkupWeather(dateOfMarkup) {
     '</span > ' +
     '<div class="weather__citygroup">' +
     '<svg class="weather__svg">' +
-
     `<use href="${spriteUrl}#location"></use>` +
-
     '</svg > <p class="weather__city">' +
     String(city) +
     '</p > ' +
@@ -168,9 +192,19 @@ function createMarkupWeather(dateOfMarkup) {
     String(dateOfWeak) +
     '</span></div>' +
     '<div class="weather__refgroup"><a class="weather__ref" href="https://sinoptik.ua/" rel="noopener noreferrer" target="_blank">' +
-    'weather for week</a ></div ></section > ';
+    'weather for week</a ></div ></li > ';
 
   return textMarkup;
 }
 
+function creatMarkupPromise() {
+  return new Promise(resolve => {
+    const newEL = document.querySelectorAll('.article');
+    if (newEL.length === 0) {
+      loadWeatherDate();
+      return;
+    }
+    resolve(newEL);
+  });
+}
 export { loadWeatherDate };
