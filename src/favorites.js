@@ -4,13 +4,17 @@ const LOCALSTORAGE_FAV_KEY = "favorite-articles";
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
-    document.querySelector('.articles_container').innerHTML = makeMarkup();
+    document.querySelector('.news-gallery').innerHTML = makeMarkup();
 });
 
 function makeMarkup() {
     const objArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_FAV_KEY));
+
+    if (!objArr || objArr.length === 0) {
+        return "<h2 class='articles-not-found'>You don't have favorite articles yet</h2><img class='not-found-img' src='./images/not-found-desktop-1x.png' alt='no articles there'>";
+    }
     const markup = objArr.map(article => {
-      if (!article) {
+        if (!article) {
         return;
       }
 
@@ -48,4 +52,10 @@ function makeMarkup() {
         .join('');
 
   return markup;
+}
+
+if (window.location.pathname === '/') {
+    document.querySelector('.navbar__link')?.classList?.add('navbar__link--current')
+} else {
+    document.querySelector(`.navbar__link[href=".${window.location.pathname}"]`)?.classList?.add('navbar__link--current')
 }

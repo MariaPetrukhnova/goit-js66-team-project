@@ -1,4 +1,5 @@
 import spriteUrl from '/images/icon-sprites.svg';
+import { refsEl } from './refs';
 
 const mainSection = document.querySelector('main');
 const API_KEY = '419bd34d8daba21c0a4890e35d027d3f';
@@ -90,15 +91,28 @@ function getDateOfWeather(API_URL) {
 
 function renderMarkup(dateOfWeather) {
   const markup = createMarkupWeather(dateOfWeather);
-  const promise = new Promise((resolve, rejected) => {
-    const newEL = document.querySelectorAll('.article');
-    resolve(newEL);
-  });
-  promise
+  creatMarkupPromise()
     .then(response => {
-      response.forEach((el, index) => {
-        if (index === 1) {
-          el.insertAdjacentHTML('afterend', markup);
+      const nodeArr = [...response];
+      return nodeArr;
+    })
+    .then(arr => {
+      const vwWidth = refsEl.viewportWidth;
+      arr.forEach((el, index) => {
+        if (vwWidth <= 767) {
+          if (index === 0) {
+            el.insertAdjacentHTML('beforebegin', markup);
+            return;
+          }
+        } else if (vwWidth <= 1279) {
+          if (index === 0) {
+            el.insertAdjacentHTML('afterend', markup);
+            return;
+          }
+        } else if (vwWidth >= 1280) {
+          if (index === 1) {
+            el.insertAdjacentHTML('afterend', markup);
+          }
         }
       });
     })
@@ -183,4 +197,14 @@ function createMarkupWeather(dateOfMarkup) {
   return textMarkup;
 }
 
+function creatMarkupPromise() {
+  return new Promise(resolve => {
+    const newEL = document.querySelectorAll('.article');
+    if (newEL.length === 0) {
+      loadWeatherDate();
+      return;
+    }
+    resolve(newEL);
+  });
+}
 export { loadWeatherDate };

@@ -10,8 +10,6 @@ const alreadyRead = document.querySelector('.already-read');
 const articlesArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || [];
 const favArticlesArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_FAV_KEY)) || [];
 
-console.log('START', articlesArr);
-
 function onArticleLink(e) {
     if (e.target.classList.contains("read-more")) {
         const articleEl = e.target.closest('.article');
@@ -22,7 +20,7 @@ function onArticleLink(e) {
             articlesArr.push(createCardObj(e));
             addArticlesToLocaleStorage(LOCALSTORAGE_KEY, JSON.stringify(articlesArr));
         }
-    } else if (e.target.classList.contains("article_flag_text")) {
+    } else if (e.target.classList.contains("favorites-button") || e.target.closest('.favorites-button')) {
         const articleEl = e.target.closest('.article');
         const articleId = articleEl.dataset.id;
         articleEl.querySelector('.article_flag--add').classList.toggle('is-hidden');
@@ -38,10 +36,10 @@ function onArticleLink(e) {
 document.querySelector('.articles_container')?.addEventListener('rendered', (e) => {
     const container = e.target;
 
+    //не працює
     if (articlesArr?.length) {
-        console.log('Articles ', articlesArr)
         articlesArr.forEach((item) => {
-            container.querySelector(`[data-id="${item.id}"]`)?.querySelector('.already-read')?.classList.add('is-visible')
+            container.querySelector(`[data-id="${item.id}"]`)?.querySelector('.already-read')?.classList.remove('is-hidden')
         })
     }
 })
@@ -67,3 +65,4 @@ function addArticlesToLocaleStorage(key, arr) {
     localStorage.setItem(key, `${arr}`);
 }
 
+export { onArticleLink }

@@ -1,10 +1,12 @@
 import CalendarDates from 'calendar-dates';
 const calendarDates = new CalendarDates();
+
 import {
   arrHandler,
   notFoundHandler,
   fetchNewsBySearch,
 } from './apiFetchNewsByValue.js';
+
 import NewsApi from './apiConstructor.js';
 
 // import {fetchNewsByDate} from "./api-archive-by-month.js";
@@ -13,7 +15,7 @@ const newsApi = new NewsApi();
 const pageNotFound = document.querySelector(`.not-found`);
 let queryValue = '';
 
-const articlesGallery = document.querySelector('.articles_container');
+const deletePagination = document.querySelector('.page-container');
 
 const calendarWrapper = document.querySelector('.js-open-calendar');
 const calendarInput = document.querySelector('.calendar__input');
@@ -273,12 +275,18 @@ const fetchNewsBySearchAndData = async (request, realDate) => {
     }
     const articles = await response.json();
     const resArr = articles.response.docs;
+    console.log(resArr.length, '222');
 
     if (resArr.length) {
       pageNotFound.classList.add(`is-hidden`);
+      deletePagination.classList.remove(`is-hidden`);
       arrHandler(resArr);
+      if (resArr.length < 9) {
+        deletePagination.classList.add(`is-hidden`);
+      }
     } else if (resArr.length === 0) {
       notFoundHandler();
+      deletePagination.classList.add(`is-hidden`);
     }
 
     // arrHandler(resArr);

@@ -1,7 +1,7 @@
 import spriteUrl from '/images/icon-sprites.svg';
 
 function createBaseMarkup(arr, normalize = true) {
-  let normalizedArr = normalize ? arrHandler(arr) : arr
+  let normalizedArr = normalize ? arrHandler(arr) : arr;
   const markup = normalizedArr
     .map(article => {
       if (!article) {
@@ -17,12 +17,12 @@ function createBaseMarkup(arr, normalize = true) {
        <p class="article_category">${section}</p>
        <img class="article_img" src="${img}" alt="${imgCaption}" width="395" height="395">
        <div class="article_flag">
-       <button class="article_flag--add"><span class="article_flag_text">Add to favorite</span>
+       <button class="favorites-button article_flag--add"><span class="article_flag_text">Add to favorite</span>
          <svg width="16" height="16">
          <use href="${spriteUrl}#heart_contur" width="16" height="16"></use>
         </svg>
          </button>
-         <button class="article_flag--remove is-hidden"><span class="article_flag_text">Remove from favorite</span>
+         <button class="favorites-button article_flag--remove is-hidden"><span class="article_flag_text">Remove from favorite</span>
          <svg width="16" height="16">
          <use href="${spriteUrl}#heart_fill" width="16" height="16"></use>
        </svg>
@@ -56,7 +56,7 @@ function arrHandler(arr) {
           date: el.pub_date || el.created_date || el.published_date,
           img: `https://cdn.pixabay.com/photo/2013/03/30/00/10/news-97862_960_720.png`,
           imgCaption: 'image',
-          id: el.id
+          id: el.id,
         };
       }
       return {
@@ -67,10 +67,9 @@ function arrHandler(arr) {
         date: el.pub_date || el.created_date || el.published_date,
         img: el.media[0]['media-metadata'][2].url,
         imgCaption: el.media[0].caption,
-        id: el.id
+        id: el.id,
       };
     });
-    console.log(objArr);
     return objArr;
   } catch (error) {
     console.error(error);

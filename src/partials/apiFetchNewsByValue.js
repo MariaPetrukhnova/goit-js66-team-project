@@ -2,8 +2,8 @@ import NewsApi from './apiConstructor.js';
 import spriteUrl from '/images/icon-sprites.svg';
 import { fetchNewsBySearchAndData } from './calendar.js';
 
-const calendarBody = document.querySelector('.js-calendar-container');
 const articlesGallery = document.querySelector('.articles_container');
+const deletePagination = document.querySelector('.page-container');
 
 const newsApi = new NewsApi();
 
@@ -12,6 +12,7 @@ const newsApi = new NewsApi();
 const pageNotFound = document.querySelector(`.not-found`);
 // const newsGallery = document.querySelector(`.news-gallery`);
 // -->
+
 const searchInput = document.querySelector('.page-header__search-input');
 searchInput.addEventListener('change', onEnterPush);
 // * Тут замість submit подія change
@@ -28,6 +29,7 @@ function onEnterPush(e) {
     console.log('Виклик fetchNewsBySearch(query) без даних по даті');
   }
   if (dateInput.value) {
+
     fetchNewsBySearchAndData(query);
     console.log('Виклик fetchNewsBySearch(query) з даними по даті');
   }
@@ -46,7 +48,7 @@ const fetchNewsBySearch = async request => {
     }
     const articles = await response.json();
     const resArr = articles.response.docs;
-
+    console.log(resArr.length, 'roketa');
     // // -->
     // console.log(`resArr`, resArr);
     // // -->
@@ -55,9 +57,14 @@ const fetchNewsBySearch = async request => {
 
     if (resArr.length) {
       pageNotFound.classList.add(`is-hidden`);
+      deletePagination.classList.remove(`is-hidden`);
       arrHandler(resArr);
+      if (resArr.length < 9) {
+        deletePagination.classList.add(`is-hidden`);
+      }
     } else if (resArr.length === 0) {
       notFoundHandler();
+      deletePagination.classList.add(`is-hidden`);
     }
     // --> render section not-found
 
@@ -146,11 +153,11 @@ function addMarkup(tagString) {
 // --> render section not-found
 function notFoundHandler() {
   if (pageNotFound.classList.contains(`is-hidden`)) {
-    // newsGallery.innerHTML = ``;
+    articlesGallery.innerHTML = '';
     pageNotFound.classList.remove(`is-hidden`);
   }
 }
 // --> render section not-found
 
 export * as apiFetchNewsByValue from './apiFetchNewsByValue.js';
-export { arrHandler, notFoundHandler, fetchNewsBySearch };
+export { arrHandler, notFoundHandler, fetchNewsBySearch, searchInput };

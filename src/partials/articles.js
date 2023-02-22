@@ -11,8 +11,8 @@ function onDOMLoad(e) {
     .then(articles => createBaseMarkup(articles))
     .then(markup => {
       articlesGallery.insertAdjacentHTML('beforeend', markup);
-      const event = new Event('rendered')
-      articlesGallery.dispatchEvent(event)
+      const event = new Event('rendered');
+      articlesGallery.dispatchEvent(event);
     })
     .then(() => {
       const articleDescription = [
@@ -24,8 +24,8 @@ function onDOMLoad(e) {
 
 function sliceArticlesDescription(textNodes) {
   textNodes.forEach(textEl => {
-    if (textEl.textContent.length > 150) {
-      const newTextNode = textEl.textContent.slice(0, 150);
+    if (textEl.textContent.length > 70) {
+      const newTextNode = textEl.textContent.slice(0, 70);
       textEl.textContent = `${newTextNode}...`;
     }
   });
