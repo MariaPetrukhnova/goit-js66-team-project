@@ -1,6 +1,6 @@
 import CalendarDates from 'calendar-dates';
 const calendarDates = new CalendarDates();
-import { arrHandler, notFoundHandler, fetchNewsBySearch } from './apiFetchNewsByValue.js';
+import { arrHandler, notFoundHandler } from './apiFetchNewsByValue.js';
 import NewsApi from './apiConstructor.js';
 
 // import {fetchNewsByDate} from "./api-archive-by-month.js";
@@ -9,7 +9,7 @@ const newsApi = new NewsApi();
 const pageNotFound = document.querySelector(`.not-found`);
 let queryValue = '';
 
-const articlesGallery = document.querySelector('.articles_container');
+const deletePagination = document.querySelector('.page-container');
 
 const calendarWrapper = document.querySelector('.js-open-calendar');
 const calendarInput = document.querySelector('.calendar__input');
@@ -209,13 +209,13 @@ function onDateSelect(evt) {
   const inputValue = dateEl.id.split('-').reverse().join('/');
   const realDate = dateEl.id.split('-').join('');
   console.log(realDate);
-  const searchInput = document.querySelector(".page-header__search-input").value;
-  
+  const searchInput = document.querySelector(
+    '.page-header__search-input'
+  ).value;
 
   if (currentDate === dateEl) {
     calendarInput.value = '';
     currentDate.classList.remove('calendar__date--active');
-    
   } else if (currentDate !== dateEl && selectedDate > new Date()) {
     console.log('selectedDate > new Date()', selectedDate > new Date());
     // renderNotFound();
@@ -225,14 +225,14 @@ function onDateSelect(evt) {
   } else {
     // const searchInput = document.querySelector(".page-header__search-input");
     // if (!searchInput.value) {
-    
+
     //   console.log("Виклик fetchNewsBySearch(query) без даних по search input тільки з датою");
     // }
     // if (searchInput.value) {
     //   fetchNewsBySearchAndData(queryValue);
     //   console.log("Виклик fetchNewsBySearch(query) з даними з search input і по даті");
     // }
-    
+
     removeActiveDateClass();
     addActiveDateClass(dateEl);
     fetchNewsBySearchAndData(searchInput, realDate);
@@ -250,7 +250,6 @@ function removeActiveDateClass() {
   }
 }
 
-
 let realDate = 0;
 function getDateForInput(elem) {
   const inputValue = elem.id.split('-').reverse().join('/');
@@ -259,8 +258,6 @@ function getDateForInput(elem) {
   return inputValue, realDate;
   // повторити це в функції де виклик
 }
-
-
 
 const fetchNewsBySearchAndData = async (request, realDate) => {
   try {
@@ -272,12 +269,18 @@ const fetchNewsBySearchAndData = async (request, realDate) => {
     }
     const articles = await response.json();
     const resArr = articles.response.docs;
+    console.log(resArr.length, '222');
 
     if (resArr.length) {
       pageNotFound.classList.add(`is-hidden`);
+      deletePagination.classList.remove(`is-hidden`);
       arrHandler(resArr);
+      if (resArr.length < 9) {
+        deletePagination.classList.add(`is-hidden`);
+      }
     } else if (resArr.length === 0) {
       notFoundHandler();
+      deletePagination.classList.add(`is-hidden`);
     }
 
     // arrHandler(resArr);

@@ -1,14 +1,11 @@
 import NewsApi from './apiConstructor.js';
-import { valuePage } from './paginations.js';
 import spriteUrl from '/images/icon-sprites.svg';
 import { fetchNewsBySearchAndData } from './calendar.js';
 
-const calendarBody = document.querySelector('.js-calendar-container');
 const articlesGallery = document.querySelector('.articles_container');
+const deletePagination = document.querySelector('.page-container');
 
 const newsApi = new NewsApi();
-
-let sumPage;
 
 // const API_KEY = 'api-key=JmGuT2FnDagHatExdMuVy4QCYQRUlSyR';
 // -->
@@ -19,17 +16,11 @@ const searchInput = document.querySelector('.search-field');
 searchInput.addEventListener('submit', onEnterPush);
 
 function onEnterPush(e) {
-  const query = e.target.value;
-  console.log(query);
-  fetchNewsBySearch(query, valuePage.curPage - 1);
-}
-
-const fetchNewsBySearch = async (request, page) => {
   e.preventDefault();
   const form = e.currentTarget;
-  console.dir(form);
+
   const query = form.elements.searchQuery.value.trim();
-  console.log(query, 'llolo');
+
   const dateInput = document.querySelector('.calendar__input');
   dateInput.value = '';
 
@@ -38,13 +29,15 @@ const fetchNewsBySearch = async (request, page) => {
     console.log('Виклик fetchNewsBySearch(query) без даних по даті');
   }
   if (dateInput.value) {
-    fetchNewsBySearchAndData(query);
+    fetchNewsBySearchAndData(query, dateInput);
     console.log('Виклик fetchNewsBySearch(query) з даними по даті');
   }
 }
+
+const fetchNewsBySearch = async request => {
   try {
     const response = await fetch(
-      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&page=${page}&${newsApi.API_KEY}`
+      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&${newsApi.API_KEY}`
     );
     // // -->
     // console.log(`response`, response.ok);
@@ -54,14 +47,7 @@ const fetchNewsBySearch = async (request, page) => {
     }
     const articles = await response.json();
     const resArr = articles.response.docs;
-
-    // if (skfgjs;dflkjg.meta.hits > 1000) {
-    //   sumPage = 1000;
-    // } else {
-    //   sumPage = response.meta.hits;
-    // }
-    // valuePage.totalPages = sumPage / 10;
-
+    console.log(resArr.length, 'roketa');
     // // -->
     // console.log(`resArr`, resArr);
     // // -->
@@ -70,9 +56,14 @@ const fetchNewsBySearch = async (request, page) => {
 
     if (resArr.length) {
       pageNotFound.classList.add(`is-hidden`);
+      deletePagination.classList.remove(`is-hidden`);
       arrHandler(resArr);
+      if (resArr.length < 9) {
+        deletePagination.classList.add(`is-hidden`);
+      }
     } else if (resArr.length === 0) {
       notFoundHandler();
+      deletePagination.classList.add(`is-hidden`);
     }
     // --> render section not-found
 
@@ -161,13 +152,11 @@ function addMarkup(tagString) {
 // --> render section not-found
 function notFoundHandler() {
   if (pageNotFound.classList.contains(`is-hidden`)) {
-    // newsGallery.innerHTML = ``;
+    articlesGallery.innerHTML = '';
     pageNotFound.classList.remove(`is-hidden`);
   }
 }
 // --> render section not-found
 
 export * as apiFetchNewsByValue from './apiFetchNewsByValue.js';
-export { fetchNewsBySearch, searchInput, valuePage };
 export { arrHandler, notFoundHandler, fetchNewsBySearch };
-
