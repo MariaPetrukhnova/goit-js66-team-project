@@ -1,21 +1,15 @@
 import { createBaseMarkup } from './partials/markup';
-import { onArticleLink } from './partials/localeStoreageHandler';
+import { onArticleLink, setFavorites, setRead } from './partials/localeStoreageHandler';
 const LOCALSTORAGE_KEY = "read-articles";
-
-
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
     document.querySelector('#read-articles').innerHTML = makeMarkup();
 
-    // document.querySelector('[data-toggle]').classList.add('is-active')
-
-    // document.querySelectorAll('[data-toggle]')?.forEach((el) => {
-    //     el.addEventListener('click', () => {
-    //         el.classList.toggle('is-active')
-    //     })
-    // })
+    setFavorites()
+    setRead()
 });
+
 
 function makeMarkup() {
     const objArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));

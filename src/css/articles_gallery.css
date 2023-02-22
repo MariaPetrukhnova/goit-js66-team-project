@@ -294,3 +294,7 @@
   text-align: center;
   font-size: 40px;
 }
+
+.not-found-container {
+display: block;
+}
