@@ -242,7 +242,7 @@ function onDateSelect(evt) {
 
       if (ele.dataset.page) {
         const pageNumber = parseInt(e.target.dataset.page, 10);
-        console.log(pageNumber);
+
         fetchNewsBySearchAndData(searchInput, realDate, pageNumber - 1);
         console.log('Виклик fetchNewsBySearch(query) з даними по даті ');
       }
