@@ -12,121 +12,109 @@
         rel="stylesheet">
     <title>GOIT News Portal</title>
     
-  <script type="module" crossorigin src="/goit-js66-team-project/assets/read-32d4ab53.js"></script>
-  <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/icon-sprites-b0ceb375.js">
-  <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/localeStoreageHandler-c55db5d4.js">
-  <link rel="stylesheet" href="/goit-js66-team-project/assets/icon-sprites-46f4b6b5.css">
+  <script type="module" crossorigin src="/goit-js66-team-project/assets/read-6293e7d1.js"></script>
+  <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/mobile-version-de24c2cd.js">
+  <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/localeStoreageHandler-024cd4d3.js">
+  <link rel="stylesheet" href="/goit-js66-team-project/assets/mobile-version-a21544df.css">
 </head>
 
 <body>
-    <!-- Path to images as from index.html file -->
-<header class="header">
-  <div class="container header-container">
-    <a href="#" class="logo">News</a>
-    <nav>
-      <ul class="navbar">
-        <li class="navbar__item">
-          <a href="./index.html" class="navbar__link"
-            >Home</a>
-        </li>
-        <li class="navbar__item">
-          <a href="./favorites.html" class="navbar__link">Favorite</a>
-        </li>
-        <li class="navbar__item">
-          <a href="./read.html" class="navbar__link">Read</a>
-        </li>
-      </ul>
-    </nav>
-    <form class="search-field" id="form-field">
-      <button class="search-field__btn" type="submit" id="form-btn">
-        <svg class="search__icon" width="16" height="15">
-          <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#bx_search"></use>
-        </svg>
-      </button>
-      <input
-        class="page-header__search-input"
-        type="text"
-        name="searchQuery"
-        autocomplete="off"
-        id="search-field__input"
-        placeholder="Search"
-      />
-    </form>
-    <div class="theme" id="theme">
-      <svg class="theme__svg sun" width="21" height="21">
-        <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#sun"></use>
-      </svg>
-      <p class="theme__light" id="theme__light">Light</p>
-      <label class="switch">
-        <input type="checkbox" class="switch-checkbox" id="switch-checkbox" />
-        <span class="slider round"></span>
-      </label>
-      <p class="theme__dark opacity" id="theme__dark">Dark</p>
-      <svg class="theme__svg moon" width="21" height="21">
-        <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#moon"></use>
-      </svg>
+    <header class="header">
+        <div class="container header-container">
+            <a href="./index.html" class="logo">News</a>
+            <nav>
+                <ul class="navbar">
+                    <li class="navbar__item">
+                        <a href="./index.html" class="navbar__link">Home</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a href="./favorites.html" class="navbar__link">Favorite</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a href="./read.html" class="navbar__link navbar__link--current">Read</a>
+                    </li>
+                </ul>
+            </nav>
+            <form class="search-field" id="form-field">
+                <button class="search-field__btn" id="form-btn">
+                    <svg class="search__icon" width="16" height="15">
+                        <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#bx_search"></use>
+                    </svg>
+                </button>
+                <input type="search" class="page-header__search-input" type="text" id="search-field__input"
+                    placeholder="Search" />
+            </form>
+            <div class="theme" id="theme">
+                <svg class="theme__svg sun" width="21" height="21">
+                    <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#sun"></use>
+                </svg>
+                <p class="theme__light" id="theme__light">Light</p>
+                <label class="switch">
+                    <input type="checkbox" class="switch-checkbox" id="switch-checkbox" />
+                    <span class="slider"></span>
+                </label>
+                <p class="theme__dark opacity" id="theme__dark">Dark</p>
+                <svg class="theme__svg moon" width="21" height="21">
+                    <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#moon"></use>
+                </svg>
+            </div>
+            <!-- Firebase -->
+            <button type="submit" class="registerbtn sing firebase__btn" data-modal-open>Sing Up</button>
+            <!-- Mobile__Btn -->
+            <button type="button" class="mobile-button" id="js-open-menu" aria-expanded="false">
+                <svg class="icon" width="24" height="24">
+                    <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#menu"></use>
+                </svg>
+            </button>
+        </div>
+    </header>
+    <div class="mobile-menu" id="js-menu-container">
+        <div class="mobile-menu__container">
+            <div class="mobile-menu__wrapper">
+                <a href="./index.html" class="logo">News</a>
+                <button type="button" class="close-btn" id="js-close-menu">
+                    <svg width="24" height="24">
+                        <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#close"></use>
+                    </svg>
+                </button>
+            </div>
+            <ul class="navbar-mobile">
+                <li class="navbar-mobile__item">
+                    <a href="./index.html" class="navbar-mobile__link">
+                        <div class="navbar-mobile__icon-wrapper">
+                            <svg width="18" height="18" class="navbar-mobile__icon">
+                                <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#home"></use>
+                            </svg>
+                        </div>
+                        Home
+                        <svg width="24" height="12" class="current-page__icon">
+                            <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#Frame-11"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="navbar-mobile__item">
+                    <a href="./favorites.html" class="navbar-mobile__link">
+                        <div class="navbar-mobile__icon-wrapper">
+                            <svg width="18" height="18" class="navbar-mobile__icon">
+                                <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#heart_contur"></use>
+                            </svg>
+                        </div>
+                        Favorite
+                    </a>
+                </li>
+                <li class="navbar-mobile__item">
+                    <a href="./read.html" class="navbar-mobile__link navbar-mobile__link--current">
+                        <div class="navbar-mobile__icon-wrapper navbar-mobile__icon-wrapper--current">
+                            <svg width="18" height="18" class="navbar-mobile__icon">
+                                <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#book-open"></use>
+                            </svg>
+                        </div>
+                        Read
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <button
-      type="button"
-      class="mobile-button"
-      id="js-open-menu"
-      aria-expanded="false"
-    >
-      <svg class="icon" width="24" height="24">
-        <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#menu"></use>
-      </svg>
-    </button>
-  </div>
-</header>
-<div class="mobile-menu" id="js-menu-container">
-  <div class="mobile-menu__container">
-    <div class="mobile-menu__wrapper">
-      <a href="#" class="logo">News</a>
-      <button type="button" class="close-btn" id="js-close-menu">
-        <svg width="24" height="24">
-          <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#close"></use>
-        </svg>
-      </button>
-    </div>
-    <ul class="navbar-mobile">
-      <li class="navbar-mobile__item">
-        <a href="#" class="navbar-mobile__link navbar-mobile__link--current">
-          <div
-            class="navbar-mobile__icon-wrapper navbar-mobile__icon-wrapper--current"
-          >
-            <svg width="18" height="18" class="navbar-mobile__icon">
-              <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#home"></use>
-            </svg>
-          </div>
-          Home
-          <svg width="24" height="12" class="current-page__icon">
-            <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#Frame-11"></use>
-          </svg>
-        </a>
-      </li>
-      <li class="navbar-mobile__item">
-        <a href="#" class="navbar-mobile__link">
-          <div class="navbar-mobile__icon-wrapper">
-            <svg width="18" height="18" class="navbar-mobile__icon">
-              <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#heart_contur"></use>
-            </svg>
-          </div>
-          Favorite
-        </a>
-      </li>
-      <li class="navbar-mobile__item">
-        <a href="./read.html" class="navbar-mobile__link">
-          <div class="navbar-mobile__icon-wrapper">
-            <svg width="18" height="18" class="navbar-mobile__icon">
-              <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#book-open"></use>
-            </svg>
-          </div>
-          Read
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
 
     <section class="news-gallery">
         <div class="container">
@@ -136,6 +124,10 @@
         </div>
         </div>
     </section>
+    ENOENT: no such file or directory, open '/home/runner/work/goit-js66-team-project/goit-js66-team-project/src/partials /footer.html'
+
+    
+    
     
 </body>
 
