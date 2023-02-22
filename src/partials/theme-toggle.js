@@ -14,11 +14,7 @@ function changeTheme() {
   refs.themeElDark.classList.toggle('opacityForDark');
   refs.themeElLigth.classList.toggle('opacityForDark');
 
-  if (localStorage.getItem('theme') !== 'dark') {
-    localStorage.setItem('theme', 'dark');
-  } else {
-    localStorage.removeItem('theme');
-  }
+  localStorage.setItem('theme', refs.bodyEl.classList.contains('dark-mode') ? 'dark' : '');
 }
 
 function addDarkClassToHTML() {

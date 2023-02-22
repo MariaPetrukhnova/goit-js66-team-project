@@ -13,8 +13,10 @@ const newsApi = new NewsApi();
 const pageNotFound = document.querySelector(`.not-found`);
 // const newsGallery = document.querySelector(`.news-gallery`);
 // -->
-const searchInput = document.querySelector('.search-field');
-searchInput.addEventListener('submit', onEnterPush);
+
+const searchInput = document.querySelector('.page-header__search-input');
+searchInput.addEventListener('change', onEnterPush);
+// * Тут замість submit подія change
 
 function onEnterPush(e) {
   e.preventDefault();
@@ -41,7 +43,6 @@ function onEnterPush(e) {
     console.log('Виклик fetchNewsBySearch(query) без даних по даті');
   } else if (dateInput.value) {
     fetchNewsBySearchAndData(query, dateInput, pageNum);
-
     console.log('Виклик fetchNewsBySearch(query) з даними по даті');
   }
 }
@@ -125,7 +126,7 @@ function createBaseMarcup(arr) {
 
       return `<li class="article">
      <div class="article_img_wrapper">
-       <p class="already-read">Already read</p>
+       <p class="already-read is-hidden">Already read</p>
        <p class="article_category">${section}</p>
        <img class="article_img" src="${img}" alt="${imgCaption}" width="395" height="395">
        <div class="article_flag">

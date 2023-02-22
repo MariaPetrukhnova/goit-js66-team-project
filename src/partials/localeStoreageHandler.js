@@ -7,7 +7,7 @@ const body = document.querySelector('body');
 body.addEventListener('click', onArticleLink);
 const alreadyRead = document.querySelector('.already-read');
 
-const articlesArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || [];
+const readArticlesArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || [];
 const favArticlesArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_FAV_KEY)) || [];
 
 function onArticleLink(e) {
@@ -16,9 +16,9 @@ function onArticleLink(e) {
         const articleId = articleEl.dataset.id;
         articleEl.querySelector('.already-read').classList.remove('is-hidden');
 
-        if (!articlesArr.find((item) => item.id === articleId)) {
-            articlesArr.push(createCardObj(e));
-            addArticlesToLocaleStorage(LOCALSTORAGE_KEY, JSON.stringify(articlesArr));
+        if (!readArticlesArr.find((item) => item.id === articleId)) {
+            readArticlesArr.push(createCardObj(e));
+            addArticlesToLocaleStorage(LOCALSTORAGE_KEY, JSON.stringify(readArticlesArr));
         }
     } else if (e.target.classList.contains("favorites-button") || e.target.closest('.favorites-button')) {
         const articleEl = e.target.closest('.article');
@@ -34,15 +34,26 @@ function onArticleLink(e) {
 }
 
 document.querySelector('.articles_container')?.addEventListener('rendered', (e) => {
-    const container = e.target;
+    setRead();
+    setFavorites();
+})
 
-    //не працює
-    if (articlesArr?.length) {
-        articlesArr.forEach((item) => {
-            container.querySelector(`[data-id="${item.id}"]`)?.querySelector('.already-read')?.classList.remove('is-hidden')
+function setRead() {
+    if (readArticlesArr?.length) {
+        readArticlesArr.forEach((item) => {
+            document.querySelector('.articles_container').querySelector(`[data-id="${item.id}"]`)?.querySelector('.already-read')?.classList.remove('is-hidden')
         })
     }
-})
+}
+
+function setFavorites() {
+    if (favArticlesArr?.length) {
+        favArticlesArr.forEach((item) => {
+            document.querySelector('.articles_container').querySelector(`[data-id="${item.id}"]`)?.querySelector('.article_flag--add')?.classList.add('is-hidden')
+            document.querySelector('.articles_container').querySelector(`[data-id="${item.id}"]`)?.querySelector('.article_flag--remove')?.classList.remove('is-hidden')
+        })
+    }
+}
 
 function createCardObj(e) {    
     const savedCard = new Object;
@@ -65,4 +76,5 @@ function addArticlesToLocaleStorage(key, arr) {
     localStorage.setItem(key, `${arr}`);
 }
 
-export { onArticleLink }
+
+export { onArticleLink, setFavorites, setRead }

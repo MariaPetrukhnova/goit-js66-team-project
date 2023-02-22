@@ -1,6 +1,12 @@
 import CalendarDates from 'calendar-dates';
 const calendarDates = new CalendarDates();
-import { arrHandler, notFoundHandler } from './apiFetchNewsByValue.js';
+
+import {
+  arrHandler,
+  notFoundHandler,
+  fetchNewsBySearch,
+} from './apiFetchNewsByValue.js';
+
 import NewsApi from './apiConstructor.js';
 
 // import {fetchNewsByDate} from "./api-archive-by-month.js";
