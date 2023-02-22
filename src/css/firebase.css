@@ -216,3 +216,19 @@
                             background: #4440F6;
                             color: white;
                         }
+
+
+.toggle-firebase__container{
+    display: flex;
+    flex-direction: column;
+}
+
+.firebase-btns__container{
+    display: flex;
+}
+
+.registerbtn{
+    border: 1px solid #4440F6;
+    border-radius: 20px;
+    
+}
