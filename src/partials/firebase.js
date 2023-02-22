@@ -22,12 +22,12 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
 const refs = {
-    openModalBtn: document.querySelector("[data-modal-open]"),
+    openModalBtn: document.querySelector("[data-modal-open-sing]"),
     closeUserModalBtn: document.querySelector("[data-modal-close]"),
     closeRegBtn: document.querySelector("[data-modal-close-reg]"),
     closeLogin: document.querySelector("[data-modal-close-log]"),
     openLoginBtn: document.querySelector(".login"),
-    modal: document.querySelector("[data-modal]"),
+    modal: document.querySelector(".modal-reg"),
     modalLogin: document.querySelector("[data-modal-login]"),
     modalUser: document.querySelector("[data-modal-user]"),
     modalEmail: document.getElementById('email'),
