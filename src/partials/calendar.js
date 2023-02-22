@@ -1,13 +1,19 @@
 import CalendarDates from 'calendar-dates';
 const calendarDates = new CalendarDates();
-import { arrHandler, notFoundHandler } from './apiFetchNewsByValue.js';
+
+import {
+  arrHandler,
+  notFoundHandler,
+  fetchNewsBySearch,
+} from './apiFetchNewsByValue.js';
+
 import NewsApi from './apiConstructor.js';
 
 // import {fetchNewsByDate} from "./api-archive-by-month.js";
 
 const newsApi = new NewsApi();
-const pg = document.getElementById('pagination');
 const pageNotFound = document.querySelector(`.not-found`);
+let queryValue = '';
 
 const deletePagination = document.querySelector('.page-container');
 
@@ -232,10 +238,10 @@ function onDateSelect(evt) {
     //   fetchNewsBySearchAndData(queryValue);
     //   console.log("Виклик fetchNewsBySearch(query) з даними з search input і по даті");
     // }
-    let pageNum = newsApi.pageNumber;
 
     removeActiveDateClass();
     addActiveDateClass(dateEl);
+
     fetchNewsBySearchAndData(searchInput, realDate, pageNum);
     pg.addEventListener('click', e => {
       const ele = e.target;
@@ -247,6 +253,7 @@ function onDateSelect(evt) {
         console.log('Виклик fetchNewsBySearch(query) з даними по даті ');
       }
     });
+
     // получить запрос со строки и с инпута при каждом выpове
   }
 }
@@ -270,11 +277,10 @@ function getDateForInput(elem) {
   // повторити це в функції де виклик
 }
 
-const fetchNewsBySearchAndData = async (request, realDate, pageNumber) => {
-  let pageNum = newsApi.pageNumber;
+const fetchNewsBySearchAndData = async (request, realDate) => {
   try {
     const response = await fetch(
-      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&begin_date=${realDate}&page=${pageNum}&end_date=${realDate}&${newsApi.API_KEY}`
+      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&begin_date=${realDate}&end_date=${realDate}&${newsApi.API_KEY}`
     );
     if (response.ok === false) {
       throw new Error('Such a request has not been found');

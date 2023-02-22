@@ -250,12 +250,8 @@
   display: none;
 }
 
-.articles-group__pane {
-  padding: 40px 0;
-
-}
 .articles-group__header{
-  padding: 0 16px;
+  padding: 5px 16px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -297,4 +293,8 @@
   margin-top: 20px;
   text-align: center;
   font-size: 40px;
+}
+
+.not-found-container {
+display: block;
 }
