@@ -1,4 +1,5 @@
 import NewsApi from './apiConstructor.js';
+import { valuePage } from './paginations.js';
 import spriteUrl from '/images/icon-sprites.svg';
 import { fetchNewsBySearchAndData } from './calendar.js';
 
@@ -6,6 +7,8 @@ const calendarBody = document.querySelector('.js-calendar-container');
 const articlesGallery = document.querySelector('.articles_container');
 
 const newsApi = new NewsApi();
+
+let sumPage;
 
 // const API_KEY = 'api-key=JmGuT2FnDagHatExdMuVy4QCYQRUlSyR';
 // -->
@@ -16,6 +19,12 @@ const searchInput = document.querySelector('.search-field');
 searchInput.addEventListener('submit', onEnterPush);
 
 function onEnterPush(e) {
+  const query = e.target.value;
+  console.log(query);
+  fetchNewsBySearch(query, valuePage.curPage - 1);
+}
+
+const fetchNewsBySearch = async (request, page) => {
   e.preventDefault();
   const form = e.currentTarget;
   console.dir(form);
@@ -33,11 +42,9 @@ function onEnterPush(e) {
     console.log('Виклик fetchNewsBySearch(query) з даними по даті');
   }
 }
-
-const fetchNewsBySearch = async request => {
   try {
     const response = await fetch(
-      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&${newsApi.API_KEY}`
+      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&page=${page}&${newsApi.API_KEY}`
     );
     // // -->
     // console.log(`response`, response.ok);
@@ -47,6 +54,13 @@ const fetchNewsBySearch = async request => {
     }
     const articles = await response.json();
     const resArr = articles.response.docs;
+
+    // if (skfgjs;dflkjg.meta.hits > 1000) {
+    //   sumPage = 1000;
+    // } else {
+    //   sumPage = response.meta.hits;
+    // }
+    // valuePage.totalPages = sumPage / 10;
 
     // // -->
     // console.log(`resArr`, resArr);
@@ -154,4 +168,6 @@ function notFoundHandler() {
 // --> render section not-found
 
 export * as apiFetchNewsByValue from './apiFetchNewsByValue.js';
+export { fetchNewsBySearch, searchInput, valuePage };
 export { arrHandler, notFoundHandler, fetchNewsBySearch };
+
