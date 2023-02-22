@@ -12,18 +12,14 @@
     />
     <title>GOIT News Portal</title>
     
-    <script type="module" crossorigin src="/goit-js66-team-project/assets/main-911fa44d.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/localeStoreageHandler-921e3643.js">
-    <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/markup-a469caa8.js">
-    <link rel="stylesheet" href="/goit-js66-team-project/assets/localeStoreageHandler-76711b96.css">
+    <script type="module" crossorigin src="/goit-js66-team-project/assets/main-47c351ff.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/localeStoreageHandler-78d0df9b.js">
+    <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/markup-d32e3c02.js">
+    <link rel="stylesheet" href="/goit-js66-team-project/assets/localeStoreageHandler-39fca8c4.css">
   </head>
 
   <body>
-    <button type="submit" class="registerbtn sing" data-modal-open-sing>Sing Up</button>
-<button type="submit" class="registerbtn login" data-modal-open>Login</button>
-<button type="button" class="user"> USER </button>
-
-<div class="backdrop is-hidden" data-modal id="bcd">
+    <div class="backdrop is-hidden" data-modal id="bcd">
   <div class="modal modal-reg">
     <button class="btn-close" data-modal-close-reg>
       <svg fill="#212121" class="btn-close__icon" width="11" height="11">
@@ -151,27 +147,34 @@
             <input type="search" class="page-header__search-input" type="text" id="search-field__input"
                 placeholder="Search" />
         </form>
-        <div class="theme" id="theme">
-            <svg class="theme__svg sun" width="21" height="21">
-                <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#sun"></use>
-            </svg>
-            <p class="theme__light" id="theme__light">Light</p>
-            <label class="switch">
-                <input type="checkbox" class="switch-checkbox" id="switch-checkbox" />
-                <span class="slider"></span>
-            </label>
-            <p class="theme__dark opacity" id="theme__dark">Dark</p>
-            <svg class="theme__svg moon" width="21" height="21">
-                <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#moon"></use>
-            </svg>
+        <div class="toggle-firebase__container">
+            <div class="theme" id="theme">
+                <svg class="theme__svg sun" width="21" height="21">
+                    <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#sun"></use>
+                </svg>
+                <p class="theme__light" id="theme__light">Light</p>
+                <label class="switch">
+                    <input type="checkbox" class="switch-checkbox" id="switch-checkbox" />
+                    <span class="slider"></span>
+                </label>
+                <p class="theme__dark opacity" id="theme__dark">Dark</p>
+                <svg class="theme__svg moon" width="21" height="21">
+                    <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#moon"></use>
+                </svg>
+            </div>
+            <div class="firebase-btns__container">
+                <button type="submit" class="registerbtn sing btn" data-modal-open-sing>Sing Up</button>
+                <button type="submit" class="registerbtn login btn" data-modal-open>Login</button>
+                <button type="button" class="user"> USER </button>
+            </div>
         </div>
-        <!-- Mobile__Btn -->
-        <button type="button" class="mobile-button" id="js-open-menu" aria-expanded="false">
-            <svg class="icon" width="24" height="24">
-                <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#menu"></use>
-            </svg>
-        </button>
-    </div>
+            <!-- Mobile__Btn -->
+            <button type="button" class="mobile-button" id="js-open-menu" aria-expanded="false">
+                <svg class="icon" width="24" height="24">
+                    <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#menu"></use>
+                </svg>
+            </button>
+        </div>
   </div>
 </header>
 <div class="mobile-menu" id="js-menu-container">
