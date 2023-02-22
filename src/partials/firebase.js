@@ -6,6 +6,7 @@ import { getAnalytics } from "firebase/analytics";
 import Notiflix from 'notiflix';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { signOut } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyARa5Hh8nGBMHOsxW-0GD7_PQkq_qzHkeQ",
@@ -152,6 +153,14 @@ const refs = {
     const errorMessage = error.message;
   });
       }
+      
+
+      
+     
+
+
+
+
     //   Кнопка закрити кабінет\\\\\\\
 function closeUserModal(e) {
    
@@ -176,12 +185,15 @@ function onUser(e){
     // Вихід з кабінету\\\\\\\
 
 function logOut(e){
-    e.preventDefault();
-    localStorage.auth = "no"
-    refs.modalUser.classList.toggle("is-hidden");
-    refs.openModalBtn.style.display = '';
-    refs.openLoginBtn.style.display = '';
-    refs.userBtn.style.display = "none"
+
+    // e.preventDefault();
+
+    signOut(auth).then(() => {
+      localStorage.auth = "no"
+      refs.modalUser.classList.toggle("is-hidden");
+    }).catch((error) => {
+    console.log(error);
+    });
    
 }
 
