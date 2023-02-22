@@ -1,19 +1,19 @@
 
 
-<button type="submit" class="registerbtn sing" data-modal-open>Sing Up</button>
-<button type="submit" class="registerbtn login" data-modal-open>Login</button>
-<button type="button" class="user" > USER </button>
+<button type="submit" class="registerbtn sing btn category__btn " data-modal-open>Sing Up</button>
+<button type="submit" class="registerbtn login  btn category__btn " data-modal-open>Login</button>
+<button type="button" class="user  btn category__btn " > USER </button>
 <div class="backdrop is-hidden" data-modal id="bcd">
   <div class="modal modal-reg">
     <button class="btn-close" data-modal-close-reg>
-      <svg fill="#212121" class="btn-close__icon" width="11" height="11">
-        <use href="./src/images/icon-sprites.svg#icon-close">
+      <svg class=" icon category__icon--up" width="21" height="21">
+        <use href="./images/icon-sprites.svg#close">
         </use>
       </svg>
     </button>
     <div class="form">
       <form class="modal-form" id="auth-form">
-        <p class="modal-form__title">Registration
+        <p class="modal-form__title page-header__nav-link">Registration
         </p>
 
                     
@@ -29,7 +29,7 @@
           <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="psw">
           </div>
                                
-        <button type="submit" class="button-form" id="sing-up" >Sing Up</button>
+        <button type="submit"  class="fb btn category__btn " id="sing-up" >Sing Up</button>
       </form>
     </div>
 
@@ -40,14 +40,14 @@
 <div class="backdrop is-hidden" data-modal-login id="bcd">
 <div class="modal modal-reg ">
   <button class="btn-close" data-modal-close-log>
-    <svg fill="#212121" class="btn-close__icon" width="11" height="11">
-      <use href="./src/images/icon-sprites.svg#icon-close">
+    <svg class="icon category__icon--up" width="21" height="21">
+      <use href="./images/icon-sprites.svg#close">
       </use>
     </svg>
   </button>
   <div class="form ">
      <form class="modal-form"  id="log-form">
-       <p class="modal-form__title">Login</p>
+       <p class="modal-form__title page-header__nav-lin">Login</p>
                  
       <div class="modal-form__field">
        
@@ -61,7 +61,7 @@
          <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="password">
          </div>
                              
-       <button type="submit" class="button-form" >Login</button>
+       <button type="submit" class="btn category__btn fb" >Login</button>
      </form>
    </div>
 
@@ -73,18 +73,18 @@
   <div class="modal modal-reg ">
    
     <button class="btn-close" data-modal-close>
-      <svg fill="#212121" class="btn-close__icon" width="11" height="11">
-        <use href="./src/images/icon-sprites.svg#icon-close">
+      <svg  class="icon category__icon--up" width="21" height="21">
+        <use href="./images/icon-sprites.svg#close">
         </use>
       </svg>
     </button>
     <div class="form ">
        <form class="modal-form"  id="log-form">
          <p class="modal-form__title">User </p>
-         <button type="submit" class="button-form" >Favorit</button>  
+         <button type="submit" class="user-btn button-form btn category__btn fb" >Favorite</button>  
         
                                
-         <button type="submit" class="button-form" id="login-btn">Log out</button>
+         <button type="submit" class="fb btn category__btn user-btn" id="login-btn">Log out</button>
        </form>
      </div>
   
