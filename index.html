@@ -18,13 +18,107 @@
     rel="stylesheet">
   <title>GOIT News Portal</title>
   
-  <script type="module" crossorigin src="/goit-js66-team-project/assets/main-91f6dc29.js"></script>
+  <script type="module" crossorigin src="/goit-js66-team-project/assets/main-4cd5a3b7.js"></script>
   <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/icon-sprites-033c7d49.js">
   <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/markup-d5f3e183.js">
   <link rel="stylesheet" href="/goit-js66-team-project/assets/icon-sprites-57c2ff41.css">
 </head>
 
 <body>
+  
+
+<button type="submit" class="registerbtn sing btn category__btn " data-modal-open>Sing Up</button>
+<button type="submit" class="registerbtn login  btn category__btn " data-modal-open>Login</button>
+<button type="button" class="user  btn category__btn " > USER </button>
+<div class="backdrop is-hidden" data-modal id="bcd">
+  <div class="modal modal-reg">
+    <button class="btn-close" data-modal-close-reg>
+      <svg class=" icon category__icon--up" width="21" height="21">
+        <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#close">
+        </use>
+      </svg>
+    </button>
+    <div class="form">
+      <form class="modal-form" id="auth-form">
+        <p class="modal-form__title page-header__nav-link">Registration
+        </p>
+
+                    
+      <div class="modal-form__field">
+        
+        <label for="email"><span class="modal-form__label">Email</span></label>
+       <input type="text" name="email" class="modal-form__input ml page-header__search-input" id="email">
+          </div>
+
+         <div class="modal-form__field">
+        
+          <label for="psw"><span class="modal-form__label">Password</span></label>
+          <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="psw">
+          </div>
+                               
+        <button type="submit"  class="fb btn category__btn " id="sing-up" >Sing Up</button>
+      </form>
+    </div>
+
+    
+
+  </div>
+</div>
+<div class="backdrop is-hidden" data-modal-login id="bcd">
+<div class="modal modal-reg ">
+  <button class="btn-close" data-modal-close-log>
+    <svg class="icon category__icon--up" width="21" height="21">
+      <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#close">
+      </use>
+    </svg>
+  </button>
+  <div class="form ">
+     <form class="modal-form"  id="log-form">
+       <p class="modal-form__title page-header__nav-lin">Login</p>
+                 
+      <div class="modal-form__field">
+       
+        <label for="mail"><span class="modal-form__label">Email</span></label>
+        <input type="text" name="mail" class="modal-form__input ml page-header__search-input" id="mail">
+        </div>
+
+        <div class="modal-form__field">
+       
+         <label for="psw"><span class="modal-form__label">Password</span></label>
+         <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="password">
+         </div>
+                             
+       <button type="submit" class="btn category__btn fb" >Login</button>
+     </form>
+   </div>
+
+ </div>
+
+</div>
+
+<div class="backdrop is-hidden" data-modal-user >
+  <div class="modal modal-reg ">
+   
+    <button class="btn-close" data-modal-close>
+      <svg  class="icon category__icon--up" width="21" height="21">
+        <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#close">
+        </use>
+      </svg>
+    </button>
+    <div class="form ">
+       <form class="modal-form"  id="log-form">
+         <p class="modal-form__title">User </p>
+         <button type="submit" class="user-btn button-form btn category__btn fb" >Favorite</button>  
+        
+                               
+         <button type="submit" class="fb btn category__btn user-btn" id="login-btn">Log out</button>
+       </form>
+     </div>
+  
+   </div>
+  
+  </div>
+
   <!-- Path to images as from index.html file -->
 <header class="header">
     <div class="container header-container">
@@ -288,100 +382,7 @@
     </div>
 </section>
   <footer class="footer"></footer>
-  
-
-<button type="submit" class="registerbtn sing btn category__btn " data-modal-open>Sing Up</button>
-<button type="submit" class="registerbtn login  btn category__btn " data-modal-open>Login</button>
-<button type="button" class="user  btn category__btn " > USER </button>
-<div class="backdrop is-hidden" data-modal id="bcd">
-  <div class="modal modal-reg">
-    <button class="btn-close" data-modal-close-reg>
-      <svg class=" icon category__icon--up" width="21" height="21">
-        <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#close">
-        </use>
-      </svg>
-    </button>
-    <div class="form">
-      <form class="modal-form" id="auth-form">
-        <p class="modal-form__title page-header__nav-link">Registration
-        </p>
-
-                    
-      <div class="modal-form__field">
-        
-        <label for="email"><span class="modal-form__label">Email</span></label>
-       <input type="text" name="email" class="modal-form__input ml page-header__search-input" id="email">
-          </div>
-
-         <div class="modal-form__field">
-        
-          <label for="psw"><span class="modal-form__label">Password</span></label>
-          <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="psw">
-          </div>
-                               
-        <button type="submit"  class="fb btn category__btn " id="sing-up" >Sing Up</button>
-      </form>
-    </div>
-
-    
-
-  </div>
-</div>
-<div class="backdrop is-hidden" data-modal-login id="bcd">
-<div class="modal modal-reg ">
-  <button class="btn-close" data-modal-close-log>
-    <svg class="icon category__icon--up" width="21" height="21">
-      <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#close">
-      </use>
-    </svg>
-  </button>
-  <div class="form ">
-     <form class="modal-form"  id="log-form">
-       <p class="modal-form__title page-header__nav-lin">Login</p>
-                 
-      <div class="modal-form__field">
-       
-        <label for="mail"><span class="modal-form__label">Email</span></label>
-        <input type="text" name="mail" class="modal-form__input ml page-header__search-input" id="mail">
-        </div>
-
-        <div class="modal-form__field">
-       
-         <label for="psw"><span class="modal-form__label">Password</span></label>
-         <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="password">
-         </div>
-                             
-       <button type="submit" class="btn category__btn fb" >Login</button>
-     </form>
-   </div>
-
- </div>
-
-</div>
-
-<div class="backdrop is-hidden" data-modal-user >
-  <div class="modal modal-reg ">
-   
-    <button class="btn-close" data-modal-close>
-      <svg  class="icon category__icon--up" width="21" height="21">
-        <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#close">
-        </use>
-      </svg>
-    </button>
-    <div class="form ">
-       <form class="modal-form"  id="log-form">
-         <p class="modal-form__title">User </p>
-         <button type="submit" class="user-btn button-form btn category__btn fb" >Favorite</button>  
-        
-                               
-         <button type="submit" class="fb btn category__btn user-btn" id="login-btn">Log out</button>
-       </form>
-     </div>
-  
-   </div>
-  
-  </div>
-
+ 
 
 
   
