@@ -19,13 +19,11 @@ pg.addEventListener('click', e => {
   if (ele.dataset.page) {
     const pageNumber = parseInt(e.target.dataset.page, 10);
 
-    const search = searchInput.value;
     valuePage.curPage = pageNumber;
     pagination(valuePage);
-    console.log(valuePage);
+
     handleButtonLeft();
     handleButtonRight();
-    fetchNewsBySearch(search, valuePage.curPage - 1);
   }
 });
 
@@ -134,4 +132,4 @@ function handleButtonRight() {
   }
 }
 
-export { valuePage };
+export { pagination };

@@ -2,6 +2,7 @@ import NewsApi from './apiConstructor.js';
 import spriteUrl from '/images/icon-sprites.svg';
 import { fetchNewsBySearchAndData } from './calendar.js';
 
+const pg = document.getElementById('pagination');
 const articlesGallery = document.querySelector('.articles_container');
 const deletePagination = document.querySelector('.page-container');
 
@@ -19,26 +20,37 @@ searchInput.addEventListener('change', onEnterPush);
 
 function onEnterPush(e) {
   e.preventDefault();
-  const query = e.target.value;
+
+  const form = e.currentTarget;
+
+  const query = form.elements.searchQuery.value.trim();
+
   const dateInput = document.querySelector('.calendar__input');
   dateInput.value = '';
-  console.log(query);
+  let pageNum = newsApi.pageNumber;
 
   if (!dateInput.value) {
-    fetchNewsBySearch(query);
-    console.log('Виклик fetchNewsBySearch(query) без даних по даті');
-  }
-  if (dateInput.value) {
+    fetchNewsBySearch(query, pageNum);
+    pg.addEventListener('click', e => {
+      const ele = e.target;
 
-    fetchNewsBySearchAndData(query);
+      if (ele.dataset.page) {
+        const pageNumber = parseInt(e.target.dataset.page, 10);
+
+        fetchNewsBySearch(query, pageNumber - 1);
+      }
+    });
+    console.log('Виклик fetchNewsBySearch(query) без даних по даті');
+  } else if (dateInput.value) {
+    fetchNewsBySearchAndData(query, dateInput, pageNum);
     console.log('Виклик fetchNewsBySearch(query) з даними по даті');
   }
 }
 
-const fetchNewsBySearch = async request => {
+const fetchNewsBySearch = async (request, pageNumber) => {
   try {
     const response = await fetch(
-      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&${newsApi.API_KEY}`
+      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&page=${pageNumber}&${newsApi.API_KEY}`
     );
     // // -->
     // console.log(`response`, response.ok);
