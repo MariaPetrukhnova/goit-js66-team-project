@@ -4,7 +4,7 @@ const LOCALSTORAGE_FAV_KEY = "favorite-articles";
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
-    document.querySelector('.articles_container').innerHTML = makeMarkup();
+    document.querySelector('.news-gallery').innerHTML = makeMarkup();
 });
 
 function makeMarkup() {
@@ -12,7 +12,6 @@ function makeMarkup() {
 
     if (!objArr || objArr.length === 0) {
         return "<h2 class='articles-not-found'>You don't have favorite articles yet</h2><img class='not-found-img' src='./images/not-found-desktop-1x.png' alt='no articles there'>";
-        //return сбивает добавление єлемента - почему?
     }
     const markup = objArr.map(article => {
         if (!article) {
