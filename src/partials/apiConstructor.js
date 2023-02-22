@@ -1,5 +1,6 @@
 export default class NewsApi {
   constructor() {
+    this.pageNumber = 0;
     this.API_KEY = 'api-key=9GYTd3hNgT1cJMME7q1HMJAu02NGsmfm';
     this.API_HOST = 'https://api.nytimes.com';
     this.WEB_HOST = 'https://www.nytimes.com';

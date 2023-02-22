@@ -1,19 +1,12 @@
 import CalendarDates from 'calendar-dates';
 const calendarDates = new CalendarDates();
-
-import {
-  arrHandler,
-  notFoundHandler,
-  fetchNewsBySearch,
-} from './apiFetchNewsByValue.js';
-
+import { arrHandler, notFoundHandler } from './apiFetchNewsByValue.js';
 import NewsApi from './apiConstructor.js';
 
 // import {fetchNewsByDate} from "./api-archive-by-month.js";
 
 const newsApi = new NewsApi();
 const pageNotFound = document.querySelector(`.not-found`);
-let queryValue = '';
 
 const deletePagination = document.querySelector('.page-container');
 
@@ -53,7 +46,6 @@ function toggleCalendar() {
 
 const main = async () => {
   const datesArr = await calendarDates.getMatrix(new Date());
-  console.log('🚀 ~ file: calendar.js:17 ~ main ~ datesArr', datesArr);
 
   const today = new Date();
   const todayArr = [months[today.getMonth()], today.getFullYear()];
@@ -71,7 +63,6 @@ async function handleBtnClick() {
     new Date(`${date[1]}, ${months[index]}`)
   );
   const croppedArr = changeFormatData(datesArr);
-  console.log('🚀 ~ file: calendar.js:28 ~ main ~ croppedArr', croppedArr);
   renderCalendar(croppedArr);
   renderMonth([months[index], date[1]]);
 }
@@ -84,20 +75,16 @@ async function handlePrevBtnClick() {
     new Date(`${date[1]}, ${months[index]}`)
   );
   const croppedArr = changeFormatData(datesArr);
-  console.log('🚀 ~ file: calendar.js:28 ~ main ~ croppedArr', croppedArr);
   renderCalendar(croppedArr);
   renderMonth([months[index], date[1]]);
 }
 
 function findIndexPrevMonth(date) {
   let index = months.indexOf(date[0]);
-  console.log('date:', date);
-  console.log('index:', index);
 
   if (index === 0) {
     index = 11;
     date[1] = +date[1] - 1;
-    console.log('date:', date);
   } else {
     index -= 1;
   }
@@ -106,11 +93,9 @@ function findIndexPrevMonth(date) {
 
 function findIndexNextMonth(date) {
   let index = months.indexOf(date[0]);
-  console.log('date:', date);
   if (index === 11) {
     index = 0;
     date[1] = +date[1] + 1;
-    console.log('date:', date);
   } else {
     index += 1;
   }
@@ -126,7 +111,6 @@ async function handleYearBtnClick() {
     new Date(`${date[1]}, ${months[index]}`)
   );
   const croppedArr = changeFormatData(datesArr);
-  console.log('🚀 ~ file: calendar.js:28 ~ main ~ croppedArr', croppedArr);
   renderCalendar(croppedArr);
   renderMonth([months[index], date[1]]);
 }
@@ -191,7 +175,6 @@ function renderNotFound() {
 
 function changeFormatData(date) {
   const cropped = date.flat();
-  console.log('cropped', cropped);
   // отримали масив днів і його обрізаємо
   return [...cropped].slice(1, 36);
 }
@@ -209,12 +192,9 @@ function onDateSelect(evt) {
   const dateEl = evt.target;
   const currentDate = document.querySelector('.calendar__date--active');
   const selectedDate = new Date(evt.target.id);
-  console.log('selectedDate', selectedDate);
-  console.log('todayDate', new Date());
 
   const inputValue = dateEl.id.split('-').reverse().join('/');
   const realDate = dateEl.id.split('-').join('');
-  console.log(realDate);
   const searchInput = document.querySelector(
     '.page-header__search-input'
   ).value;
@@ -223,7 +203,6 @@ function onDateSelect(evt) {
     calendarInput.value = '';
     currentDate.classList.remove('calendar__date--active');
   } else if (currentDate !== dateEl && selectedDate > new Date()) {
-    console.log('selectedDate > new Date()', selectedDate > new Date());
     // renderNotFound();
     // removeActiveDateClass();
     // addActiveDateClass(dateEl);
@@ -232,11 +211,9 @@ function onDateSelect(evt) {
     // const searchInput = document.querySelector(".page-header__search-input");
     // if (!searchInput.value) {
 
-    //   console.log("Виклик fetchNewsBySearch(query) без даних по search input тільки з датою");
     // }
     // if (searchInput.value) {
     //   fetchNewsBySearchAndData(queryValue);
-    //   console.log("Виклик fetchNewsBySearch(query) з даними з search input і по даті");
     // }
 
     removeActiveDateClass();
@@ -265,17 +242,17 @@ function getDateForInput(elem) {
   // повторити це в функції де виклик
 }
 
-const fetchNewsBySearchAndData = async (request, realDate) => {
+const fetchNewsBySearchAndData = async (request, realDate, pageNumber) => {
   try {
+    let pageNum = newsApi.pageNumber;
     const response = await fetch(
-      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&begin_date=${realDate}&end_date=${realDate}&${newsApi.API_KEY}`
+      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&begin_date=${realDate}&page=${pageNum}&end_date=${realDate}&${newsApi.API_KEY}`
     );
     if (response.ok === false) {
       throw new Error('Such a request has not been found');
     }
     const articles = await response.json();
     const resArr = articles.response.docs;
-    console.log(resArr.length, '222');
 
     if (resArr.length) {
       pageNotFound.classList.add(`is-hidden`);
