@@ -1,13 +1,10 @@
-const API_KEY = 'api-key=9GYTd3hNgT1cJMME7q1HMJAu02NGsmfm';
+import NewsApi from './apiConstructor';
 
-const API_HOST = 'https://api.nytimes.com';
-const WEB_HOST = 'https://www.nytimes.com';
-const BASE_ENDPOINT_URL = `${API_HOST}/svc/topstories/v2/arts.json?${API_KEY}`;
-const SEARCH_ENDPOINT_URL = `${API_HOST}/svc/search/v2/articlesearch.json?`;
+const newsApi = new NewsApi();
 
 function fetchPopularNews() {
   try {
-    return fetch(`${API_HOST}/svc/mostpopular/v2/viewed/1.json?${API_KEY}`)
+    return fetch(`${newsApi.MOST_POPULAR_URL}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Such a request has not been found');

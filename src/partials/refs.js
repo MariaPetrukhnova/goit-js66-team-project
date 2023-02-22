@@ -6,7 +6,8 @@ const refsEl = {
   sectionRestList: document.querySelector('.rest__list'),
   categoryWrap: document.querySelector('.js-category__wrap'),
   categoryBtns: document.querySelectorAll('.js-category__btn'),
-  restWrapperEl: document.querySelector(".rest__wrapper"),
+  restWrapperEl: document.querySelector('.rest__wrapper'),
+  articlesGallery: document.querySelector('.articles_container'),
 };
 function viewportWidthChecjer() {
   window.addEventListener('resize', reportWindowSize);

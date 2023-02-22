@@ -1,7 +1,6 @@
 import { fetchPopularNews } from './try_api';
 import { createBaseMarkup } from './markup';
-
-const articlesGallery = document.querySelector('.articles_container');
+import { refsEl } from './refs';
 
 document.addEventListener('DOMContentLoaded', onDOMLoad);
 
@@ -10,13 +9,13 @@ function onDOMLoad(e) {
   fetchPopularNews()
     .then(articles => createBaseMarkup(articles))
     .then(markup => {
-      articlesGallery.insertAdjacentHTML('beforeend', markup);
+      refsEl.articlesGallery.insertAdjacentHTML('beforeend', markup);
       const event = new Event('rendered');
-      articlesGallery.dispatchEvent(event);
+      refsEl.articlesGallery.dispatchEvent(event);
     })
     .then(() => {
       const articleDescription = [
-        ...articlesGallery.querySelectorAll('.article_text'),
+        ...refsEl.articlesGallery.querySelectorAll('.article_text'),
       ];
       sliceArticlesDescription(articleDescription);
     });

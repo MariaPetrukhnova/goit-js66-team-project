@@ -8,5 +8,6 @@ export default class NewsApi {
     this.SEARCH_ENDPOINT_URL = `${this.API_HOST}/svc/search/v2/articlesearch.json?`;
     this.SEARCH_CATEGORI = `${this.API_HOST}/svc/news/v3/content/section-list.json?${this.API_KEY}`;
     this.CATEGORY_END_POINT = `${this.API_HOST}/svc/news/v3/content/all/`;
+    this.MOST_POPULAR_URL = `${this.API_HOST}/svc/mostpopular/v2/viewed/1.json?${this.API_KEY}`;
   }
 }
