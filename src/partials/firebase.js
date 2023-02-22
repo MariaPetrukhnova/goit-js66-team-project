@@ -22,7 +22,7 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
 const refs = {
-    openModalBtn: document.querySelector("[data-modal-open-sing]"),
+    openModalBtn: document.getElementById("sing-up"),
     closeUserModalBtn: document.querySelector("[data-modal-close]"),
     closeRegBtn: document.querySelector("[data-modal-close-reg]"),
     closeLogin: document.querySelector("[data-modal-close-log]"),
@@ -40,7 +40,7 @@ const refs = {
     userBtn: document.querySelector(".user"),
     
   };
- 
+
   refs.userBtn.style.display = "none";
   refs.openModalBtn.addEventListener("click", onModal);
   refs.openLoginBtn.addEventListener("click", onModalLogin);
