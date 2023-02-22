@@ -1,4 +1,4 @@
-import{s as o}from"./icon-sprites-e140b9bd.js";function w(a,e=!0){return(e?S(a):a).map(s=>{if(!s)return;const{section:m,title:p,description:_,url:h,date:f,img:v,imgCaption:b,id:y}=s;return`<li class="article" data-id="${y}">
+import{s as o}from"./icon-sprites-72f058bc.js";function w(a,e=!0){return(e?S(a):a).map(s=>{if(!s)return;const{section:m,title:p,description:_,url:h,date:f,img:v,imgCaption:b,id:y}=s;return`<li class="article" data-id="${y}">
      <div class="article_img_wrapper">
        <p class="already-read is-hidden">Already read</p>
        <p class="article_category">${m}</p>
