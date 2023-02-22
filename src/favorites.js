@@ -4,14 +4,14 @@ const LOCALSTORAGE_FAV_KEY = "favorite-articles";
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
-    document.querySelector('.news-gallery').innerHTML = makeMarkup();
+    document.querySelector('.articles_container').innerHTML = makeMarkup();
 });
 
 function makeMarkup() {
     const objArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_FAV_KEY));
 
     if (!objArr || objArr.length === 0) {
-        return "<h2 class='articles-not-found'>You don't have favorite articles yet</h2><img class='not-found-img' src='./images/not-found-desktop-1x.png' alt='no articles there'>";
+        return "<li class='not-found-container'><h2 class='articles-not-found'>You don't have favorite articles yet</h2><img class='not-found-img' src='./images/not-found-desktop-1x.png' alt='no articles there'></li>";
     }
     const markup = objArr.map(article => {
         if (!article) {

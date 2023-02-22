@@ -8,13 +8,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
     document.querySelector('#read-articles').innerHTML = makeMarkup();
 
-    // document.querySelector('[data-toggle]').classList.add('is-active')
-
-    // document.querySelectorAll('[data-toggle]')?.forEach((el) => {
-    //     el.addEventListener('click', () => {
-    //         el.classList.toggle('is-active')
-    //     })
-    // })
 });
 
 function makeMarkup() {
