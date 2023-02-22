@@ -1,13 +1,13 @@
 
-
-<button type="submit" class="registerbtn sing btn category__btn " data-modal-open>Sing Up</button>
-<button type="submit" class="registerbtn login  btn category__btn " data-modal-open>Login</button>
-<button type="button" class="user  btn category__btn " > USER </button>
+<button type="submit" class="registerbtn sing" data-modal-open>Sing Up</button>
+<button type="submit" class="registerbtn login" data-modal-open>Login</button>
+<button type="button" class="user"> USER </button>
 <div class="backdrop is-hidden" data-modal id="bcd">
   <div class="modal modal-reg">
     <button class="btn-close" data-modal-close-reg>
-      <svg class=" icon category__icon--up" width="21" height="21">
+      <svg fill="#212121" class="btn-close__icon" width="11" height="11">
         <use href="./images/icon-sprites.svg#close">
+
         </use>
       </svg>
     </button>
@@ -16,78 +16,78 @@
         <p class="modal-form__title page-header__nav-link">Registration
         </p>
 
-                    
-      <div class="modal-form__field">
-        
-        <label for="email"><span class="modal-form__label">Email</span></label>
-       <input type="text" name="email" class="modal-form__input ml page-header__search-input" id="email">
-          </div>
 
-         <div class="modal-form__field">
-        
+        <div class="modal-form__field">
+
+          <label for="email"><span class="modal-form__label">Email</span></label>
+          <input type="text" name="email" class="modal-form__input ml page-header__search-input" id="email">
+        </div>
+
+        <div class="modal-form__field">
+
           <label for="psw"><span class="modal-form__label">Password</span></label>
           <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="psw">
-          </div>
-                               
-        <button type="submit"  class="fb btn category__btn " id="sing-up" >Sing Up</button>
+        </div>
+
+        <button type="submit" class="button-form" id="sing-up">Sing Up</button>
       </form>
     </div>
 
-    
+
 
   </div>
 </div>
 <div class="backdrop is-hidden" data-modal-login id="bcd">
-<div class="modal modal-reg ">
-  <button class="btn-close" data-modal-close-log>
-    <svg class="icon category__icon--up" width="21" height="21">
-      <use href="./images/icon-sprites.svg#close">
-      </use>
-    </svg>
-  </button>
-  <div class="form ">
-     <form class="modal-form"  id="log-form">
-       <p class="modal-form__title page-header__nav-lin">Login</p>
-                 
-      <div class="modal-form__field">
-       
-        <label for="mail"><span class="modal-form__label">Email</span></label>
-        <input type="text" name="mail" class="modal-form__input ml page-header__search-input" id="mail">
-        </div>
 
-        <div class="modal-form__field">
-       
-         <label for="psw"><span class="modal-form__label">Password</span></label>
-         <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="password">
-         </div>
-                             
-       <button type="submit" class="btn category__btn fb" >Login</button>
-     </form>
-   </div>
-
- </div>
-
-</div>
-
-<div class="backdrop is-hidden" data-modal-user >
   <div class="modal modal-reg ">
-   
-    <button class="btn-close" data-modal-close>
-      <svg  class="icon category__icon--up" width="21" height="21">
-        <use href="./images/icon-sprites.svg#close">
+    <button class="btn-close" data-modal-close-log>
+      <svg fill="#212121" class="btn-close__icon" width="11" height="11">
+        <use href="../images/icon-sprites.svg#close">
         </use>
       </svg>
     </button>
     <div class="form ">
-       <form class="modal-form"  id="log-form">
-         <p class="modal-form__title">User </p>
-         <button type="submit" class="user-btn button-form btn category__btn fb" >Favorite</button>  
-        
-                               
-         <button type="submit" class="fb btn category__btn user-btn" id="login-btn">Log out</button>
-       </form>
-     </div>
-  
-   </div>
-  
+      <form class="modal-form" id="log-form">
+        <p class="modal-form__title">Login</p>
+
+        <div class="modal-form__field">
+
+          <label for="mail"><span class="modal-form__label">Email</span></label>
+          <input type="text" name="mail" class="modal-form__input ml page-header__search-input" id="mail">
+        </div>
+
+        <div class="modal-form__field">
+
+
+          <label for="psw"><span class="modal-form__label">Password</span></label>
+          <input type="text" name="psw" class="modal-form__input ps page-header__search-input" id="password">
+        </div>
+
+        <button type="submit" class="button-form">Login</button>
+      </form>
+    </div>
+
   </div>
+
+</div>
+
+<div class="backdrop is-hidden" data-modal-user>
+  <div class="modal modal-reg ">
+
+    <button class="btn-close" data-modal-close>
+      <svg fill="#212121" class="btn-close__icon" width="11" height="11">
+        <use href="../images/icon-sprites.svg#close">
+        </use>
+      </svg>
+    </button>
+    <div class="form ">
+      <form class="modal-form" id="log-form">
+        <p class="modal-form__title">User </p>
+        <button type="submit" class="button-form">Favorit</button>
+
+
+        <button type="submit" class="button-form" id="login-btn">Log out</button>
+      </form>
+    </div>  
+   </div>
+ </div>

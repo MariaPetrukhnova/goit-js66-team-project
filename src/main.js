@@ -17,3 +17,4 @@ if (window.location.pathname === '/') {
 } else {
     document.querySelector(`.navbar__link[href=".${window.location.pathname}"]`)?.classList?.add('navbar__link--current')
 }
+
