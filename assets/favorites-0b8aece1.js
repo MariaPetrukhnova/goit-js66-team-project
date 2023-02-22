@@ -1,4 +1,4 @@
-import{s as a}from"./icon-sprites-033c7d49.js";const p="favorite-articles";document.addEventListener("DOMContentLoaded",e=>{e.preventDefault(),document.querySelector(".articles_container").innerHTML=h()});function h(){return JSON.parse(localStorage.getItem(p)).map(t=>{if(!t)return;const{section:r,title:i,description:s,url:l,date:c,img:d,imgCaption:n,id:o}=t;return`<li class="article" data-id="${o}">
+import{s as a}from"./icon-sprites-d920057c.js";const p="favorite-articles";document.addEventListener("DOMContentLoaded",e=>{e.preventDefault(),document.querySelector(".articles_container").innerHTML=h()});function h(){return JSON.parse(localStorage.getItem(p)).map(t=>{if(!t)return;const{section:r,title:i,description:s,url:l,date:c,img:d,imgCaption:n,id:o}=t;return`<li class="article" data-id="${o}">
      <div class="article_img_wrapper">
        <p class="already-read is-hidden">Already read</p>
        <p class="article_category">${r}</p>
