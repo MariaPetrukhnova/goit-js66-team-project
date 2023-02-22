@@ -14,9 +14,10 @@ categoryList.addEventListener('click', categorySelect)
 
 function categorySelect (event) {
     event.preventDefault();
-    if (!event.target.className.includes("js-category__btn") && !event.target.className.includes("rest__item")) {
-        return;
-    }
+    if (!event.target.className.includes("js-search")) {
+      return;
+  }
+  
     handledCategory = event.target.textContent;
     const categoryKey = encodeURIComponent(handledCategory.toLowerCase());
     searchByCategory(categoryKey)
