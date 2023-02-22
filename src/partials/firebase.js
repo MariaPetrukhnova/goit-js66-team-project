@@ -3,11 +3,11 @@ import "firebase/auth";
 import "firebase/database";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import Notiflix from 'notiflix';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { signOut } from "firebase/auth";
-
+// import { signOut } from "firebase/auth";
+// import { onAuthStateChanged } from "firebase/auth";
+import Notiflix from 'notiflix';
 const firebaseConfig = {
   apiKey: "AIzaSyARa5Hh8nGBMHOsxW-0GD7_PQkq_qzHkeQ",
   authDomain: "team-14-baf33.firebaseapp.com",
@@ -39,18 +39,42 @@ const refs = {
     loginBtn: document.getElementById('log-form'),
     logOut: document.getElementById('login-btn'),
     userBtn: document.querySelector(".user"),
+    
   };
  
-  refs.userBtn.style.display = "none"
+  refs.userBtn.style.display = "none";
   refs.openModalBtn.addEventListener("click", onModal);
   refs.openLoginBtn.addEventListener("click", onModalLogin);
-  refs.singBtn.addEventListener("submit", authFormHandlerModal,{once:true});
-  refs.loginBtn.addEventListener('submit', authFormHandler, {once:true});
+  refs.singBtn.addEventListener("submit", authFormHandlerModal);
+  refs.loginBtn.addEventListener('submit', authFormHandler, );
   refs.closeUserModalBtn.addEventListener("click", closeUserModal);
   refs.logOut.addEventListener("click",logOut)
   refs.userBtn.addEventListener("click", onUser);
   refs.closeRegBtn.addEventListener("click", closeRegistration);
   refs.closeLogin.addEventListener("click", closeLogin);
+
+//  FUNCTION/\\\\\\\\\
+
+  function local () {
+    if (localStorage.auth === 'yes'){
+      showOneBtn()
+      return;
+    } 
+      shoTtwoBtn()
+   
+     }
+  local();
+  function shoTtwoBtn() {
+      refs.openModalBtn.style.display = '';
+      refs.openLoginBtn.style.display = '';
+      refs.userBtn.style.display = "none"
+  }
+  function showOneBtn() {
+    refs.openModalBtn.style.display = 'none';
+      refs.openLoginBtn.style.display = 'none';
+      refs.userBtn.style.display = ""
+}
+
 //   ДОДАВАННЯ КОРИСТУВАЧА   //
 
   function onModal(e) {
@@ -62,56 +86,54 @@ const refs = {
     e.preventDefault();
     createNewUser();   
   }     
-       
-        function createNewUser() {
-            const email = refs.modalEmail.value;
-            const password = refs.modalPassword.value;
-            if(email === "" || password === "") {
-                Notiflix.Notify.warning('For signing up you need to enter both E-mail and Password');
-               return;
-               }
+      
+  function createNewUser() {
+    const email = refs.modalEmail.value;
+    const password = refs.modalPassword.value;
+    if(email === "" || password === "") {
+        Notiflix.Notify.warning('For signing up you need to enter both E-mail and Password');
+        return;
+        }
 
-               checkUserRegistration(email, password).then(data => {
-                if(data.registered === true){
-                    Notiflix.Notify.warning('This user already exists! Please enter your personal account!');
-                    refs.modal.classList.toggle("is-hidden");
-                    refs.modalLogin.classList.toggle("is-hidden");
-                    refs.modal.remove();
-                }})
-                      
+        checkUserRegistration(email, password).then(data => {
+        if(data.registered === true){
+            Notiflix.Notify.warning('This user already exists! Please enter your personal account!');
+            refs.modal.classList.toggle("is-hidden");
+            refs.modalLogin.classList.toggle("is-hidden");
+            refs.modal.remove();
+        }})
+              
 
-            createUserWithEmailAndPassword(auth, email, password)
-              .then((userCredential) => {
-               console.log(userCredential);
-        
-                const user = userCredential.user;
-                Notiflix.Report.success('Registration completed successfully! Welcome');
-                refs.modal.classList.toggle("is-hidden");
-                localStorage.auth = "yes"
-                refs.openModalBtn.style.display = 'none';
-                refs.openLoginBtn.style.display = 'none';
-                refs.userBtn.style.display = ""
-              })
-              .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                
-              });
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+         console.log(userCredential);
+  
+          const user = userCredential.user;
+          Notiflix.Report.success('Registration completed successfully! Welcome');
+          refs.modal.classList.toggle("is-hidden");
+          localStorage.auth = "yes"
+          showOneBtn();
+        })
+        .catch((error) => {
+          Notiflix.Notify.warning('Email and password entered incorrectly!')
+          refs.singBtn.reset();
+                   
+        });
 
-            }
+      }
 
-            function checkUserRegistration(email, password) {
-                const apiKey = 'AIzaSyARa5Hh8nGBMHOsxW-0GD7_PQkq_qzHkeQ';
-                return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, {
-                    method: 'POST',
-                    body: JSON.stringify({
-                      email, password,
-                      returnSecureToken: true,
-                    })
-                  })
-                    .then(response => response.json())
-                    .catch();
-              };
+    function checkUserRegistration(email, password) {
+        const apiKey = 'AIzaSyARa5Hh8nGBMHOsxW-0GD7_PQkq_qzHkeQ';
+        return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, {
+            method: 'POST',
+            body: JSON.stringify({
+              email, password,
+              returnSecureToken: true,
+            })
+          })
+            .then(response => response.json())
+            .catch();
+      };
 
     // Вхід існуючого користувача!!!\\\\\
     
@@ -126,77 +148,56 @@ const refs = {
      authWithEmailAndPassword()
      
       }  
-
+    
      function authWithEmailAndPassword() {
         const email = refs.loginEmail.value;
         const password = refs.loginPassword.value;
         if(email === "" || password === "") {
             Notiflix.Notify.warning('For signing up you need to enter both E-mail and Password');
-            return;
+            
            }
-           
-        signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-
-        const user = userCredential.user;
-        localStorage.auth = "yes";
-        Notiflix.Report.success( 'Successful Login');
-        refs.modalLogin.classList.toggle("is-hidden");
-        refs.modalUser.classList.toggle("is-hidden");
-        refs.openModalBtn.style.display = 'none';
-        refs.openLoginBtn.style.display = 'none';
-        refs.userBtn.style.display = ""
-        
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
-      }
-      
-
-      
-     
-
-
-
-
-    //   Кнопка закрити кабінет\\\\\\\
-function closeUserModal(e) {
+         
+           signInWithEmailAndPassword(auth, email, password)
+           .then((userCredential) => {
    
-    refs.modalUser.classList.toggle("is-hidden");
-    
-}
-
-
-
+           const user = userCredential.user;
+           localStorage.auth = "yes";
+           Notiflix.Report.success( 'Successful Login');
+           refs.modalLogin.classList.toggle("is-hidden");
+           refs.modalUser.classList.toggle("is-hidden");
+           showOneBtn();
+           
+     })
+     .catch((error) => {
+      Notiflix.Notify.warning('Email and password entered incorrectly!')
+      refs.loginBtn.reset();
+     
+     });
+         }
+  
 // Вхід в кабінет\\\\\\\
 function onUser(e){
     e.preventDefault();
-    if (localStorage.auth=== 'yes') {
+    if (localStorage.auth=== "yes") {
         refs.modalUser.classList.toggle("is-hidden");
         return;
     }
-    // Notiflix.Notify.warning('You need to login!')
-    // refs.modalLogin.classList.toggle("is-hidden");
-
-}
+    }
 
     // Вихід з кабінету\\\\\\\
 
-function logOut(e){
+    function logOut(e){
 
-    // e.preventDefault();
-
-    signOut(auth).then(() => {
-      localStorage.auth = "no"
-      refs.modalUser.classList.toggle("is-hidden");
-    }).catch((error) => {
-    console.log(error);
-    });
+     localStorage.auth = "no"
+    refs.modalUser.classList.toggle("is-hidden");
+    shoTtwoBtn()
    
 }
-
+    //   Кнопки закриття
+    // кабінет\\\\\\\
+    function closeUserModal(e) {
+   refs.modalUser.classList.toggle("is-hidden");
+  }
 
     // Закриття Регистрации\\\
 function closeRegistration(e) {
