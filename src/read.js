@@ -65,4 +65,8 @@ function onDateHeaderClick(e) {
 
 body.addEventListener('click', onArticleLink);
 
-document.querySelector(`.navbar__link[href="${window.location.pathname}"]`)?.classList?.add('navbar__link--current')
+if (window.location.pathname === '/') {
+    document.querySelector('.navbar__link')?.classList?.add('navbar__link--current')
+} else {
+    document.querySelector(`.navbar__link[href=".${window.location.pathname}"]`)?.classList?.add('navbar__link--current')
+}
