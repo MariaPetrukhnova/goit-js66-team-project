@@ -1,7 +1,10 @@
 import NewsApi from './apiConstructor.js';
 import { makeMarkup, addMarkup } from './renderMarkup';
+import { valuePage } from './paginations.js';
 
 const newsApi = new NewsApi();
+
+let sumPage;
 
 // const API_KEY = 'api-key=JmGuT2FnDagHatExdMuVy4QCYQRUlSyR';
 // -->
@@ -14,12 +17,12 @@ searchInput.addEventListener('change', onEnterPush);
 function onEnterPush(e) {
   const query = e.target.value;
   console.log(query);
-  fetchNewsBySearch(query);
+  fetchNewsBySearch(query, valuePage.curPage - 1);
 }
-const fetchNewsBySearch = async request => {
+const fetchNewsBySearch = async (request, page) => {
   try {
     const response = await fetch(
-      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&${newsApi.API_KEY}`
+      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&page=${page}&${newsApi.API_KEY}`
     );
     // // -->
     // console.log(`response`, response.ok);
@@ -30,6 +33,13 @@ const fetchNewsBySearch = async request => {
     const articles = await response.json();
     const resArr = articles.response.docs;
 
+    // if (skfgjs;dflkjg.meta.hits > 1000) {
+    //   sumPage = 1000;
+    // } else {
+    //   sumPage = response.meta.hits;
+    // }
+    // valuePage.totalPages = sumPage / 10;
+
     // // -->
     // console.log(`resArr`, resArr);
     // // -->
@@ -37,7 +47,7 @@ const fetchNewsBySearch = async request => {
     // --> render section not-found
 
     if (resArr.length) {
-      pageNotFound.classList.add(`is-hidden`)
+      pageNotFound.classList.add(`is-hidden`);
       arrHandler(resArr);
     } else {
       notFoundHandler();
@@ -72,8 +82,9 @@ function notFoundHandler() {
   if (pageNotFound.classList.contains(`is-hidden`)) {
     // newsGallery.innerHTML = ``;
     pageNotFound.classList.remove(`is-hidden`);
-  } 
+  }
 }
 // --> render section not-found
 
 export * as apiFetchNewsByValue from './apiFetchNewsByValue.js';
+export { fetchNewsBySearch, searchInput, valuePage };

@@ -1,3 +1,4 @@
+import { fetchNewsBySearch, searchInput } from './apiFetchNewsByValue';
 const pg = document.getElementById('pagination');
 const btnNextPg = document.querySelector('button.next-page');
 const btnPrevPg = document.querySelector('button.prev-page');
@@ -18,11 +19,13 @@ pg.addEventListener('click', e => {
   if (ele.dataset.page) {
     const pageNumber = parseInt(e.target.dataset.page, 10);
 
+    const search = searchInput.value;
     valuePage.curPage = pageNumber;
     pagination(valuePage);
     console.log(valuePage);
     handleButtonLeft();
     handleButtonRight();
+    fetchNewsBySearch(search, valuePage.curPage - 1);
   }
 });
 
@@ -130,3 +133,5 @@ function handleButtonRight() {
     // btnLastPg.disabled = false;
   }
 }
+
+export { valuePage };
