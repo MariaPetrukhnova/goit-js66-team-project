@@ -2,6 +2,7 @@ import NewsApi from './apiConstructor.js';
 import spriteUrl from '/images/icon-sprites.svg';
 import { fetchNewsBySearchAndData } from './calendar.js';
 
+
 const pg = document.getElementById('pagination');
 const articlesGallery = document.querySelector('.articles_container');
 const deletePagination = document.querySelector('.page-container');

@@ -1,11 +1,13 @@
 import { fetchPopularNews } from './try_api';
 import { createBaseMarkup } from './markup';
 import { refsEl } from './refs';
+import { setFavorites, setRead } from './localeStoreageHandler';
 
 document.addEventListener('DOMContentLoaded', onDOMLoad);
 
 function onDOMLoad(e) {
   e.preventDefault();
+  
   fetchPopularNews()
     .then(articles => createBaseMarkup(articles))
     .then(markup => {
@@ -19,6 +21,8 @@ function onDOMLoad(e) {
       ];
       sliceArticlesDescription(articleDescription);
     });
+  setFavorites();
+  setRead();
 }
 
 function sliceArticlesDescription(textNodes) {

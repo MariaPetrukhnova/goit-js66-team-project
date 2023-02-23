@@ -1,5 +1,6 @@
 import spriteUrl from '/images/icon-sprites.svg';
-import { setRead } from './partials/localeStoreageHandler';
+import notFoundUrl from '/images/not-found-desktop-1x.png';
+import { setFavorites, setRead } from './partials/localeStoreageHandler';
 const LOCALSTORAGE_FAV_KEY = "favorite-articles";
 
 const favoritesArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_FAV_KEY));
@@ -25,12 +26,13 @@ document.querySelector('body').addEventListener('click', (e) => {
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
     document.querySelector('.articles_container').innerHTML = makeMarkup();
+    setFavorites()
     setRead();
 });
 
 function makeMarkup() {
     if (!favoritesArr?.length) {
-        return `<li class="not-found-container"><h2 class="articles-not-found">You don't have favorite articles yet</h2><img class="not-found-img" src="./images/not-found-desktop-1x.png" alt="no articles there" /></li>`;
+        return `<li class="not-found-container"><h2 class="articles-not-found">You don't have favorite articles yet</h2><img class="not-found-img" src="${notFoundUrl}" alt="no articles there" /></li>`;
     }
 
     const markup = favoritesArr.map(article => {
