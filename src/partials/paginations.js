@@ -1,4 +1,7 @@
-import { fetchNewsBySearch, searchInput } from './apiFetchNewsByValue';
+import { fetchNewsBySearch, hits } from './apiFetchNewsByValue';
+import { fetchNewsBySearchAndData } from './calendar';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
 const pg = document.getElementById('pagination');
 const btnNextPg = document.querySelector('button.next-page');
 const btnPrevPg = document.querySelector('button.prev-page');
@@ -16,16 +19,18 @@ pagination();
 pg.addEventListener('click', e => {
   const ele = e.target;
 
+  Loading.standard('Loading...', {
+    backgroundColor: 'rgba(0,0,0,0.8)',
+  });
+
   if (ele.dataset.page) {
     const pageNumber = parseInt(e.target.dataset.page, 10);
+    Loading.remove(1000);
 
-    const search = searchInput.value;
     valuePage.curPage = pageNumber;
     pagination(valuePage);
-    console.log(valuePage);
     handleButtonLeft();
     handleButtonRight();
-    fetchNewsBySearch(search, valuePage.curPage - 1);
   }
 });
 
@@ -113,6 +118,31 @@ function handleButton(element) {
     // btnFirstPg.disabled = false;
   }
   pagination();
+
+  const dateData = document.querySelector('.calendar__input').value;
+  const search = document.querySelector('.page-header__search-input').value;
+
+  let realDate;
+  if (dateData) {
+    realDate = dateData.split('/').reverse().join('');
+  }
+  if (!realDate && !search) {
+    return;
+  }
+
+  if ((search && realDate) || realDate) {
+    fetchNewsBySearchAndData(search, realDate, valuePage.curPage - 1);
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  } else {
+    fetchNewsBySearch(search, valuePage.curPage - 1);
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
 }
 function handleButtonLeft() {
   if (valuePage.curPage === 1) {
@@ -133,5 +163,4 @@ function handleButtonRight() {
     // btnLastPg.disabled = false;
   }
 }
-
-export { valuePage };
+export { valuePage, pagination };

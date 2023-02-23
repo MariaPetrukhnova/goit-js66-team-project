@@ -1,46 +1,57 @@
 import spriteUrl from '/images/icon-sprites.svg';
 import { setRead } from './partials/localeStoreageHandler';
-const LOCALSTORAGE_FAV_KEY = "favorite-articles";
+import { loadPage } from './partials/refs';
+loadPage();
+
+const LOCALSTORAGE_FAV_KEY = 'favorite-articles';
 
 const favoritesArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_FAV_KEY));
 
-document.querySelector('body').addEventListener('click', (e) => {
-    if (e.target.classList.contains("favorites-button") || e.target.closest('.favorites-button')) {
-        const postId = e.target.closest('.article')?.dataset.id;
+document.querySelector('body').addEventListener('click', e => {
+  if (
+    e.target.classList.contains('favorites-button') ||
+    e.target.closest('.favorites-button')
+  ) {
+    const postId = e.target.closest('.article')?.dataset.id;
 
-        if (postId) {
-            const postIndex = favoritesArr.findIndex((item) => item.id === postId)
+    if (postId) {
+      const postIndex = favoritesArr.findIndex(item => item.id === postId);
 
-            if (postIndex !== -1) {
-                favoritesArr.splice(postIndex, 1);
+      if (postIndex !== -1) {
+        favoritesArr.splice(postIndex, 1);
 
-                localStorage.setItem(LOCALSTORAGE_FAV_KEY, JSON.stringify(favoritesArr));
+        localStorage.setItem(
+          LOCALSTORAGE_FAV_KEY,
+          JSON.stringify(favoritesArr)
+        );
 
-                document.querySelector('.articles_container').innerHTML = makeMarkup();
-            }
-        }
+        document.querySelector('.articles_container').innerHTML = makeMarkup();
+      }
     }
+  }
 });
 
-document.addEventListener('DOMContentLoaded', (e) => {
-    e.preventDefault();
-    document.querySelector('.articles_container').innerHTML = makeMarkup();
-    setRead();
+document.addEventListener('DOMContentLoaded', e => {
+  e.preventDefault();
+  document.querySelector('.articles_container').innerHTML = makeMarkup();
+  setRead();
 });
 
 function makeMarkup() {
-    if (!favoritesArr?.length) {
-        return "<li class='not-found-container'><h2 class='articles-not-found'>You don't have favorite articles yet</h2><img class='not-found-img' src='./images/not-found-desktop-1x.png' alt='no articles there'></li>";
-    }
+  if (!favoritesArr?.length) {
+    return "<li class='not-found-container'><h2 class='articles-not-found'>You don't have favorite articles yet</h2><img class='not-found-img' src='./images/not-found-desktop-1x.png' alt='no articles there'></li>";
+  }
 
-    const markup = favoritesArr.map(article => {
-        if (!article) {
-            return;
-        }
+  const markup = favoritesArr
+    .map(article => {
+      if (!article) {
+        return;
+      }
 
-        const { section, title, description, url, date, img, imgCaption, id } = article;
+      const { section, title, description, url, date, img, imgCaption, id } =
+        article;
 
-        return `<li class="article" data-id="${id}">
+      return `<li class="article" data-id="${id}">
                 <div class="article_img_wrapper">
                     <p class="already-read is-hidden">Already read</p>
                     <p class="article_category">${section}</p>
@@ -60,14 +71,18 @@ function makeMarkup() {
                     <a href="${url}" class="read-more" target="_blank">Read more</a>
                 </div>
             </li>`;
-    }).join('');
+    })
+    .join('');
 
-    return markup;
+  return markup;
 }
 
 if (window.location.pathname === '/') {
-    document.querySelector('.navbar__link')?.classList?.add('navbar__link--current')
+  document
+    .querySelector('.navbar__link')
+    ?.classList?.add('navbar__link--current');
 } else {
-    document.querySelector(`.navbar__link[href=".${window.location.pathname}"]`)?.classList?.add('navbar__link--current')
+  document
+    .querySelector(`.navbar__link[href=".${window.location.pathname}"]`)
+    ?.classList?.add('navbar__link--current');
 }
-

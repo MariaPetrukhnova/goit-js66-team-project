@@ -11,10 +11,16 @@ import * as articles from './partials/articles';
 import { apiFetchNewsByValue } from './partials/apiFetchNewsByValue';
 import {} from './partials/paginations';
 import * as localeStorage from './partials/localeStoreageHandler';
+import { loadPage } from './partials/refs';
+loadPage();
+refsEl.deletePagination.classList.add(`is-hidden`);
 
 if (window.location.pathname === '/') {
-    document.querySelector('.navbar__link')?.classList?.add('navbar__link--current')
+  document
+    .querySelector('.navbar__link')
+    ?.classList?.add('navbar__link--current');
 } else {
-    document.querySelector(`.navbar__link[href=".${window.location.pathname}"]`)?.classList?.add('navbar__link--current')
+  document
+    .querySelector(`.navbar__link[href=".${window.location.pathname}"]`)
+    ?.classList?.add('navbar__link--current');
 }
-
