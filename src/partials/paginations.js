@@ -1,15 +1,27 @@
-import { fetchNewsBySearch, searchInput } from './apiFetchNewsByValue';
+import { fetchNewsBySearch, hits } from './apiFetchNewsByValue';
 const pg = document.getElementById('pagination');
 const btnNextPg = document.querySelector('button.next-page');
 const btnPrevPg = document.querySelector('button.prev-page');
 // const btnFirstPg = document.querySelector('button.first-page');
 // const btnLastPg = document.querySelector('button.last-page');
+const inputs = document.getElementById('search-field__input');
+const text = document.querySelector('.search-field');
 
 const valuePage = {
   curPage: 1,
   numLinksTwoSide: 1,
-  totalPages: 10,
+  totalPages: 20,
 };
+
+let search = '';
+text.addEventListener('submit', inputText);
+function inputText(event) {
+  event.preventDefault();
+  search = inputs.value;
+  if (hits > 1000) {
+    valuePage.totalPages = 99;
+  } else valuePage.totalPages = hits / 10;
+}
 
 pagination();
 
@@ -19,13 +31,13 @@ pg.addEventListener('click', e => {
   if (ele.dataset.page) {
     const pageNumber = parseInt(e.target.dataset.page, 10);
 
-    const search = searchInput.value;
+    // const search = searchInput.value;
     valuePage.curPage = pageNumber;
     pagination(valuePage);
-    console.log(valuePage);
     handleButtonLeft();
     handleButtonRight();
-    fetchNewsBySearch(search, valuePage.curPage - 1);
+    window.scroll(0, 0);
+    // fetchNewsBySearch(search, valuePage.curPage - 1);
   }
 });
 
@@ -33,7 +45,10 @@ pg.addEventListener('click', e => {
 function pagination() {
   const { totalPages, curPage, numLinksTwoSide: delta } = valuePage;
 
-  const range = delta + 4; // use for handle visible number of links left side
+  let range = delta; // use for handle visible number of links left side
+  if (window.innerWidth > 768) {
+    range = delta + 4;
+  }
 
   let render = '';
   let renderTwoSide = '';
@@ -100,7 +115,7 @@ function handleButton(element) {
   if (element.classList.contains('first-page')) {
     valuePage.curPage = 1;
   } else if (element.classList.contains('last-page')) {
-    valuePage.curPage = 10;
+    valuePage.curPage = valuePage.totalPages;
   } else if (element.classList.contains('prev-page')) {
     valuePage.curPage--;
     handleButtonLeft();
@@ -113,6 +128,9 @@ function handleButton(element) {
     // btnFirstPg.disabled = false;
   }
   pagination();
+  console.log(search);
+  fetchNewsBySearch(search, valuePage.curPage - 1);
+  window.scroll(0, 0);
 }
 function handleButtonLeft() {
   if (valuePage.curPage === 1) {
@@ -125,7 +143,6 @@ function handleButtonLeft() {
 }
 function handleButtonRight() {
   if (valuePage.curPage === valuePage.totalPages) {
-    console.log(valuePage.curPage);
     btnNextPg.disabled = true;
     // btnLastPg.disabled = true;
   } else {
@@ -134,4 +151,4 @@ function handleButtonRight() {
   }
 }
 
-export { valuePage };
+export { valuePage, pagination };
