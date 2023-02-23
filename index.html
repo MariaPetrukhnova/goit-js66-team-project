@@ -18,10 +18,10 @@
     />
     <title>GOIT News Portal</title>
     
-    <script type="module" crossorigin src="/goit-js66-team-project/assets/main-53e06ccc.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/localeStoreageHandler-8eb497b9.js">
-    <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/markup-04a45185.js">
-    <link rel="stylesheet" href="/goit-js66-team-project/assets/localeStoreageHandler-e2085717.css">
+    <script type="module" crossorigin src="/goit-js66-team-project/assets/main-7cf61027.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/localeStoreageHandler-cdc74b78.js">
+    <link rel="modulepreload" crossorigin href="/goit-js66-team-project/assets/markup-be3d2de3.js">
+    <link rel="stylesheet" href="/goit-js66-team-project/assets/localeStoreageHandler-78bee460.css">
   </head>
 
   <body>
@@ -68,8 +68,7 @@
             </div>
             <div class="firebase-btns__container">
                 <button type="submit" class="registerbtn sing btn category__btn" data-modal-open-sing>Sing Up</button>
-                <button type="submit" class="registerbtn login btn category__btn" data-modal-open>Login</button>
-                <button type="button" class="user registerbtn sing btn category__btn"> USER </button>
+                 <button type="button" class="user registerbtn sing btn category__btn"> USER </button>
             </div>
         </div>
             <!-- Mobile__Btn -->
@@ -314,9 +313,8 @@
       <form class="modal-form" id="auth-form">
         <p class="modal-form__title page-header__nav-link">Registration
         </p>
-                    
+                  
      
-
         <div class="modal-form__field">
 
           <label for="email"><span class="modal-form__label">Email</span></label>
@@ -328,48 +326,16 @@
           <label for="psw"><span class="modal-form__label">Password</span></label>
           <input type="text" name="psw" class="modal-form__input ps " id="psw">
           </div>
-                               
-        <button type="submit"  class="fb btn category__btn " id="sing-up" >Sing Up</button>
+           <div class="fb-button">
+            <button type="submit"  class="fb btn category__btn " id="sing-up" >Sing Up</button>
+        <button type="submit" class="btn category__btn fb" id="login">Login</button>
+           </div>                    
+        
       </form>
     </div>
-
-
-
   </div>
 </div>
-<div class="backdrop is-hidden" data-modal-login id="bcd">
-
-<div class="modal modal-reg ">
-  <button class="btn-close" data-modal-close-log>
-    <svg class="icon category__icon--up" width="21" height="21">
-      <use href="/goit-js66-team-project/assets/icon-sprites-9215c45a.svg#close">
-      </use>
-    </svg>
-  </button>
-  <div class="form ">
-     <form class="modal-form"  id="log-form">
-       <p class="modal-form__title page-header__nav-lin">Login</p>
-                 
-      <div class="modal-form__field">
        
-        <label for="mail"><span class="modal-form__label">Email</span></label>
-        <input type="text" name="mail" class="modal-form__input ml " id="mail">
-        </div>
-
-        <div class="modal-form__field">
-       
-         <label for="psw"><span class="modal-form__label">Password</span></label>
-         <input type="text" name="psw" class="modal-form__input ps " id="password">
-         </div>
-                             
-       <button type="submit" class="btn category__btn fb" >Login</button>
-     </form>
-   </div>
-
-         </div>
-
-        <button type="submit" class="button-form">Login</button>
-      </form>
  
 <div class="backdrop is-hidden" data-modal-user >
   <div class="modal modal-reg ">
@@ -383,9 +349,10 @@
     <div class="form ">
       <form class="modal-form" id="log-form">
         <p class="modal-form__title">User </p>
-        <button type="submit" class="button-form">Favorit</button>
+        <a href="./favorites.html"> <button type="button" class="button-form fb btn category__btn">Favorit</button> </a>
+        
 
-        <button type="submit" class="button-form" id="login-btn">Log out</button>
+        <button type="submit" class="button-form fb btn category__btn" id="login-btn">Log out</button>
       </form>
     </div>  
    </div>
