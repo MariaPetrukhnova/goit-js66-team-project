@@ -1,6 +1,7 @@
 import NewsApi from './apiConstructor.js';
 import spriteUrl from '/images/icon-sprites.svg';
 import { fetchNewsBySearchAndData } from './calendar.js';
+import {valuePage, pagination} from './paginations';
 
 
 const pg = document.getElementById('pagination');
