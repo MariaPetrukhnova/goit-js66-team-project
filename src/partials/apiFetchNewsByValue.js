@@ -1,6 +1,7 @@
 import NewsApi from './apiConstructor.js';
 import spriteUrl from '/images/icon-sprites.svg';
 import { fetchNewsBySearchAndData } from './calendar.js';
+import { pagination, valuePage } from './paginations.js';
 
 
 const pg = document.getElementById('pagination');
@@ -8,6 +9,8 @@ const articlesGallery = document.querySelector('.articles_container');
 const deletePagination = document.querySelector('.page-container');
 
 const newsApi = new NewsApi();
+
+let hits = 1000;
 
 // const API_KEY = 'api-key=JmGuT2FnDagHatExdMuVy4QCYQRUlSyR';
 // -->
@@ -41,7 +44,6 @@ function onEnterPush(e) {
     });
   } else if (dateInput.value) {
     fetchNewsBySearchAndData(query, dateInput, pageNum);
-
   }
 }
 
@@ -57,6 +59,12 @@ const fetchNewsBySearch = async (request, pageNumber) => {
     }
     const articles = await response.json();
     const resArr = articles.response.docs;
+
+    hits = articles.response.meta.hits;
+    if (hits > 1000) {
+      valuePage.totalPages = 99;
+    } else valuePage.totalPages = hits / 10;
+    pagination({ curPage: 1, numLinksTwoSide: 1, totalPages: 4 });
 
     // --> render section not-found
 
@@ -163,4 +171,4 @@ function notFoundHandler() {
 // --> render section not-found
 
 export * as apiFetchNewsByValue from './apiFetchNewsByValue.js';
-export { arrHandler, notFoundHandler, fetchNewsBySearch, searchInput };
+export { arrHandler, notFoundHandler, fetchNewsBySearch, hits };
