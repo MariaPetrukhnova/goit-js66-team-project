@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 function makeMarkup() {
     if (!favoritesArr?.length) {
-        return "<li class='not-found-container'><h2 class='articles-not-found'>You don't have favorite articles yet</h2><img class='not-found-img' src='./images/not-found-desktop-1x.png' alt='no articles there'></li>";
+        return `<li class="not-found-container"><h2 class="articles-not-found">You don't have favorite articles yet</h2><img class="not-found-img" src="./images/not-found-desktop-1x.png" alt="no articles there" /></li>`;
     }
 
     const markup = favoritesArr.map(article => {

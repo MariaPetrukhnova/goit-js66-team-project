@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 function makeMarkup() {
     const objArr = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
     if (!objArr || objArr.length === 0) {
-        return "<h2 class='articles-not-found'>You haven't read any article yet</h2><img class='not-found-img' src='./images/not-found-desktop-1x.png' alt='no articles there'>";
+        return `<h2 class="articles-not-found">You haven't read any articles yet</h2><img class="not-found-img" src="./images/not-found-desktop-1x.png" alt="no articles there" />`;
     }
 
     const articles = objArr.sort((a, b) => new Date(b.readDate) - new Date(a.readDate))
