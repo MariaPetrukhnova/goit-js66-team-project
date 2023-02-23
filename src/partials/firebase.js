@@ -18,39 +18,35 @@ const firebaseConfig = {
   measurementId: "G-PHYJDS3YTC"
 };
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
 const refs = {
     openModalBtn: document.querySelector("[data-modal-open-sing]"),
     closeUserModalBtn: document.querySelector("[data-modal-close]"),
     closeRegBtn: document.querySelector("[data-modal-close-reg]"),
-    closeLogin: document.querySelector("[data-modal-close-log]"),
-    openLoginBtn: document.querySelector(".login"),
     modal: document.querySelector("[data-modal]"),
-    modalLogin: document.querySelector("[data-modal-login]"),
     modalUser: document.querySelector("[data-modal-user]"),
     modalEmail: document.getElementById('email'),
     modalPassword: document.getElementById('psw'),
     loginEmail: document.getElementById('mail'),
     loginPassword: document.getElementById('password'),
     singBtn: document.getElementById("auth-form"),
-    loginBtn: document.getElementById('log-form'),
+    loginBtn: document.getElementById('login'),
     logOut: document.getElementById('login-btn'),
     userBtn: document.querySelector(".user"),
     
   };
 
   refs.userBtn.style.display = "none";
-  refs.openModalBtn.addEventListener("click", onModal);
-  refs.openLoginBtn.addEventListener("click", onModalLogin);
+  refs.openModalBtn.addEventListener("click", onModal); 
   refs.singBtn.addEventListener("submit", authFormHandlerModal);
-  refs.loginBtn.addEventListener('submit', authFormHandler, );
+  refs.loginBtn.addEventListener('click', authFormHandler, );
   refs.closeUserModalBtn.addEventListener("click", closeUserModal);
   refs.logOut.addEventListener("click",logOut)
   refs.userBtn.addEventListener("click", onUser);
   refs.closeRegBtn.addEventListener("click", closeRegistration);
-  refs.closeLogin.addEventListener("click", closeLogin);
+  
 
 //  FUNCTION/\\\\\\\\\
 
@@ -65,13 +61,11 @@ const refs = {
   local();
   function shoTtwoBtn() {
       refs.openModalBtn.style.display = '';
-      refs.openLoginBtn.style.display = '';
       refs.userBtn.style.display = "none"
   }
   function showOneBtn() {
     refs.openModalBtn.style.display = 'none';
-      refs.openLoginBtn.style.display = 'none';
-      refs.userBtn.style.display = ""
+    refs.userBtn.style.display = ""
 }
 
 //   ДОДАВАННЯ КОРИСТУВАЧА   //
@@ -99,7 +93,6 @@ const refs = {
         if(data.registered === true){
             Notiflix.Report.warning('This user already exists! Please enter your personal account!');
             refs.modal.classList.toggle("is-hidden");
-            refs.modalLogin.classList.toggle("is-hidden");
             refs.modal.remove();
         }})
               
@@ -137,21 +130,16 @@ const refs = {
 
     // Вхід існуючого користувача!!!\\\\\
     
-    function onModalLogin(e) {
-    e.preventDefault();
-    refs.modalLogin.classList.toggle("is-hidden");
-  
-  }
-
-  function authFormHandler(e) {
+    function authFormHandler(e) {
      e.preventDefault();
      authWithEmailAndPassword()
      
       }  
     
      function authWithEmailAndPassword() {
-        const email = refs.loginEmail.value;
-        const password = refs.loginPassword.value;
+      
+         const email = refs.modalEmail.value;
+         const password = refs.modalPassword.value;
         if(email === "" || password === "") {
             Notiflix.Report.warning('For signing up you need to enter both E-mail and Password');
             
@@ -163,9 +151,11 @@ const refs = {
            const user = userCredential.user;
            localStorage.auth = "yes";
            Notiflix.Report.success( 'Successful Login');
-           refs.modalLogin.classList.toggle("is-hidden");
-           refs.modalUser.classList.toggle("is-hidden");
-           showOneBtn();
+        
+          
+          refs.modal.classList.toggle("is-hidden");
+          
+          showOneBtn();
            
      })
      .catch((error) => {
@@ -205,10 +195,6 @@ function closeRegistration(e) {
   e.preventDefault()
    refs.modal.classList.toggle("is-hidden");
  }
- // Закриття Login\\\
-function closeLogin(e) {
-  e.preventDefault()
-  refs.modalLogin.classList.toggle("is-hidden");
- }
+
         
 export * as firebase from './firebase.js';
