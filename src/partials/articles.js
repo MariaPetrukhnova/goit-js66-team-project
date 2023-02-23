@@ -1,6 +1,7 @@
 import { fetchPopularNews } from './try_api';
 import { createBaseMarkup } from './markup';
 import { refsEl } from './refs';
+import { loadWeatherDate } from './weather';
 
 document.addEventListener('DOMContentLoaded', onDOMLoad);
 
@@ -10,6 +11,7 @@ function onDOMLoad(e) {
     .then(articles => createBaseMarkup(articles))
     .then(markup => {
       refsEl.articlesGallery.insertAdjacentHTML('beforeend', markup);
+      loadWeatherDate();
       const event = new Event('rendered');
       refsEl.articlesGallery.dispatchEvent(event);
     })

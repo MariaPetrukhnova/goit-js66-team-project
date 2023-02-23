@@ -4,7 +4,7 @@ import { refsEl } from './refs';
 const mainSection = document.querySelector('main');
 const API_KEY = '419bd34d8daba21c0a4890e35d027d3f';
 
-document.addEventListener('DOMContentLoaded', loadWeatherDate);
+// document.addEventListener('DOMContentLoaded', loadWeatherDate);
 
 function getMainDate(apiURL) {
   const dateWeather = getDateOfWeather(apiURL);

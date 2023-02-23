@@ -102,9 +102,10 @@ body.dark-mode .theme__dark {
 
 @media screen and (min-width: 768px) {
     .navbar {
-        gap: 44px;
+        gap: 40px;
         margin-left: 48px;
         display: flex;
+        margin-right: 8px;
     }
 }
 
@@ -278,7 +279,7 @@ body.dark-mode .theme__dark {
         height: 21px;
         margin-top: 49px;
         margin-bottom: 36px;
-        margin-left: 24px;
+        margin-left: 16px;
         display: flex;
     }
 }
