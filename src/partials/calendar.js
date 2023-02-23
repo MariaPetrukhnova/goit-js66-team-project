@@ -242,9 +242,12 @@ function getDateForInput(elem) {
   // повторити це в функції де виклик
 }
 
-const fetchNewsBySearchAndData = async (request, realDate, pageNumber) => {
+// функція отримує дані про дату та ключове слово, а також просто п ключовому слову 
+
+const fetchNewsBySearchAndData = async (request="", realDate="", pageNum=0) => {
   try {
-    let pageNum = newsApi.pageNumber;
+    // console.log(request, realDate, pageNum);
+    // let pageNum = newsApi.pageNumber;
     const response = await fetch(
       `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&begin_date=${realDate}&page=${pageNum}&end_date=${realDate}&${newsApi.API_KEY}`
     );
@@ -253,10 +256,12 @@ const fetchNewsBySearchAndData = async (request, realDate, pageNumber) => {
     }
     const articles = await response.json();
     const resArr = articles.response.docs;
+    // перевіряємо, чи отримали дані
 
     if (resArr.length) {
       pageNotFound.classList.add(`is-hidden`);
       deletePagination.classList.remove(`is-hidden`);
+      // приводимо до єдиного вигляду
       arrHandler(resArr);
       if (resArr.length < 9) {
         deletePagination.classList.add(`is-hidden`);

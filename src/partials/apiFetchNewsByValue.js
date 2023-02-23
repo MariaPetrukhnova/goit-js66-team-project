@@ -10,6 +10,7 @@ const newsApi = new NewsApi();
 
 // const API_KEY = 'api-key=JmGuT2FnDagHatExdMuVy4QCYQRUlSyR';
 // -->
+let hits = 1000;
 const pageNotFound = document.querySelector(`.not-found`);
 // const newsGallery = document.querySelector(`.news-gallery`);
 // -->
@@ -20,6 +21,9 @@ function onEnterPush(e) {
   e.preventDefault();
 
   const form = e.currentTarget;
+  // if(!query) {
+  //   return;
+  // }
 
   const query = form.elements.searchQuery.value.trim();
 
@@ -29,15 +33,16 @@ function onEnterPush(e) {
 
   if (!dateInput.value) {
     fetchNewsBySearch(query, pageNum);
-    pg.addEventListener('click', e => {
-      const ele = e.target;
+    // pg.addEventListener('click', e => {
+    //   const ele = e.target;
 
-      if (ele.dataset.page) {
-        const pageNumber = parseInt(e.target.dataset.page, 10);
+    //   if (ele.dataset.page) {
+    //     const pageNumber = parseInt(e.target.dataset.page, 10);
 
-        fetchNewsBySearch(query, pageNumber - 1);
-      }
-    });
+    //     fetchNewsBySearch(query, pageNumber - 1);
+    //   }
+    // });
+    // pg.addEventListener('click', handleSearch);
   } else if (dateInput.value) {
     fetchNewsBySearchAndData(query, dateInput, pageNum);
 
@@ -56,6 +61,11 @@ const fetchNewsBySearch = async (request, pageNumber) => {
     }
     const articles = await response.json();
     const resArr = articles.response.docs;
+    hits = articles.response.meta.hits;
+    if (hits > 1000) {
+      valuePage.totalPages = 99;
+    } else valuePage.totalPages = hits / 10;
+    pagination({ curPage: 1, numLinksTwoSide: 1, totalPages: 4 });
 
     // --> render section not-found
 
@@ -162,4 +172,4 @@ function notFoundHandler() {
 // --> render section not-found
 
 export * as apiFetchNewsByValue from './apiFetchNewsByValue.js';
-export { arrHandler, notFoundHandler, fetchNewsBySearch, searchInput };
+export { arrHandler, notFoundHandler, fetchNewsBySearch, searchInput, hits };
