@@ -1,4 +1,5 @@
-import { fetchNewsBySearch, searchInput } from './apiFetchNewsByValue';
+import { fetchNewsBySearch, hits } from './apiFetchNewsByValue';
+import {fetchNewsBySearchAndData} from './calendar';
 const pg = document.getElementById('pagination');
 const btnNextPg = document.querySelector('button.next-page');
 const btnPrevPg = document.querySelector('button.prev-page');
@@ -11,6 +12,7 @@ const valuePage = {
   totalPages: 10,
 };
 
+
 pagination();
 
 pg.addEventListener('click', e => {
@@ -19,14 +21,43 @@ pg.addEventListener('click', e => {
   if (ele.dataset.page) {
     const pageNumber = parseInt(e.target.dataset.page, 10);
 
-    const search = searchInput.value;
+    const search = document.querySelector(
+      '.page-header__search-input'
+    ).value;  
+    const dateData = document.querySelector(".calendar__input").value;
+    console.log(search);
+    let data;
+    if(dateData){
+      // console.log(dateData);
+      data = dateData.split('/').reverse().join('');
+    }
+
     valuePage.curPage = pageNumber;
     pagination(valuePage);
     console.log(valuePage);
     handleButtonLeft();
     handleButtonRight();
-    fetchNewsBySearch(search, valuePage.curPage - 1);
-  }
+    
+    // if(!search&&!data) {
+    //   return;
+    //   // перехід на сторінку нема новин
+    // }
+
+    if((search&&data) || data) {
+      console.log(search,data);
+      fetchNewsBySearchAndData(search, data, pageNumber-1);
+      // прибрати активний клас з кнопки карент і додати до 1ї
+    } else {
+      fetchNewsBySearch(search, pageNumber - 1);
+    }
+
+    
+  //   if(search&&data) {
+  //   fetchNewsBySearchAndData(search, data, pageNumber-1)
+  //   } else {
+  //   fetchNewsBySearch(search, valuePage.curPage - 1);
+  // }
+}
 });
 
 // DYNAMIC PAGINATION
@@ -97,16 +128,21 @@ document
   });
 
 function handleButton(element) {
+  console.log(element);
   if (element.classList.contains('first-page')) {
     valuePage.curPage = 1;
+    // цієї фкції нема
   } else if (element.classList.contains('last-page')) {
     valuePage.curPage = 10;
+     // цієї фкції нема
   } else if (element.classList.contains('prev-page')) {
     valuePage.curPage--;
     handleButtonLeft();
     btnNextPg.disabled = false;
+    console.log("спрацювала фкція натискання на кнопку з класом prev-page");
     // btnLastPg.disabled = false;
   } else if (element.classList.contains('next-page')) {
+    console.log("спрацювала фкція натискання на кнопку з класом next-page");
     valuePage.curPage++;
     handleButtonRight();
     btnPrevPg.disabled = false;
