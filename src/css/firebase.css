@@ -14,9 +14,9 @@
   border: 1px solid #4440F7;
 }
 
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 320px) {
       .modal {
-      width: 450px;
+      width: 320px;
     }
   }
   
@@ -79,7 +79,7 @@
         
         }
         
-        @media screen and (min-width: 1200px) {
+        @media screen and (min-width: 1280px) {
             .modal-form__title{
                 width: 448px;
                 }
@@ -140,7 +140,7 @@
                 }
                 }
                 
-        @media screen and (min-width: 1200px) {
+        @media screen and (min-width: 1280px) {
             .modal-form__input{
                 width: 448px;
                 }
@@ -231,4 +231,8 @@
     border: 1px solid #4440F6;
     border-radius: 20px;
     
+}
+.fb-button {
+    width: 450px;
+    display: flex;
 }
