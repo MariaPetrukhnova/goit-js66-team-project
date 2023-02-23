@@ -98,7 +98,7 @@ function arrHandler(arr) {
         title: el.title || el.headline.main,
         description: el.abstract,
         url: el.web_url || el.url,
-        date: el.pub_date || el.created_date,
+        date: el.pub_date.slice(0, 10) || el.created_date.slice(0, 10),
         imgCaption: el.lead_paragraph,
         img: `https://cdn.pixabay.com/photo/2013/03/30/00/10/news-97862_960_720.png`,
       };
@@ -108,7 +108,7 @@ function arrHandler(arr) {
       title: el.title || el.headline.main,
       description: el.abstract,
       url: el.web_url || el.url,
-      date: el.pub_date || el.created_date,
+      date: el.pub_date.slice(0, 10) || el.created_date.slice(0, 10),
       imgCaption: el.lead_paragraph,
       img: `${newsApi.WEB_HOST}/${el.multimedia[1].url}`,
     };
