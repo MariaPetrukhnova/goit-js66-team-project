@@ -223,19 +223,39 @@
                         }
 
 
-.toggle-firebase__container{
+.toggle-firebase__container {
     display: flex;
-    flex-direction: column;
+    margin-left: 8px;
+    /* flex-direction: column; */
 }
+
 
 .firebase-btns__container{
     display: flex;
+}
+@media screen and (min-width:768px) {
+    .firebase-btns__container {
+        margin-top: 14px;
+        align-items: center;
+        order: -1;
+    }
+}
+@media screen and (min-width:1280px) {
+    .firebase-btns__container {
+        margin-top: 19px;
+    }
 }
 
 .registerbtn{
     border: 1px solid #4440F6;
     border-radius: 20px;
     
+}
+
+@media screen and (min-width: 1280px) {
+    .registerbtn {
+        margin-right: 32px;
+    }
 }
 .fb-button {
     width: 430px;
