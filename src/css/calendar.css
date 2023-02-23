@@ -126,6 +126,11 @@
 
 }
 
+bode.dark-mode .calendar__input-icon--down {
+    fill: #F4F4F4;
+
+}
+
 .calendar__input-wrapper.reversed>.calendar__input-icon--down {
     display: none;
 }
@@ -172,12 +177,11 @@
     right: 0;
 
     /* top: 32px;  */
-    top: 100%;
+    top: 80%;
     transition-duration: 250ms;
     transition-timing-function: ease;
     transform: translateY(-5%);
     z-index: -1;
-    opacity: 0.4;
 
 
 }
@@ -192,9 +196,7 @@
     pointer-events: auto;
     cursor: pointer;
     transform: translateY(10px);
-    
 }
-
 
 .calendar__body-wrapper {
     display: flex;
