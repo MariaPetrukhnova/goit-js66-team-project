@@ -2909,12 +2909,12 @@ Notiflix needs to be appended to the "<`+u+'>" element, but you called it before
        <p class="article_category">${i}</p>
        <img class="article_img" src="${l}" alt="${c}" width="395" height="395">
        <div class="article_flag">
-       <button class="article_flag--add"><span class="article_flag_text">Add to favorite</span>
+       <button class="favorites-button article_flag--add"><span class="article_flag_text">Add to favorite</span>
          <svg width="16" height="16">
          <use href="${tn}#heart_contur" width="16" height="16"></use>
         </svg>
          </button>
-         <button class="article_flag--remove is-hidden"><span class="article_flag_text">Remove from favorite</span>
+         <button class="favorites-button article_flag--remove is-hidden"><span class="article_flag_text">Remove from favorite</span>
          <svg width="16" height="16">
          <use href="${tn}#heart_fill" width="16" height="16"></use>
        </svg>
