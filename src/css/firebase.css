@@ -1,6 +1,6 @@
 .modal {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   height: auto;
   background-color: white;
@@ -19,17 +19,22 @@
       width: 320px;
     }
   }
+  @media screen and (min-width: 768px) {
+    .modal {
+     width: 428px;
+     }
+    }
   
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
       .modal {
-       width: 528px;
+       width: 428px;
        }
        }
 
     
        @media screen and (min-width: 480px) {
           .btn-close{
-              left: 412px;
+              left: 345px;
           }
            }
        @media screen and (min-width: 1200px) {
@@ -136,13 +141,13 @@
         
         @media screen and (min-width: 480px) {
             .modal-form__input{
-                width: 370px;
+                width: 300px;
                 }
                 }
                 
         @media screen and (min-width: 1280px) {
             .modal-form__input{
-                width: 448px;
+                width: 380px;
                 }
                 }
 
@@ -172,12 +177,12 @@
                      }
                      @media screen and (min-width: 480px) {
                         .btn-close{
-                            left: 412px;
+                            left: 345px;
                         }
                          }
-                     @media screen and (min-width: 1200px) {
+                     @media screen and (min-width: 1280px) {
                         .btn-close{
-                            left: 550px;
+                            left: 450px;
                         }
                          }
                         
@@ -218,13 +223,27 @@
                         }
 
 
-.toggle-firebase__container{
+.toggle-firebase__container {
     display: flex;
-    flex-direction: column;
+    margin-left: 8px;
+    /* flex-direction: column; */
 }
+
 
 .firebase-btns__container{
     display: flex;
+}
+@media screen and (min-width:768px) {
+    .firebase-btns__container {
+        margin-top: 14px;
+        align-items: center;
+        order: -1;
+    }
+}
+@media screen and (min-width:1280px) {
+    .firebase-btns__container {
+        margin-top: 19px;
+    }
 }
 
 .registerbtn{
@@ -232,7 +251,30 @@
     border-radius: 20px;
     
 }
+
+@media screen and (min-width: 1280px) {
+    .registerbtn {
+        margin-right: 32px;
+    }
+}
 .fb-button {
-    width: 450px;
+    width: 430px;
     display: flex;
+    margin-top: 20px;
+}
+@media screen and (min-width: 480px) {
+    .fb-button {
+        width: 330px;
+        }
+        }
+
+.user-btn {
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    flex-direction: column;
+    align-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px
 }
