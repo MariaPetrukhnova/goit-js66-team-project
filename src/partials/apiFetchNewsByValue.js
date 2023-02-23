@@ -1,7 +1,7 @@
 import NewsApi from './apiConstructor.js';
 import spriteUrl from '/images/icon-sprites.svg';
 import { fetchNewsBySearchAndData } from './calendar.js';
-import {valuePage, pagination} from './paginations';
+import { valuePage, pagination } from './paginations';
 
 
 const pg = document.getElementById('pagination');
@@ -132,12 +132,12 @@ function createBaseMarcup(arr) {
        <p class="article_category">${section}</p>
        <img class="article_img" src="${img}" alt="${imgCaption}" width="395" height="395">
        <div class="article_flag">
-       <button class="article_flag--add"><span class="article_flag_text">Add to favorite</span>
+       <button class="favorites-button article_flag--add"><span class="article_flag_text">Add to favorite</span>
          <svg width="16" height="16">
          <use href="${spriteUrl}#heart_contur" width="16" height="16"></use>
         </svg>
          </button>
-         <button class="article_flag--remove is-hidden"><span class="article_flag_text">Remove from favorite</span>
+         <button class="favorites-button article_flag--remove is-hidden"><span class="article_flag_text">Remove from favorite</span>
          <svg width="16" height="16">
          <use href="${spriteUrl}#heart_fill" width="16" height="16"></use>
        </svg>
