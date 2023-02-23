@@ -144,6 +144,11 @@
                 width: 300px;
                 }
                 }
+                @media screen and (min-width: 768px) {
+                    .modal-form__input{
+                        width: 380px;
+                        }
+                        }
                 
         @media screen and (min-width: 1280px) {
             .modal-form__input{
@@ -180,6 +185,11 @@
                             left: 345px;
                         }
                          }
+                         @media screen and (min-width: 768px) {
+                            .btn-close{
+                                left: 455px;
+                            }
+                             }
                      @media screen and (min-width: 1280px) {
                         .btn-close{
                             left: 450px;
@@ -267,6 +277,16 @@
         width: 330px;
         }
         }
+        @media screen and (min-width: 768px) {
+            .fb-button {
+                width: 410px;
+                }
+                }
+        @media screen and (min-width: 1280px) {
+            .fb-button {
+                width: 430px;
+                }
+                }
 
 .user-btn {
     display: flex;
