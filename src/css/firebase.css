@@ -135,7 +135,7 @@
         
         @media screen and (min-width: 320px) {
             .modal-form__input {
-                width: 100%;
+                width: 300px;
         }
         }
         
@@ -271,6 +271,11 @@
     width: 430px;
     display: flex;
     margin-top: 20px;
+}
+@media screen and (min-width: 320px) {
+    .fb-button {
+        width: 300px;
+}
 }
 @media screen and (min-width: 480px) {
     .fb-button {
