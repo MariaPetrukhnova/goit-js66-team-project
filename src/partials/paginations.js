@@ -170,4 +170,4 @@ function handleButtonRight() {
   }
 }
 
-export { valuePage };
+export { valuePage, pagination };
