@@ -41,9 +41,10 @@ fetchCategories().then(result => {
     }
     else if (refsEl.viewportWidth >= 768) {
         const element = []
+        const tabBtnQuont = 4;
         refsEl.categoryBtns.forEach((element, i) => {
             element.textContent = result[i].display_name;
-            if (i = 4) {
+            if (i = tabBtnQuont) {
                 return
             }
         });
@@ -56,9 +57,10 @@ fetchCategories().then(result => {
     }
     else if (refsEl.viewportWidth >= 1280) {
         const element = []
+        const deskBtnQuont = 5;
         refsEl.categoryBtns.forEach((element, i) => {
             element.textContent = result[i].display_name;
-            if (i = 5) {
+            if (i = deskBtnQuont) {
                 return
             }
         });
