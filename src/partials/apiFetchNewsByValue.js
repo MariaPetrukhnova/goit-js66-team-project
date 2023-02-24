@@ -40,10 +40,12 @@ function onEnterPush(e) {
       backgroundColor: 'rgba(0,0,0,0.8)',
     });
     fetchNewsBySearch(query, pageNum);
+    valuePage.curPage = 1;
     Loading.remove(1000);
   }
   if (dateInput.value) {
     fetchNewsBySearchAndData(query, dateInput, pageNum);
+    valuePage.curPage = 1;
   }
 }
 
@@ -59,12 +61,7 @@ const fetchNewsBySearch = async (request, pageNumber) => {
     }
     const articles = await response.json();
     const resArr = articles.response.docs;
-    hits = articles.response.meta.hits;
-    if (hits > 1000) {
-      valuePage.totalPages = 99;
-    } else valuePage.totalPages = hits / 10;
-    pagination({ curPage: 1, numLinksTwoSide: 1, totalPages: 4 });
-
+    
     hits = articles.response.meta.hits;
     if (hits > 1000) {
       valuePage.totalPages = 99;
