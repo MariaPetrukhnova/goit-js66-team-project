@@ -103,7 +103,6 @@ document
   });
 
 function handleButton(element) {
-  console.log(element);
   if (element.classList.contains('first-page')) {
     valuePage.curPage = 1;
     // цієї фкції нема
@@ -114,10 +113,8 @@ function handleButton(element) {
     valuePage.curPage--;
     handleButtonLeft();
     btnNextPg.disabled = false;
-    console.log("спрацювала фкція натискання на кнопку з класом prev-page");
     // btnLastPg.disabled = false;
   } else if (element.classList.contains('next-page')) {
-    console.log("спрацювала фкція натискання на кнопку з класом next-page");
     valuePage.curPage++;
     handleButtonRight();
     btnPrevPg.disabled = false;
@@ -161,7 +158,6 @@ function handleButtonLeft() {
 }
 function handleButtonRight() {
   if (valuePage.curPage === valuePage.totalPages) {
-    console.log(valuePage.curPage);
     btnNextPg.disabled = true;
     // btnLastPg.disabled = true;
   } else {

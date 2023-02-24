@@ -12,8 +12,6 @@ const deleteLeEl = document.querySelector('.articles_container');
 
 const newsApi = new NewsApi();
 
-let hits = 1000;
-
 // const API_KEY = 'api-key=JmGuT2FnDagHatExdMuVy4QCYQRUlSyR';
 // -->
 let hits = 1000;
