@@ -1,4 +1,4 @@
-import{s as r}from"./localeStoreageHandler-eabd16eb.js";function g(a,i=!0){return(i?m(a):a).map(e=>{if(!e)return;const{section:s,title:d,description:c,url:n,date:o,img:l,imgCaption:p,id:u}=e;return`<li class="article" data-id="${u}">
+import{s as r}from"./localeStoreageHandler-c07f282b.js";function g(a,i=!0){return(i?m(a):a).map(e=>{if(!e)return;const{section:s,title:d,description:c,url:n,date:o,img:l,imgCaption:p,id:u}=e;return`<li class="article" data-id="${u}">
      <div class="article_img_wrapper">
        <p class="already-read is-hidden">Already read</p>
        <p class="article_category">${s}</p>
