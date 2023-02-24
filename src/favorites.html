@@ -46,19 +46,25 @@
                 <input type="search" class="page-header__search-input" type="text" id="search-field__input"
                     placeholder="Search" />
             </form>
-            <div class="theme" id="theme">
-                <svg class="theme__svg sun" width="21" height="21">
-                    <use href="./images/icon-sprites.svg#sun"></use>
-                </svg>
-                <p class="theme__light" id="theme__light">Light</p>
-                <label class="switch">
-                    <input type="checkbox" class="switch-checkbox" id="switch-checkbox" />
-                    <span class="slider"></span>
-                </label>
-                <p class="theme__dark opacity" id="theme__dark">Dark</p>
-                <svg class="theme__svg moon" width="21" height="21">
-                    <use href="./images/icon-sprites.svg#moon"></use>
-                </svg>
+            <div class="toggle-firebase__container">
+                <div class="theme" id="theme">
+                    <svg class="theme__svg sun" width="21" height="21">
+                        <use href="./images/icon-sprites.svg#sun"></use>
+                    </svg>
+                    <p class="theme__light" id="theme__light">Light</p>
+                    <label class="switch">
+                        <input type="checkbox" class="switch-checkbox" id="switch-checkbox" />
+                        <span class="slider"></span>
+                    </label>
+                    <p class="theme__dark opacity" id="theme__dark">Dark</p>
+                    <svg class="theme__svg moon" width="21" height="21">
+                        <use href="./images/icon-sprites.svg#moon"></use>
+                    </svg>
+                </div>
+                <div class="firebase-btns__container">
+                    <button type="submit" class="registerbtn sing btn category__btn" data-modal-open-sing>Sing Up</button>
+                     <button type="button" class="user registerbtn sing btn category__btn"> USER </button>
+                </div>
             </div>
             <!-- Mobile__Btn -->
             <button type="button" class="mobile-button" id="js-open-menu" aria-expanded="false">
@@ -123,11 +129,13 @@
         </div>
     </section>
     <load="partials/footer.html" />
+    <load="partials/firebase.html" />
 
 
     <script type="module" src="/favorites.js"></script>
     <script type="module" src="./partials/theme-toggle.js"></script>
     <script type="module" src="./partials/mobile-version.js"></script>
+    <script type="module" src="./partials/firebase.js"></script>
 
 </body>
 
