@@ -15,8 +15,6 @@ const valuePage = {
 };
 
 
-pagination();
-
 pg.addEventListener('click', e => {
   const ele = e.target;
 

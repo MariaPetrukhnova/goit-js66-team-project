@@ -24,8 +24,8 @@ function onArticleLink(e) {
     } else if (e.target.classList.contains("favorites-button") || e.target.closest('.favorites-button')) {
         const articleEl = e.target.closest('.article');
         const articleId = articleEl.dataset.id;
-        articleEl.querySelector('.article_flag--add').classList.toggle('is-hidden');
-        articleEl.querySelector('.article_flag--remove').classList.toggle('is-hidden');
+        articleEl.querySelector('.article_flag--add')?.classList.toggle('is-hidden');
+        articleEl.querySelector('.article_flag--remove')?.classList.toggle('is-hidden');
 
         const articleIndex = favArticlesArr.findIndex((item) => item.id === articleId)
 

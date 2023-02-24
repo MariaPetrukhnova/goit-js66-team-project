@@ -5,7 +5,6 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 const newsApi = new NewsApi();
 const articlesGallery = document.querySelector('.articles_container');
 const categoryList = document.querySelector('.js-category__wrap');
-const deletePagination = document.querySelector('.page-container');
 
 // ===================================================================
 let handledCategory = '';
