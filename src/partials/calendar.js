@@ -153,28 +153,6 @@ function renderCalendar(croppedArr) {
     .join('')}`;
 }
 
-function renderNotFound() {
-  const newsContainer = document.querySelector('.news-gallery');
-
-  return (newsContainer.innerHTML = `<div class="container ">
-  <h2 class="not__found__title">We couldn't find news from the future ;) Please, pick another date! </h2>
-  <picture>
-      <source
-      srcset="./images/not-found-desktop-1x.png 1x, ./images/not-found-desktop-2x.png 2x"
-      media="(min-width: 1280px)"
-      />
-      <source
-      srcset="./images/not-found-tablet-1x.png 1x, ./images/not-found-tablet-2x.png 2x"
-      media="(min-width: 768px)"
-      />
-      <source
-      srcset="./images/not-found-mobile-1x.png 1x, ./images/not-found-mobile-2x.png 2x"
-      media="(max-width: 767px)"
-      />
-      <img class="not__found__image" src="./images/not-found-desktop-1x.png" alt="not found image">
-  </picture>
-</div>`);
-}
 
 function changeFormatData(date) {
   const cropped = date.flat();
@@ -224,6 +202,7 @@ function onDateSelect(evt) {
     removeActiveDateClass();
     addActiveDateClass(dateEl);
     fetchNewsBySearchAndData(searchInput, realDate);
+    valuePage.curPage = 1;
     Loading.remove(1000);
     // получить запрос со строки и с инпута при каждом выpове
   }
