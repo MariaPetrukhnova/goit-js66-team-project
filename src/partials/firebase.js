@@ -18,7 +18,6 @@ const firebaseConfig = {
   measurementId: "G-PHYJDS3YTC"
 };
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
 const refs = {
@@ -91,26 +90,26 @@ const refs = {
 
         checkUserRegistration(email, password).then(data => {
         if(data.registered === true){
+          
             Notiflix.Report.warning('This user already exists! Please enter your personal account!');
-            refs.modal.classList.toggle("is-hidden");
-            refs.modal.remove();
+           
+            return
         }})
               
 
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-         console.log(userCredential);
-  
+         
           const user = userCredential.user;
           Notiflix.Report.success('Registration completed successfully! Welcome');
           refs.modal.classList.toggle("is-hidden");
           localStorage.auth = "yes"
           showOneBtn();
-        })
-        .catch((error) => {
+        }).catch((error) => {
+         
           Notiflix.Report.warning('Email and password entered incorrectly!')
           refs.singBtn.reset();
-                   
+              return     
         });
 
       }
@@ -142,14 +141,14 @@ const refs = {
          const password = refs.modalPassword.value;
         if(email === "" || password === "") {
             Notiflix.Report.warning('For signing up you need to enter both E-mail and Password');
-            
+            return
            }
          
            signInWithEmailAndPassword(auth, email, password)
            .then((userCredential) => {
    
            const user = userCredential.user;
-           console.log(user.email);
+         
            localStorage.auth = "yes";
            Notiflix.Report.success( 'Successful Login');
         
@@ -161,8 +160,9 @@ const refs = {
      })
      .catch((error) => {
       Notiflix.Report.warning('Email and password entered incorrectly!')
-      refs.loginBtn.reset();
-     
+      refs.singBtn.reset();
+      const errorCode = error.code;
+      const errorMessage = error.message;
      });
          }
   
