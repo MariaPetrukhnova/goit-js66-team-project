@@ -13,7 +13,9 @@ const valuePage = {
   numLinksTwoSide: 1,
   totalPages: 10,
 };
-
+if (window.innerWidth < 768) {
+  valuePage.numLinksTwoSide = 0;
+}
 
 pagination();
 
@@ -38,12 +40,30 @@ pg.addEventListener('click', e => {
 // DYNAMIC PAGINATION
 function pagination() {
   const { totalPages, curPage, numLinksTwoSide: delta } = valuePage;
+  let range = delta + 4;
+  if (window.innerWidth < 768) {
+    range = delta + 2;
+  }
 
-  const range = delta + 4; // use for handle visible number of links left side
+  // use for handle visible number of links left side
 
   let render = '';
   let renderTwoSide = '';
-  let dot = `<li class="pg-item"><a class="pg-link">...</a></li>`;
+  let dotLeft;
+  let dot = `<li class="pg-item"data-page="${valuePage.curPage}"><a class="pg-link" href="#">...</a></li>`;
+  if (valuePage.curPage <= 2) {
+    dotLeft = `<li class="pg-item"data-page="${
+      valuePage.curPage - 1
+    }"><a class="pg-link" href="#">...</a></li>`;
+  } else {
+    dotLeft = `<li class="pg-item"data-page="${
+      valuePage.curPage - 2
+    }"><a class="pg-link" href="#">...</a></li>`;
+  }
+
+  let dotRigth = `<li class="pg-item"data-page="${
+    valuePage.curPage + 2
+  }"><a class="pg-link" href="#">...</a></li>`;
   let countTruncate = 0; // use for ellipsis - truncate left side or right side
 
   // use for truncate two side
@@ -51,39 +71,81 @@ function pagination() {
   const numberTruncateRight = curPage + delta;
 
   let active = '';
-  for (let pos = 1; pos <= totalPages; pos++) {
-    active = pos === curPage ? 'active' : '';
+  if (window.innerWidth <= 768) {
+    for (let pos = 1; pos <= totalPages; pos++) {
+      active = pos === curPage ? 'active' : '';
 
-    // truncate
-    if (totalPages >= 2 * range - 1) {
-      if (numberTruncateLeft > 3 && numberTruncateRight < totalPages - 3 + 1) {
-        // truncate 2 side
-        if (pos >= numberTruncateLeft && pos <= numberTruncateRight) {
-          renderTwoSide += renderPage(pos, active);
+      // truncate
+      if (totalPages >= 2 * range - 1) {
+        if (
+          numberTruncateLeft > 1 &&
+          numberTruncateRight < totalPages - 1 + 1
+        ) {
+          // truncate 2 side
+          if (pos >= numberTruncateLeft && pos <= numberTruncateRight) {
+            renderTwoSide += renderPage(pos, active);
+          }
+        } else {
+          // truncate left side or right side
+          if (
+            (curPage < range && pos <= range) ||
+            (curPage > totalPages - range && pos >= totalPages - range + 1) ||
+            pos === totalPages ||
+            pos === 1
+          ) {
+            render += renderPage(pos, active);
+          } else {
+            countTruncate++;
+            if (countTruncate === 1) render += dot;
+          }
         }
       } else {
-        // truncate left side or right side
-        if (
-          (curPage < range && pos <= range) ||
-          (curPage > totalPages - range && pos >= totalPages - range + 1) ||
-          pos === totalPages ||
-          pos === 1
-        ) {
-          render += renderPage(pos, active);
-        } else {
-          countTruncate++;
-          if (countTruncate === 1) render += dot;
-        }
+        // not truncate
+        render += renderPage(pos, active);
       }
-    } else {
-      // not truncate
-      render += renderPage(pos, active);
+    }
+  } else {
+    for (let pos = 1; pos <= totalPages; pos++) {
+      active = pos === curPage ? 'active' : '';
+
+      // truncate
+      if (totalPages >= 2 * range - 1) {
+        if (
+          numberTruncateLeft > 3 &&
+          numberTruncateRight < totalPages - 3 + 1
+        ) {
+          // truncate 2 side
+          if (pos >= numberTruncateLeft && pos <= numberTruncateRight) {
+            renderTwoSide += renderPage(pos, active);
+          }
+        } else {
+          // truncate left side or right side
+          if (
+            (curPage < range && pos <= range) ||
+            (curPage > totalPages - range && pos >= totalPages - range + 1) ||
+            pos === totalPages ||
+            pos === 1
+          ) {
+            render += renderPage(pos, active);
+          } else {
+            countTruncate++;
+            if (countTruncate === 1) render += dot;
+          }
+        }
+      } else {
+        // not truncate
+        render += renderPage(pos, active);
+      }
     }
   }
 
   if (renderTwoSide) {
     renderTwoSide =
-      renderPage(1) + dot + renderTwoSide + dot + renderPage(totalPages);
+      renderPage(1) +
+      dotLeft +
+      renderTwoSide +
+      dotRigth +
+      renderPage(totalPages);
     pg.innerHTML = renderTwoSide;
   } else {
     pg.innerHTML = render;
@@ -108,7 +170,7 @@ function handleButton(element) {
     // цієї фкції нема
   } else if (element.classList.contains('last-page')) {
     valuePage.curPage = 10;
-     // цієї фкції нема
+    // цієї фкції нема
   } else if (element.classList.contains('prev-page')) {
     valuePage.curPage--;
     handleButtonLeft();
