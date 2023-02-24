@@ -1,42 +1,48 @@
 import NewsApi from './apiConstructor.js';
 import spriteUrl from '/images/icon-sprites.svg';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 // ===================================================================
 const newsApi = new NewsApi();
 const articlesGallery = document.querySelector('.articles_container');
 const categoryList = document.querySelector('.js-category__wrap');
+const deletePagination = document.querySelector('.page-container');
 
 // ===================================================================
-let handledCategory = "";
+let handledCategory = '';
 
 // ===================================================================
 
-categoryList.addEventListener('click', categorySelect)
+categoryList.addEventListener('click', categorySelect);
 
-function categorySelect (event) {
-    event.preventDefault();
-    if (!event.target.className.includes("js-search")) {
-      return;
+function categorySelect(event) {
+  event.preventDefault();
+  if (!event.target.className.includes('js-search')) {
+    return;
   }
-  
-    handledCategory = event.target.textContent;
-    const categoryKey = encodeURIComponent(handledCategory.toLowerCase());
-    searchByCategory(categoryKey)
-};
+  Loading.standard('Loading...', {
+    backgroundColor: 'rgba(0,0,0,0.8)',
+  });
+  handledCategory = event.target.textContent;
+  const categoryKey = encodeURIComponent(handledCategory.toLowerCase());
+  searchByCategory(categoryKey);
+  Loading.remove(1000);
+}
 // =====================================================================
-async function searchByCategory (handledCategory) {
-   try {
-    const response = await fetch(`${newsApi.CATEGORY_END_POINT}${handledCategory}.json?api-key=Mw0nOoO0CyWfJRrshsqkL1haZT52Fizf`);
-    const articles = await response.json()
+async function searchByCategory(handledCategory) {
+  try {
+    const response = await fetch(
+      `${newsApi.CATEGORY_END_POINT}${handledCategory}.json?api-key=Mw0nOoO0CyWfJRrshsqkL1haZT52Fizf`
+    );
+    const articles = await response.json();
     const resArr = articles.results;
     arrHandler(resArr);
-   }
-   catch (error) {
+  } catch (error) {
     console.log(error);
-  }   
-};
+  }
+}
 // ==========================================// const arrlength = el.multimedia?.length ;
 function arrHandler(arr) {
-  try{
+  try {
     const objArr = arr.map(el => {
       let section = el.section;
       let title = el.title;
@@ -46,18 +52,20 @@ function arrHandler(arr) {
       let mediaArr = el.multimedia;
       let image = '';
       let imageAlt = '';
-      
+
       if (!section) {
         section = `${handledCategory}`;
       }
       if (!title) {
-        title = description.slice(0,80);
+        title = description.slice(0, 80);
       }
       if (!description) {
         description = title;
       }
-      if ( mediaArr === null) {
-        image = el.thumbnail_standard || "https://cdn.pixabay.com/photo/2013/03/30/00/10/news-97862_960_720.png";
+      if (mediaArr === null) {
+        image =
+          el.thumbnail_standard ||
+          'https://cdn.pixabay.com/photo/2013/07/12/19/16/newspaper-154444_960_720.png';
         imageAlt = title;
       } else if (mediaArr[2]) {
         image = mediaArr[2].url;
@@ -66,7 +74,7 @@ function arrHandler(arr) {
         image = mediaArr[0].url;
         imageAlt = mediaArr[0].caption;
       }
-     
+
       return {
         section: section,
         title: title,
@@ -81,7 +89,7 @@ function arrHandler(arr) {
   } catch (error) {
     console.log(error);
   }
-};
+}
 function createBaseMarcup(arr) {
   const marcup = arr
     .map(article => {
@@ -90,7 +98,7 @@ function createBaseMarcup(arr) {
       }
       const { section, title, description, url, date, img, imgCaption } =
         article;
-      return`<li class="article" >
+      return `<li class="article" >
       <div class="article_img_wrapper">
         <p class="already-read is-hidden">Already read</p>
         <p class="article_category">${section}</p>

@@ -1,11 +1,14 @@
 import CalendarDates from 'calendar-dates';
 const calendarDates = new CalendarDates();
+import { pagination, valuePage } from './paginations.js';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { arrHandler, notFoundHandler } from './apiFetchNewsByValue.js';
 import NewsApi from './apiConstructor.js';
 
 // import {fetchNewsByDate} from "./api-archive-by-month.js";
 
 const newsApi = new NewsApi();
+let hits = 1000;
 const pageNotFound = document.querySelector(`.not-found`);
 
 const deletePagination = document.querySelector('.page-container');
@@ -215,10 +218,13 @@ function onDateSelect(evt) {
     // if (searchInput.value) {
     //   fetchNewsBySearchAndData(queryValue);
     // }
-
+    Loading.standard('Loading...', {
+      backgroundColor: 'rgba(0,0,0,0.8)',
+    });
     removeActiveDateClass();
     addActiveDateClass(dateEl);
     fetchNewsBySearchAndData(searchInput, realDate);
+    Loading.remove(1000);
     // получить запрос со строки и с инпута при каждом выpове
   }
 }
@@ -242,14 +248,15 @@ function getDateForInput(elem) {
   // повторити це в функції де виклик
 }
 
-// функція отримує дані про дату та ключове слово, а також просто п ключовому слову 
 
-const fetchNewsBySearchAndData = async (request="", realDate="", pageNum=0) => {
+const fetchNewsBySearchAndData = async (
+  request = '',
+  realDate = '',
+  pageNum = 0
+) => {
   try {
-    // console.log(request, realDate, pageNum);
-    // let pageNum = newsApi.pageNumber;
     const response = await fetch(
-      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&begin_date=${realDate}&page=${pageNum}&end_date=${realDate}&${newsApi.API_KEY}`
+      `${newsApi.SEARCH_ENDPOINT_URL}q=${request}&page=${pageNum}&begin_date=${realDate}&end_date=${realDate}&${newsApi.API_KEY}`
     );
     if (response.ok === false) {
       throw new Error('Such a request has not been found');
@@ -258,12 +265,18 @@ const fetchNewsBySearchAndData = async (request="", realDate="", pageNum=0) => {
     const resArr = articles.response.docs;
     // перевіряємо, чи отримали дані
 
+    hits = articles.response.meta.hits;
+    if (hits > 1000) {
+      valuePage.totalPages = 99;
+    } else valuePage.totalPages = Math.ceil(hits / 10);
+    pagination({ curPage: 1, numLinksTwoSide: 1, totalPages: 4 });
+
     if (resArr.length) {
       pageNotFound.classList.add(`is-hidden`);
       deletePagination.classList.remove(`is-hidden`);
       // приводимо до єдиного вигляду
       arrHandler(resArr);
-      if (resArr.length < 9) {
+      if (hits < 9) {
         deletePagination.classList.add(`is-hidden`);
       }
     } else if (resArr.length === 0) {
@@ -284,5 +297,5 @@ function addActiveDateClass(elem) {
 }
 
 main();
-export { fetchNewsBySearchAndData };
+export { fetchNewsBySearchAndData, hits };
 export * as calendarTools from './calendar.js';

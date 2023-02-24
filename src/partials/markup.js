@@ -54,7 +54,7 @@ function arrHandler(arr) {
           description: el.abstract,
           url: el.web_url || el.url,
           date: el.pub_date || el.created_date || el.published_date,
-          img: `https://cdn.pixabay.com/photo/2013/03/30/00/10/news-97862_960_720.png`,
+          img: `https://cdn.pixabay.com/photo/2013/07/12/19/16/newspaper-154444_960_720.png`,
           imgCaption: 'image',
           id: el.id,
         };

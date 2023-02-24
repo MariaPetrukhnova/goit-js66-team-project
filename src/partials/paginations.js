@@ -1,5 +1,7 @@
 import { fetchNewsBySearch, hits } from './apiFetchNewsByValue';
-import {fetchNewsBySearchAndData} from './calendar';
+import { fetchNewsBySearchAndData } from './calendar';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
 const pg = document.getElementById('pagination');
 const btnNextPg = document.querySelector('button.next-page');
 const btnPrevPg = document.querySelector('button.prev-page');
@@ -18,46 +20,19 @@ pagination();
 pg.addEventListener('click', e => {
   const ele = e.target;
 
+  Loading.standard('Loading...', {
+    backgroundColor: 'rgba(0,0,0,0.8)',
+  });
+
   if (ele.dataset.page) {
     const pageNumber = parseInt(e.target.dataset.page, 10);
-
-    const search = document.querySelector(
-      '.page-header__search-input'
-    ).value;  
-    const dateData = document.querySelector(".calendar__input").value;
-    console.log(search);
-    let data;
-    if(dateData){
-      // console.log(dateData);
-      data = dateData.split('/').reverse().join('');
-    }
+    Loading.remove(1000);
 
     valuePage.curPage = pageNumber;
-    pagination(valuePage);
-    console.log(valuePage);
+
     handleButtonLeft();
     handleButtonRight();
-    
-    // if(!search&&!data) {
-    //   return;
-    //   // перехід на сторінку нема новин
-    // }
-
-    if((search&&data) || data) {
-      console.log(search,data);
-      fetchNewsBySearchAndData(search, data, pageNumber-1);
-      // прибрати активний клас з кнопки карент і додати до 1ї
-    } else {
-      fetchNewsBySearch(search, pageNumber - 1);
-    }
-
-    
-  //   if(search&&data) {
-  //   fetchNewsBySearchAndData(search, data, pageNumber-1)
-  //   } else {
-  //   fetchNewsBySearch(search, valuePage.curPage - 1);
-  // }
-}
+  }
 });
 
 // DYNAMIC PAGINATION
@@ -149,6 +124,31 @@ function handleButton(element) {
     // btnFirstPg.disabled = false;
   }
   pagination();
+
+  const dateData = document.querySelector('.calendar__input').value;
+  const search = document.querySelector('.page-header__search-input').value;
+
+  let realDate;
+  if (dateData) {
+    realDate = dateData.split('/').reverse().join('');
+  }
+  if (!realDate && !search) {
+    return;
+  }
+
+  if ((search && realDate) || realDate) {
+    fetchNewsBySearchAndData(search, realDate, valuePage.curPage - 1);
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  } else {
+    fetchNewsBySearch(search, valuePage.curPage - 1);
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
 }
 function handleButtonLeft() {
   if (valuePage.curPage === 1) {

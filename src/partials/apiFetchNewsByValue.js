@@ -1,14 +1,18 @@
 import NewsApi from './apiConstructor.js';
 import spriteUrl from '/images/icon-sprites.svg';
 import { fetchNewsBySearchAndData } from './calendar.js';
-import { valuePage, pagination } from './paginations';
+import { pagination, valuePage } from './paginations.js';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 
 const pg = document.getElementById('pagination');
 const articlesGallery = document.querySelector('.articles_container');
 const deletePagination = document.querySelector('.page-container');
+const deleteLeEl = document.querySelector('.articles_container');
 
 const newsApi = new NewsApi();
+
+let hits = 1000;
 
 // const API_KEY = 'api-key=JmGuT2FnDagHatExdMuVy4QCYQRUlSyR';
 // -->
@@ -20,34 +24,28 @@ const searchInput = document.querySelector('.search-field');
 searchInput.addEventListener('submit', onEnterPush);
 
 function onEnterPush(e) {
-  e.preventDefault();
-
   const form = e.currentTarget;
-  // if(!query) {
-  //   return;
-  // }
-
   const query = form.elements.searchQuery.value.trim();
+
+  if (!query) {
+    return;
+  }
+
+  e.preventDefault();
 
   const dateInput = document.querySelector('.calendar__input');
   dateInput.value = '';
   let pageNum = newsApi.pageNumber;
 
   if (!dateInput.value) {
+    Loading.standard('Loading...', {
+      backgroundColor: 'rgba(0,0,0,0.8)',
+    });
     fetchNewsBySearch(query, pageNum);
-    // pg.addEventListener('click', e => {
-    //   const ele = e.target;
-
-    //   if (ele.dataset.page) {
-    //     const pageNumber = parseInt(e.target.dataset.page, 10);
-
-    //     fetchNewsBySearch(query, pageNumber - 1);
-    //   }
-    // });
-    // pg.addEventListener('click', handleSearch);
-  } else if (dateInput.value) {
+    Loading.remove(1000);
+  }
+  if (dateInput.value) {
     fetchNewsBySearchAndData(query, dateInput, pageNum);
-
   }
 }
 
@@ -69,13 +67,18 @@ const fetchNewsBySearch = async (request, pageNumber) => {
     } else valuePage.totalPages = hits / 10;
     pagination({ curPage: 1, numLinksTwoSide: 1, totalPages: 4 });
 
+    hits = articles.response.meta.hits;
+    if (hits > 1000) {
+      valuePage.totalPages = 99;
+    } else valuePage.totalPages = Math.ceil(hits / 10);
+    pagination({ curPage: 1, numLinksTwoSide: 1, totalPages: 4 });
     // --> render section not-found
 
     if (resArr.length) {
       pageNotFound.classList.add(`is-hidden`);
       deletePagination.classList.remove(`is-hidden`);
       arrHandler(resArr);
-      if (resArr.length < 9) {
+      if (hits < 9) {
         deletePagination.classList.add(`is-hidden`);
       }
     } else if (resArr.length === 0) {
@@ -100,7 +103,7 @@ function arrHandler(arr) {
         url: el.web_url || el.url,
         date: el.pub_date.slice(0, 10) || el.created_date.slice(0, 10),
         imgCaption: el.lead_paragraph,
-        img: `https://cdn.pixabay.com/photo/2013/03/30/00/10/news-97862_960_720.png`,
+        img: `https://cdn.pixabay.com/photo/2013/07/12/19/16/newspaper-154444_960_720.png`,
       };
     }
     return {
@@ -146,10 +149,10 @@ function createBaseMarcup(arr) {
      </div>
      <div class="article_text_wrapper">
        <h2 class="article_title">${title}</h2>
-       <p class="article_text">${description}</p>
+       <p class="article_text">${description.slice(0, 70)}...</p>
      </div>
      <div class="article_info_wrapper">
-       <p class="article_date">${date}</p>
+       <p class="article_date">${date.slice(0, 10)}</p>
        <a href="${url}" class="read-more">Read more</a>
      </div>
      </li>`;
@@ -161,6 +164,7 @@ function createBaseMarcup(arr) {
 
 function addMarkup(tagString) {
   articlesGallery.innerHTML = '';
+  deleteLeEl.classList.add('articles_container');
   articlesGallery.insertAdjacentHTML('beforeend', tagString);
 }
 
@@ -168,10 +172,12 @@ function addMarkup(tagString) {
 function notFoundHandler() {
   if (pageNotFound.classList.contains(`is-hidden`)) {
     articlesGallery.innerHTML = '';
+    deleteLeEl.classList.remove('articles_container');
     pageNotFound.classList.remove(`is-hidden`);
   }
 }
 // --> render section not-found
 
 export * as apiFetchNewsByValue from './apiFetchNewsByValue.js';
-export { arrHandler, notFoundHandler, fetchNewsBySearch, searchInput, hits };
+export { arrHandler, notFoundHandler, fetchNewsBySearch, hits };
+
