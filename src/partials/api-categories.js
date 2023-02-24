@@ -26,7 +26,6 @@ function categorySelect(event) {
   const categoryKey = encodeURIComponent(handledCategory.toLowerCase());
   searchByCategory(categoryKey);
   Loading.remove(1000);
-  deletePagination.classList.add(`is-hidden`);
 }
 // =====================================================================
 async function searchByCategory(handledCategory) {

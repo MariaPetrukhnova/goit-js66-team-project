@@ -14,8 +14,6 @@ const valuePage = {
   totalPages: 10,
 };
 
-pagination();
-
 pg.addEventListener('click', e => {
   const ele = e.target;
 
@@ -28,7 +26,7 @@ pg.addEventListener('click', e => {
     Loading.remove(1000);
 
     valuePage.curPage = pageNumber;
-    pagination(valuePage);
+
     handleButtonLeft();
     handleButtonRight();
   }

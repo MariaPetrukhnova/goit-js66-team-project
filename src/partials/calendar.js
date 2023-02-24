@@ -266,14 +266,14 @@ const fetchNewsBySearchAndData = async (
     hits = articles.response.meta.hits;
     if (hits > 1000) {
       valuePage.totalPages = 99;
-    } else valuePage.totalPages = Math.floor(hits / 10);
-    pagination();
+    } else valuePage.totalPages = Math.ceil(hits / 10);
+    pagination({ curPage: 1, numLinksTwoSide: 1, totalPages: 4 });
 
     if (resArr.length) {
       pageNotFound.classList.add(`is-hidden`);
       deletePagination.classList.remove(`is-hidden`);
       arrHandler(resArr);
-      if (resArr.length < 9) {
+      if (hits < 9) {
         deletePagination.classList.add(`is-hidden`);
       }
     } else if (resArr.length === 0) {

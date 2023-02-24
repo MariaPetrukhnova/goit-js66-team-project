@@ -12,7 +12,6 @@ function onDOMLoad(e) {
       refsEl.articlesGallery.insertAdjacentHTML('beforeend', markup);
       const event = new Event('rendered');
       refsEl.articlesGallery.dispatchEvent(event);
-      refsEl.deletePagination.classList.add(`is-hidden`);
     })
     .then(() => {
       const articleDescription = [
