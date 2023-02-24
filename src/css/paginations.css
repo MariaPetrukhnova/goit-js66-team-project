@@ -7,13 +7,15 @@
   margin-bottom: 150px;
 }
 .page-container i {
-  padding: 6px 12px;
   cursor: pointer;
   font-size: 18px;
   color: var(--color-dark);
   pointer-events: none;
 }
 .page-container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   background-color: transparent;
   border: none;
@@ -40,7 +42,9 @@
     height: 31px;
   }
 }
-
+.page-container button:disabled .paginations__svg {
+  fill: #aaadc7;
+}
 .page-container button:disabled i {
   color: #aaadc7;
 }
@@ -55,7 +59,7 @@
   cursor: pointer;
   border-radius: 5px;
   overflow: hidden;
-  margin: 0 4px;
+  margin: 0 2px;
   width: 28px;
   height: 28px;
   display: flex;
@@ -68,6 +72,7 @@
   #pagination li {
     width: 33px;
     height: 31px;
+    margin: 0 4px;
   }
 }
 #pagination li.active {
@@ -99,4 +104,13 @@
   background: #f4f4f4;
   border: 1px solid #4440f6;
   border-radius: 2px;
+}
+
+.paginations__svg {
+  fill: #111321;
+  margin-left: 6px;
+  margin-right: 6px;
+  display: block;
+  width: 6px;
+  height: 10px;
 }
