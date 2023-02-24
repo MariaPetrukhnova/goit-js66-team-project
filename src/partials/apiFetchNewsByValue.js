@@ -4,6 +4,7 @@ import { fetchNewsBySearchAndData } from './calendar.js';
 import { pagination, valuePage } from './paginations.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
+
 const pg = document.getElementById('pagination');
 const articlesGallery = document.querySelector('.articles_container');
 const deletePagination = document.querySelector('.page-container');
@@ -15,6 +16,7 @@ let hits = 1000;
 
 // const API_KEY = 'api-key=JmGuT2FnDagHatExdMuVy4QCYQRUlSyR';
 // -->
+let hits = 1000;
 const pageNotFound = document.querySelector(`.not-found`);
 // const newsGallery = document.querySelector(`.news-gallery`);
 // -->
@@ -59,6 +61,11 @@ const fetchNewsBySearch = async (request, pageNumber) => {
     }
     const articles = await response.json();
     const resArr = articles.response.docs;
+    hits = articles.response.meta.hits;
+    if (hits > 1000) {
+      valuePage.totalPages = 99;
+    } else valuePage.totalPages = hits / 10;
+    pagination({ curPage: 1, numLinksTwoSide: 1, totalPages: 4 });
 
     hits = articles.response.meta.hits;
     if (hits > 1000) {
@@ -94,7 +101,7 @@ function arrHandler(arr) {
         title: el.title || el.headline.main,
         description: el.abstract,
         url: el.web_url || el.url,
-        date: el.pub_date || el.created_date,
+        date: el.pub_date.slice(0, 10) || el.created_date.slice(0, 10),
         imgCaption: el.lead_paragraph,
         img: `https://cdn.pixabay.com/photo/2013/07/12/19/16/newspaper-154444_960_720.png`,
       };
@@ -104,7 +111,7 @@ function arrHandler(arr) {
       title: el.title || el.headline.main,
       description: el.abstract,
       url: el.web_url || el.url,
-      date: el.pub_date || el.created_date,
+      date: el.pub_date.slice(0, 10) || el.created_date.slice(0, 10),
       imgCaption: el.lead_paragraph,
       img: `${newsApi.WEB_HOST}/${el.multimedia[1].url}`,
     };
@@ -128,12 +135,12 @@ function createBaseMarcup(arr) {
        <p class="article_category">${section}</p>
        <img class="article_img" src="${img}" alt="${imgCaption}" width="395" height="395">
        <div class="article_flag">
-       <button class="article_flag--add"><span class="article_flag_text">Add to favorite</span>
+       <button class="favorites-button article_flag--add"><span class="article_flag_text">Add to favorite</span>
          <svg width="16" height="16">
          <use href="${spriteUrl}#heart_contur" width="16" height="16"></use>
         </svg>
          </button>
-         <button class="article_flag--remove is-hidden"><span class="article_flag_text">Remove from favorite</span>
+         <button class="favorites-button article_flag--remove is-hidden"><span class="article_flag_text">Remove from favorite</span>
          <svg width="16" height="16">
          <use href="${spriteUrl}#heart_fill" width="16" height="16"></use>
        </svg>
@@ -173,3 +180,4 @@ function notFoundHandler() {
 
 export * as apiFetchNewsByValue from './apiFetchNewsByValue.js';
 export { arrHandler, notFoundHandler, fetchNewsBySearch, hits };
+

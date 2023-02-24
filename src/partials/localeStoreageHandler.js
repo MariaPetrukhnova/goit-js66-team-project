@@ -1,4 +1,5 @@
 import spriteUrl from '/images/icon-sprites.svg';
+
 const LOCALSTORAGE_KEY = "read-articles";
 const LOCALSTORAGE_FAV_KEY = "favorite-articles";
 
@@ -26,8 +27,13 @@ function onArticleLink(e) {
         articleEl.querySelector('.article_flag--add').classList.toggle('is-hidden');
         articleEl.querySelector('.article_flag--remove').classList.toggle('is-hidden');
 
-        if (!favArticlesArr.find((item) => item.id === articleId)) {
+        const articleIndex = favArticlesArr.findIndex((item) => item.id === articleId)
+
+        if (articleIndex === -1) {
             favArticlesArr.push(createCardObj(e));
+            addArticlesToLocaleStorage(LOCALSTORAGE_FAV_KEY, JSON.stringify(favArticlesArr));
+        } else {
+            favArticlesArr.splice(articleIndex, 1);
             addArticlesToLocaleStorage(LOCALSTORAGE_FAV_KEY, JSON.stringify(favArticlesArr));
         }
     } else return;

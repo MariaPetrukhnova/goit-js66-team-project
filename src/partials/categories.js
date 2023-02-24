@@ -26,6 +26,8 @@ const fetchCategories = async () => {
     console.log(error.message);
   }
 };
+
+
 fetchCategories().then(result => {
   result.forEach(element => {
     apiGetCatigorieResult.push(element);
@@ -59,6 +61,8 @@ fetchCategories().then(result => {
     refsEl.listConteinerEl.innerHTML = mobMarkup(element);
   }
 });
+
+
 function mobMarkup(arr) {
   const arrSections = arr
     .map(

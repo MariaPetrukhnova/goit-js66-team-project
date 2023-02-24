@@ -14,6 +14,9 @@ const valuePage = {
   totalPages: 10,
 };
 
+
+pagination();
+
 pg.addEventListener('click', e => {
   const ele = e.target;
 
@@ -100,16 +103,21 @@ document
   });
 
 function handleButton(element) {
+  console.log(element);
   if (element.classList.contains('first-page')) {
     valuePage.curPage = 1;
+    // цієї фкції нема
   } else if (element.classList.contains('last-page')) {
     valuePage.curPage = 10;
+     // цієї фкції нема
   } else if (element.classList.contains('prev-page')) {
     valuePage.curPage--;
     handleButtonLeft();
     btnNextPg.disabled = false;
+    console.log("спрацювала фкція натискання на кнопку з класом prev-page");
     // btnLastPg.disabled = false;
   } else if (element.classList.contains('next-page')) {
+    console.log("спрацювала фкція натискання на кнопку з класом next-page");
     valuePage.curPage++;
     handleButtonRight();
     btnPrevPg.disabled = false;
@@ -161,4 +169,5 @@ function handleButtonRight() {
     // btnLastPg.disabled = false;
   }
 }
+
 export { valuePage, pagination };

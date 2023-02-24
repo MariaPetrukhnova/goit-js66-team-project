@@ -248,6 +248,7 @@ function getDateForInput(elem) {
   // повторити це в функції де виклик
 }
 
+
 const fetchNewsBySearchAndData = async (
   request = '',
   realDate = '',
@@ -262,6 +263,7 @@ const fetchNewsBySearchAndData = async (
     }
     const articles = await response.json();
     const resArr = articles.response.docs;
+    // перевіряємо, чи отримали дані
 
     hits = articles.response.meta.hits;
     if (hits > 1000) {
@@ -272,6 +274,7 @@ const fetchNewsBySearchAndData = async (
     if (resArr.length) {
       pageNotFound.classList.add(`is-hidden`);
       deletePagination.classList.remove(`is-hidden`);
+      // приводимо до єдиного вигляду
       arrHandler(resArr);
       if (hits < 9) {
         deletePagination.classList.add(`is-hidden`);
