@@ -149,6 +149,7 @@ const refs = {
            .then((userCredential) => {
    
            const user = userCredential.user;
+           console.log(user.email);
            localStorage.auth = "yes";
            Notiflix.Report.success( 'Successful Login');
         
